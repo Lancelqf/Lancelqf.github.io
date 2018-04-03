@@ -1,1 +1,1 @@
-This is my blog http://qingfeng.lan, powered by Hugo.
+This is my blog http://www.qingfenglan.com, powered by Hugo.
