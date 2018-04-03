@@ -1,1 +1,1 @@
-This is my blog http://qingfeng.lan, powered by Hugo.
+This is my blog http://lancelqf.github.io, powered by Hugo.

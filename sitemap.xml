@@ -3,29 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://qingfeng.lan/posts/modern-family/</loc>
+    <loc>http://lancelqf.github.io/posts/modern-family/</loc>
     <lastmod>2018-04-03T12:24:06+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://qingfeng.lan/posts/</loc>
-    <lastmod>2018-04-03T12:24:06+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://qingfeng.lan/</loc>
+    <loc>http://lancelqf.github.io/posts/</loc>
     <lastmod>2018-04-03T12:24:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://qingfeng.lan/tags/</loc>
+    <loc>http://lancelqf.github.io/</loc>
+    <lastmod>2018-04-03T12:24:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://qingfeng.lan/topics/</loc>
+    <loc>http://lancelqf.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://lancelqf.github.io/topics/</loc>
     <priority>0</priority>
   </url>
   
