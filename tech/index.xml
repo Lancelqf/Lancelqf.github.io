@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teches on Qingfeng&#39;s blog</title>
+    <link>https://lancelqf.github.io/tech/</link>
+    <description>Recent content in Teches on Qingfeng&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
+    <lastBuildDate>Wed, 04 Apr 2018 19:45:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://lancelqf.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>C Bug</title>
+      <link>https://lancelqf.github.io/tech/c-bug/</link>
+      <pubDate>Wed, 04 Apr 2018 19:45:55 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/c-bug/</guid>
+      <description> Error: free(): invalid next size (fast/normal) 内存泄漏问题
+ 可能的原因有：  free了没有分配的内存； 分配了内存忘记释放； 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题； strcpy复制出错（应使用strncpy或memcpy）  一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。 内存调试工具：valgrind  处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。
+  </description>
+    </item>
+    
+    <item>
+      <title>Linux Bug</title>
+      <link>https://lancelqf.github.io/tech/linux-bug/</link>
+      <pubDate>Wed, 04 Apr 2018 19:36:44 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/linux-bug/</guid>
+      <description> timeout in locking authority file /home/***/.Xauthority
+ rm -fr .Xauthority-*  E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
+E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it
+ sudo rm /var/cache/apt/archives/lock
+ sudo rm /var/lib/dpkg/lock
+ sudo rm /var/lib/apt/lists/lock
+   </description>
+    </item>
+    
+    <item>
+      <title>Python Bug</title>
+      <link>https://lancelqf.github.io/tech/python-bug/</link>
+      <pubDate>Wed, 04 Apr 2018 19:32:58 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/python-bug/</guid>
+      <description> fatal error: Python.h: No such file or directory：#include &amp;ldquo;Python.h&amp;rdquo;  apt-get install python-dev   </description>
+    </item>
+    
+  </channel>
+</rss>
