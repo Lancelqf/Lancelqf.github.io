@@ -112,9 +112,7 @@
       <div class="post-meta">Wed, Apr 4, 2018 </div>
     </header>
 
-     Error: free(): invalid next size (fast/normal) 内存泄漏问题
- 可能的原因有：  free了没有分配的内存； 分配了内存忘记释放； 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题； strcpy复制出错（应使用strncpy或memcpy）  一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。 内存调试工具：valgrind  处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。
-  
+    
     <footer>
         <a href='https://lancelqf.github.io/tech/c-bug/'><nobr>Read more →</nobr></a>
     </footer>

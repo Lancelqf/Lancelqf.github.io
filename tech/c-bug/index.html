@@ -111,25 +111,19 @@
   <h1 itemprop="name" id="title">C Bug</h1>
   <div>
         <article itemprop="articleBody" id="content">
-           <ul>
-<li><p>Error: free(): invalid next size (fast/normal) 内存泄漏问题</p>
+           <p>
+- Error: free(): invalid next size (fast/normal) 内存泄漏问题
+  - 可能的原因有：
+      - free了没有分配的内存；
+      - 分配了内存忘记释放；
+      - 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题；
+      - strcpy复制出错（应使用strncpy或memcpy）
+  - 一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。
+  - 内存调试工具：valgrind</p>
 
 <ul>
-<li>可能的原因有：
-
-<ul>
-<li>free了没有分配的内存；</li>
-<li>分配了内存忘记释放；</li>
-<li>数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题；</li>
-<li>strcpy复制出错（应使用strncpy或memcpy）</li>
-</ul></li>
-<li>一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。</li>
-<li>内存调试工具：valgrind</li>
-</ul></li>
-
-<li><p>处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。</p></li>
+<li>处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。</li>
 </ul>
-
         </article>
   </div>
 </section>
@@ -152,7 +146,7 @@
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="16">
+<meta itemprop="wordCount" content="24">
 <meta itemprop="datePublished" content="2018-04-04">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/c-bug/">
 

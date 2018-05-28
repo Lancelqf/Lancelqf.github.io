@@ -111,15 +111,13 @@
   <h1 itemprop="name" id="title">Linux Bug</h1>
   <div>
         <article itemprop="articleBody" id="content">
-           <ul>
-<li><p>timeout in locking authority file /home/***/.Xauthority</p>
+           <p>
+- timeout in locking authority file /home/**<em>/.Xauthority
+  - rm -fr .Xauthority-</em></p>
 
 <ul>
-<li>rm -fr .Xauthority-*</li>
-</ul></li>
-
-<li><p>E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)<br />
-E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it</p>
+<li>E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)<br />
+E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it
 
 <ul>
 <li>sudo rm /var/cache/apt/archives/lock<br /></li>
@@ -127,7 +125,6 @@ E: Unable to lock the administration directory (/var/lib/dpkg/) is another proce
 <li>sudo rm /var/lib/apt/lists/lock<br /></li>
 </ul></li>
 </ul>
-
         </article>
   </div>
 </section>
@@ -150,7 +147,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/) is another proce
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="43">
+<meta itemprop="wordCount" content="45">
 <meta itemprop="datePublished" content="2018-04-04">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/linux-bug/">
 
