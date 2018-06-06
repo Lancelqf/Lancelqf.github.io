@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plans on Qingfeng&#39;s blog</title>
+    <link>https://lancelqf.github.io/plan/</link>
+    <description>Recent content in Plans on Qingfeng&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 06 May 2018 10:49:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://lancelqf.github.io/plan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>大跃进</title>
+      <link>https://lancelqf.github.io/plan/%E5%A4%A7%E8%B7%83%E8%BF%9B/</link>
+      <pubDate>Sun, 06 May 2018 10:49:05 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/plan/%E5%A4%A7%E8%B7%83%E8%BF%9B/</guid>
+      <description>&lt;h1 id=&#34;paper-reading&#34;&gt;Paper Reading&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;每天/周一篇?&lt;/li&gt;
+&lt;li&gt;写note&lt;/li&gt;
+&lt;li&gt;经典算法复现</description>
+    </item>
+    
+  </channel>
+</rss>
