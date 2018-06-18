@@ -88,6 +88,10 @@
           <ul class="social">
               <li> <a href="http://spf13.com/" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
               <li> <a href="http://nanshu.wang/" target="_blank" title="Dear Sister Nanshu" class="nanshu">Nanshu</a> </li>
+              <li> <a href="http://spaces.facsci.ualberta.ca/rlai/" target="_blank" title="A RL&AI researh group at the University of Alberta" class="twitter">RLAI</a> </li>
+              <li> <a href="https://deepmind.com/" target="_blank" title="An AI research company, part of the Alphabet group" class="googleplus">DeepMind</a> </li>
+              <li> <a href="https://openai.com/" target="_blank" title="A non-profit AI research company" class="stumbleupon">OpenAI</a> </li>
+              <li> <a href="http://whirl.cs.ox.ac.uk/" target="_blank" title="A ML research group at the University of Oxford" class="delicious">WhiRL</a> </li>             
           </ul>
           <span class="icon icon-bubbles"> </span> <span class="subcount"> </span>
       </div>
@@ -97,8 +101,10 @@
       <span class="title"> follow </span>
       <div class="dropdown follow">
           <ul class="social">
-              <li> <a href="http://www.linkedin.com/in/" target="_blank" title="LinkedIn" class="linkedin"><span class="icon icon-linkedin"></span>LinkedIn</a> </li>
-              <li> <a href="http://github.com/" target="_blank" title="GitHub" class="github"><span class="icon icon-github"></span>GitHub</a> </li>
+              <li> <a href="https://www.linkedin.com/in/qingfeng-lan-974685146" target="_blank" title="LinkedIn" class="linkedin">LinkedIn</a> </li>
+              <li> <a href="https://github.com/Lancelqf" target="_blank" title="GitHub" class="github">GitHub</a> </li>
+              <li> <a href="https://www.instagram.com/lancelqf007/" target="_blank" title="Instagram" class="facebook">Instagram</a> </li>
+              <li> <a href="https://twitter.com/lancelan3" target="_blank" title="Twitter" class="twitter">Twitter</a> </li>
           </ul>
           <span class="icon icon-rocket"> </span> <span class="subcount"></span>
       </div>
@@ -110,26 +116,7 @@
 
 <section id="main">
   <h1 itemprop="name" id="title">C Bug</h1>
-  <div>
-        <article itemprop="articleBody" id="content">
-           <p>
-- Error: free(): invalid next size (fast/normal) 内存泄漏问题
-  - 可能的原因有：
-      - free了没有分配的内存；
-      - 分配了内存忘记释放；
-      - 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题；
-      - strcpy复制出错（应使用strncpy或memcpy）
-  - 一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。
-  - 内存调试工具：valgrind</p>
-
-<ul>
-<li>处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。</li>
-</ul>
-        </article>
-  </div>
-</section>
-
-
+  
 
 <aside id="meta">
 
@@ -150,10 +137,47 @@
 <meta itemprop="wordCount" content="24">
 <meta itemprop="datePublished" content="2018-04-04">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/c-bug/">
+  <div>
+        <article itemprop="articleBody" id="content">
+           <p>
+- Error: free(): invalid next size (fast/normal) 内存泄漏问题
+  - 可能的原因有：
+      - free了没有分配的内存；
+      - 分配了内存忘记释放；
+      - 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题；
+      - strcpy复制出错（应使用strncpy或memcpy）
+  - 一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。
+  - 内存调试工具：valgrind</p>
+
+<ul>
+<li>处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。</li>
+</ul>
+        </article>
+  </div>
+</section>
 
 <aside id=comments>
     <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
     
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "qingfenglan" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </aside>
 
 <footer>
