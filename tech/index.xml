@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Wed, 04 Apr 2018 19:45:55 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 Jun 2018 11:19:58 +0800</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Markdown教程</title>
+      <link>https://lancelqf.github.io/tech/markdown%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 27 Jun 2018 11:19:58 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/markdown%E6%95%99%E7%A8%8B/</guid>
+      <description>简书居然没有官方 Markdown 教程，我来 原来官方是有的。。。献给写作者的 Markdown 新手指南 不过我这个更简。而且还有独门秘籍。
+ 首先，“Markdown 其实很简单。在简书上学习 Markdown 最方便。”
+1. 标题 为了获得上面的 “1. 标题”， 在 Markdown 编辑器里输入：
+# 1. 标题  “#” 后最好加个空格。除此之外，还有 5 级标题，依次有不同的字体大小，即
+## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题  这样就有：
+二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题 2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
+最常用的强调方式，那就是 **加粗** 了，你得这样：  通常我喜欢在 “**加粗的部分**” 旁边各加一个空格，当然你也可以不这样。 斜体则多用在于书名，比如：我从来没看过 Jane Eyre
+斜体则多用在于书名，比如：我从来没看过 *Jane Eyre*  但中文的斜体我觉得真是不美，像：《*简 · 爱*》，一般还是别用了。
+3. 层次 比如写个读书笔记，你得
+第一章  第一节 第二节(你不用敲 &amp;ldquo;2&amp;rdquo;，自动就有了）  第一小节（推荐每层次缩进四个空格） * 小小节 1 * 小小节 2 * 第二小节   也不难：</description>
+    </item>
     
     <item>
       <title>C Bug</title>

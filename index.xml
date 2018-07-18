@@ -7,10 +7,54 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 21 Jun 2018 14:36:58 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jul 2018 09:29:47 +0800</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>影单(2014-09~2018-07)</title>
+      <link>https://lancelqf.github.io/heart/%E5%BD%B1%E5%8D%952014-09~2018-07/</link>
+      <pubDate>Wed, 18 Jul 2018 09:29:47 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E5%BD%B1%E5%8D%952014-09~2018-07/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《心•尘》</title>
+      <link>https://lancelqf.github.io/heart/%E5%BF%83%E5%B0%98/</link>
+      <pubDate>Sun, 15 Jul 2018 09:12:26 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E5%BF%83%E5%B0%98/</guid>
+      <description>&lt;div align=center&gt;
+We are searching for meaning.&lt;br&gt;
+But we are all lost stars&lt;br&gt;
+trying to light up the dark.&lt;br&gt;
+Who are we?&lt;br&gt;
+Just a speck of dust within the galaxy.
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Markdown教程</title>
+      <link>https://lancelqf.github.io/tech/markdown%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Wed, 27 Jun 2018 11:19:58 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/markdown%E6%95%99%E7%A8%8B/</guid>
+      <description>简书居然没有官方 Markdown 教程，我来 原来官方是有的。。。献给写作者的 Markdown 新手指南 不过我这个更简。而且还有独门秘籍。
+ 首先，“Markdown 其实很简单。在简书上学习 Markdown 最方便。”
+1. 标题 为了获得上面的 “1. 标题”， 在 Markdown 编辑器里输入：
+# 1. 标题  “#” 后最好加个空格。除此之外，还有 5 级标题，依次有不同的字体大小，即
+## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题  这样就有：
+二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题 2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
+最常用的强调方式，那就是 **加粗** 了，你得这样：  通常我喜欢在 “**加粗的部分**” 旁边各加一个空格，当然你也可以不这样。 斜体则多用在于书名，比如：我从来没看过 Jane Eyre
+斜体则多用在于书名，比如：我从来没看过 *Jane Eyre*  但中文的斜体我觉得真是不美，像：《*简 · 爱*》，一般还是别用了。
+3. 层次 比如写个读书笔记，你得
+第一章  第一节 第二节(你不用敲 &amp;ldquo;2&amp;rdquo;，自动就有了）  第一小节（推荐每层次缩进四个空格） * 小小节 1 * 小小节 2 * 第二小节   也不难：</description>
+    </item>
     
     <item>
       <title>《傍晚的家》纪弦</title>
@@ -52,8 +96,9 @@
       <pubDate>Sat, 19 May 2018 13:10:54 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E8%AF%9E%E7%94%9F%E5%8D%B3%E6%8A%B5%E6%8A%97/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;embed src=&#34;https://lancelqf.github.io/media/Birthday Resistance Parade.mp3&#34;&gt;&lt;/center&gt;
-&lt;center&gt;&lt;strong&gt;建议戴上耳机&lt;/strong&gt;&lt;/center&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;center&gt;&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=26093476&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;strong&gt;建议戴上耳机&lt;/strong&gt;&lt;/center&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;「献上抵抗与祝福。」—— World&amp;rsquo;s end girlfriend&lt;/p&gt;
@@ -85,9 +130,11 @@
       <pubDate>Thu, 10 May 2018 23:10:14 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E6%B7%B1%E5%A4%9C%E9%AB%98%E9%80%9F/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;embed src=&#34;https://lancelqf.github.io/media/深夜高速.mp3&#34;&gt;&lt;/center&gt;
-&lt;center&gt;~建议戴上耳机~&lt;/center&gt;
-&lt;center&gt;
+      <description>&lt;p&gt;&lt;center&gt;&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=33984253&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;~建议戴上耳机~&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;
 &lt;strong&gt;走吧 走吧 敞开心胸&lt;br /&gt;
 走吧 走吧 不停地摇摆下去&lt;br /&gt;
 去更多更多更多更多没有见过的地方吧&lt;br /&gt;
@@ -95,10 +142,7 @@
 放开心胸 放开声音 放开手&lt;br /&gt;
 感觉到的东西就是全部 感觉到的就是全部&lt;br /&gt;
 很高兴还活着 很高兴还活着 很高兴还活着&lt;/strong&gt;
-&lt;/center&gt;
-如果选一首歌分别用来代表人生的不同的阶段，贝多芬《第九合唱交响曲》毫无疑问应当是漫漫人生的最佳代表，《D大调卡农》则是整个高中的注脚，《Birthday Resistance Parade》会成为大学时期的写照。
-
-而这首《深夜高速》，是深夜从Teddy Hall图书馆独自走出，在清冷的牛津街头快步迈向宿舍；是暗淡的灯光照着前路，一颗失学心碎裂成一地；是情感危机到来时，像个孩子般不知所措；是对自己和人本身深深的失望；是长久的用力过后更长久的疲惫；是脆弱的腹部；是人生所有的低谷；是最后的时光。&lt;/p&gt;</description>
+&lt;/center&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -703,27 +747,6 @@ Puts all heaven in a rage.&lt;/p&gt;</description>
 谁便要孤独
 谁热爱生活
 谁就要流血</description>
-    </item>
-    
-    <item>
-      <title>奇妙能力歌</title>
-      <link>https://lancelqf.github.io/heart/%E5%A5%87%E5%A6%99%E8%83%BD%E5%8A%9B%E6%AD%8C/</link>
-      <pubDate>Sat, 24 Oct 2015 19:53:06 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/heart/%E5%A5%87%E5%A6%99%E8%83%BD%E5%8A%9B%E6%AD%8C/</guid>
-      <description>&lt;h2 id=&#34;奇妙能力歌&#34;&gt;奇妙能力歌&lt;/h2&gt;
-
-&lt;h3 id=&#34;陈粒&#34;&gt;陈粒&lt;/h3&gt;
-
-&lt;p&gt;我看过沙漠下暴雨&lt;br /&gt;
-看过大海亲吻鲨鱼&lt;br /&gt;
-看过黄昏追逐黎明&lt;br /&gt;
-没看过你
-
-我知道美丽会老去&lt;br /&gt;
-生命之外还有生命&lt;br /&gt;
-我知道风里有诗句&lt;br /&gt;
-不知道你&lt;/p&gt;</description>
     </item>
     
     <item>
