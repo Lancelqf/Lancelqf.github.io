@@ -33,7 +33,7 @@
 
 
     <base href="https://lancelqf.github.io">
-    <title> Python Bug - lancelqf.gihub.io </title>
+    <title> Python Bug - lancelqf.github.io </title>
     <link rel="canonical" href="https://lancelqf.github.io/tech/python-bug/">
     
 
@@ -154,14 +154,25 @@
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="14">
+<meta itemprop="wordCount" content="39">
 <meta itemprop="datePublished" content="2018-04-04">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/python-bug/">
   <div>
         <article itemprop="articleBody" id="content">
            <p>
 - fatal error: Python.h: No such file or directory：#include &ldquo;Python.h&rdquo;
-  - apt-get install python-dev</p>
+  - Solution: apt-get install python-dev</p>
+
+<ul>
+<li>RuntimeError: dictionary changed size during iteration
+
+<ul>
+<li>Example: for k in dictVar:dictVar.pop(k)</li>
+<li>Solution:</li>
+<li>Python2.x: for k in dictVar.keys(): dictVar.pop(k)</li>
+<li>Python3.x: for k in list(dictVar): dictVar.pop(k)</li>
+</ul></li>
+</ul>
         </article>
   </div>
 </section>

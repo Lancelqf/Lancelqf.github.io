@@ -56,5 +56,24 @@
 ——读《失控》凯文·凯利 ——读《失控》凯文·凯利 （一）道德为虚妄  ### 【坍塌】  </description>
     </item>
     
+    <item>
+      <title>机器学习笔记3 有监督学习 分类 logistic回归</title>
+      <link>https://lancelqf.github.io/post/2015-02-12/</link>
+      <pubDate>Thu, 12 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://lancelqf.github.io/post/2015-02-12/</guid>
+      <description>&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
+
+&lt;h1 id=&#34;分类问题&#34;&gt;分类问题&lt;/h1&gt;
+
+&lt;p&gt;分类问题和回归问题不同的是，分类问题的预测值$y$只能取离散值，而非连续值。首先来看一个二类分类问题，预测值$y$只能取0或1。0又被称作负例(negative class)，1被称作正例(positive class)。通常也用&amp;rdquo;-&amp;ldquo;,&amp;rdquo;+&amp;ldquo;符号来表示。对于一个样本集输入$x^{(i)}$，对应的目标值$y^{(i)}$也被为标注(lable)。&lt;/p&gt;
+
+&lt;h2 id=&#34;logistic回归&#34;&gt;logistic回归&lt;/h2&gt;
+
+&lt;p&gt;也可以用线性回归的方法运用到分类问题上，但是这样做很容易得到不好的结果。稍微改变一下我们的假设函数$h_\theta(x)$，使其的取值在{0,1}范围内：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
