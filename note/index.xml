@@ -57,5 +57,16 @@ $$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 
 &lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>test2</title>
+      <link>https://lancelqf.github.io/note/test2/</link>
+      <pubDate>Thu, 01 Jan 2015 15:30:39 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/test2/</guid>
+      <description>Andrew Ng cs229 Machine Learning 笔记
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$</description>
+    </item>
+    
   </channel>
 </rss>
