@@ -23,9 +23,27 @@ Chapter 1: Introduction Reinforcement learning is a computational approach to un
     </item>
     
     <item>
+      <title>个人理财</title>
+      <link>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</link>
+      <pubDate>Mon, 24 Dec 2018 12:53:44 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>书单(2014-09~2018-07)</title>
+      <link>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</link>
+      <pubDate>Sun, 29 Jul 2018 23:02:59 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>test</title>
       <link>https://lancelqf.github.io/note/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</link>
-      <pubDate>Tue, 01 Jan 2019 15:30:39 -0700</pubDate>
+      <pubDate>Sun, 01 Jan 2017 15:30:39 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/note/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</guid>
       <description>&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
@@ -46,24 +64,6 @@ $$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 
 
 &lt;p&gt;在变量假设十分复杂的情况下，神经网络提供了另一种机器学习算法。
 &lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>个人理财</title>
-      <link>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</link>
-      <pubDate>Mon, 24 Dec 2018 12:53:44 -0700</pubDate>
-      
-      <guid>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>书单(2014-09~2018-07)</title>
-      <link>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</link>
-      <pubDate>Sun, 29 Jul 2018 23:02:59 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
