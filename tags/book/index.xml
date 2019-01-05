@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Book on Qingfeng&#39;s blog</title>
+    <link>https://lancelqf.github.io/tags/book/</link>
+    <description>Recent content in Book on Qingfeng&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 01 Jan 2019 15:30:39 -0700</lastBuildDate>
+    
+	<atom:link href="https://lancelqf.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reinforcement Learning - An Introduction</title>
+      <link>https://lancelqf.github.io/note/reinforcement-learning-an-introduction/</link>
+      <pubDate>Tue, 01 Jan 2019 15:30:39 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/reinforcement-learning-an-introduction/</guid>
+      <description>Reference  Reinforcement Learning: An Introduction, Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018.  Notation    
+Chapter 1: Introduction Reinforcement learning is a computational approach to understanding and automating goal-directed learning and decision making. It is distinguished from other computational approaches by its emphasis on learning by an agent from direct interaction with its environment, without requiring exemplary supervision or complete models of the environment.</description>
+    </item>
+    
+    <item>
+      <title>个人理财</title>
+      <link>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</link>
+      <pubDate>Mon, 24 Dec 2018 12:53:44 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>书单(2014-09~2018-07)</title>
+      <link>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</link>
+      <pubDate>Sun, 29 Jul 2018 23:02:59 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E4%B9%A6%E5%8D%952014-09~2018-07/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>https://lancelqf.github.io/note/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</link>
+      <pubDate>Sun, 01 Jan 2017 15:30:39 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/</guid>
+      <description>&lt;p&gt;Andrew Ng cs229 Machine Learning 笔记&lt;/p&gt;
+
+&lt;h1 id=&#34;神经网络&#34;&gt;神经网络&lt;/h1&gt;
+
+&lt;h2 id=&#34;非线性假设&#34;&gt;非线性假设&lt;/h2&gt;
+
+&lt;p&gt;在特征变量数较大的情况下，采用线性回归会很难处理，比如我的数据集有3个特征变量，想要在假设中引入所有特征变量的平方项：&lt;/p&gt;
+
+&lt;div&gt;
+$$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 + \theta_5x_2x_3  + \theta_6x_3^2 )$$
+&lt;/div&gt;
+
+&lt;p&gt;共有6个特征，假设我们想知道选取其中任意两个可重复的平方项有多少组合，采用允许重复的组合公式计算$\frac{(n+r-1)!}{r!(n-1)!}$，共有$\frac{(3 + 2 - 1)!}{(2!\cdot (3-1)!)} = 6$种特征变量的组合。对于100个特征变量，则共有$\frac{(100 + 2 - 1)!}{(2\cdot (100-1)!)} = 5050$个新的特征变量。&lt;/p&gt;
+
+&lt;p&gt;可以大致估计特征变量的平方项组合个数的增长速度为$\mathcal{O}(\frac{n^2}2)$，立方项的组合个数的增长为$\mathcal{O}(n^3)$。这些增长都十分陡峭，让实际问题变得很棘手。&lt;/p&gt;
+
+&lt;p&gt;在变量假设十分复杂的情况下，神经网络提供了另一种机器学习算法。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《站在两个世界的边缘》程浩</title>
+      <link>https://lancelqf.github.io/heart/%E7%AB%99%E5%9C%A8%E4%B8%A4%E4%B8%AA%E4%B8%96%E7%95%8C%E7%9A%84%E8%BE%B9%E7%BC%98-%E7%A8%8B%E6%B5%A9/</link>
+      <pubDate>Tue, 19 Jul 2016 16:59:25 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E7%AB%99%E5%9C%A8%E4%B8%A4%E4%B8%AA%E4%B8%96%E7%95%8C%E7%9A%84%E8%BE%B9%E7%BC%98-%E7%A8%8B%E6%B5%A9/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;与魔鬼的交易：用一生的痛苦与不幸、短暂的寿命换取敏感的心灵，惊心动魄的文字，与天才。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《给青年诗人的信》里尔克</title>
+      <link>https://lancelqf.github.io/heart/%E7%BB%99%E9%9D%92%E5%B9%B4%E8%AF%97%E4%BA%BA%E7%9A%84%E4%BF%A1-%E9%87%8C%E5%B0%94%E5%85%8B/</link>
+      <pubDate>Tue, 19 Jul 2016 16:48:03 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E7%BB%99%E9%9D%92%E5%B9%B4%E8%AF%97%E4%BA%BA%E7%9A%84%E4%BF%A1-%E9%87%8C%E5%B0%94%E5%85%8B/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;诗人之肺腑，句句皆箴言。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>剖析与治疗</title>
+      <link>https://lancelqf.github.io/heart/%E5%89%96%E6%9E%90%E4%B8%8E%E6%B2%BB%E7%96%97/</link>
+      <pubDate>Tue, 23 Feb 2016 16:04:16 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E5%89%96%E6%9E%90%E4%B8%8E%E6%B2%BB%E7%96%97/</guid>
+      <description>&lt;p&gt;于我而言，读书目的有三，一为增长见识，获取新知；二为排遣孤寂，打发无聊；剩下的便是《荒原狼》这类书籍——用于剖析和治疗。读这本书的时候，会不自觉地将内心的情感投射至其中，跟着主人公经历一般人所不理解的惊心动魄。读到动情处，整个人会无法自抑地颤栗，巨大的共鸣几乎能将整个人压碎。读这样的书，更多的时候是在读自己。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>论荒原狼——为狂人而作</title>
+      <link>https://lancelqf.github.io/heart/%E8%AE%BA%E8%8D%92%E5%8E%9F%E7%8B%BC%E4%B8%BA%E7%8B%82%E4%BA%BA%E8%80%8C%E4%BD%9C/</link>
+      <pubDate>Sun, 21 Feb 2016 10:09:13 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E8%AE%BA%E8%8D%92%E5%8E%9F%E7%8B%BC%E4%B8%BA%E7%8B%82%E4%BA%BA%E8%80%8C%E4%BD%9C/</guid>
+      <description>&lt;p&gt;&lt;center&gt;【德】赫尔曼·黑塞&lt;/center&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《哥本哈根》节选</title>
+      <link>https://lancelqf.github.io/heart/%E5%93%A5%E6%9C%AC%E5%93%88%E6%A0%B9-%E8%8A%82%E9%80%89/</link>
+      <pubDate>Mon, 21 Dec 2015 09:43:49 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E5%93%A5%E6%9C%AC%E5%93%88%E6%A0%B9-%E8%8A%82%E9%80%89/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;波　尔&lt;/strong&gt;：记忆是一种奇妙的日记。&lt;br /&gt;
+&lt;strong&gt;海森堡&lt;/strong&gt;：你翻开它，简洁的标题，工整的记述，在你的四周融化了。&lt;br /&gt;
+&lt;strong&gt;波　尔&lt;/strong&gt;：你踏上一页页的台阶，走入日日月月。&lt;br /&gt;
+&lt;strong&gt;玛格瑞特&lt;/strong&gt;：过去在你的脑中成为现在。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读《自私的基因》及对某某们的复仇</title>
+      <link>https://lancelqf.github.io/heart/%E8%AF%BB%E8%87%AA%E7%A7%81%E7%9A%84%E5%9F%BA%E5%9B%A0%E5%8F%8A%E5%AF%B9%E6%9F%90%E6%9F%90%E4%BB%AC%E7%9A%84%E5%A4%8D%E4%BB%87/</link>
+      <pubDate>Wed, 11 Feb 2015 11:30:28 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E8%AF%BB%E8%87%AA%E7%A7%81%E7%9A%84%E5%9F%BA%E5%9B%A0%E5%8F%8A%E5%AF%B9%E6%9F%90%E6%9F%90%E4%BB%AC%E7%9A%84%E5%A4%8D%E4%BB%87/</guid>
+      <description>&lt;p&gt;首先，这本书的确是一本开（hui）阔（san）眼（guan）界的好书！道金斯幽默而风趣地讲述着进化的故事，读完才发现之前我对达尔文进化论的理解是多么粗浅和不精确。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>你问生命是什么</title>
+      <link>https://lancelqf.github.io/heart/%E4%BD%A0%E9%97%AE%E7%94%9F%E5%91%BD%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Mon, 28 Jul 2014 18:17:43 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E4%BD%A0%E9%97%AE%E7%94%9F%E5%91%BD%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <description>&lt;div align = right&gt;——读《失控》凯文·凯利&lt;/div&gt;
+
+&lt;p&gt;&lt;center&gt; (一)进化&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;生命，是宇宙之花。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《水差子的悲鸣》徐来</title>
+      <link>https://lancelqf.github.io/heart/%E6%B0%B4%E5%B7%AE%E5%AD%90%E7%9A%84%E6%82%B2%E9%B8%A3-%E5%BE%90%E6%9D%A5/</link>
+      <pubDate>Sun, 09 Jun 2013 15:44:26 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E6%B0%B4%E5%B7%AE%E5%AD%90%E7%9A%84%E6%82%B2%E9%B8%A3-%E5%BE%90%E6%9D%A5/</guid>
+      <description>&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://lancelqf.github.io/media/白眼之殇.jpg&#34; height=&#34;75%&#34; width=&#34;75%&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;北印度菩提伽耶寺院遗址出土的一些经卷中记录了很多有关动物的故事。其中的一个由见习僧人那连提黎耶舍记录而成。故事大意转述如下。因为原文以吐火罗文撰写，夹杂了大量古梵文和巴利文短语，部分翻译或许并不精确：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>献给许许多多的祭日</title>
+      <link>https://lancelqf.github.io/heart/%E7%8C%AE%E7%BB%99%E8%AE%B8%E8%AE%B8%E5%A4%9A%E5%A4%9A%E7%9A%84%E7%A5%AD%E6%97%A5/</link>
+      <pubDate>Mon, 06 Aug 2012 09:39:16 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E7%8C%AE%E7%BB%99%E8%AE%B8%E8%AE%B8%E5%A4%9A%E5%A4%9A%E7%9A%84%E7%A5%AD%E6%97%A5/</guid>
+      <description>&lt;div align=right&gt;——读《挪威的森林》&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
