@@ -210,6 +210,14 @@ Chapter 1: Introduction Reinforcement learning is a computational approach to un
 
 <h2 id="非线性假设">非线性假设</h2>
 
+<h2 id="2-1-a-k-armed-bandit-problem">2.1 A k-armed Bandit Problem</h2>
+
+<p>In our k-armed bandit problem, each of the k actions has an expected or mean reward given that action is selected (i.e. the value of that action):</p>
+
+<p>$$q_{*}(a) \doteq \mathbb{E} [R_t|A_t = a]$$</p>
+
+<p>We denote the estimated value of action $a$ at time step $t$ as $Q_t(a)$. We would like $Q<em>t(a)$ to be close to $q</em>{*}(a)$.</p>
+
 <p>在特征变量数较大的情况下，采用线性回归会很难处理，比如我的数据集有3个特征变量，想要在假设中引入所有特征变量的平方项：</p>
 
 <div>
@@ -317,21 +325,6 @@ $$g(\theta_0 + \theta_1x_1^2 + \theta_2x_1x_2 + \theta_3x_1x_3  + \theta_4x_2^2 
 <p></p>
     <footer>
         <a href='https://lancelqf.github.io/heart/%E8%AF%BB%E8%87%AA%E7%A7%81%E7%9A%84%E5%9F%BA%E5%9B%A0%E5%8F%8A%E5%AF%B9%E6%9F%90%E6%9F%90%E4%BB%AC%E7%9A%84%E5%A4%8D%E4%BB%87/'><nobr>Read more →</nobr></a>
-    </footer>
-</article>
-
-    
-        <article class="post">
-    <header>
-      <h2><a href="https://lancelqf.github.io/note/test2/">test2 </a> </h2>
-      <div class="post-meta">Thu, Jan 1, 2015 </div>
-    </header>
-
-    Andrew Ng cs229 Machine Learning 笔记
-When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are:
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
-    <footer>
-        <a href='https://lancelqf.github.io/note/test2/'><nobr>Read more →</nobr></a>
     </footer>
 </article>
 

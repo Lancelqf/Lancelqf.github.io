@@ -179,7 +179,7 @@
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="487">
+<meta itemprop="wordCount" content="548">
 <meta itemprop="datePublished" content="2017-01-01">
 <meta itemprop="url" content="https://lancelqf.github.io/note/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05_%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C1/">
 
@@ -190,6 +190,14 @@
 <h1 id="神经网络">神经网络</h1>
 
 <h2 id="非线性假设">非线性假设</h2>
+
+<h2 id="2-1-a-k-armed-bandit-problem">2.1 A k-armed Bandit Problem</h2>
+
+<p>In our k-armed bandit problem, each of the k actions has an expected or mean reward given that action is selected (i.e. the value of that action):</p>
+
+<p>$$q_{*}(a) \doteq \mathbb{E} [R_t|A_t = a]$$</p>
+
+<p>We denote the estimated value of action $a$ at time step $t$ as $Q_t(a)$. We would like $Q<em>t(a)$ to be close to $q</em>{*}(a)$.</p>
 
 <p>在特征变量数较大的情况下，采用线性回归会很难处理，比如我的数据集有3个特征变量，想要在假设中引入所有特征变量的平方项：</p>
 
