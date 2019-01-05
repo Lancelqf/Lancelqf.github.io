@@ -7,10 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 29 Jul 2018 23:02:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 Jan 2019 15:30:39 -0700</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tags/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reinforcement Learning - An Introduction</title>
+      <link>https://lancelqf.github.io/note/reinforcement-learning-an-introduction/</link>
+      <pubDate>Tue, 01 Jan 2019 15:30:39 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/reinforcement-learning-an-introduction/</guid>
+      <description>Reference  Reinforcement Learning: An Introduction, Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018.  Notation    
+Chapter 1: Introduction Reinforcement learning is a computational approach to understanding and automating goal-directed learning and decision making. It is distinguished from other computational approaches by its emphasis on learning by an agent from direct interaction with its environment, without requiring exemplary supervision or complete models of the environment.</description>
+    </item>
+    
+    <item>
+      <title>个人理财</title>
+      <link>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</link>
+      <pubDate>Mon, 24 Dec 2018 12:53:44 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>书单(2014-09~2018-07)</title>
