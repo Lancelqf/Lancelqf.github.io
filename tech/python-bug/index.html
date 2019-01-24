@@ -43,10 +43,11 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     
     <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
   MathJax.Hub.Config({
   tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
+    inlineMath: [['$','$']],
     displayMath: [['$$','$$']],
     processEscapes: true,
     processEnvironments: true,
@@ -66,6 +67,16 @@
     }
   });
 </script>
+
+<style>
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
+}
+</style>
 
     <script>
       var _hmt = _hmt || [];
@@ -186,7 +197,7 @@
   <div>
         <article itemprop="articleBody" id="content">
            <p>
-- fatal error: Python.h: No such file or directory：#include &ldquo;Python.h&rdquo;
+- fatal error: Python.h: No such file or directory：#include &quot;Python.h&quot;
   - Solution: apt-get install python-dev</p>
 
 <ul>
