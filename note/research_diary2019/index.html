@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="1016">
+<meta itemprop="wordCount" content="1943">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -199,6 +199,13 @@ code.has-jax {
            <p>This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.</p>
 
 <p></p>
+
+<h1 id="reference">Reference</h1>
+
+<ul>
+<li><a href="http://incompleteideas.net/book/the-book.html">Reinforcement Learning: An Introduction. Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018.</a></li>
+<li><a href="http://aima.cs.berkeley.edu/">Artificial Intelligence: A Modern Approach. Stuart Russell and Peter Norvig, Third Edition, Prentice Hall, 2009.</a></li>
+</ul>
 
 <h1 id="january">January</h1>
 
@@ -212,7 +219,7 @@ But what does this abstract word, adaptive, really mean? Well, it is about makin
 
 <li><p><strong>Robust</strong>: An intelligent agent should be complex enough to cope with possible errors. There are basic two ways: the self-correcting way and the fault-tolerant way. The self-correcting way is more active while the fault-tolerant way is more passive. Robustness overlaps with self-optimizing (see below).</p></li>
 
-<li><p><strong>Self-optimizing</strong>: While making actions is about changing the outside state, self-optimizing is about changing the inner state of the agent itself. Self-improving is a simliar word. Evolving has a broader meaning. It emphasizes changing, not just improving or optimizing. Updating knowledge system and optimizing action outputs are two good examples. In a word, the agent improves itself in order to better archieve the goal.</p></li>
+<li><p><strong>Self-optimizing</strong>: While making actions is about changing the outside state, self-optimizing is about changing the inner state of the agent itself. Self-improving is a simliar word. Evolving has a broader meaning. It emphasizes changing, not just improving or optimizing. Updating knowledge system and optimizing action outputs are two good examples. In a word, the agent improves itself in order to better achieve the goal.</p></li>
 </ul>
 
 <p>Note that the three traits mentioned above are strongly connect with each other.</p>
@@ -220,7 +227,7 @@ But what does this abstract word, adaptive, really mean? Well, it is about makin
 <p><font size=6>01/22: What is intelligence? (2/2)</font></p>
 
 <ul>
-<li><p><strong>Efficient</strong>: In real world, we often need to solve optimzation problems, such as finding the shortest way to school, makeing as much as money given fixed time and being sucessful as young as possible. In short, we want to archieve the goal efficiently. Similarly, a good intelligent agent should be efficient enough to realize the final goal. For example, energy saving and less time wasting. However, this may not always be the case because I am talking about efficiency in the sense of archieving goal. The goal can also be related to inefficiency, such as riding a bike as slow as you can. So the efficiency I mean, is based on the goal totally. Planning and optimization play important roles here.</p></li>
+<li><p><strong>Efficient</strong>: In real world, we often need to solve optimzation problems, such as finding the shortest way to school, makeing as much as money given fixed time and being sucessful as young as possible. In short, we want to achieve the goal efficiently. Similarly, a good intelligent agent should be efficient enough to realize the final goal. For example, energy saving and less time wasting. However, this may not always be the case because I am talking about efficiency in the sense of archieving goal. The goal can also be related to inefficiency, such as riding a bike as slow as you can. So the efficiency I mean, is based on the goal totally. Planning and optimization play important roles here.</p></li>
 
 <li><p><strong>Learning ability</strong>: Although by hardcoding knowledge into an agent's &quot;brain&quot; may solve most practical problems, it requres a great amount of manual work. Moreover, it is not flexiable——hardcoding means it is not easy to update current knowledge thus making self-optimizing impossible.<br />
 Instead of trying to produce a programme to simulate the adult mind, why not rather try to produce one which simulates the child's? (Alan Turing) Children have incredible learning ability and they learn fast. They are born with the ability to learn which is encoded in DNA during the long period of evolution.<br />
@@ -229,7 +236,7 @@ Life long learning, few shot learning, multi-task learning, multi-agent Learning
 <ul>
 <li><strong>learning knowledge</strong>: This is the most obvious aspect of learning. It is a process of extracting features, patterns and rules from raw data generated by the interaction between the agent and the environment (direct experience) or from existing data (indirect experience). It's similar to discovery of physics laws. Supervise and unsupervise learning are two good examples. Moreover, after discovering new knowledge, it is also necessary to embed it into current knowledge system and to make connections from old knowledge to new knowledge. By doing this, an agent can accumulate knowledge as time goes on and wield knowledge in a more powerful way. Finally, the agent is able to construct a model of the world.<br />
 Is learning knowledge an application of funtion approximation? Can any knowledge be expressed as functions? To answer these questions, we need to define knowledge itself. Generally, what we call knowledge can be divided into two subgroups: the knowledge to environment and meta knowledge (the knowledge of knowledge itself). I leave it for future consideration.</li>
-<li><strong>learning how to learn</strong> (also known as <strong>meta learning</strong>): Learning is not only about learning knowledge but also learning how to learn. I call this kind of knowledge as meta knowledge (the knowledge of knowledge itself). It is more abstract than the knowledge of environment, similar to (but not the same as) the relation between physics and mathmatics (This is still not a good comparsion, but the best I can find right now.). Things like how to discover knowledge more quickly and when/where/how to apply it are two examples.</li>
+<li><strong>learning how to learn</strong> (also known as <strong>meta learning</strong>): Learning is not only about learning knowledge but also learning how to learn. I call this kind of knowledge as meta knowledge (the knowledge of knowledge itself). It is more abstract than the knowledge of environment, similar to (but not the same as) the relation between physics and mathematics (This is still not a good comparsion, but the best I can find right now.). Things like how to discover knowledge more quickly and when/where/how to apply it are two examples.</li>
 </ul></li>
 
 <li><p><strong>Others</strong>: creativity, imagination... The meaning of these words are vague and abstract. I don't know how to translate them into more concrete ones. Maybe they are just manifestations of searching, exploring and combining old things into new things.</p></li>
@@ -237,19 +244,70 @@ Is learning knowledge an application of funtion approximation? Can any knowledge
 
 <p><font size=6>01/23: What subsystems does an intelligent agent consists of?</font></p>
 
-<p>In order to interact with environment, these subsystems are necessary for an agent:
-- Sensor: preceive the environment.
-- Actor: act appropriate actions under appropriate situations.
-- Decision maker: make the right decision
-  - Knowledge system: where the agent stores knowledge.
-  - Planner: basis of making right descision.</p>
-
-<p><font size=6>01/24: What is a good knowledge system?</font></p>
+<p>The traits of intelligence are like softwares in a computer. So what hardwares do we need in order to support the normal running of softwares? In my opinion, these subsystems are necessary for an intelligent agent:</p>
 
 <ul>
-<li>What is a good knowledge presentation? anything that helps the agent to archieve the goal. anything that is helpful.</li>
-<li>good knowledge represenation: The representation is not necessary human readable, but useful. (although it is really helpflul if it is understable by human being). weights in neural networks? human language?</li>
+<li><strong>Sensor</strong>: Any things that preceives the environment counts as a sensor. An agent may have many sensors. A sensor can be defined as a mapping from environment to signals. For example, an ear transforms sound waves to acoustical signals and an eye transforms photons of lights to images. The sensors create what the agent can &quot;see&quot;. The signals that sensors output are the only information source of the environment. Anything that cannnot be perceived by sensors does not exist with regard to the agent. Note that what sensors perceive may be wrong, i.e. the signals produced by sensors do not reflect the real world accurately.</li>
+<li><strong>Actor</strong>: An actor is anything that an agent can control to influence the outside environment. It receives commands from the decision make and then act according to the commands appropriately. The actions  include simple reflex action, model-based action and goal-based action. They can be atomic, factored or structured.</li>
+<li><strong>Decision maker</strong>: It is the brain of an agent and also the most important subsystem for decision making. The inputs are the signals received by sensors. And it outputs commends which are excuted by actors. To analyze it meticulously, I divide it into several parts.
+
+<ul>
+<li><strong>Knowledge base</strong>: A knowledge base is where an agent stores knowledge.</li>
+<li><strong>Thinker</strong>: It is the core of descision maker and also employs most computation resources. It makes a series of decisions given access to knowledge base and signals from sensors. If necessary, it also updates knowledge in the knowledge base or even create a new one from scatch. It is the basis of intelligence. All other parts only exist to support it. I don't have too many thoughts about it and may spend the rest of my life to figure out how to make one.</li>
+</ul></li>
 </ul>
+
+<p>Can we separate the knowledge base with the thinker totally? Yes! One good example is McCarthy's Advice Taker in which the rules and the reasoning component are separated. But is it good? I'm not sure. It's possible that these subsystems are strongly connected or even merged together without clear boundaries. If the knowledge base and the planner are separated completely, it may take more time to access necessary knowledge before making a proper decision. Thus, a distributed knowledge base may be more efficient. For example, knowledge in neural networks is represented by weight matrice between layers. The decision making process consists of repetitions of acessing to knowledge (weights) and computation (compute activation functions, do matrix multiplication, etc.). The two procedures are followed one after the other in forward process. Further thoughts and emprical experiments are still needed.</p>
+
+<p><font size=6>01/24: Knowledge base</font></p>
+
+<p>Before considering the knowledge base, it is better starting from more basic questions.</p>
+
+<ul>
+<li><p>What avaliable knowledge representations we can use?</p>
+
+<ul>
+<li><strong>Human language (written language)</strong>: Almost any knowledge can be expressed as language. It has inner structures, mapping from symbols to real world objects or even from symbols to symbols, full of bootstraping and self-reference. It evolves as time goes.<br /></li>
+<li><strong>Vector</strong>: Methods such as word embedding, map words or phrases to vectors of real numbers. Since we can encode human language into a sequence of bytes (i.e. numbers) under some standard rules, any knowledge represented by human language can also be represented by a bunch of numbers (i.e. vectors). Afterall, they are all symbols.</li>
+<li><strong>Graph</strong>: Knowledge graphs are human understandable and easy for computers to operate. They are also very powerful to represent knowledge. Maybe it can be a good interlanguage between human and computers. I don't know too much about this. Need future study.</li>
+</ul></li>
+
+<li><p>What is a good knowledge representation?<br />
+In fact, whether a knowledge representation is good or bad really depends on the agent itself and the goal. I should say that any knowledge that helps the agent to achieve the goal is a good one. Although it is hard to give a clear answer, typically, a good knowledge representation is:</p>
+
+<ul>
+<li><strong>powerful</strong>: It should be able to express enough knowledge.</li>
+<li><strong>compact</strong>: The representation should have high information density which is space-saving.</li>
+<li><strong>easy to operate</strong>: It should be easy to handle and operate by the agent.<br /></li>
+</ul>
+
+<p>Note that a good representation is not necessary human readable although it will be really helpful.</p></li>
+
+<li><p>Now let's consider knowledge base. A good knowledge base is:</p>
+
+<ul>
+<li><strong>easy to retrive</strong>: It should be easy (less time consuming) for agent to find necessary knowledge.</li>
+<li><strong>easy to update</strong>: It should be easy to add, delete and change knowledge in the database.</li>
+<li><strong>space-saving</strong>: If the knowledge is too small, then there will not be enough space to store all knowledge the agent discovers. However, if it is too big, it takes a large amount of time to access. Both cases are not favourable. The best way to resolve this conflict is to find a space-saving way to store knowledge. Some compression methods can be applied if it is necessary, suitable and appropriate.</li>
+</ul></li>
+
+<li><p>How do we (i.e. human being) store and retrieve memory? No idea. Need future study.</p></li>
+</ul>
+
+<p><font size=6>01/25: Reward function</font></p>
+
+<p>How to guide an agent to achieve the final goal. Use reward!</p>
+
+<ol>
+<li>Is reward signal powerful enough to guide all policies for an agent? How about a reward function that depends on not only the state of environment but also the state of agent, i.e. $r _ {s _ {env}} (s _ {agent})$?</li>
+<li>Are binary (or -1, +1, 0) reward functions as powerful as reward functions with R as the codomain? If so, which one is more sample efficient? Under the guidance of reward, which one helps the agent learn faster?</li>
+<li>Is reward function enough for producing any policies? Is it efficient to guide?
+
+<ol>
+<li>Process oriented reward: accumulate reward through the process.</li>
+<li>Goal oriented reward: reaching the goal is the final reward, but it may be better if we combine the reward with some heuristic measurement.</li>
+</ol></li>
+</ol>
         </article>
   </div>
 </section>
