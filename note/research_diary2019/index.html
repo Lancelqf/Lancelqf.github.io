@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="3766">
+<meta itemprop="wordCount" content="5191">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -249,15 +249,15 @@ Is learning knowledge an application of funtion approximation? Can any knowledge
 <ul>
 <li><strong>Sensor</strong>: Any things that preceives the environment counts as a sensor. An agent may have many sensors. A sensor can be defined as a mapping from environment to signals. For example, an ear transforms sound waves to acoustical signals and an eye transforms photons of lights to images. The sensors create what the agent can &quot;see&quot;. The signals that sensors output are the only information source of the environment. Anything that cannnot be perceived by sensors does not exist with regard to the agent. Note that what sensors perceive may be wrong, i.e. the signals produced by sensors do not reflect the real world accurately.</li>
 <li><strong>Actor</strong>: An actor is anything that an agent can control to influence the outside environment. It receives commands from the decision make and then act according to the commands appropriately. The actions  include simple reflex action, model-based action and goal-based action. They can be atomic, factored or structured.</li>
-<li><strong>Decision maker</strong>: It is the brain of an agent and also the most important subsystem for decision making. The inputs are the signals received by sensors. And it outputs commends which are excuted by actors. To analyze it meticulously, I divide it into several parts.
+<li><strong>Decision maker</strong>: It is the brain of an agent and also the most important subsystem for decision making. The inputs are the signals received by sensors. And it outputs commands which are excuted by actors. To analyze it meticulously, I divide it into several parts.
 
 <ul>
 <li><strong>Knowledge base</strong>: A knowledge base is where an agent stores knowledge.</li>
-<li><strong>Thinker</strong>: It is the core of descision maker and also employs most computation resources. It makes a series of decisions given access to knowledge base and signals from sensors. If necessary, it also updates knowledge in the knowledge base or even create a new one from scatch. It is the basis of intelligence. All other parts only exist to support it. I don't have too many thoughts about it and may spend the rest of my life to figure out how to make one.</li>
+<li><strong>Thinker</strong>: It is the core of descision maker and also employs most computation resources. It makes a series of decisions given access to knowledge base and signals from sensors. If necessary, it also updates knowledge in the knowledge base or even create a new one from scatch. It is the basis of intelligence. All other parts only exist to support it. I don't have too many ideas about it and may spend the rest of my life to figure out how to make one.</li>
 </ul></li>
 </ul>
 
-<p>Can we separate the knowledge base with the thinker totally? Yes! One good example is McCarthy's Advice Taker in which the rules and the reasoning component are separated. But is it good? I'm not sure. It's possible that these subsystems are strongly connected or even merged together without clear boundaries. If the knowledge base and the planner are separated completely, it may take more time to access necessary knowledge before making a proper decision. Thus, a distributed knowledge base may be more efficient. For example, knowledge in neural networks is represented by weight matrice between layers. The decision making process consists of repetitions of acessing to knowledge (weights) and computation (compute activation functions, do matrix multiplication, etc.). The two procedures are followed one after the other in forward process. Further thoughts and emprical experiments are still needed.</p>
+<p>Can we separate the knowledge base with the thinker totally? Yes! One good example is McCarthy's Advice Taker in which the rules and the reasoning component are separated. But is it good? I'm not sure. It's possible that these subsystems are strongly connected or even merged together without clear boundaries. If the knowledge base and the planner are separated completely, it may take more time to access necessary knowledge before making a proper decision. Thus, a distributed knowledge base may be more efficient. For example, knowledge in neural networks is represented by weight matrice between layers. The decision making process consists of repetitions of acessing to knowledge (weights) and computation (compute activation functions, do matrix multiplication, etc.). The two procedures are followed one after the other in the forward process. Further thoughts and emprical experiments are still needed.</p>
 
 <p><font size=6>01/24: Knowledge base</font></p>
 
@@ -296,7 +296,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p><font size=6>01/25: Reward function (1/3)</font></p>
 
-<p>How to guide an agent to achieve the final goal. Use reward!</p>
+<p>How to guide an agent to achieve the final goal. Use reward! (But do we really need it? Is it necessary?)</p>
 
 <ul>
 <li>Are binary ((0,1),(-1, +1)) or integer reward functions as powerful as any real number reward functions?<br />
@@ -346,6 +346,8 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p>A possible way to fix this: we move the distribution function by a constant $c$, i.e. $p(s) =p(s) + c$ such that $\int_{s \in S} {max(p(s)+c, 0)} ds = 1$. The $p _ 2$ in the above example then becomes $p _ 2(s) = s + \sqrt{2} - 1$ for $s \in  [1 - \sqrt{2}, 1]$ . This is not a good solution since the computation of $c$ is not easy.</p>
 
+<p>However, if we use sampling, a negative probability won't be a big problem. We can always sample from states that have a positive probability and discard the state we sampled out whose probability is negative.</p>
+
 <h1 id="february">February</h1>
 
 <p><font size=6>02/01: Action (2/2)</font></p>
@@ -353,7 +355,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 <p>Recall that $p(s ^ { \prime } | s , a)$ is the probability of transition from state $s$ to $s ^ {\prime}$ under action $a$. We also have:
 $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \textrm{where} \quad a(p _ 1) = p _ 2$$</p>
 
-<p>However, we can not recover transition probability $p(s ^ { \prime } | s , a)$ simply from $p _ 1(s)$ and $p _ 2(s)$ since there are more unknown values than equations. This means that we can not have all information from $a(\cdot)$. But is $a(\cdot)$ useful enough? I don't know actually...</p>
+<p>However, we can not recover state transition probability $p(s ^ { \prime } | s , a)$ simply from $p _ 1(s)$ and $p _ 2(s)$ since there are more unknown values than equations. This means that we can not have all information from $a(\cdot)$. But is $a(\cdot)$ useful enough? I don't know actually...</p>
 
 <p>We divide all actions based on state space $S$ roughly in three categories:</p>
 
@@ -367,14 +369,109 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 
 <p><font size=6>02/02: Hierarchical states and actions</font></p>
 
-<p>how to represent an abstract state: use state cluster or state aggregation (maybe tile coding?) in state space for different levels! Abstract actions need to work with abstract states. Based on the levels of state spaces, we have different levels of action spaces.</p>
+<p>Hierarchical states and actions are quite useful in planning and solving other problems. One way of constructing hierarchical states is abstraction (any other ways?). Then the natural questions are: what is abstraction and how to do that?</p>
 
-<ul>
-<li>simple reflex action, model-based action, goal-based action</li>
-<li>atomic, factored, structured</li>
-</ul>
+<p>Well, abstraction is about leaving out unnecessary details, focusing on only general characteristics. Instances that have the same abstraction should share something in common. Based on this idea, we define a <strong>abstract state set</strong>:
+ $$AS_f \doteq [x \in \Omega | f(x) \in P ]$$
+ (There is a problem with the display of {}, I use [] instead.)
+ where $\Omega$ is a set of instances; $f$ is a transform function that the abstract state set bonds to; $P$ is a set that represents some properties. For example, $\Omega = \mathbb{R} ^ n$; $f: \mathbb{R} ^ n \rightarrow \mathbb{R} ^ m$ is a projection function: $f(x) = y$ where $x=(v _ 1,\cdots,v _ n)$ and $x=(v _ 1,\cdots,v _ m)$, $m&lt;n$; $P=[x=(v _ 1,\cdots,v _ m) \in \mathbb{R} ^ m | v _ 1 = \cdots = v _ m ]$. Under this setting, $AS_f = [x=(v _ 1,\cdots,v _ n) \in \mathbb{R} ^ n | v _ 1 = \cdots = v _ m ]$.</p>
 
-<p><font size=6>02/03: Model</font></p>
+<p>Tile coding and state aggregation are two ways of defining abstract state set. Perhaps a more specific and simple way of defining abstract state set is clustering. The idea behind is very simple: instances that near each other under some metric should belong to a same abstract class. This can be viewed as doing clustering in the instance space.</p>
+
+<p>Moreover, we can continue to define the second level abstract state set based on the (first) abstract state set:
+  $$AS _ {f} ^ {2} \doteq [x \in \Omega | f(x) \in P ]$$
+  where $\Omega$ is a subset of $AS _ {g}$. Similarly, we can define $n$-th level abstract state set $AS _ {f} ^ {n}$.</p>
+
+<p>Similar to how we define the action on state space, we can define the $n$-th level action on the $n$-th abstract state set.</p>
+
+<p><font size=6>02/04: Model (1/2): What is a model?</font></p>
+
+<p>What is a model? According to Collins dictionary, &quot;A model of an object is a physical representation that shows what it looks like or how it works. The model is often smaller than the object it represents.&quot; In this definition, there are two important aspects:</p>
+
+<ol>
+<li>The model is often smaller than the object it represents.</li>
+<li>The model help us understand how the object looks like or how it works. Furthermore, the model helps us predict the behavior of the object.</li>
+</ol>
+
+<p>What mathematical tools should we use to represent a model? Well, right now, for discrete process, we have deterministic finite automaton (DFA), nondeterministic finite automaton (NFA) and Markov decision process (MDP). In fact, they are quite similar. For continuous case, I don't know too much yet. <strong>Need future study</strong>. So for the rest, I focus only on discrete case.</p>
+
+<p>Based on MDP, I define a simliar but also different mathematical framework, called Markov transition process (MTP):</p>
+
+<blockquote>
+<p>A MTP is a 5-tuple ($S, A, P _ a, S _ 0, F$), where<br />
+  1. $S$ is a finite set of states.<br />
+  2. $A$ is a finite set of actions.<br />
+  3. $P _ {a}$ is the state transition probability defined as $a(p _ 1)=p _ 2$ for each action $a \in A$. If $p _ 1 (s) = 1$ for an action $a$, then we have $p _ 2 (s ^ {\prime}) = P _ {a} (s _ {t+1}=s ^ {\prime} \mid s _ {t}=s) = \operatorname{Pr}(s _ {t+1}=s ^ {\prime} \mid s _ {t}=s, a _ t = a)$ which is the probability that action $a$ in state $s$ at time $t$ will lead to state $s ^ {\prime}$ at time $t+1$.<br />
+  4. $S _ 0 \subset S$ is a set of start states.<br />
+  5. $F \subset S$ is a set of goal states.</p>
+</blockquote>
+
+<p>Note that the hierarchical states and actions also fits the definition of MTP simply by replacing $Q$ and $A _ s$ whith $n$-th level abstract state set and $n$-th level action set, respectively.</p>
+
+<p>Also, sometimes we need to model a world without the interference of the agent. We can include this case by adding null action denoted as $\emptyset$. Thus $P _ {\emptyset}$ the state transition probability for null action.</p>
+
+<p><font size=6>02/05: Model (2/2): Rethink</font></p>
+
+<p>Things I need to consider further:</p>
+
+<ol>
+<li>The above model is still too simple. Afterall, the world is not Markov.</li>
+<li>The world is changing and evolving eternally. How can the above model deal with a changing world? How to update?</li>
+<li>The world is so complex and there are so many possible states and actions. Thus it is impossible to store all state transition probability. Possible solutions：
+
+<ol>
+<li>Use function approximation.</li>
+<li>Only save the most useful/important/relevent/latest state transition probability. Introduce forgetting mechanism.</li>
+<li>Instead of saving a probability distribution, we save several next states with large probability.</li>
+</ol></li>
+<li>Sometimes we don't know the true state transition probability but only transition samples. Thus we need to calculate the estimated state transtion probability from samples. However, since all estimation is inaccurate and induce variance. How to resolve this problem without getting more samples?</li>
+<li>How can we apply transfer learning or one-shot learning to new states transitions?</li>
+<li>How do I predict the world? Do I have a world model in my brain? Do I store a set of states somewhere in my brain? If so, how does the brain represent a state?</li>
+<li>How much information can we store in our brain in all our lives?</li>
+</ol>
+
+<p><font size=6>02/07: Policy (1/2)</font></p>
+
+<p>According the definition in Sutton's book, a policy defines the learning agent's way of behaving at a given time; a mapping from perceived states of the environment to actions to be taken when in those states.</p>
+
+<p>In RL setting, typically there are two ways to learn a policy:<br />
+1. Value-based methods: These methods (such as state value methods and state-action value methods) learn the action values and then select actions based on the estimated action values.<br />
+2. Policy gradient methods: Instead of estimating action values, these methods learn a parameterized policy that select actions without a value function. A value function may still be used to learn the policy parameter, but is not required for action selection (Sutton, 2018).</p>
+
+<p>My question is that are there any other approaches to generate a policy? For example, rule-based methods? Futhermore, do we have to use a reward fucntion? Is it really necessary?</p>
+
+<p>Instead, can we learn a metric $M$ that measures how &quot;close&quot; is the current state to the goal states? If so, then what supervised information can we use to correct a wrong measurement? But is this method really different with value-based methods? Maybe not.</p>
+
+<p><font size=6>02/08: Policy (2/2)</font></p>
+
+<p>Anyway, let's try! Define the metric over (abstract) state set: $M: S \times S \rightarrow [0,+\infty)$. Since it is a metric, for $x,y,z \in S$, the following conditions are satisfied:</p>
+
+<blockquote>
+<ol>
+<li>non-negativity: $M(x,y) \geq 0$</li>
+<li>identity of indiscernibles: $M(x, y)=0 \Leftrightarrow x=y$</li>
+<li>symmetry: $M(x,y)=M(y,x)$</li>
+<li>triangle inequality: $M(x,z) \leq M(x,y) + M(y,z)$</li>
+</ol>
+</blockquote>
+
+<p>We also have $M(F, F)=0$. Our goal is to reach a state $s$ such that $s= \arg \min _ {s \in S} M(s,F)$. Denote $\operatorname{Pr}(s _ {t+1}=s ^ {\prime} \mid s _ {t}=s, a _ t = a)$ as $\operatorname{Pr}(s ^ {\prime} \mid s, a)$ for short. Then for greedy action selection:
+$$\pi (s)=\arg \min _ {a \in A} \Sigma _ {s ^ {\prime} \in S} \operatorname{Pr}(s ^ {\prime} \mid s, a) M(s ^ {\prime}, F)$$
+or more generally:
+$$\pi (s)=\arg \min _ {a \in A} \Sigma _ {s ^ {\prime} \in S} p _ 2(s ^ {\prime}) M(s ^ {\prime}, F)  \text{ where } a(p _ 1)=p _ 2$$
+Compared with value-based policy,
+$$
+\pi (s)=\arg \max _ {a \in A} Q(s, a) = \arg \max _ {a \in A} \Sigma _ {s ^ {\prime} \in S} \operatorname{Pr}(s ^ {\prime} \mid s, a) (R + \gamma V(s ^ {\prime}))
+$$
+notice that if $M(s ^ {\prime}, F) \propto -(R + \gamma V(s ^ {\prime}))$, the two ways of generating policy are exact same. So it seems that we still need use something similar to reward or state value as a measurement of the agent's performance... Maybe this can be combined with some heuristic search algorithm or used as a better initilization for state values.</p>
+
+<hr />
+
+<p><font size=6>02/10: </font></p>
+
+<p>In current research, the codomain of reward function on $\mathbb{R}$, how about $\mathbb{R} ^ n$ where $n \in \mathbb{N}$?</p>
+
+<p>The state value is estimated by return (rewards sum after time $t$). However, we only have past and current rewards. How can we do this? How can this even be possible?</p>
         </article>
   </div>
 </section>
