@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="6583">
+<meta itemprop="wordCount" content="7010">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -212,8 +212,10 @@ code.has-jax {
 <ul>
 <li><a href="http://incompleteideas.net/book/the-book.html">Reinforcement Learning: An Introduction. Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018.</a></li>
 <li><a href="http://aima.cs.berkeley.edu/">Artificial Intelligence: A Modern Approach. Stuart Russell and Peter Norvig, Third Edition, Prentice Hall, 2009.</a></li>
-<li><a href="http://tutorial.transferlearning.xyz/">Jindong Wang et al. Transfer Learning Tutorial. 2018.</a></li>
+<li><a href="http://tutorial.transferlearning.xyz/">Transfer Learning Tutorial. Jindong Wang et al, 2018.</a></li>
 <li><a href="https://en.wikipedia.org/wiki/">Wikipedia</a></li>
+<li><a href="https://arxiv.org/abs/1811.12560v2">An Introduction to Deep Reinforcement Learning. Vincent François-Lavet, Peter Henderson, Riashat Islam, Marc G. Bellemare and Joelle Pineau, 2018.)</a></li>
+<li><a href="https://spinningup.openai.com/en/latest/">Spinning Up in Deep RL</a></li>
 </ul>
 
 <h1 id="january">January</h1>
@@ -560,7 +562,25 @@ It seems that Wasserstein distance is quite popular these days, especially in GA
 
 <p><font size=6>02/14: Transfer Learning: Deep transfer learning (4)</font></p>
 
-<p><font size=6>02/15: Transfer Learning (5)</font></p>
+<p>Deep neural networks can learn features from the raw data end-to-end, including general features and specific features. Then the next question is how to decide which features of layers to transfer? There is no theoretical answer for this question. However, the experiments shows that:
+- Features represented by weights in the first few layers are more general.
+- By fine-tuning the neural networks, we can improve the peformance significantly.
+- Transfer weights are better than random weights.
+- By transfer weights in layers can accelerate learning.</p>
+
+<p>Finetune can accelerate learning and save training time. However, it can not overcome the difference between training data and test training. By adding some adaptation layers, it can be overcomed to some extent. Furthermore, an additional loss is added to account for domain adaptation loss.</p>
+
+<p><font size=6>02/15: Transfer Learning: Frontier (5)</font></p>
+
+<ul>
+<li>Artifical intelligence and human knowledge: Through the long history, we human being accumulate a large amount of knowledge. How to transfer these knowledge to agents? How to encode our knowledge into agent? Yes, we can always find a way to encode some particular knowledge into agent. However, the final goal is to find a general way to encode all human knowledge. And this is really hard. The most difficult part is to find a suitable knowledge representation that is understandale to human being as well as intelligent agents.</li>
+<li>Transitive transfer learning: Although there may only be minor similarity between two domains, everything in this world is connected in some way. And If we can find a similarity chain that connects two different domains, we may find a way to transfer knowledge from one end to another end along this chain. This is the basic idea of transitive transfer learning. Surprisingly, it <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewPaper/14446">works</a>!</li>
+<li>Learning to Transfer: The goal of learning to transfer is to learn when to transfer, what to transfer and how to transfer. The general method includes two parts: learn experiences from previous cases and then apply them on new problems. Its main goal is to learn transfer learning experience. Formally,we define transfer learning experience:
+$$E = (S,T,a,l)$$
+where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer learning algorithm. $l$ shows the performance improvement compared to learning performance without transfer learning. What is a useful transfer learning experience then? Everything that helps improve performance!</li>
+<li>Online transfer learning: There are not many works.</li>
+<li>Transfer reinforcement learning: It is a combination of transfer learning and reinforcement learning.</li>
+</ul>
         </article>
   </div>
 </section>
