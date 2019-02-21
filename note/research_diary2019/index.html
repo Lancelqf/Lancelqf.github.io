@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="7010">
+<meta itemprop="wordCount" content="7104">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -216,6 +216,7 @@ code.has-jax {
 <li><a href="https://en.wikipedia.org/wiki/">Wikipedia</a></li>
 <li><a href="https://arxiv.org/abs/1811.12560v2">An Introduction to Deep Reinforcement Learning. Vincent François-Lavet, Peter Henderson, Riashat Islam, Marc G. Bellemare and Joelle Pineau, 2018.)</a></li>
 <li><a href="https://spinningup.openai.com/en/latest/">Spinning Up in Deep RL</a></li>
+<li><a href="https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html">Policy Gradient Algorithms. Lilian Weng, 2018.</a></li>
 </ul>
 
 <h1 id="january">January</h1>
@@ -581,6 +582,20 @@ where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer 
 <li>Online transfer learning: There are not many works.</li>
 <li>Transfer reinforcement learning: It is a combination of transfer learning and reinforcement learning.</li>
 </ul>
+
+<hr />
+
+<p><font size=6>02/18: Policy Gradient Algorithms</font></p>
+
+<p>Because there is an infinite number of actions and (or) states to estimate the values for and hence value-based approaches are way too expensive computationally in the continuous space.</p>
+
+<p>policy gradient with baseline</p>
+
+<p>Can we and should we get rid of reward function.
+reward function is a mapping from the history sequence to a real number.
+state value function can be seen as a heuristic function used for heuristic search in RL problems.</p>
+
+<p>deterministic or stochastic policy? the difference between deterministic and greedy method?</p>
         </article>
   </div>
 </section>

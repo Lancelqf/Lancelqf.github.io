@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 22 Jul 2018 19:12:41 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 13:32:44 -0700</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tmux</title>
+      <link>https://lancelqf.github.io/tech/tmux/</link>
+      <pubDate>Sun, 17 Feb 2019 13:32:44 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/tmux/</guid>
+      <description>&lt;p&gt;Link: &lt;a href=&#34;https://danielmiessler.com/study/tmux/&#34;&gt;https://danielmiessler.com/study/tmux/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Python入门</title>
