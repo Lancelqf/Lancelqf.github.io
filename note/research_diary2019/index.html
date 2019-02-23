@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="7104">
+<meta itemprop="wordCount" content="9601">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -205,6 +205,16 @@ code.has-jax {
 - The state value is estimated by return (rewards sum after time $t$). However, we only have past and current rewards. How can we do this? How can this even be possible?
 - pseudo reward / cummulant / nexting (see Adam White's paper and publications)
 - Can we get rid of reward (especially manually designed reward)? —— nexing?!
+-->
+
+<!--
+Because there is an infinite number of actions and (or) states to estimate the values for and hence value-based approaches are way too expensive computationally in the continuous space.
+
+Can we and should we get rid of reward/value function? New goal lead to new value function which means we have to recompute almost everything.
+reward function is a mapping from the history sequence to a real number.
+state value function can be seen as a heuristic function used for heuristic search in RL problems.
+
+deterministic or stochastic policy? the difference between deterministic and greedy method?
 -->
 
 <h1 id="reference">Reference</h1>
@@ -329,7 +339,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p><font size=6>01/28: Reward function (3/3)</font></p>
 
-<p>As I elaborated in last research diary, &quot;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&quot; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A \rightarrow \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
+<p>As I elaborated in last research diary, &quot;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&quot; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A arrow \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
 
 <p>Instead of designning reward functions manually, can we design some methods to learn reward functions? For example, can we apply neural networks to approximate the true rewards (if they do exist) through bootstrapping? I think there should be some previous works (It's so obvous afterall!), or maybe someone tries this idea before but it didn't work. <strong>Need future study</strong>.</p>
 
@@ -345,7 +355,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p><font size=6>01/30: Action (1/2)</font></p>
 
-<p>Let $A$ be the action space. Then an action can be viewed as a mappings from a distribution of state space to another distribution of state space, i.e. $A: p(S) \rightarrow p(S)$. Note that this includes the mappings from one state to another state if all probability is concentrate on a particular state, i.e. $p(s)=1$ for state $s$ while $p(\cdot)=0$ for other states. For example, $a(p _ 1)=p _ 2$ where $p _ 1(s)=\mathcal{N}(0,1)$ and $p _ 2(s)=\mathcal{N}(1,4)$.</p>
+<p>Let $A$ be the action space. Then an action can be viewed as a mappings from a distribution of state space to another distribution of state space, i.e. $A: p(S) arrow p(S)$. Note that this includes the mappings from one state to another state if all probability is concentrate on a particular state, i.e. $p(s)=1$ for state $s$ while $p(\cdot)=0$ for other states. For example, $a(p _ 1)=p _ 2$ where $p _ 1(s)=\mathcal{N}(0,1)$ and $p _ 2(s)=\mathcal{N}(1,4)$.</p>
 
 <p>If an action only influences the variation between two distributions, we have following properties:</p>
 
@@ -386,7 +396,7 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 <p>Well, abstraction is about leaving out unnecessary details, focusing on only general characteristics. Instances that have the same abstraction should share something in common. Based on this idea, we define a <strong>abstract state set</strong>:
  $$AS_f \doteq [x \in \Omega | f(x) \in P ]$$
  (There is a problem with the display of {}, I use [] instead.)
- where $\Omega$ is a set of instances; $f$ is a transform function that the abstract state set bonds to; $P$ is a set that represents some properties. For example, $\Omega = \mathbb{R} ^ n$; $f: \mathbb{R} ^ n \rightarrow \mathbb{R} ^ m$ is a projection function: $f(x) = y$ where $x=(v _ 1,\cdots,v _ n)$ and $x=(v _ 1,\cdots,v _ m)$, $m&lt;n$; $P=[x=(v _ 1,\cdots,v _ m) \in \mathbb{R} ^ m | v _ 1 = \cdots = v _ m ]$. Under this setting, $AS_f = [x=(v _ 1,\cdots,v _ n) \in \mathbb{R} ^ n | v _ 1 = \cdots = v _ m ]$.</p>
+ where $\Omega$ is a set of instances; $f$ is a transform function that the abstract state set bonds to; $P$ is a set that represents some properties. For example, $\Omega = \mathbb{R} ^ n$; $f: \mathbb{R} ^ n arrow \mathbb{R} ^ m$ is a projection function: $f(x) = y$ where $x=(v _ 1,\cdots,v _ n)$ and $x=(v _ 1,\cdots,v _ m)$, $m&lt;n$; $P=[x=(v _ 1,\cdots,v _ m) \in \mathbb{R} ^ m | v _ 1 = \cdots = v _ m ]$. Under this setting, $AS_f = [x=(v _ 1,\cdots,v _ n) \in \mathbb{R} ^ n | v _ 1 = \cdots = v _ m ]$.</p>
 
 <p>Tile coding and state aggregation are two ways of defining abstract state set. Perhaps a more specific and simple way of defining abstract state set is clustering. The idea behind is very simple: instances that near each other under some metric should belong to a same abstract class. This can be viewed as doing clustering in the instance space.</p>
 
@@ -456,12 +466,12 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 
 <p><font size=6>02/08: Policy (2/2)</font></p>
 
-<p>Anyway, let's try! Define the metric over (abstract) state set: $M: S \times S \rightarrow [0,+\infty)$. Since it is a metric, for $x,y,z \in S$, the following conditions are satisfied:</p>
+<p>Anyway, let's try! Define the metric over (abstract) state set: $M: S \times S arrow [0,+\infty)$. Since it is a metric, for $x,y,z \in S$, the following conditions are satisfied:</p>
 
 <blockquote>
 <ol>
 <li>non-negativity: $M(x,y) \geq 0$</li>
-<li>identity of indiscernibles: $M(x, y)=0 \Leftrightarrow x=y$</li>
+<li>identity of indiscernibles: $M(x, y)=0 rightarrow x=y$</li>
 <li>symmetry: $M(x,y)=M(y,x)$</li>
 <li>triangle inequality: $M(x,z) \leq M(x,y) + M(y,z)$</li>
 </ol>
@@ -585,17 +595,136 @@ where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer 
 
 <hr />
 
-<p><font size=6>02/18: Policy Gradient Algorithms</font></p>
+<p><font size=6>02/18: Deep Reinforcement Learning: Value-based methods for deep RL (1)</font></p>
 
-<p>Because there is an infinite number of actions and (or) states to estimate the values for and hence value-based approaches are way too expensive computationally in the continuous space.</p>
+<p><center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%" /></center></p>
 
-<p>policy gradient with baseline</p>
+<ul>
+<li><p>Q-learning:</p>
 
-<p>Can we and should we get rid of reward function.
-reward function is a mapping from the history sequence to a real number.
-state value function can be seen as a heuristic function used for heuristic search in RL problems.</p>
+<ul>
+<li>The Q-learning algorithm uses Bellman equation to get the unique solution $Q ^ {*} (s, a)$:
+$$Q ^ { * } ( s , a ) = ( \mathcal { B } Q ^ { * } ) ( s , a )$$
+where $\mathcal{B}$ is the Bellman operator mapping any function $K : \mathcal { S } \times \mathcal { A } arrow \mathbb { R }$ into another function $\mathcal { S } \times \mathcal { A } arrow \mathbb { R }$, defined as follows:
+$$( \mathcal { B } K ) ( s , a ) = \sum _ { s ^ { \prime } \in S } P ( s , a , s ^ { \prime } ) ( R ( s , a , s ^ { \prime } ) + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } K ( s ^ { \prime } , a ^ { \prime } ) )$$</li>
+<li>By <strong>Banach's theorem</strong>, the fixed point of the Bellman operator $\mathcal{B}$ exists since it is a contraction mapping. So Q-learning algorithm can learn the optimal Q-value function. In practice, one general proof of convergence to the optimal value function is available (Watkins and Dayan, 1992) under the conditions that:</li>
+<li>the state-action pairs are represented discretely,</li>
+<li>all actions are repeatedly sampled in all states (which ensures sufficient exploration, hence not requiring access to the transition model).</li>
+</ul></li>
 
-<p>deterministic or stochastic policy? the difference between deterministic and greedy method?</p>
+<li><p>Fitted Q-learning:</p>
+
+<ul>
+<li>In ﬁtted Q-learning, the algorithm starts with some random initialization of the Q-values $Q(s, a; \theta _ {0})$ where $\theta _ {0}$ refers to the initial parameters. Then, an approximation of the Q-values at the $k$th iteration $Q(s, a; \theta _ {k})$ is updated towards the target value:
+$$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ { k } )$$
+where $\theta _ {k}$ refers to some parameters that define the Q-values at the $k$th iteration.</li>
+<li>In neural ﬁtted Q-learning (NFQ), the Q-values are parameterized with a neural network $Q(s, a; \theta _ {k})$ where the parameters $\theta _ {k}$ are updated by stochastic gradient descent by minimizing the square loss:
+$$\mathrm { L } _ { D Q N } = ( Q ( s , a ; \theta _ { k } ) - Y _ { k } ^ { Q } ) ^ { 2 }$$
+The parameters are updated as:
+$$\theta _ { k + 1 } = \theta _ { k } + \alpha ( Y _ { k } ^ { Q } - Q ( s , a ; \theta _ { k } ) ) \nabla _ { \theta _ { k } } Q ( s , a ; \theta _ { k } )$$
+where $\alpha$ is a scalar step size called the learning rate. Notice that when updating the weights, one also changes the target. Also, Q-values tend to be overestimated due to the max operator.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>02/19: Deep Reinforcement Learning: Value-based methods for deep RL (2)</font></p>
+
+<ul>
+<li><p>Deep Q-networks:
+<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%" /></center></p>
+
+<ul>
+<li>Similar to fitted Q-learning, the target Q-network is:
+$$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ {k} ^ {-})$$
+where $\theta _ { k } ^ { - }$ are updated only every $C \in \mathbb { N }$ iterations with the following assignment: $\theta _ { k } ^ { - } = \theta _ { k }$. This prevents the instabilities to propagate quickly and it reduces the risk of divergence as the target values $Y _ { k } ^ { Q }$ are kept fixed for $C$ iterations.</li>
+<li>In an online setting, the replay memory keeps all information for the last $N _ {replay} \in \mathbb{N}$ time steps. The updates are then made on a set of tuples $<s,a,r,s ^ {\prime} >$ (called mini-batch) selected randomly within the replay memory. This allows for updates that cover a wide range of the state-action space. In addition, one mini-batch update has less variance compared to a single tuple update.</li>
+<li>To keep the target values in a reasonable scale and to ensure proper learning in practice, rewards are clipped between -1 and +1. Clipping the rewards limits the scale of the error derivatives and makes it easier to use the same learning rate across multiple games (however, it introduces a bias).</li>
+</ul></li>
+
+<li><p>Double DQN:</p>
+
+<ul>
+<li>The max operation in Q-learning uses the same values both to select and to evaluate an action. This makes it more likely to select overestimated values in case of inaccuracies or noise, resulting in overoptimistic value estimates. Therefore, the DQN algorithm induces an upward bias. The double estimator method uses two estimates for each variable, which allows for the selection of an estimator and its value to be uncoupled (Hasselt, 2010). This allows for the removal of the positive bias in estimating the action values.</li>
+<li>In Double DQN, or DDQN, the target value $Y _ {k} ^ {Q}$ is replaced by:
+$$Y _ {k} ^ {DDQN} = r + \gamma Q ( s ^ { \prime } , \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ( s ^ { \prime } , a ; \theta _ { k } ) ; \theta _ { k } ^ { - })$$
+which leads to less overestimation of the Q-learning values, as well as improved stability, hence improved performance. Note that the policy is still chosen according to the values obtained by the current weights $\theta$.</li>
+<li>How about triple DQN or $N$ DQN? Possbile research project.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>02/20: Deep Reinforcement Learning: Value-based methods for deep RL (3)</font></p>
+
+<ul>
+<li><p>Dueling network architecture:</p>
+
+<ul>
+<li>The dueling network architecture decouples the value and advantage function $A ^ {\pi}(s, a)$. The Q-value function is given by:
+$$Q ( s , a ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } ) = V ( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) } )+ ( A ( s , a ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } ) - \max _ { a ^ { \prime } \in \mathcal { A } } A ( s , a ^ { \prime } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } ) )$$
+(Question: why not just Q=V+A?)<br />
+For $a ^ { * } = \operatorname { argmax } _ { a ^ { \prime } \in \mathcal { A } } Q ( s , a ^ { \prime } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } )$, we have $Q ( s , a ^ { * } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } ) = V ( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) } )$.</li>
+<li>The structure of dueling network:
+<center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%" /></center>
+<br /></li>
+</ul>
+
+<p>The stream $V( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) })$ provides an estimate of the value function, while the other stream produces an estimate of the advantage function. The learning update is done as in DQN and it is only the structure of the neural network that is modiﬁed.</p>
+
+<ul>
+<li>A slightly different approach is preferred in practice because it increases the stability of the optimization:
+$$Q ( s , a ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } ) = V ( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) } ) + ( A ( s , a ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } ) - \frac { 1 } { | \mathcal { A } | } \sum _ { a ^ { \prime } \in \mathcal { A } } A ( s , a ^ { \prime } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } ) )$$
+In that case, the advantages only need to change as fast as the mean, which appears to work better in practice.</li>
+</ul></li>
+
+<li><p>Distributional DQN:</p>
+
+<ul>
+<li>Another approach is to aim for a richer representation through a value distribution, i.e. the distribution of possible cumulative returns. This value distribution provides more complete information of the intrinsic randomness of the rewards and transitions of the agent within its environment (note that it is not a measure of the agent's uncertainty about the environment).</li>
+
+<li><p>The value distribution $Z ^ {\pi}$ is a mapping from state-action pairs to <strong>distributions of returns</strong> when following policy $\pi$. It has an expectation equal to $Q ^ {\pi}$:
+$$Q ^ { \pi } ( s , a ) = \mathbb { E } [ Z ^ { \pi } ( s , a ) ]$$
+This random return is also described by a recursive equation:<br />
+$$Z ^ { \pi } ( s , a ) = R ( s , a , S ^ { \prime } ) + \gamma Z ^ { \pi } ( S ^ { \prime } , A ^ { \prime } )$$
+where we use capital letters to emphasize the random nature of the next state-action pair $(S ^ {\prime}, A ^ {\prime})$ and $A ^ { \prime } \sim \pi ( \cdot | S ^ { \prime } )$.</p></li>
+
+<li><p>This approach has two main advantages: 1. It is possible to implement <strong>risk-aware behavior</strong>. 2. It leads to more performant learning in practice. The distributional perspective naturally provides a richer set of training signals than a scalar value function $Q(s,a)$. These training signals that are not a priori necessary for optimizing the expected return are known as <strong>auxiliary tasks</strong> and lead to an improved learning.</p></li>
+</ul></li>
+</ul>
+
+<p><font size=6>02/21: Deep Reinforcement Learning: Value-based methods for deep RL (4)</font></p>
+
+<ul>
+<li><p>Multi-step learning:</p>
+
+<ul>
+<li>Non-bootstrapping methods learn directly from returns (Monte Carlo) and an intermediate solution is to use a multi-step target. Such a variant in the case of DQN can be obtained by using the n-step target value given by:
+$$Y _ { k } ^ { Q , n } = \sum _ { t = 0 } ^ { n - 1 } \gamma ^ { t } r _ { t } + \gamma ^ { n } \max _ { a ^ { \prime } \in A } Q ( s _ { n } , a ^ { \prime } ; \theta _ { k } )$$
+where $( s _ { 0 } , a _ { 0 } , r _ { 0 } , \cdots , s _ { n - 1 } , a _ { n - 1 } , r _ { n - 1 } , s _ { n })$ is any trajectory of $n+1$ time steps with $s = s _ 0$ and $a = a _ 0$.</li>
+<li>A combination of different multi-steps targets can also be used:
+$$Y _ { k } ^ { Q , n } = \sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } ( \sum _ { t = 0 } ^ { i } \gamma ^ { t } r _ { t } + \gamma ^ { i + 1 } \max _ { a ^ { \prime } \in A } Q ( s _ { i + 1 } , a ^ { \prime } ; \theta _ { k } ) )$$
+with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD($\lambda$), $n \rightarrow \infty$ and $\lambda _ { i }$ follow a geometric law: $\lambda _ { i } \propto \lambda ^ { i }$ where $0 \leq \lambda \leq 1$.</li>
+</ul></li>
+
+<li><p>Bootstrapping:</p>
+
+<ul>
+<li>Disadvantage: using pure bootstrapping methods (such as in DQN) are prone to instabilities when combined with function approximation because they make recursive use of their own value estimate at the next time-step. Methods that rely less on bootstrapping can propagate information more quickly from delayed rewards as they learn directly from returns.</li>
+<li>Advantage: using value bootstrap allows learning from off-policy samples. With bootstrapping, most algorithms learn faster.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>02/22: Possible RL Project</font></p>
+
+<p>The basic idea for this project is combining double learning with approximation. As mentioned in Rich's book, many algorithms involve a maximization operation which leads to maximization bias. By using double learning technique, the selection of an estimator and its value is uncoupled. Thus, we can remove the maximization bias to some extent.</p>
+
+<p><center><img src="/media/Double_Q-learning.jpg" alt="" height="80%" width="80%" /></center></p>
+
+<p>Based on double Q-learning, I want to apply similar idea when using approximation. For example, the update for the one-step Sarsa method is
+$$\mathbf { w } _ { t + 1 } \doteq \mathbf { w } _ { t } + \alpha [ R _ { t + 1 } + \gamma \hat { q } ( S _ { t + 1 } , A _ { t + 1 } , \mathbf { w } _ { t } ) - \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } _ { t } ) ] \nabla \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } _ { t } )$$
+where the action is selected by $\epsilon$-greedy.</p>
+
+<p>For double learning case, we select an action by $\epsilon$-greedy in $Q(\cdot, \mathbf { w } ^ {1}) + Q(\cdot, \mathbf { w } ^ {2})$, and the update is :
+$$\mathbf { w }  ^ {1} _ { t + 1 } \doteq \mathbf { w } ^ {1} _ { t } + \alpha [ R _ { t + 1 } + \gamma \hat { q } ( S _ { t + 1 } , A _ { t + 1 } , \mathbf { w } ^ {2} _ { t } ) - \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } ^ {2} _ { t } ) ] \nabla \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } ^ {1} _ { t } )$$</p>
+
+<p>Moreover, how about triple learning or $N$ learning? Will they be more powerful to remove maximizaiton bias? Since we have $N$ learning functions, can we apply ideas in Adaboost to get a better estimation of Q value?</p>
         </article>
   </div>
 </section>
