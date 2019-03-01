@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="9601">
+<meta itemprop="wordCount" content="12273">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -473,7 +473,7 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 <li>non-negativity: $M(x,y) \geq 0$</li>
 <li>identity of indiscernibles: $M(x, y)=0 rightarrow x=y$</li>
 <li>symmetry: $M(x,y)=M(y,x)$</li>
-<li>triangle inequality: $M(x,z) \leq M(x,y) + M(y,z)$</li>
+<li>Delta inequality: $M(x,z) \leq M(x,y) + M(y,z)$</li>
 </ol>
 </blockquote>
 
@@ -711,20 +711,148 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 </ul></li>
 </ul>
 
-<p><font size=6>02/22: Possible RL Project</font></p>
+<p><font size=6>02/22: Possible RL Project: Maxmin learning with approximation</font></p>
 
-<p>The basic idea for this project is combining double learning with approximation. As mentioned in Rich's book, many algorithms involve a maximization operation which leads to maximization bias. By using double learning technique, the selection of an estimator and its value is uncoupled. Thus, we can remove the maximization bias to some extent.</p>
+<p>The basic idea for this project is combining double learning with approximation. As mentioned in Rich's book, many algorithms involve a maximization operation which leads to maximization bias. By using double learning technique, the selection of an estimator and its value is uncoupled. Thus, we can remove the maximization bias to some extent. For example, for double Q-learning, the update is</p>
 
-<p><center><img src="/media/Double_Q-learning.jpg" alt="" height="80%" width="80%" /></center></p>
+<p>$$Q _ { 1 } ( S _ { t } , A _ { t } ) \leftarrow Q _ { 1 } ( S _ { t } , A _ { t } ) + \alpha [ R _ { t + 1 } + \gamma Q _ { 2 } ( S _ { t + 1 } , \underset { a } { \arg \max } Q _ { 1 } ( S _ { t + 1 } , a ) ) - Q _ { 1 } ( S _ { t } , A _ { t } ) ]$$</p>
 
-<p>Based on double Q-learning, I want to apply similar idea when using approximation. For example, the update for the one-step Sarsa method is
-$$\mathbf { w } _ { t + 1 } \doteq \mathbf { w } _ { t } + \alpha [ R _ { t + 1 } + \gamma \hat { q } ( S _ { t + 1 } , A _ { t + 1 } , \mathbf { w } _ { t } ) - \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } _ { t } ) ] \nabla \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } _ { t } )$$
-where the action is selected by $\epsilon$-greedy.</p>
+<p>A comparison of Q-learning and double Q-learning on a simple episodic MDP:</p>
 
-<p>For double learning case, we select an action by $\epsilon$-greedy in $Q(\cdot, \mathbf { w } ^ {1}) + Q(\cdot, \mathbf { w } ^ {2})$, and the update is :
-$$\mathbf { w }  ^ {1} _ { t + 1 } \doteq \mathbf { w } ^ {1} _ { t } + \alpha [ R _ { t + 1 } + \gamma \hat { q } ( S _ { t + 1 } , A _ { t + 1 } , \mathbf { w } ^ {2} _ { t } ) - \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } ^ {2} _ { t } ) ] \nabla \hat { q } ( S _ { t } , A _ { t } , \mathbf { w } ^ {1} _ { t } )$$</p>
+<p><center><img src="/media/Double_Q-learning.jpg" alt="Double Q-learning" height="80%" width="80%" /></center></p>
 
-<p>Moreover, how about triple learning or $N$ learning? Will they be more powerful to remove maximizaiton bias? Since we have $N$ learning functions, can we apply ideas in Adaboost to get a better estimation of Q value?</p>
+<p>As shown in the above picture, double Q-learning is less affected by maximization bias. However, there is still a small gap between the optimal and what double Q-learning really archieves. Why is that? I think the main reason is that although the selection of an estimator and its value is uncoupled, the maximization operation still induces bias.</p>
+
+<p>To address this problem, I come up with a new algorithm called maxmin Q-learning. Compared with double Q-learning, there are two important difference.</p>
+
+<ul>
+<li>There are $n$ Q functions $Q _ 1, \cdots, Q _ n$where $n \in \mathbb{N}$ instead of just 2.</li>
+<li>The update is consists of two steps:
+
+<ul>
+<li>First, compute $Q _ {min} (s, a) = min(Q _ 1(s, a), \cdots, Q _ n(s, a))$.</li>
+<li>With probability $\frac{1}{n}$, update one of Q functions, say $Q _ 1$: $Q _ { 1 } ( S _ { t } , A _ { t } ) \leftarrow Q _ { 1 } ( S _ { t } , A _ { t } ) + \alpha [ R _ { t + 1 } + \gamma Q _ { min } ( S _ { t + 1 } , \underset { a } { \arg \max } Q _ { min } ( S _ { t + 1 } , a ) ) - Q _ { 1 } ( S _ { t } , A _ { t } ) ]$</li>
+</ul></li>
+</ul>
+
+<p>For tabular case, maxmin Q-learning is better than double Q-learning on a simple episodic MDP. And it archieves the optimal!</p>
+
+<p><center><img src="/media/maxmin_Q-learning.png" alt="Maxmin Q-learning" height="80%" width="80%" /></center></p>
+
+<p>I want to further test this algorithm in function approximation case. To be specific, I want to check if it can still mitigate maximization bias and compare the performance of between maxmin Q-learning and double Q-learning.</p>
+
+<p>Moreover, since we have $n$ Q functions, can we apply ideas in Adaboost to get a better (with less bias) estimation of Q value?</p>
+
+<hr />
+
+<p><font size=6>02/25: Deep Reinforcement Learning: Policy gradient methods (1)</font></p>
+
+<p>Stochastic Policy Gradient</p>
+
+<ul>
+<li><p>The expected return of a stochastic policy $\pi$ starting from a given state $s _ 0$:
+$$V ^ { \pi } \left( s _ { 0 } \right) = \int _ { \mathcal { S } } \rho ^ { \pi } ( s ) \int _ { \mathcal { A } } \pi ( s , a ) R ^ { \prime } ( s , a ) da ds$$
+where $R^{\prime}(s, a)=\int_{s^{\prime} \in \mathcal{S}} \operatorname{Pr}\left(s, a, s^{\prime}\right) R\left(s, a, s^{\prime}\right)$ and $\rho \pi (s)$ is the discounted state distribution defined as:
+$$\rho ^ { \pi } ( s ) = \sum _ { t = 0 } ^ { \infty } \gamma ^ { t } \operatorname {Pr} ( s _ { t } = s | s _ { 0 } , \pi )$$</p></li>
+
+<li><p>For a differentiable policy $\pi _ w$, the fundamental result underlying these algorithms is the policy gradient theorem:
+$$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \int _ { \mathcal { S } } \rho ^ { \pi _ { w } } ( s ) \int _ { \mathcal { A } } \nabla _ { w } \pi _ { w } ( s , a ) Q ^ { \pi _ { w } } ( s , a ) da ds$$
+This result allows us to adapt the policy parameters from experience. This result is particularly interesting since the policy gradient does not depend on the gradient of the state distribution (even though one might have expected it to). The REINFORCE algorithm is a simple example.</p></li>
+
+<li><p>Policy gradient methods should include two steps:</p>
+
+<ul>
+<li>Policy evaluation: estimates $Q ^ { \pi _ { w } }$.</li>
+<li>Policy improvement: it takes a gradient step to optimize the policy $\pi _ w(s, a)$ with respect to the value function estimation. Intuitively, the policy improvement step increases the probability of the actions proportionally to their expected return.</li>
+</ul></li>
+
+<li><p>How to obtain an estimate of $Q ^ { \pi _ { w } }$?</p>
+
+<ul>
+<li>Monte-Carlo policy gradient: it estimates the $Q ^ { \pi _ { w } } (s,a)$ from rollouts on the environment while following policy $\pi _ { w }$. It is unbiased and, without instabilities induced by bootstrapping. However, the estimate requires <strong>on-policy rollouts</strong> and can exhibit <strong>high variance</strong>. Several rollouts are typically needed to obtain a good estimate of the return (<strong>not sample efficient</strong>).</li>
+<li>Actor-critic methods: use an estimate of the return given by a value-based approach, more efficient.</li>
+</ul></li>
+
+<li><p>Remarks:</p>
+
+<ul>
+<li>To prevent the policy from becoming deterministic, it is common to add an <strong>entropy regularizer</strong> to the gradient. With this regularizer, the learnt policy can remain stochastic. This ensures that the policy keeps exploring.<br /></li>
+<li>Advantage value function: While $Q ^ { \pi _ { w } } (s,a)$ summarizes the performance of each action for a given state under policy $\pi _ w$, the advantage function $A ^ { \pi _ { w } } (s,a)$ provides a measure of comparison for each action to the expected return at the state $s$, given by $V ^ { \pi _ { w } } (s)$. Using $A ^ { \pi _ { w } } ( s , a ) = Q ^ { \pi _ { w } } ( s , a ) - V ^ { \pi _ { w } } ( s )$ has usually lower magnitudes than $Q ^ { \pi _ { w } } (s,a)$. This helps reduce the variance of the gradient estimator in the policy improvement step, while not modifying the expectation. The value function $V ^ {{ \pi } _ w} ( s )$ can be seen as a baseline or <strong>control variate</strong> for the gradient estimator. Using such a baseline allows for improved numerical efficiency – i.e. reaching a given performance with fewer updates – because <strong>the learning rate can be bigger</strong>.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>02/26: Deep Reinforcement Learning: Policy gradient methods (2)</font></p>
+
+<p>Deterministic Policy Gradient</p>
+
+<ul>
+<li>Let us denote by $\pi (s)$ the deterministic policy: $\pi ( s ) : \mathcal { S } \rightarrow \mathcal { A }$. In discrete action spaces, a direct approach is to build the policy iteratively with:
+$$\pi _ { k + 1 } ( s ) = \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ^ { \pi _ { k } } ( s , a )$$
+where $\pi _ { k }$ is the policy at the $k$th iteration.</li>
+<li>Deep Deterministic Policy Gradient (DDPG): In continuous action spaces, a greedy policy improvement becomes problematic, requiring a global maximization at every step. Instead, let us denote by $\pi _ w ( s )$ a differentiable deterministic policy. In that case, a simple and computationally attractive alternative is to move the policy in the direction of the gradient of $Q$:
+$$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \mathbb { E } _ { s \sim \rho ^ { \pi _ { w } } } \left[ \nabla _ { w } \left( \pi _ { w } \right) \nabla _ { a } \left. \left( Q ^ { \pi _ { w } } ( s , a ) \right) \right| _ { a = \pi _ { w } ( s ) } \right]$$
+This equation implies relying on $\nabla _ { a } \left( Q ^ { \pi w } ( s , a ) \right)$ (in addition to $\nabla _ { a } \left( Q ^ { \pi w } ( s , a ) \right)$), which usually requires using actor-critic methods.</li>
+</ul>
+
+<p><font size=6>02/27: Deep Reinforcement Learning: Policy gradient methods (3)</font></p>
+
+<p>Actor-Critic Methods</p>
+
+<p>The actor refers to the policy and the critic to the estimate of a value function (e.g., the Q-value function). In deep RL, both the actor and the critic can be represented by non-linear neural network function approximators. The actor uses gradients derived from the policy gradient theorem and adjusts the policy parameters $w$. The critic, parameterized by $\theta$, estimates the approximate value function for the current policy $\pi$.
+- The critic:
+  - TD(0): at every iteration, the current value $Q(s,a;\theta)$ is updated towards a target value: $Y _ { k } ^ { Q } = r + \gamma Q \left( s ^ { \prime } , a = \pi \left( s ^ { \prime } \right) ; \theta \right)$. It is simple yet not computationally efficient as it uses a pure bootstrapping technique that is prone to instabilities and has a slow reward propagation backwards in time.
+  - Retrace ($\lambda$): (i) it can make use of samples collected from any behavior policy without introducing a bias and (ii) it is efficient as it makes the best use of samples collected from near on-policy behavior policies. These architectures are sample-efficient thanks to the use of a replay memory, and computationally efficient since they use multi-step returns which improves the stability of learning and increases the speed of reward propagation backwards in time.
+- The actor: the off-policy gradient in the policy improvement phase for the stochastic case is given as:
+  $$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \mathbb { E } _ { s \sim \rho ^ { \pi _ { \beta } } , a \sim \pi _ { \beta } } \left[ \nabla _ { \theta } \left( \log \pi _ { w } ( s , a ) \right) Q ^ { \pi _ { w } } ( s , a ) \right]$$
+  where $\beta$ is a behavior policy generally different than $\pi$, which makes the gradient generally biased.
+  - In the case of actor-critic methods, an approach to perform the policy gradient on-policy without experience replay has been investigated with the use of asynchronous methods, where multiple agents are executed in parallel and the actor-learners are trained asynchronously. The parallelization of agents also ensures that each agent experiences different parts of the environment at a given time step. In that case, n-step returns can be used without introducing a bias. It removes the need to maintain a replay buffer. However, it is not sample efficient.
+  - An alternative is to combine off-policy and on-policy samples to trade-off both the sample efficiency of off-policy methods and the stability of on-policy gradient estimates. For example, Q-Prop uses a Monte Carlo on-policy gradient estimator, while reducing the variance of the gradient estimator by using an off-policy critic as a control variate. One limitation of Q-Prop is that it requires using on-policy samples for estimating the policy gradient.</p>
+
+<p><font size=6>02/28: Deep Reinforcement Learning: Policy gradient methods (4)</font></p>
+
+<p>Natural Policy Gradients</p>
+
+<ul>
+<li>Natural policy gradient methods use the steepest direction given by the Fisher information metric, i.e. the update follows the direction that maximizes $( J ( w ) - J ( w + \Delta w ) )$ under a constraint on $| \Delta w | _ { 2 }$.</li>
+<li>In the hypothesis that the constraint on $\Delta w$ is defined with another metric than $L _ 2$, the first-order solution to the constrained optimization problem typically has the form $\Delta w \propto B ^ { - 1 } \nabla _ { w } J ( w )$ where B is an $n _ w \times n _ w$ matrix.</li>
+<li>In natural gradients, the norm uses the Fisher information metric, given by a local quadratic approximation to the KL divergence $D _ {KL} \left( \pi ^ { w } | \pi ^ { w + \Delta w } \right)$. The natural gradient ascent for improving the policy π w is given by：
+$$\Delta w \propto F _ { w } ^ { - 1 } \nabla _ { w } V ^ { \pi _ { w } } ( \cdot )$$
+where $F _ { w }$ is the Fisher information matrix given by:
+$$F _ { w } = \mathbb { E } _ { \pi _ { w } } \left[ \nabla _ { w } \log \pi _ { w } ( s , \cdot ) \left( \nabla _ { w } \log \pi _ { w } ( s , \cdot ) \right) ^ { T } \right]$$</li>
+<li>As the angle between natural and ordinary gradient is never larger than ninety degrees, convergence is also guaranteed when using natural gradients. In the case of neural networks and their large number of parameters, it is usually impractical to compute, invert, and store the Fisher information matrix.</li>
+</ul>
+
+<p>Trust Region Optimization</p>
+
+<ul>
+<li>The policy optimization methods based on trust region restrict the changes in a policy using the KL divergence between the action distributions. By bounding the size of the policy update, trust region methods also bound the changes in state distributions guaranteeing improvements in policy.</li>
+<li>Trust Region Policy Optimization (TRPO): uses constrained updates and advantage function estimation to perform the update, resulting in the reformulated optimization given by
+$$\max _ { \Delta w } \mathbb { E } _ { s \sim \rho ^ { \pi } w , a \sim \pi } \left[ \frac { \pi _ { w + \Delta w } ( s , a ) } { \pi _ { w } ( s , a ) } A ^ { \pi _ w } ( s , a ) \right]$$
+subject to $\mathbb { E }[ D _ { \mathrm { KL } } \left( \pi _ { w } ( s , \cdot ) | \pi _ { w + \Delta w } ( s , \cdot ) \right) ] \leq \delta$, where $\delta \in \mathbb{R}$ is a hyperparameter.</li>
+<li>Proximal Policy Optimization (PPO):  it is a variant of the TRPO algorithm, which formulates the constraint as a penalty or a clipping objective, instead of using the KL constraint. PPO considers modifying the objective function to penalize changes to the policy that move r t ( w ) = π w+4w (s,a) π w (s,a) away from 1. The clipping objective that PPO maximizes is given by:
+$$\underset { s \sim \rho ^ { \pi } w , a \sim \pi _ { w } } { \mathbb { E } } \left[ \min \left( r _ { t } ( w ) A ^ { \pi _ { w } } ( s , a ) , \operatorname { clip } \left( r _ { t } ( w ) , 1 - \epsilon , 1 + \epsilon \right) A ^ { \pi _ { w } } ( s , a ) \right) \right]$$
+where $\epsilon \in \mathbb{R}$ is a hyperparameter. This objective function clips the probability ratio to constrain the changes of $r _ t$ in the interval $[1− \epsilon, 1+ \epsilon]$.</li>
+</ul>
+
+<h1 id="march">March</h1>
+
+<p><font size=6>03/01: Deep Reinforcement Learning: Policy gradient methods (5)</font></p>
+
+<p>Combining policy gradient and Q-learning</p>
+
+<ul>
+<li>Policy gradient algorithms have the following properties unlike the methods based on DQN:
+
+<ul>
+<li>They are able to <strong>work with continuous action spaces</strong>. This is particularly interesting in applications such as robotics, where forces and torques can take a continuum of values.</li>
+<li>They can <strong>represent stochastic policies</strong>, which is useful for building policies that can explicitly explore. This is also useful in settings where the optimal policy is a stochastic policy (e.g., in a multi-agent setting where the Nash equilibrium is a stochastic policy).</li>
+</ul></li>
+<li>Combine policy gradient methods directly with off-policy Q-learning: In some specific settings, depending on the loss function and the entropy regularization used, value-based methods and policy-based methods are equivalent. For instance, when adding an entropy regularization, we have:
+$$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \mathbb { E } _ { s , a } \left[ \nabla _ { w } \left( \log \pi _ { w } ( s , a ) \right) Q ^ { \pi _ { w } } ( s , a ) \right] + \alpha \mathbb { E } _ { s } [ \nabla _ { w } H ^ { \pi _ { w } } ( s )]$$
+where $H ^ { \pi } ( s ) = - \sum _ { a } \pi ( s , a ) \log \pi ( s , a )$. From this, one can note that an optimum is satisfied by the following policy: $\pi _ { w } ( s , a ) = \exp ( \frac{A ^ { \pi _ w } ( s , a )}{\alpha} - H ^ { \pi _ w } ( s ) )$. Therefore, we can use the policy to derive an estimate of the advantage function:
+$$\tilde { A } ^ { \pi _ { w } } ( s , a ) = \alpha \left( \log \pi _ { w } ( s , a ) + H ^ { \pi } ( s ) \right)$$</li>
+<li>Both value-based and policy-based methods are model-free and they do not make use of any model of the environment.</li>
+</ul>
         </article>
   </div>
 </section>
