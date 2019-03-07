@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="12273">
+<meta itemprop="wordCount" content="14495">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -852,6 +852,125 @@ $$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \mathbb { E } _ 
 where $H ^ { \pi } ( s ) = - \sum _ { a } \pi ( s , a ) \log \pi ( s , a )$. From this, one can note that an optimum is satisfied by the following policy: $\pi _ { w } ( s , a ) = \exp ( \frac{A ^ { \pi _ w } ( s , a )}{\alpha} - H ^ { \pi _ w } ( s ) )$. Therefore, we can use the policy to derive an estimate of the advantage function:
 $$\tilde { A } ^ { \pi _ { w } } ( s , a ) = \alpha \left( \log \pi _ { w } ( s , a ) + H ^ { \pi } ( s ) \right)$$</li>
 <li>Both value-based and policy-based methods are model-free and they do not make use of any model of the environment.</li>
+</ul>
+
+<hr />
+
+<p><font size=6>03/02: Deep Reinforcement Learning: Model-based methods (1)</font></p>
+
+<p>Pure model-based methods: When a model of the environment is available, planning consists in interacting with the model to recommend an action. In the case of discrete actions, lookahead search is usually done by generating potential trajectories. In the case of a continuous action space, trajectory optimization with a variety of controllers can be used.</p>
+
+<ul>
+<li>Lookahead search: limited to discrete actions
+
+<ul>
+<li>A lookahead search in an MDP iteratively builds a decision tree where the current state is the root node. It stores the obtained returns in the nodes and focuses attention on promising potential trajectories.</li>
+<li>Monte-Carlo tree search (MCTS): The idea is to sample multiple trajectories from the current state until a terminal condition is reached (e.g., a given maximum depth). From those simulation steps, the MCTS algorithm then recommends an action to take.</li>
+<li>Recent works have developed strategies to directly learn end-to-end the model, along with how to make the best use of it, without relying on explicit tree search techniques. These approaches show improved sample eﬃciency, performance, and robustness to model misspeciﬁcation compared to the separated approach (simply learning the model and then relying on it during planning). Why?</li>
+</ul></li>
+<li>Trajectory optimization:
+
+<ul>
+<li>If the model is differentiable, one can directly compute an analytic policy gradient by backpropagation of rewards along trajectories. For instance, PILCO uses Gaussian processes to learn a probabilistic model of the dynamics. It can then explicitly use the uncertainty for planning and policy evaluation in order to achieve a <strong>good sample efficiency</strong>. However, the gaussian processes have not been able to scale reliably to high-dimensional problems.</li>
+<li>Wahlström et al. (2015) uses a deep learning model of the dynamics (with an auto-encoder) along with a model in a latent state space. Model-predictive control (Morari and Lee, 1999) can then be used to find the policy by repeatedly solving a finite-horizon optimal control problem in the latent space.</li>
+<li>Watter et al. (2015) builds a probabilistic generative model in a latent space with the objective that it possesses a locally linear dynamics, which allows control to be performed more efficiently.</li>
+<li>Another approach is to use the trajectory optimizer as a teacher rather than a demonstrator: <strong>guided policy search</strong> takes a few sequences of actions suggested by another controller. It then learns to adjust the policy from these sequences.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>03/03: Deep Reinforcement Learning: Model-based methods (2)</font></p>
+
+<p>Integrating model-free and model-based methods: the respective strengths of the model-free versus model-based approaches depend on different factors.</p>
+
+<ul>
+<li>The best suited approach depends on whether the agent has access to a model of the environment. If that's not the case, the learned model usually has some inaccuracies that should be taken into account.</li>
+<li>A model-based approach requires working in conjunction with a planning algorithm (or controller), which is often computationally demanding. The time constraints for computing the policy $\pi (s)$ via planning must therefore be taken into account (e.g., for applications with real-time decision-making or simply due to resource limitations).</li>
+<li>For some tasks, the structure of the policy (or value function) is the easiest one to learn, but for other tasks, the model of the environment may be learned more efficiently due to the particular structure of the task (less complex or with more regularity). Thus, the most performant approach depends on the structure of the model, policy, and value function.
+<br /></li>
+</ul>
+
+<p>How to obtain advantages from both worlds by integrating learning and planning:</p>
+
+<ul>
+<li>When the model is available, one direct approach is to use tree search techniques that make use of both value and policy networks.</li>
+<li>When the model is not available and under the assumption that the agent has only access to a limited number of trajectories, the key property is to have an algorithm that generalizes well. One possibility is to build a model that is used to generate additional samples for a model-free reinforcement learning algorithm. Another possibility is to use a model-based approach along with a controller such as <strong>MPC</strong> to perform basic tasks and <strong>use model-free fine-tuning in order to achieve task success</strong>.</li>
+<li>Other approaches build neural network architectures that combine both model-free and model-based elements. The VIN architecture (Tamar et al., 2016) is a fully differentiable neural network with a planning module that learns to plan from model-free objectives (given by a value function). It works well for tasks that involve planning-based reasoning (navigation tasks) from one initial position to one goal position and it demonstrates strong generalization in a few different domains.</li>
+</ul>
+
+<p>Improving the combination of model-free and model-based ideas is one key area of research for the future development of deep RL algorithms.</p>
+
+<p><font size=6>03/04: Deep Reinforcement Learning: Generalization (1)</font></p>
+
+<p>Generalization refers to either
+- the capacity to achieve good performance in an environment where <strong>limited data</strong> has been gathered, or
+- the capacity to obtain good performance <strong>in a related environment</strong>.</p>
+
+<p>In the former case, the idea of generalization is directly related to the notion of sample efficiency (e.g., when the state-action space is too large to be fully visited). In the latter case, the test environment has common patterns with the training environment but can differ in the dynamics and the rewards. For instance, the underlying dynamics may be the same but a transformation on the observations may have happened.</p>
+
+<p>Let us consider the case of a finite dataset $D$ obtained on the exact same task as the test environment. Formally, a dataset available to the agent $D \sim D$ can be defined as a set of four-tuples $(s, a, r, s^{\prime}) \in S \times A \times R \times S$ gathered by sampling independently and identically (i.i.d.).</p>
+
+<ul>
+<li>a given number of state-action pairs $(s,a)$ from some fixed distribution with $P(s, a)&gt;0$, $\forall (s,a) \in S \times A$;</li>
+<li>a next state $s ^ {\prime} \sim P(s, a, \cdot)$;</li>
+<li>a reward $r = R(s, a, s ^ {\prime})$;
+We denote by $D _ {\infty}$ the particular case of a dataset $D$ where the number of tuples tends to infinity.</li>
+</ul>
+
+<p>A learning algorithm can be seen as a mapping of a dataset $D$ into a policy $\pi _ D$. Then we can decompose the suboptimality of the expected return as follows:</p>
+
+<p>$$\underset { D \sim \mathcal { D } } { \mathbb { E } } [ V ^ { \pi ^ { * } } ( s ) - V ^ { \pi _ { D } } ( s ) ]$$
+$$= \underset { D \sim \mathcal { D } } { \mathbb { E } } [ V ^ { \pi ^ { * } } ( s ) - V ^ { \pi _ { D \infty } } ( s ) + V ^ { \pi _ { D \infty } ( s ) } - V ^ { \pi _ { D } } ( s ) ]$$
+$$ = \underbrace { ( V ^ { \pi ^ { * } } ( s ) - {V ^ { \pi _ { D _ { \infty } } } ( s ) ) } } _ { \text {asymptotic bias} } + \underbrace { \underset { D \sim \mathcal { D } } { \mathbb { E } } [ { V ^ { \pi _ { D \infty } } ( s ) } - V ^ { \pi _ { D } } ( s ) ] } _ { \text {error due to finite size of the dataset } D }
+$$</p>
+
+<p>This decomposition highlights two different terms: (i) an asymptotic bias which is independent of the quantity of data and (ii) an overfitting term directly related to the fact that the amount of data is limited.</p>
+
+<p>Improving generalization can be seen as a tradeoff between (i) an error due to the fact that the algorithm trusts completely the frequentist assumption (i.e., discards any uncertainty on the limited data distribution) and (ii) an error due to the bias introduced to reduce the risk of overfitting. When the quality of the dataset is low, the learning algorithm should favor more robust policies (i.e., consider a smaller class of policies with stronger generalization capabilities). When the quality of the dataset increases, the risk of overﬁtting is lower and the learning algorithm can trust the data more, hence reducing the asymptotic bias.</p>
+
+<p><font size=6>03/05: Deep Reinforcement Learning: Generalization (2)</font></p>
+
+<p>We discuss the following key elements that are at stake when one wants to improve generalization in deep RL:</p>
+
+<ul>
+<li>the state representation;</li>
+<li>the learning algorithm (type of function approximator, model-free vs model-based);</li>
+<li>the objective function (e.g., reward shaping, tuning the training discount factor);</li>
+<li>using hierarchical learning.</li>
+</ul>
+
+<p>Different aspects that can be used to avoid overfitting to limited data.</p>
+
+<ul>
+<li>Feature selection: The appropriate level of abstraction plays a key role in the bias-overﬁtting tradeoﬀ and one of the key advantages of using a small but rich abstract representation is to allow for improved generalization.
+
+<ul>
+<li>Overfitting: When considering many features on which to base the policy, an RL algorithm may take into consideration spurious correlations, which leads to overfitting.</li>
+<li>Asymptotic bias: Removing features that discriminate states with a very different role in the dynamics introduces an asymptotic bias. The same policy would be enforced on undistinguishable states, hence leading to a sub-optimal policy.</li>
+<li>In deep RL, one approach is to ﬁrst infer a factorized set of generative factors from the observations. This can be done for instance with an encoder-decoder architecture variant. These features can then be used as inputs to a reinforcement learning algorithm. The learned representation can, in some contexts, greatly help for generalization as it provides a more succinct representation that is less prone to overfitting. Some features may be kept in the abstract representation because they are important for the reconstruction of the observations, though they are otherwise irrelevant for the task at hand. Crucial information about the scene may also be discarded in the latent representation, particularly if that information takes up a small proportion of the observations $x$ in pixel space.</li>
+</ul></li>
+<li>Learning algorithm and function approximator selection:
+
+<ul>
+<li>If the function approximator used for the value function and/or the policy and/or the model is too simple, an asymptotic bias may appear. When the function approximator has poor generalization, there will be a large error due to the finite size of the dataset (overfitting).</li>
+<li>One approach to mitigate non-informative features is to force the agent to acquire a set of symbolic rules adapted to the task and to reason on a more abstract level. This abstract level reasoning and the improved generalization have the potential to induce high-level cognitive functions such as transfer learning and analogical reasoning. For instance, the function approximator may embed a relational learning structure and thus build on the idea of relational reinforcement learning.</li>
+<li>Auxiliary tasks: In the context of deep reinforcement learning, Jaderberg et al. (2016) show that augmenting a deep reinforcement learning agent with auxiliary tasks within a jointly learned representation can drastically improve sample efficiency in learning. This is done by maximizing simultaneously many pseudo-reward functions. The argument is that learning related tasks introduces an inductive bias that causes a model to build features in the neural network that are useful for the range of tasks. By explicitly learning both the model-free and model-based components through the state representation, along with an approximate entropy maximization penalty, the CRAR agent (François-Lavet et al., 2018) shows how it is possible to learn a low-dimensional representation of the task. In addition, this approach can directly make use of a combination of model-free and model-based, with planning happening in a smaller latent state space.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>03/06: Deep Reinforcement Learning: Generalization (3)</font></p>
+
+<p>Modifying the objective function</p>
+
+<p>In order to improve the policy learned by a deep RL algorithm, one can optimize an objective function that diverts from the actual objective. By doing so, a bias is usually introduced but this can in some cases help with generalization.</p>
+
+<ul>
+<li>Reward shaping: In practice, reward shaping uses prior knowledge by giving intermediate rewards for actions that lead to desired outcome. It is usually formalized as a function $F(s, a, s ^ {\prime})$ added to the original reward function $R(s, a, s ^ {\prime})$ of the original MDP. This technique is often used in deep reinforcement learning to improve the learning process in settings with sparse and delayed rewards.</li>
+<li>Discount factor:
+
+<ul>
+<li>When the model available to the agent is estimated from data, the policy found using a shorter planning horizon can actually be better than a policy learned with the true horizon. On the one hand, artiﬁcially reducing the planning horizon leads to a bias since the objective function is modified. However, if a long planning horizon is targeted (the discount factor $\gamma$ is close to 1), there is a higher risk of overfitting. This can intuitively be understood as linked to the accumulation of the errors in the transitions and rewards estimated from data as compared to the actual transition and reward probabilities.</li>
+<li>A high discount factor also requires specific care in value iteration algorithms as it can lead to instabilities in convergence. This effect is due to the mappings used in the value iteration algorithms with bootstrapping that propagate errors more strongly with a high discount factor. When bootstrapping is used in a deep RL value iteration algorithm, the risk of instabilities and overestimation of the value function is empirically stronger for a discount factor close to one.</li>
+</ul></li>
 </ul>
         </article>
   </div>
