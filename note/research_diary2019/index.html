@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="14495">
+<meta itemprop="wordCount" content="16550">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -203,8 +203,8 @@ code.has-jax {
 <!--
 - In current research, the codomain of reward function on $\mathbb{R}$, how about $\mathbb{R} ^ n$ where $n \in \mathbb{N}$?
 - The state value is estimated by return (rewards sum after time $t$). However, we only have past and current rewards. How can we do this? How can this even be possible?
-- pseudo reward / cummulant / nexting (see Adam White's paper and publications)
 - Can we get rid of reward (especially manually designed reward)? —— nexing?!
+- self supervise learning: where do we get the supervised information? from future experience!
 -->
 
 <!--
@@ -971,6 +971,97 @@ $$</p>
 <li>When the model available to the agent is estimated from data, the policy found using a shorter planning horizon can actually be better than a policy learned with the true horizon. On the one hand, artiﬁcially reducing the planning horizon leads to a bias since the objective function is modified. However, if a long planning horizon is targeted (the discount factor $\gamma$ is close to 1), there is a higher risk of overfitting. This can intuitively be understood as linked to the accumulation of the errors in the transitions and rewards estimated from data as compared to the actual transition and reward probabilities.</li>
 <li>A high discount factor also requires specific care in value iteration algorithms as it can lead to instabilities in convergence. This effect is due to the mappings used in the value iteration algorithms with bootstrapping that propagate errors more strongly with a high discount factor. When bootstrapping is used in a deep RL value iteration algorithm, the risk of instabilities and overestimation of the value function is empirically stronger for a discount factor close to one.</li>
 </ul></li>
+</ul>
+
+<hr />
+
+<p><font size=6>03/11: Deep Reinforcement Learning: Generalization (4)</font></p>
+
+<p>Hierarchical learning: The possibility of learning temporally extended actions (as opposed to atomic actions that last for one time-step) has been formalized under the name of options. The usage of options is an important challenge in RL because it is essential when the task at hand requires working on long time scales while developing generalization capabilities and easier transfer learning between the strategies.</p>
+
+<p>Bias-overfitting tradeoff: For a given algorithmic parameter setting and keeping all other things equal, the right level of complexity is the one at which the increase in bias is equivalent to the reduction of overfitting (or the increase in overfitting is equivalent to the reduction of bias).</p>
+
+<ul>
+<li>Offline setting:
+
+<ul>
+<li>Regression-based approach: <strong>fit an MDP model to the data via regression</strong> (or simply use the frequentist statistics for finite state and action space). The empirical MDP can then be used to evaluate the policy. This purely model-based estimator has alternatives that do not require fitting a model. One possibility is to use a policy evaluation step obtained by <strong>generating artificial trajectories from the data</strong>, without explicitly referring to a model, thus designing a Model-free Monte Carlo-like (MFMC) estimator.</li>
+<li>Importance sampling approach: use the idea of <strong>importance sampling</strong> that lets us obtain an estimate of $V ^ { \pi } ( s )$ from trajectories that come from a behavior policy $\beta \neq \pi$ , where $\beta$ is assumed to be known. That approach is unbiased but the variance usually grows exponentially in horizon, which renders the method unsuitable when the amount of data is low.</li>
+<li>Mix of the regression-based approach and the importance sampling approach: use a doubly-robust estimator that is both unbiased and with a lower variance than the importance sampling estimators.</li>
+</ul></li>
+<li>Online setting: A performant policy from given data is part of the solution to an efficient exploration/exploitation tradeoff. For that reason, progressively fitting a function approximator as more data becomes available can in fact be understood as a way to obtain a good bias-overfitting tradeoff throughout learning. With the same logic, progressively increasing the discount factor allows optimizing the bias-overfitting tradeoff through learning. Besides, optimizing the bias-overfitting tradeoff also suggests the possibility to dynamically adapt the feature space and/or the function approximator.</li>
+</ul>
+
+<p><font size=6>03/12: Deep Reinforcement Learning: Challenges in the online setting (1)</font></p>
+
+<p>In the online setting, two specific elements have not yet been discussed in depth. First, the agent can influence how to gather experience so that it is the most useful for learning. Second, the agent has the possibility to use a replay memory that allows for a good data-efficiency.</p>
+
+<p>Exploration/Exploitation dilemma: Exploration is about obtaining information about the environment (transition model and reward function) while exploitation is about maximizing the expected return given the current knowledge. As an agent starts accumulating knowledge about its environment, it has to make a tradeoff between learning more about its environment (exploration) or pursuing what seems to be the most promising strategy with the experience gathered so far (exploitation).</p>
+
+<ul>
+<li><p>Different settings in the exploration/exploitation dilemma:</p>
+
+<ul>
+<li>First setting: The agent is expected to perform well without a separate training phase. Thus, an explicit tradeoff between exploration versus exploitation appears so that the agent should explore only when the learning opportunities are valuable enough for the future to compensate what direct exploitation can provide. The sub-optimality $\underset { s _ { 0 } } { \mathbb { E } } [ V ^ { * } ( s _ { 0 } ) - V ^ { \pi } ( s _ { 0 } ) ]$ of an algorithm obtained in this context is known as the <strong>cumulative regret</strong>.</li>
+<li>Common setting: The agent is allowed to follow a training policy during a ﬁrst phase of interactions with the environment so as to accumulate training data and hence learn a test policy. In the training phase, exploration is only constrained by the interactions it can make with the environment (e.g., a given number of interactions). The test policy should then be able to maximize a cumulative sum of rewards in a separate phase of interaction. The sub-optimality $\underset { s _ { 0 } } { \mathbb { E } } [ V ^ { * } ( s _ { 0 } ) - V ^ { \pi } ( s _ { 0 } ) ]$ obtained in this case of setting is known as the <strong>simple regret</strong>. Note that an implicit exploration/exploitation is still important. The agent has to ensure that the lesser-known parts of the environment are not promising (exploration). And the agent is interested in gathering experience in the most promising parts of the environment (which relates to exploitation) to reﬁne the knowledge of the dynamics.</li>
+</ul></li>
+
+<li><p>Approaches to exploration:</p>
+
+<ul>
+<li>Directed exploration: The agent makes use of a memory of the past interactions with the environment. For MDPs, directed exploration can scale polynomially with the size of the state space while undirected exploration scales in general exponentially with the size of the state space. Inspired by the Bayesian setting, directed exploration can be done via heuristics of exploration bonus or by maximizing Shannon information gains. The key challenge for directed exploration is to handle, for high-dimensional spaces, the exploration/exploitation tradeoff in a principled way – with the idea to encourage the exploration of the environment where the uncertainty due to limited data is the highest. When rewards are not sparse, a measure of the uncertainty on the value function can be used to drive the exploration. When rewards are sparse, this is even more challenging and exploration should in addition be driven by some novelty measures on the observations (or states in a Markov setting).</li>
+<li>Undirected exploration: The agent does not rely on any exploration specific knowledge of the environment, such as $\epsilon$-greedy and softmax exploration (also called Boltzmann exploration) which takes an action with a probability that depends on the associated expected return.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>03/13: Deep Reinforcement Learning: Challenges in the online setting (2)</font></p>
+
+<p>Managing experience replay</p>
+
+<ul>
+<li><p>In online learning, the agent has the possibility to use a replay memory that allows for data-efficiency by storing the past experience of the agent in order to have the opportunity to reprocess it later. In addition, a replay memory also ensures that the mini-batch updates are done from a reasonably stable data distribution kept in the replay memory which helps for convergence/stability. In an online setting, the replay memory keeps all information for the last $N _{replay} \in N$ time steps, where $N _{replay}$ is constrained by the amount of memory available.</p></li>
+
+<li><p>While a replay memory allows processing the transitions in a different order than they are experienced, there is also the possibility to use prioritized replay. This allows for consideration of the transitions with a different frequency than they are experienced depending on their significance (that could be which experience to store and which ones to replay). A disadvantage of prioritized replay is that, in general, it also introduces a bias; indeed, by modifying the apparent probabilities of transitions and rewards, the expected return gets biased. Note that this bias can be partly or completely corrected using weighted importance sampling, and this correction is important near convergence at the end of training.</p></li>
+</ul>
+
+<p><font size=6>03/14: Deep Reinforcement Learning:  Beyond MDPs (1) </font></p>
+
+<p>Partial observability and the distribution of (related) MDPs: In both two settings, at each step in the sequential decision process, the agent may beneﬁt from taking into account its whole observable history up to the current time step $t$ when deciding what action to perform. In other words, a history of observations can be used as a pseudo-state (pseudo-state because that refers to a diﬀerent and abstract stochastic control process). Any missing information in the history of observations (potentially long before time $t$) can introduce a bias in the RL algorithm.</p>
+
+<p>The partially observable scenario</p>
+
+<ul>
+<li>Partially Observable Markov Decision Process (POMDP): A POMDP is a 7-tuple ($S, A, T, R, \Omega, O, \gamma$) where:
+
+<ul>
+<li>$S$ is a finite set of states ${1, \cdots , N _ S}$,</li>
+<li>$A$ is a finite set of actions ${1, \cdots , N _ A}$,</li>
+<li>$P: S \times A \times S \rightarrow [0, 1]$ is the transition function,</li>
+<li>$R: S \times A \times S \rightarrow R$ is the reward function, where $R$ is a continuous set of possible rewards in a range $R _ {max} \in R ^ {+}$,</li>
+<li>$\Omega$ is a ﬁnite set of observations ${1, \cdots , N _ {\Omega}}$,</li>
+<li>$O: S \times \Omega \rightarrow [0, 1]$ is a set of conditional observation probabilities,</li>
+<li>$\gamma \in [0,1)$ is the discount factor.</li>
+</ul></li>
+<li>The environment starts in a distribution of initial states $b(s _ 0)$. At each time step $t \in \mathbb{N} _ {0}$, the environment is in a state $s _ {t} \in S$. At the same time, the agent receives an observation $\omega _ {t} \in \Omega$ that depends on the state of the environment with probability $O(s _ {t}, {\omega} _ {t})$, after which the agent chooses an action $a _ {t} \in A$. Then, the environment transitions to state $s _ {t+1} \in S$ with probability $P(s _ {t}, a _ {t}, s _ {t+1})$ and the agent receives a reward $r _ {t} \in R$ equal to $R(s _ {t}, a _ {t}, s _ {t+1})$.</li>
+<li>When the full model ($P$, $R$ and $O$) are known, methods such as <strong>Point-Based Value Iteration (PBVI)</strong> algorithm for POMDP planning can be used to solve the problem.</li>
+<li>We denote by $H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$ the set of histories observed up to time $t$ for $t \in {N _ 0}$, and by $H = \bigcup _ { t = 0 } ^ { \infty } H _ { t }$ the space of all possible observable histories.</li>
+</ul>
+
+<p><center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%" /></center></p>
+
+<ul>
+<li>Architectures such as convolutional layers or recurrency are particularly well-suited to deal with a large input space because they offer interesting generalization properties. A few empirical successes on large scale POMDPs make use of convolutional layers and/or recurrent layers, such as LSTMs.</li>
+</ul>
+
+<p><font size=6>03/15: Deep Reinforcement Learning: Beyond MDPs (2) </font></p>
+
+<p>The distribution of (related) environments</p>
+
+<ul>
+<li><p>In this setting, the environment of the agent is a distribution of different (yet related) tasks that differ for instance in the reward function or in the probabilities of transitions from one state to another. Each task $T _ {i} \sim T$ can be defined by the observations $\omega _ {t} \in \Omega$ (which are equal to $s _ {t}$ if the environments are Markov), the rewards $r _ {t} \in R$, as well as the effect of the actions $a _ {t} \in A$ taken at each step. Similarly to the partially observable context, we denote the history of observations by $H _ {t}$, where $H _ { t } \in H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$. The agent aims at finding a policy $\pi ( a _ { t } | H _ { t } ; \theta )$ with the objective of maximizing its expected return, defined (in the discounted setting) as
+$$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0 } ^ { \infty } \gamma ^ { k } r _ { t + k } | H _ { t } , \pi ]$$</p></li>
+
+<li><p>Different approaches have been investigated in the literature. The Bayesian approach aims at explicitly modeling the distribution of the different environments, if a prior is available. However, it is often intractable to compute the Bayesian-optimal strategy and one has to rely on more practical approaches that do not require an explicit model of the distribution. The concept of meta-learning or learning to learn aims at discovering, from experience, how to behave in a range of tasks and how to negotiate the exploration-exploitation tradeoff. Some other approaches have also been investigated. One possibility is to train a neural network to imitate the behavior of known optimal policies on MDPs drawn from the distribution. The parameters of the model can also be explicitly trained such that a small number of gradient steps in a new task from the distribution will produce fast learning on that task.</p></li>
 </ul>
         </article>
   </div>
