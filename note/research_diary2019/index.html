@@ -190,7 +190,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="16550">
+<meta itemprop="wordCount" content="18219">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary2019/">
 
@@ -1024,7 +1024,7 @@ $$</p>
 <li><p>While a replay memory allows processing the transitions in a different order than they are experienced, there is also the possibility to use prioritized replay. This allows for consideration of the transitions with a different frequency than they are experienced depending on their significance (that could be which experience to store and which ones to replay). A disadvantage of prioritized replay is that, in general, it also introduces a bias; indeed, by modifying the apparent probabilities of transitions and rewards, the expected return gets biased. Note that this bias can be partly or completely corrected using weighted importance sampling, and this correction is important near convergence at the end of training.</p></li>
 </ul>
 
-<p><font size=6>03/14: Deep Reinforcement Learning:  Beyond MDPs (1) </font></p>
+<p><font size=6>03/14: Deep Reinforcement Learning: Beyond MDPs (1) </font></p>
 
 <p>Partial observability and the distribution of (related) MDPs: In both two settings, at each step in the sequential decision process, the agent may beneﬁt from taking into account its whole observable history up to the current time step $t$ when deciding what action to perform. In other words, a history of observations can be used as a pseudo-state (pseudo-state because that refers to a diﬀerent and abstract stochastic control process). Any missing information in the history of observations (potentially long before time $t$) can introduce a bias in the RL algorithm.</p>
 
@@ -1062,6 +1062,91 @@ $$</p>
 $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0 } ^ { \infty } \gamma ^ { k } r _ { t + k } | H _ { t } , \pi ]$$</p></li>
 
 <li><p>Different approaches have been investigated in the literature. The Bayesian approach aims at explicitly modeling the distribution of the different environments, if a prior is available. However, it is often intractable to compute the Bayesian-optimal strategy and one has to rely on more practical approaches that do not require an explicit model of the distribution. The concept of meta-learning or learning to learn aims at discovering, from experience, how to behave in a range of tasks and how to negotiate the exploration-exploitation tradeoff. Some other approaches have also been investigated. One possibility is to train a neural network to imitate the behavior of known optimal policies on MDPs drawn from the distribution. The parameters of the model can also be explicitly trained such that a small number of gradient steps in a new task from the distribution will produce fast learning on that task.</p></li>
+</ul>
+
+<hr />
+
+<p><font size=6>03/18: Deep Reinforcement Learning: Beyond MDPs (3) </font></p>
+
+<p>Transfer learning</p>
+
+<ul>
+<li>Zero-shot learning: The idea of zero-shot learning is that an agent should be able to act appropriately in a new task directly from experience acquired on other similar tasks. To achieve this, the agent must either (i) develop generalization capacities described or (ii) use speciﬁc transfer strategies that explicitly retrain or replace some of its components to adjust to new tasks. The underlying reason for these successes is the ability of the deep learning architecture to generalize between states that have similar high-level representations and should therefore have the same value function/policy in diﬀerent domains. Another approach to zero-shot transfer is to use algorithms that enforce states that relate to the same underlying task but have diﬀerent renderings to be mapped into an abstract state that is close. To develop generalization capacities, one approach is to use an idea similar to data augmentation in supervised learning so as to make sense of variations that were not encountered in the training data.</li>
+<li>Lifelong learning or continual learning: lifelong machine learning relates to the capability of a system to learn many tasks over a lifetime from one or more domains. In general, deep learning architectures can generalize knowledge across multiple tasks by sharing network parameters. A direct approach is thus to train function approximators (e.g. policy, value function, model, etc.) sequentially in diﬀerent environments. The difficulty of this approach is to ﬁnd methods that enable the agent to retain knowledge in order to more efficiently learn new tasks. The problem of retaining knowledge in deep reinforcement learning is complicated by the phenomenon of <strong>catastrophic forgetting</strong>, where generalization to previously seen data is lost at later stages of learning. The straightforward approach is to either (i) use experience replay from all previous experience, or (ii) retrain occasionally on previous tasks similar to the meta-learning setting. When these two options are not available, or as a complement to the two previous approaches, one can use deep learning techniques that are robust to forgetting, such as progressive networks. The idea is to leverage prior knowledge by adding, for each new task, lateral connections to previously learned features (that are kept fixed). Other approaches to limiting catastrophic forgetting include slowing down learning on the weights important for previous tasks and decomposing learning into skill hierarchies.</li>
+<li>Curriculum learning: the goal of curriculum learning is to explicitly design a sequence of source tasks for an agent to train on such that the ﬁnal performance or learning speed is improved on a target task. The idea is to start by learning small and easy aspects of the target task and then to gradually increase the difficulty level.</li>
+</ul>
+
+<p><font size=6>03/19: Deep Reinforcement Learning: Beyond MDPs (4) </font></p>
+
+<p>Learning without explicit reward function (1)</p>
+
+<p>Due to the complexity of environments in practical applications, deﬁning a reward function can turn out to be rather complicated. There are two other possibilities: (i) given demonstrations of the desired task, we can use imitation learning or extract a reward function using inverse reinforcement learning; (ii) a human may provide feedback on the agent's behavior in order to deﬁne the task.</p>
+
+<ul>
+<li>Learning from demonstrations: Given an observed behavior (e.g. the trajectories of an expert/teacher agent), the goal is to have the agent perform similarly. Two approaches are possible:
+
+<ul>
+<li><strong>Imitation learning</strong> uses supervised learning to map states to actions from the observations of the expert's behavior.</li>
+<li><strong>Inverse reinforcement learning (IRL)</strong> determines a possible reward function given observations of optimal behavior. For example, let us consider a large MDP for which the expert always ends up transitioning to the same state. In that context, one may be able to easily infer, from only a few trajectories, what the probable goal of the task is (a reward function that explains the behavior of the teacher), as opposed to directly learning the policy via imitation learning, which is much less efficient.</li>
+<li>Another setting requires the agent to learn directly from a sequence of observations without corresponding actions (and possibly in a slightly different context). This may be done in a meta-learning setting by providing positive reward to the agent when it performs as it is expected based on the demonstration of the teacher. The agent can then act based on new unseen trajectories of the teacher, with the objective that is can generalize sufficiently well to perform new tasks.</li>
+</ul></li>
+</ul>
+
+<p><font size=6>03/20: Deep Reinforcement Learning: Beyond MDPs (5) </font></p>
+
+<p>Learning without explicit reward function (2)</p>
+
+<ul>
+<li>Learning from direct feedback: Learning from feedback investigates how an agent can interactively learn behaviors from a human teacher who provides positive and negative feedback signals. In order to learn complex behavior, human trainer feedbacks has the potential to be more performant than a reward function deﬁned a priori.</li>
+<li>Multi-agent systems:
+
+<ul>
+<li>A multi-agent POMDP with $N$ agents is a tuple ($S, A _ { N }, \ldots , A _ { N } , P , R _ { 1 } , \ldots , R _ { N } , \Omega , O _ { 1 } , \ldots , O _ { N } , \gamma$) where:</li>
+</ul></li>
+</ul>
+
+<blockquote>
+<ul>
+<li>S is a finite set of states {$1, \ldots, N _ {S}$} (describing the possible configurations of all agents);</li>
+<li>$A = A _ {1} \times \ldots \times A _ {n}$ is a finite set of actions {$1, \ldots , N _ {A}$};</li>
+<li>$P : S \times A \times S \rightarrow [0, 1]$ is the transition function (set of conditional transition probabilities between states);</li>
+<li>$\forall i , R _ { i } : S \times  A _ { i } \times S \rightarrow \mathbb{R}$ is the reward function for agent $i$;</li>
+<li>$\Omega$ is a finite set of observations {$1, \ldots, N _ {\Omega}$};</li>
+<li>$\forall i , O _ { i } : S \times \Omega \rightarrow [0, 1]$ is a set of conditional observation probabilities</li>
+<li>$\gamma \in [0, 1)$ is the discount factor.
+<br /></li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Collaborative versus non-collaborative setting: In a pure collaborative setting, agents have a shared reward measurement ($R _ {i} = R _ {j}, \forall i, j \in [1, \ldots, N]$). In a mixed or non-collaborative (possibly adversarial) setting each agent obtains different rewards. In both cases, each agent $i$ aims to maximize a discounted sum of its rewards $\sum _ { t = 0 } ^ { H } \gamma ^ { t } r _ { t } ^ { ( i ) }$.</li>
+<li>Decentralized versus centralized setting: In a decentralized setting, each agent selects its own action conditioned only on its local information. When collaboration is beneficial, this decentralized setting can lead to the emergence of communication between agents in order to share information. In a centralized setting, the RL algorithm has access to all observations $w ^ {(i)}$ and all rewards $r ^ {(i)}$. The problem can be reduced to a single-agent RL problem on the condition that a single objective can be defined (in a purely collaborative setting, the unique objective is straightforward). Note that even when a centralized approach can be considered (depending on the problem), an architecture that does not make use of the multi-agent structure usually leads to sub-optimal learning.</li>
+<li>In general, multi-agent systems are challenging because agents are independently updating their policies as learning progresses, and therefore the environment appears non-stationary to any particular agent. For training one particular agent, one approach is to select randomly the policies of all other agents from a pool of previously learned policies. This can stabilize training of the agent that is learning and prevent overfitting to the current policy of the other agents.</li>
+</ul>
+
+<p><font size=6>03/21: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (1)</font></p>
+
+<p>Challenges of applying reinforcement learning to real-world problems: In practice, even in the case where the task is well deﬁned (explicit reward function), there is one fundamental difficulty: it is often not possible to let an agent interact freely and sufficiently in the actual environment (or set of environments), due to either safety, cost or time constraints.</p>
+
+<ul>
+<li>The agent may not be able to interact with the true environment but only with an inaccurate simulation of it. When ﬁrst learning in a simulation, the diﬀerence with the real-world domain is known as the <em>reality gap</em>.</li>
+<li>The acquisition of new observations may not be possible anymore (e.g. the batch setting). This scenario happens for instance in medical trials, in tasks with dependence on weather conditions or in trading markets (e.g. energy markets and stock markets).</li>
+</ul>
+
+<p>In order to deal with these limitations, different elements are important:
+- One can aim to develop a simulator that is as accurate as possible.
+- One can design the learning algorithm so as to improve generalization and/or use transfer learning methods.</p>
+
+<p><font size=6>03/22: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (2)</font></p>
+
+<p>Relations between deep RL and neuroscience</p>
+
+<p>During the development of algorithms able to solve challenging sequential decision-making tasks, biological plausibility was not a requirement from an engineering standpoint. However, biological intelligence has been a key inspiration for many of the most successful algorithms.</p>
+
+<ul>
+<li><p>Reinforcement: Driven by such connections, many aspects of reinforcement learning have also been investigated directly to explain certain phenomena in the brain. For instance, computational models have been an inspiration to explain cognitive phenomena such as exploration and temporal discounting of rewards. In cognitive science, Kahneman has also described that there is a dichotomy between two modes of thoughts: a &quot;System 1&quot; that is fast and instinctive and a &quot;System 2&quot; that is slower and more logical. In deep reinforcement, a similar dichotomy can be observed when we consider the model-free and the model-based approaches. Indeed, a conscious thought at a particular time instant can be seen as a low-dimensional combination of a few concepts in order to take decisions.</p></li>
+
+<li><p>Deep learning: Deep learning also finds its origin in models of neural processing in the brain of biological entities. However, subsequent developments are such that deep learning has become partly incompatible with current knowledge of neurobiology. The convolutional structure used in deep learning that is inspired by the organization of the animal visual cortex.</p></li>
 </ul>
         </article>
   </div>
