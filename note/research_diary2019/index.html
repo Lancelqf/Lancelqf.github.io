@@ -339,7 +339,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p><font size=6>01/28: Reward function (3/3)</font></p>
 
-<p>As I elaborated in last research diary, &quot;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&quot; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A arrow \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
+<p>As I elaborated in last research diary, &quot;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&quot; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A \rightarrow  \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
 
 <p>Instead of designning reward functions manually, can we design some methods to learn reward functions? For example, can we apply neural networks to approximate the true rewards (if they do exist) through bootstrapping? I think there should be some previous works (It's so obvous afterall!), or maybe someone tries this idea before but it didn't work. <strong>Need future study</strong>.</p>
 
@@ -355,7 +355,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 
 <p><font size=6>01/30: Action (1/2)</font></p>
 
-<p>Let $A$ be the action space. Then an action can be viewed as a mappings from a distribution of state space to another distribution of state space, i.e. $A: p(S) arrow p(S)$. Note that this includes the mappings from one state to another state if all probability is concentrate on a particular state, i.e. $p(s)=1$ for state $s$ while $p(\cdot)=0$ for other states. For example, $a(p _ 1)=p _ 2$ where $p _ 1(s)=\mathcal{N}(0,1)$ and $p _ 2(s)=\mathcal{N}(1,4)$.</p>
+<p>Let $A$ be the action space. Then an action can be viewed as a mappings from a distribution of state space to another distribution of state space, i.e. $A: p(S) \rightarrow p(S)$. Note that this includes the mappings from one state to another state if all probability is concentrate on a particular state, i.e. $p(s)=1$ for state $s$ while $p(\cdot)=0$ for other states. For example, $a(p _ 1)=p _ 2$ where $p _ 1(s)=\mathcal{N}(0,1)$ and $p _ 2(s)=\mathcal{N}(1,4)$.</p>
 
 <p>If an action only influences the variation between two distributions, we have following properties:</p>
 
@@ -396,7 +396,7 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 <p>Well, abstraction is about leaving out unnecessary details, focusing on only general characteristics. Instances that have the same abstraction should share something in common. Based on this idea, we define a <strong>abstract state set</strong>:
  $$AS_f \doteq [x \in \Omega | f(x) \in P ]$$
  (There is a problem with the display of {}, I use [] instead.)
- where $\Omega$ is a set of instances; $f$ is a transform function that the abstract state set bonds to; $P$ is a set that represents some properties. For example, $\Omega = \mathbb{R} ^ n$; $f: \mathbb{R} ^ n arrow \mathbb{R} ^ m$ is a projection function: $f(x) = y$ where $x=(v _ 1,\cdots,v _ n)$ and $x=(v _ 1,\cdots,v _ m)$, $m&lt;n$; $P=[x=(v _ 1,\cdots,v _ m) \in \mathbb{R} ^ m | v _ 1 = \cdots = v _ m ]$. Under this setting, $AS_f = [x=(v _ 1,\cdots,v _ n) \in \mathbb{R} ^ n | v _ 1 = \cdots = v _ m ]$.</p>
+ where $\Omega$ is a set of instances; $f$ is a transform function that the abstract state set bonds to; $P$ is a set that represents some properties. For example, $\Omega = \mathbb{R} ^ n$; $f: \mathbb{R} ^ n \rightarrow \mathbb{R} ^ m$ is a projection function: $f(x) = y$ where $x=(v _ 1,\cdots,v _ n)$ and $x=(v _ 1,\cdots,v _ m)$, $m&lt;n$; $P=[x=(v _ 1,\cdots,v _ m) \in \mathbb{R} ^ m | v _ 1 = \cdots = v _ m ]$. Under this setting, $AS_f = [x=(v _ 1,\cdots,v _ n) \in \mathbb{R} ^ n | v _ 1 = \cdots = v _ m ]$.</p>
 
 <p>Tile coding and state aggregation are two ways of defining abstract state set. Perhaps a more specific and simple way of defining abstract state set is clustering. The idea behind is very simple: instances that near each other under some metric should belong to a same abstract class. This can be viewed as doing clustering in the instance space.</p>
 
@@ -471,7 +471,7 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 <blockquote>
 <ol>
 <li>non-negativity: $M(x,y) \geq 0$</li>
-<li>identity of indiscernibles: $M(x, y)=0 rightarrow x=y$</li>
+<li>identity of indiscernibles: $M(x, y)=0 \Leftrightarrow x=y$</li>
 <li>symmetry: $M(x,y)=M(y,x)$</li>
 <li>Delta inequality: $M(x,z) \leq M(x,y) + M(y,z)$</li>
 </ol>
