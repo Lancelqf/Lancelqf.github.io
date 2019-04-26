@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 17 Feb 2019 13:32:44 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2019 20:46:48 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tags/article/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Zima Blue</title>
+      <link>https://lancelqf.github.io/heart/zimablue/</link>
+      <pubDate>Mon, 22 Apr 2019 20:46:48 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/zimablue/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Tmux</title>
