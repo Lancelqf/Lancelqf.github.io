@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 22 Apr 2019 20:46:48 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 16:01:41 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Book</title>
+      <link>https://lancelqf.github.io/tags/book/</link>
+      <pubDate>Fri, 26 Apr 2019 16:01:41 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>https://lancelqf.github.io/tags/research/</link>
+      <pubDate>Fri, 26 Apr 2019 16:01:41 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/research/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Article</title>
@@ -22,11 +40,56 @@
     </item>
     
     <item>
-      <title>Book</title>
-      <link>https://lancelqf.github.io/tags/book/</link>
-      <pubDate>Sun, 31 Mar 2019 13:05:06 -0600</pubDate>
+      <title>Movie</title>
+      <link>https://lancelqf.github.io/tags/movie/</link>
+      <pubDate>Mon, 22 Apr 2019 20:46:48 -0600</pubDate>
       
-      <guid>https://lancelqf.github.io/tags/book/</guid>
+      <guid>https://lancelqf.github.io/tags/movie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Self</title>
+      <link>https://lancelqf.github.io/tags/self/</link>
+      <pubDate>Mon, 22 Apr 2019 20:46:48 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/self/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Poetry</title>
+      <link>https://lancelqf.github.io/tags/poetry/</link>
+      <pubDate>Mon, 20 Aug 2018 10:08:22 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/poetry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Modern Family</title>
+      <link>https://lancelqf.github.io/tags/modern-family/</link>
+      <pubDate>Tue, 07 Aug 2018 20:46:49 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/modern-family/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Music</title>
+      <link>https://lancelqf.github.io/tags/music/</link>
+      <pubDate>Sat, 19 May 2018 13:10:54 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/music/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Private</title>
+      <link>https://lancelqf.github.io/tags/private/</link>
+      <pubDate>Sun, 06 May 2018 10:49:05 +0800</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/private/</guid>
       <description></description>
     </item>
     
@@ -58,51 +121,6 @@
     </item>
     
     <item>
-      <title>Modern Family</title>
-      <link>https://lancelqf.github.io/tags/modern-family/</link>
-      <pubDate>Tue, 07 Aug 2018 20:46:49 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/modern-family/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Movie</title>
-      <link>https://lancelqf.github.io/tags/movie/</link>
-      <pubDate>Mon, 22 Apr 2019 20:46:48 -0600</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/movie/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Music</title>
-      <link>https://lancelqf.github.io/tags/music/</link>
-      <pubDate>Sat, 19 May 2018 13:10:54 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/music/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Poetry</title>
-      <link>https://lancelqf.github.io/tags/poetry/</link>
-      <pubDate>Mon, 20 Aug 2018 10:08:22 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/poetry/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Private</title>
-      <link>https://lancelqf.github.io/tags/private/</link>
-      <pubDate>Sun, 06 May 2018 10:49:05 +0800</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/private/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Python</title>
       <link>https://lancelqf.github.io/tags/python/</link>
       <pubDate>Wed, 04 Apr 2018 19:32:58 +0800</pubDate>
@@ -112,29 +130,11 @@
     </item>
     
     <item>
-      <title>Research</title>
-      <link>https://lancelqf.github.io/tags/research/</link>
-      <pubDate>Mon, 21 Jan 2019 18:40:42 -0700</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/research/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sci Fi</title>
+      <title>Sci-Fi</title>
       <link>https://lancelqf.github.io/tags/sci-fi/</link>
       <pubDate>Thu, 20 Apr 2017 10:24:46 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/tags/sci-fi/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Self</title>
-      <link>https://lancelqf.github.io/tags/self/</link>
-      <pubDate>Mon, 22 Apr 2019 20:46:48 -0600</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/self/</guid>
       <description></description>
     </item>
     

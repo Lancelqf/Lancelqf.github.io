@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 21 Jan 2019 18:40:42 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 16:01:41 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/note/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lifelong Learning: Notes</title>
+      <link>https://lancelqf.github.io/note/lifelong_learning/</link>
+      <pubDate>Fri, 26 Apr 2019 16:01:41 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/lifelong_learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Reinforcement Learning: Notes</title>
+      <link>https://lancelqf.github.io/note/deep_rl/</link>
+      <pubDate>Fri, 26 Apr 2019 15:50:46 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/deep_rl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transfer Learning: Notes</title>
+      <link>https://lancelqf.github.io/note/transfer_learning/</link>
+      <pubDate>Fri, 26 Apr 2019 15:42:36 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/note/transfer_learning/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Research Diary 2019</title>
@@ -18,9 +45,7 @@
       <pubDate>Mon, 21 Jan 2019 18:40:42 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/note/research_diary2019/</guid>
-      <description>&lt;p&gt;This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,7 +54,7 @@
       <pubDate>Mon, 24 Dec 2018 12:53:44 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/note/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%B4%A2/</guid>
-      <description>&lt;p&gt;&lt;/p&gt;</description>
+      <description></description>
     </item>
     
   </channel>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="Book reading notes for transfer learning">
+<meta name="keywords" content="Book, Research, ">
+
+ 
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="Book reading notes for transfer learning"/>
+<meta property="og:title" content="Transfer Learning: Notes : lancelqf.github.io"/>
+<meta property="og:site_name" content="Qingfeng Lan's blog"/>
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://lancelqf.github.io/note/transfer_learning/">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-04-26"/>
+<meta property="article:modified_time" content="2019-04-26"/>
+
+
+<meta property="article:tag" content="Book">
+<meta property="article:tag" content="Research">
+
+
+
+    <base href="https://lancelqf.github.io">
+    <title> Transfer Learning: Notes - lancelqf.github.io </title>
+    <link rel="canonical" href="https://lancelqf.github.io/note/transfer_learning/">
+    
+
+    
+<link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<style>
+code.has-jax {
+  font: inherit;
+  font-size: 100%;
+  background: inherit;
+  border: inherit;
+  color: #515151;
+}
+</style>
+
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2445edbea2f2541f3150c49cc08c381a";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>      
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121043808-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-121043808-1');
+    </script>
+    
+</head>
+<body lang="en" itemscope itemtype="http://schema.org/Article">
+<header id="header">
+  <nav id="nav">
+    <div id="title"><a href="/" class="blue"><font color="blue">Qingfeng Lan</font></a></div>
+    <div><a href=mailto:lancelqf@gmail.com target="_blank" class="blue"><span class="icon-mail"></span></a></div>
+  </nav>
+  <nav id="nav">
+    <ul id="mainnav">
+
+
+  <li>
+    <a href="/heart/">
+    <span class="icon"> <i aria-hidden="true" class="icon-heart"></i></span>
+    <span> Heart </span>
+  </a>
+  </li>
+
+  <li>
+    <a href="/note/">
+        <span class="icon"> <i aria-hidden="true" class="icon-pencil"></i></span>
+        <span> Note </span>
+    </a>
+  </li>
+
+  <li>
+  <a href="/tech/">
+      <span class="icon"> <i aria-hidden="true" class="icon-gears"></i></span>
+      <span> Tech </span>
+  </a>
+  </li>
+
+  <li>
+  <a href="/about">
+      <span class="icon"> <i aria-hidden="true" class="icon-atom"></i></span>
+      <span> About </span>
+  </a>
+  </li>
+
+</ul>
+    <ul id="social">
+  <li id="share">
+      <span class="title"> share </span>
+      <div class="dropdown share">
+          <ul class="social">
+              <li> <a href="http://spf13.com/" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
+              <li> <a href="http://nanshu.wang/" target="_blank" title="Dear Sister Nanshu" class="nanshu">Nanshu</a> </li>
+              <li> <a href="http://spaces.facsci.ualberta.ca/rlai/" target="_blank" title="A RL&AI researh group at the University of Alberta" class="twitter">RLAI</a> </li>
+              <li> <a href="https://deepmind.com/" target="_blank" title="An AI research company, part of the Alphabet group" class="googleplus">DeepMind</a> </li>
+              <li> <a href="https://openai.com/" target="_blank" title="A non-profit AI research company" class="stumbleupon">OpenAI</a> </li>
+              <li> <a href="http://whirl.cs.ox.ac.uk/" target="_blank" title="A ML research group at the University of Oxford" class="delicious">WhiRL</a> </li>             
+          </ul>
+          <span class="icon icon-bubbles"> </span> <span class="subcount"> </span>
+      </div>
+  </li>
+
+  <li id="follow">
+      <span class="title"> follow </span>
+      <div class="dropdown follow">
+          <ul class="social">
+              <li> <a href="https://www.linkedin.com/in/qingfeng-lan-974685146" target="_blank" title="LinkedIn" class="linkedin">LinkedIn</a> </li>
+              <li> <a href="https://github.com/qlan3" target="_blank" title="GitHub" class="github">GitHub</a> </li>
+              <li> <a href="https://www.instagram.com/qingfeng_lan/" target="_blank" title="Instagram" class="facebook">Instagram</a> </li>
+              <li> <a href="https://twitter.com/lancelan3" target="_blank" title="Twitter" class="twitter">Twitter</a> </li>
+          </ul>
+          <span class="icon icon-rocket"> </span> <span class="subcount"></span>
+      </div>
+  </li>
+</ul>
+  </nav>
+</header>
+
+
+<section id="main">
+  <h1 itemprop="name" >Transfer Learning: Notes</h1>
+  
+
+<aside id="meta">
+
+    <div>
+        <section id="datecount">
+          <h4 id="date"> Fri Apr 26, 2019 </h4>
+        </section>
+        <ul id="tags">
+          
+            <li> <a href="https://lancelqf.github.io/tags/book">Book</a> </li>
+          
+            <li> <a href="https://lancelqf.github.io/tags/research">Research</a> </li>
+          
+        </ul>
+    </div>
+</aside>
+
+<meta itemprop="wordCount" content="1820">
+<meta itemprop="datePublished" content="2019-04-26">
+<meta itemprop="url" content="https://lancelqf.github.io/note/transfer_learning/">
+
+  <div>
+        <article itemprop="articleBody" id="content">
+           <h2 id="introduction">Introduction</h2>
+
+<p>I've run out of my ideas. Time to learn new things. I start with transfer learning. After that, I'd probably continue with online learning, life-long learning and meta learning.</p>
+
+<p>For transfer learning, there are two important concepts:</p>
+
+<ul>
+<li>Domain: A domain is consists of data and data distribution. To be specific, there are two domains that we care in transfer learning: Source Domain ($D _ s$) and Target Domain ($D _ t$).</li>
+<li>Task: Task is the goal of learning. It consists of two parts: the label spaces ($Y$) and the corresponding learning functions ($f(\cdot)$).</li>
+</ul>
+
+<p>Now, we give a formal definition of transfer learning:
+&gt; Given the source domain $D _ s = [\mathbf{x} _ {i}, y _ {i}] _ {i=1} ^ {n}$ with labels and target domain $D _ t = [\mathbf{x} _ {j}] _ {j=1} ^ {m}$ without labels. The data distributions are different, i.e. $P(\mathbf{x} _ {s}) \neq P(\mathbf{x} _ {t})$. The goal of transfer learning is using knowledge learned form source domain to predict the labels in target domain.</p>
+
+<p>The core of transfer learning is to find shared knowledge between two domains and apply it properly. Knowledge is learned in source domain and then applied in target domain. In a word, it is about searching for the invariable (or similarity) in changing domains and then apply it.</p>
+
+<h2 id="metrics">Metrics</h2>
+
+<p>The next question is how to measure the similarity? Well, we need a metric. But what is a good metric for it? The bad news is that there is no certain answer for all transfer learning problems. Different metrics are useful in dfferent ways and in different problems. The good news is that we have many metrics in the arsenal:</p>
+
+<ul>
+<li><p>Distance:</p>
+
+<ul>
+<li>Euclidean distance: $d _ {Euclidean} = \sqrt {(\mathrm{x} - \mathrm{y}) ^ {\top} (\mathrm{x} - \mathrm{y})}$</li>
+<li>Minkowski distance： $d _ {Minkowski} = (| \mathbf { x } - \mathbf { y } | ^ { p }) ^ { 1 / p }$. When $p=1$, it's Manhattan distance; when $p=2$, it's Euclidean distance.</li>
+<li>Mahalanobis distance: $d _ {Mahalanobis} = \sqrt { ( \mathrm { x } - \mathrm { y } ) ^ { \top } \Sigma ^ { - 1 } ( \mathrm { x } - \mathrm { y } ) }$. $\Sigma$ is the covariance of distribution. When $\Sigma = \mathbf{I}$, it's Euclidean distance.</li>
+</ul></li>
+
+<li><p>Similarity:</p>
+
+<ul>
+<li>Cosine similarity: $\cos ( \mathbf { x } , \mathbf { y } ) = \frac { \mathbf { x } \cdot \mathbf { y } } { | \mathbf { x } | \cdot | \mathbf { y } | } \in [0, 1]$.</li>
+<li>Mutual information: the mutual information of two discrete random variables $X$ and $Y$ can be defined as: $I ( X ; Y ) = \sum _ { x \in X } \sum _ { y \in Y } p ( x , y ) \log \frac { p ( x , y ) } { p ( x ) p ( y ) }$. For continous random variables, we have $\mathrm { I } ( X ; Y ) = \int _ {Y} \int _ {X} p ( x , y ) \log ( \frac { p ( x , y ) } { p ( x ) p ( y ) }) dx dy$.</li>
+<li>Pearson coefficient: For two random variables $X$ and $Y$, $\rho _ {X, Y} = \frac{\operatorname{Cov}(X, Y)} {\sigma _ {X} \sigma _ {Y}} \in [−1, 1]$.</li>
+<li>Jaccard coefficient: For two sets $X$ and $Y$, the Jaccard coefficient is defined as: $J = \frac { X \cap Y } { X \cup Y }$. Furthermore, Jaccard distance = $1 − J$.</li>
+</ul></li>
+
+<li><p>Divergence:</p>
+
+<ul>
+<li>Kullback–Leibler (KL) divergence: For two distributions $P(x)$ and $Q(x)$, $D _ {KL}(P | Q)=\sum _ {x \in X} P(x) \log \frac{P(x)}{Q(x)}$. A continous version: $D _ {KL}(P | Q) = \int _ {- \infty} ^ {\infty} p ( x ) \log (\frac {p(x)}{q(x)}) dx$. Notice that $D _ {KL}(P | Q) \neq D _ {KL}(Q | P)$.</li>
+<li>Jensen–Shannon divergence: Denote $M = \frac { 1 } { 2 } ( P + Q )$, $JSD(P|Q)=\frac{1}{2} D _ {KL}(P|M)+\frac{1}{2}D _ {KL}(Q|M)$.</li>
+</ul></li>
+
+<li><p>Maximum mean discrepancy (MMD):<br />
+$$MMD(X , Y) = \sqrt{ || \sum _ { i = 1 } ^ { n _ { 1 } } \phi ( \mathbf { x } _ { i } ) - \sum _ { j = 1 } ^ { n _ { 2 } } \phi ( \mathbf { y } _ { j } ) || _ { \mathcal { H } } ^ { 2 } }$$
+where $\phi(\cdot)$ is a mapping from orignal vector space to Reproducing Kernel Hilbert Space (RKHS).
+<!--- Principal Angle: --></p></li>
+
+<li><p>A-distance: We first train a classifier $h$ to distinguish whether instances are from source domain or target domain. We then define A-distance to be:
+$$\mathcal{A}(\mathcal{D} _ {s},\mathcal{D} _ {t})=2(1 - 2 err(h))$$
+where $err(h)$ is the hinge loss of this classifier $h$.</p></li>
+
+<li><p>Hilbert-Schmidt Independence Criterion: It can be used to check the dependence of two sets of data:
+$$HSIC (X, Y) = \operatorname{trace}(HXHY)$$
+where $X$ and $Y$ are kernel form of two datasets.</p></li>
+
+<li><p>Wasserstein Distance: Let ($M, d$) be a metric space for which every probability measure on $M$ is a Radon measure (a so-called Radon space). For $p\geq 1$, let $P _ {p}(M)$ denote the collection of all probability measures $\mu$ on $M$ with finite $p ^ {\text{th}}$ moment for some $x _ {0}$ in $M$,
+$$\int _ { M } d(x, x _ {0}) ^ { p } \mathrm { d } \mu ( x ) &lt; + \infty$$
+Then the $p ^ {\text{th}}$ Wasserstein distance between two probability measures $\mu$ and $\nu$ in $P _ {p}(M)$ is defined as:
+$$W _ { p } ( \mu , \nu ) : = ( \inf _ { \gamma \in \Gamma ( \mu , \nu ) } \int _ { M \times M } d ( x , y ) ^ { p } \mathrm { d } \gamma ( x , y ) ) ^ { 1 / p }$$
+where $\Gamma ( \mu , \nu )$ denote the collection of all measures $M \times M$ with marginals $\mu$ and $\nu$ on the first and second factors repectively. The Wasserstein metric may be equivalently defined by:
+$$W _ { p } ( \mu , \nu ) ^ { p } = \inf \mathbb{E} [ d ( X , Y ) ^ { p }]$$
+where $\mathbb{E}[Z]$ denotes the expected value of a random variable $Z$ and the infimum is taken over all joint distributions of the random variables $X$ and $Y$ with marginals $\mu$ and $\nu$ respectively.<br />
+It seems that Wasserstein distance is quite popular these days, especially in GAN and domain adaptation.</p></li>
+</ul>
+
+<h2 id="methods">Methods</h2>
+
+<ul>
+<li><p>Instance based Transfer Learning:</p>
+
+<ul>
+<li>By reusing samples in source domain and weighting them properly, we can transfer the learned knowledge from source domain and target domain. A naive way of weights setting is setting them to be $\frac{P(\mathbf{x} _ {t})}{P(\mathbf{x} _ {s})}$. This is similar to what we do to importance sampling ratio in RL. <em>TrAdaboost</em> introduces the idea of Adaboost to transfer learning: increasing the weights of samples that improve the performance of transfer learning and decreasing the weights of samples that harm the performance. Can we apply similar ideas for importance sampling ratio? <strong>Need future study</strong>.</li>
+<li>Although instance based transfer learning has a good theoretical guarantee, it only applies to problems when the difference of $P(\mathbf{x} _ {s})$ and $P(\mathbf{x} _ {t})$ is small. The knowledge transfered in this method is not abstract enought.</li>
+</ul></li>
+
+<li><p>Feature based Transfer Learning: This method assumes that some features are shared by source domain and target domain. By feature transformation, it minimizes the distance between two sets of features or maps all features into a same feature space. The core question is how to do feature transformation and how to learn the mapping?</p></li>
+
+<li><p>Parameter/Model based Transfer Learning: This method assumes that some model parameters can be shared by source domain and target domain. Through parameters sharing, knowledge learned from one domain can be transfered to another domain. Most algorithms developed in this approach are connected with neural networks strongly.</p></li>
+
+<li><p>Relation Based Transfer Learning: In this method, logic is applied to learn the relations between objects in source domain. Then these relations are reused in target domain. This may be the most abstract method for transfer learning. Also, it is hard. So there are not too many papers.</p></li>
+</ul>
+
+<h2 id="deep-transfer-learning">Deep transfer learning</h2>
+
+<p>Deep neural networks can learn features from the raw data end-to-end, including general features and specific features. Then the next question is how to decide which features of layers to transfer? There is no theoretical answer for this question. However, the experiments shows that:</p>
+
+<ul>
+<li>Features represented by weights in the first few layers are more general.</li>
+<li>By fine-tuning the neural networks, we can improve the peformance significantly.</li>
+<li>Transfer weights are better than random weights.</li>
+<li>By transfer weights in layers can accelerate learning.</li>
+</ul>
+
+<p>Finetune can accelerate learning and save training time. However, it can not overcome the difference between training data and test training. By adding some adaptation layers, it can be overcomed to some extent. Furthermore, an additional loss is added to account for domain adaptation loss.</p>
+
+<h2 id="frontier">Frontier</h2>
+
+<ul>
+<li>Artifical intelligence and human knowledge: Through the long history, we human being accumulate a large amount of knowledge. How to transfer these knowledge to agents? How to encode our knowledge into agent? Yes, we can always find a way to encode some particular knowledge into agent. However, the final goal is to find a general way to encode all human knowledge. And this is really hard. The most difficult part is to find a suitable knowledge representation that is understandale to human being as well as intelligent agents.</li>
+<li>Transitive transfer learning: Although there may only be minor similarity between two domains, everything in this world is connected in some way. And If we can find a similarity chain that connects two different domains, we may find a way to transfer knowledge from one end to another end along this chain. This is the basic idea of transitive transfer learning. Surprisingly, it <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewPaper/14446">works</a>!</li>
+<li>Learning to Transfer: The goal of learning to transfer is to learn when to transfer, what to transfer and how to transfer. The general method includes two parts: learn experiences from previous cases and then apply them on new problems. Its main goal is to learn transfer learning experience. Formally,we define transfer learning experience:
+$$E = (S,T,a,l)$$
+where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer learning algorithm. $l$ shows the performance improvement compared to learning performance without transfer learning. What is a useful transfer learning experience then? Everything that helps improve performance!</li>
+<li>Online transfer learning: There are not many works.</li>
+<li>Transfer reinforcement learning: It is a combination of transfer learning and reinforcement learning.</li>
+</ul>
+
+<h1 id="reference">Reference</h1>
+
+<ul>
+<li><a href="http://tutorial.transferlearning.xyz/">Transfer Learning Tutorial. Jindong Wang et al, 2018.</a></li>
+</ul>
+        </article>
+  </div>
+</section>
+
+<aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-lvohfvy22n" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+<footer>
+  <div>
+    <p>
+    &copy; 2018 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Qingfeng Lan.</span></span>
+        Powered by <a href="http://hugo.spf13.com">Hugo</a>.
+        Theme by <a href="http://spf13.com">Steve Francia</a>.
+    </p>
+  </div>
+</footer>
+<script type="text/javascript">
+(function(){var j=function(a,b){return window.getComputedStyle?getComputedStyle(a).getPropertyValue(b):a.currentStyle[b]};var k=function(a,b,c){if(a.addEventListener)a.addEventListener(b,c,false);else a.attachEvent('on'+b,c)};var l=function(a,b){for(key in b)if(b.hasOwnProperty(key))a[key]=b[key];return a};window.fitText=function(d,e,f){var g=l({'minFontSize':-1/0,'maxFontSize':1/0},f);var h=function(a){var b=e||1;var c=function(){a.style.fontSize=Math.max(Math.min(a.clientWidth/(b*10),parseFloat(g.maxFontSize)),parseFloat(g.minFontSize))+'px'};c();k(window,'resize',c)};if(d.length)for(var i=0;i<d.length;i++)h(d[i]);else h(d);return d}})();
+fitText(document.getElementById('title'), 1)
+</script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
+
+</body>
