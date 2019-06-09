@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 17 Feb 2019 13:32:44 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jun 2019 01:24:06 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/tech/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Singularity</title>
+      <link>https://lancelqf.github.io/tech/singularity/</link>
+      <pubDate>Sat, 08 Jun 2019 01:24:06 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/singularity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Parallel</title>
+      <link>https://lancelqf.github.io/tech/parallel/</link>
+      <pubDate>Fri, 07 Jun 2019 00:04:29 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/parallel/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Tmux</title>
