@@ -190,28 +190,28 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="44">
+<meta itemprop="wordCount" content="43">
 <meta itemprop="datePublished" content="2018-04-04">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/linux-bug/">
 
   <div>
         <article itemprop="articleBody" id="content">
            <ul>
-<li><p>timeout in locking authority file /home/***/.Xauthority</p>
+<li>timeout in locking authority file /home/***/.Xauthority</li>
+</ul>
 
 <pre><code class="language-bash">rm -fr .Xauthority-*
 </code></pre>
 
 <ul>
 <li>E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
-E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it
-<code>bash
-sudo rm /var/cache/apt/archives/lock
+E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it</li>
+</ul>
+
+<pre><code class="language-bash">sudo rm /var/cache/apt/archives/lock
 sudo rm /var/lib/dpkg/lock
 sudo rm /var/lib/apt/lists/lock
-</code></li>
-</ul></li>
-</ul>
+</code></pre>
         </article>
   </div>
 </section>

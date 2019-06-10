@@ -193,7 +193,9 @@ code.has-jax {
 
   <div>
         <article itemprop="articleBody" id="content">
-           <h2 id="download-pre-built-images">Download pre-built images</h2>
+           <ul>
+<li>Download pre-built images</li>
+</ul>
 
 <pre><code class="language-bash"># Synopsis
 $ singularity pull [pull options...] [output file] &lt;container&gt;
@@ -211,7 +213,9 @@ $ singluarity pull &lt;output file&gt; &lt;container&gt;
 $ singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
 </code></pre>
 
-<h2 id="build-a-container">Build a container</h2>
+<ul>
+<li>Build a container</li>
+</ul>
 
 <pre><code class="language-bash"># Build from URI
 $ sudo singularity build &lt;container&gt; &lt;URL&gt;
@@ -227,7 +231,9 @@ $ sudo singularity build --sandbox &lt;sandbox&gt; &lt;old container&gt;
 $ sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
 </code></pre>
 
-<h2 id="shell-in-a-container">Shell in a container</h2>
+<ul>
+<li>Shell in a container</li>
+</ul>
 
 <pre><code class="language-bash"># Synopsis
 $ singularity shell [shell options...] &lt;container&gt;
@@ -236,7 +242,9 @@ $ singularity shell --writable &lt;container&gt;
 $ singularity shell explorer.img
 </code></pre>
 
-<h2 id="run-a-command-within-a-container">Run a command within a container</h2>
+<ul>
+<li>Run a command within a container</li>
+</ul>
 
 <pre><code class="language-bash"># Synopsis
 $ singularity exec [exec options...] &lt;container&gt; &lt;command&gt;
@@ -249,7 +257,9 @@ $ singularity exec instance://my_instance ps -ef
 $ singularity exec library://centos cat /etc/os-release
 </code></pre>
 
-<h2 id="bind-paths-and-mounts">Bind Paths and Mounts</h2>
+<ul>
+<li>Bind Paths and Mounts</li>
+</ul>
 
 <pre><code class="language-bash"># Synopsis
 $ singularity run/exec/shell --bind src[:dest[:opts]] &lt;container&gt; [command]
@@ -258,7 +268,9 @@ $ singularity exec --bind /data:/mnt my_container.sif ls /mnt
 $ singularity shell -bind /home/vagrant/Explorer explorer-env.img
 </code></pre>
 
-<h2 id="build-images-from-scratch">Build images from scratch</h2>
+<ul>
+<li>Build images from scratch</li>
+</ul>
 
 <pre><code class="language-bash"># Create a sandbox image from base ubuntu image
 $ sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
