@@ -197,7 +197,7 @@ code.has-jax {
 <li>Download pre-built images</li>
 </ul>
 
-<pre><code class="language-bash"># Synopsis
+<pre><code class="language-shell"># Synopsis
 $ singularity pull [pull options...] [output file] &lt;container&gt;
 # From Sylabs cloud library
 $ singluarity pull library://&lt;user&gt;/&lt;collection&gt;/&lt;container[:tag]&gt;
@@ -217,7 +217,7 @@ $ singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
 <li>Build a container</li>
 </ul>
 
-<pre><code class="language-bash"># Build from URI
+<pre><code class="language-shell"># Build from URI
 $ sudo singularity build &lt;container&gt; &lt;URL&gt;
 $ sudo singularity build lolcow.simg library://sylabs-jms/testing/lolcow
 # Build From a Singularity definition file
@@ -235,7 +235,7 @@ $ sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
 <li>Shell in a container</li>
 </ul>
 
-<pre><code class="language-bash"># Synopsis
+<pre><code class="language-shell"># Synopsis
 $ singularity shell [shell options...] &lt;container&gt;
 # Make the file system accessible as read/write
 $ singularity shell --writable &lt;container&gt;
@@ -246,7 +246,7 @@ $ singularity shell explorer.img
 <li>Run a command within a container</li>
 </ul>
 
-<pre><code class="language-bash"># Synopsis
+<pre><code class="language-shell"># Synopsis
 $ singularity exec [exec options...] &lt;container&gt; &lt;command&gt;
 # Example
 $ singularity exec /tmp/debian.sif cat /etc/debian_version
@@ -261,7 +261,7 @@ $ singularity exec library://centos cat /etc/os-release
 <li>Bind Paths and Mounts</li>
 </ul>
 
-<pre><code class="language-bash"># Synopsis
+<pre><code class="language-shell"># Synopsis
 $ singularity run/exec/shell --bind src[:dest[:opts]] &lt;container&gt; [command]
 # Example
 $ singularity exec --bind /data:/mnt my_container.sif ls /mnt
@@ -272,7 +272,7 @@ $ singularity shell -bind /home/vagrant/Explorer explorer-env.img
 <li>Build images from scratch</li>
 </ul>
 
-<pre><code class="language-bash"># Create a sandbox image from base ubuntu image
+<pre><code class="language-shell"># Create a sandbox image from base ubuntu image
 $ sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
 $ sudo singularity build --sandbox ubuntu/ library://ubuntu
 # Shell into the sandbox image

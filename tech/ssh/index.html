@@ -204,14 +204,14 @@ code.has-jax {
 <li>Generate a separate SSH key in a different file</li>
 </ul>
 
-<pre><code class="language-bash">  ssh-keygen -t rsa -b 4096 -f ~/.ssh/&lt;keyname&gt;
+<pre><code class="language-shell">  ssh-keygen -t rsa -b 4096 -f ~/.ssh/&lt;keyname&gt;
 </code></pre>
 
 <ul>
 <li>Add the contents of the <strong>local</strong> <code>&lt;keyname&gt;.pub</code> file to the appropriate <code>authorized_keys</code> file(s) on the <strong>SSH host</strong>.</li>
 </ul>
 
-<pre><code class="language-bash">  # Method 1
+<pre><code class="language-shell">  # Method 1
   ssh-copy-id -i ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;
   # Method 2
   scp ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;:~/.ssh/authorized_keys
@@ -221,7 +221,7 @@ code.has-jax {
 <li>Open ssh config file and add host information</li>
 </ul>
 
-<pre><code class="language-bash">  # Open ssh config
+<pre><code class="language-shell">  # Open ssh config
   vim ~/.ssh/config
   # Add host information
   Host &lt;name-of-ssh-host-here&gt;
@@ -235,7 +235,7 @@ code.has-jax {
 <li>Connect</li>
 </ul>
 
-<pre><code class="language-bash">  ssh &lt;Host&gt;
+<pre><code class="language-shell">  ssh &lt;Host&gt;
 </code></pre>
 
 <h2 id="references">References</h2>

@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 10 Jun 2019 12:04:52 -0600</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jul 2019 22:21:11 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Slurm</title>
+      <link>https://lancelqf.github.io/tech/slurm/</link>
+      <pubDate>Sat, 13 Jul 2019 22:21:11 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/slurm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>ssh</title>
