@@ -187,7 +187,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="519">
+<meta itemprop="wordCount" content="635">
 <meta itemprop="datePublished" content="2019-07-13">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/slurm/">
 
@@ -247,7 +247,7 @@ salloc: Relinquishing job allocation 1234567
 <li>Show jobs for a specific user</li>
 </ul>
 
-<pre><code class="language-shell">$ squeue -u &lt;user&gt;
+<pre><code class="language-shell">$ squeue -u &lt;user&gt; -r
 </code></pre>
 
 <ul>
@@ -256,6 +256,7 @@ salloc: Relinquishing job allocation 1234567
 
 <pre><code class="language-shell">$ squeue -u &lt;user&gt; -t running
 $ squeue -u &lt;user&gt; -t pending
+PENDING, RUNNING, SUSPENDED, COMPLETING, COMPLETED, OUT_OF_MEMORY, FAILED
 </code></pre>
 
 <ul>
@@ -300,7 +301,7 @@ $ sstat -j &lt;jobid&gt; format=AveCPU,MaxRSS,MaxVMSize,JobID
 
 <pre><code class="language-shell">$ sacct -j &lt;jobid&gt;
 $ sacct -j &lt;jobid&gt; --format=JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
-$ sacct –u &lt;username&gt; --format=JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
+$ sacct –u &lt;user&gt; --format=JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
 </code></pre>
 
 <h2 id="controlling-jobs">Controlling jobs</h2>
@@ -322,7 +323,9 @@ $ scontrol resume &lt;jobid&gt;
 # Requeue a running, suspended or finished job into pending state
 $ scontrol requeue &lt;jobid&gt;
 # List running jobs by user
-$ squeue -u &lt;user&gt; -ho %A -t R
+$ squeue -u &lt;user&gt; -ho %A -t RUNNING
+# List running jobs by user
+$ squeue -u &lt;user&gt; -ho %A -t PENDING
 </code></pre>
 
 <h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
@@ -397,8 +400,10 @@ $ squeue -u &lt;user&gt; -ho %A -t R
 
 <pre><code class="language-shell"># List user and their default account (accounting group)
 $ sacctmgr show user &lt;user&gt; withassoc
-# Shows usage info for user
-$ sshare | egrep &quot;(--|Account|&lt;user&gt;)&quot;
+# Show usage info for user
+$ sshare -l -U &lt;user&gt;
+# Show usage info for all users under a specific account
+$ sshare -l -A &lt;account&gt;_cpu --all
 </code></pre>
 
 <h2 id="cluster-information">Cluster information</h2>
@@ -411,6 +416,26 @@ $ sinfo -R
 $ sinfo --Node --long
 # Show reservations on the cluster
 $ scontrol show reservation 
+# Show configuration descriptions
+$ man slurm.conf
+# Check configuration values
+$ scontrol show config | grep Max
+</code></pre>
+
+<h2 id="software-modules">Software modules</h2>
+
+<pre><code class="language-shell"># Show currently loaded modules
+$ module list
+# Search for a module (if listed)
+$ module avail &lt;name&gt;
+# Will give a little bit more info
+$ module spider &lt;name&gt;
+# Load a module
+$ module load &lt;moduleName&gt;
+# Unload a module
+$ module unload &lt;moduleName&gt;
+# Show commands in the module
+$ module show &lt;moduleName&gt;
 </code></pre>
         </article>
   </div>
