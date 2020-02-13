@@ -156,9 +156,9 @@ code.has-jax {
       <span class="title"> follow </span>
       <div class="dropdown follow">
           <ul class="social">
-              <li> <a href="https://www.linkedin.com/in/qingfeng-lan-974685146" target="_blank" title="LinkedIn" class="linkedin">LinkedIn</a> </li>
+              <li> <a href="https://www.linkedin.com/in/qingfeng-l-974685146" target="_blank" title="LinkedIn" class="linkedin">LinkedIn</a> </li>
               <li> <a href="https://github.com/qlan3" target="_blank" title="GitHub" class="github">GitHub</a> </li>
-              <li> <a href="https://www.instagram.com/qingfeng_lan/" target="_blank" title="Instagram" class="facebook">Instagram</a> </li>
+              <li> <a href="https://scholar.google.com/citations?hl=en&user=jKD9jpoAAAAJ" target="_blank" title="Scholar" class="googleplus">Scholar</a> </li>
               <li> <a href="https://twitter.com/lancelan3" target="_blank" title="Twitter" class="twitter">Twitter</a> </li>
           </ul>
           <span class="icon icon-rocket"> </span> <span class="subcount"></span>
@@ -187,7 +187,7 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="635">
+<meta itemprop="wordCount" content="649">
 <meta itemprop="datePublished" content="2019-07-13">
 <meta itemprop="url" content="https://lancelqf.github.io/tech/slurm/">
 
@@ -315,7 +315,7 @@ $ scancel -t PENDING -u $USER
 # Cancel all running jobs for a specific user
 $ scancel -t RUNNING -u $USER
 # Cancel one or more jobs by name
-$ scancel -name &lt;jobName&gt;
+$ scancel --name &lt;jobName&gt;
 # Hold a job, prevent it form starting
 $ scontrol hold &lt;jobid&gt;
 # Release a job hold, allowing the job to try to start
@@ -324,8 +324,8 @@ $ scontrol resume &lt;jobid&gt;
 $ scontrol requeue &lt;jobid&gt;
 # List running jobs by user
 $ squeue -u &lt;user&gt; -ho %A -t RUNNING
-# List running jobs by user
-$ squeue -u &lt;user&gt; -ho %A -t PENDING
+# Set a new Timelimit a running (need admin privilege)/pending job
+$ scontrol update jobid=&lt;jobid&gt; TimeLimit=&lt;TimeLimit&gt;
 </code></pre>
 
 <h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
@@ -420,6 +420,8 @@ $ scontrol show reservation
 $ man slurm.conf
 # Check configuration values
 $ scontrol show config | grep Max
+# Show job info on cluster
+$ partition-stats
 </code></pre>
 
 <h2 id="software-modules">Software modules</h2>
@@ -436,6 +438,11 @@ $ module load &lt;moduleName&gt;
 $ module unload &lt;moduleName&gt;
 # Show commands in the module
 $ module show &lt;moduleName&gt;
+</code></pre>
+
+<h2 id="disk-usage">Disk usage</h2>
+
+<pre><code class="language-shell">$ quota
 </code></pre>
         </article>
   </div>
