@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Wed, 04 Mar 2020 11:39:14 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 10 Apr 2020 11:20:40 -0600</lastBuildDate>
     
 	<atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>振翅</title>
+      <link>https://lancelqf.github.io/heart/%E6%8C%AF%E7%BF%85/</link>
+      <pubDate>Fri, 10 Apr 2020 11:20:40 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E6%8C%AF%E7%BF%85/</guid>
+      <description>&lt;p&gt;最近research很不顺利，毕业的事情也充满变数，很是烦躁。2020年，历史突然加速，发生了许许多多的事。写篇小文章，发发牢骚。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Git</title>

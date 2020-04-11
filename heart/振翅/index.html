@@ -9,31 +9,32 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="description" content="Slurm cheat sheet">
-<meta name="keywords" content="Article, ">
+<meta name="description" content="2020杂记：百年未有之大变局">
+<meta name="keywords" content="Article, Self, ">
 
  
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Slurm cheat sheet"/>
-<meta property="og:title" content="Slurm : lancelqf.github.io"/>
+<meta property="og:description" content="2020杂记：百年未有之大变局"/>
+<meta property="og:title" content="振翅 : lancelqf.github.io"/>
 <meta property="og:site_name" content="Qingfeng Lan's blog"/>
 <meta property="og:image" content="" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="" />
 <meta property="og:image:height" content="" />
-<meta property="og:url" content="https://lancelqf.github.io/tech/slurm/">
+<meta property="og:url" content="https://lancelqf.github.io/heart/%E6%8C%AF%E7%BF%85/">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-07-13"/>
-<meta property="article:modified_time" content="2019-07-13"/>
+<meta property="article:published_time" content="2020-04-10"/>
+<meta property="article:modified_time" content="2020-04-10"/>
 
 
 <meta property="article:tag" content="Article">
+<meta property="article:tag" content="Self">
 
 
 
     <base href="https://lancelqf.github.io">
-    <title> Slurm - lancelqf.github.io </title>
-    <link rel="canonical" href="https://lancelqf.github.io/tech/slurm/">
+    <title> 振翅 - lancelqf.github.io </title>
+    <link rel="canonical" href="https://lancelqf.github.io/heart/%E6%8C%AF%E7%BF%85/">
     
 
     
@@ -170,280 +171,59 @@ code.has-jax {
 
 
 <section id="main">
-  <h1 itemprop="name" >Slurm</h1>
+  <h1 itemprop="name" >振翅</h1>
   
 
 <aside id="meta">
 
     <div>
         <section id="datecount">
-          <h4 id="date"> Sat Jul 13, 2019 </h4>
+          <h4 id="date"> Fri Apr 10, 2020 </h4>
         </section>
         <ul id="tags">
           
             <li> <a href="https://lancelqf.github.io/tags/article">Article</a> </li>
           
+            <li> <a href="https://lancelqf.github.io/tags/self">Self</a> </li>
+          
         </ul>
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="649">
-<meta itemprop="datePublished" content="2019-07-13">
-<meta itemprop="url" content="https://lancelqf.github.io/tech/slurm/">
+<meta itemprop="wordCount" content="26">
+<meta itemprop="datePublished" content="2020-04-10">
+<meta itemprop="url" content="https://lancelqf.github.io/heart/%E6%8C%AF%E7%BF%85/">
 
   <div>
         <article itemprop="articleBody" id="content">
-           <h2 id="submit-jobs">Submit jobs</h2>
+           <p>最近research很不顺利，毕业的事情也充满变数，很是烦躁。2020年，历史突然加速，发生了许许多多的事。写篇小文章，发发牢骚。</p>
 
-<pre><code class="language-shell">$ sbatch &lt;run_script&gt;.sh
-</code></pre>
+<h2 id="信息爆炸">信息爆炸</h2>
 
-<h2 id="examples-of-job-scripts">Examples of job scripts</h2>
+<p>我一直不相信人拥有自由意志，尽管意志的选择具有随机性。人归根到底是环境的产物，时时刻刻被周围的人事物影响着，每个人的灵魂都有被时代打下的深深烙印。而如今的媒体充斥着博人眼球的标题和极具情绪化的字眼，挑动着人的神经，拼命揪住你的耳朵，大喊着：“看我！看我！”，仿佛全世界都乐于倾听你的看法。你愤怒，你谴责，你怒骂，正义之火熊熊燃烧。但很快，你的声音就淹没在无数人的浪潮之中，远远地听，像背景噪音一般聒噪。</p>
 
-<ul>
-<li>Serial job</li>
-</ul>
+<p>我深深地知道，自己也很容易成为其中一员，被人当抢使，或者成为他人谋利的工具。我开始有意识地筛选整理自己的信息源，读干巴巴的剥离情绪的新闻，避免即刻的情绪判断，慢慢也失去了评价的意愿与能力。“如何评价xxx？”真相尚不可知，怎么评价？“如何看待作家方方？”不感兴趣，不想看待。“新冠肺炎是否发源于中国？”科学家会去搞清楚的。世界太吵了，每一天都会发生很多很多的事情，世上的坏事永远不会消失；更令人无奈的是，大多数时候我们无法对它们施以任何的影响。获取信息的广度和深度决定了人对世界本质的认知程度，进而影响了决策的正确性以及人生的上限。如果缺少一套有效的信息筛选机制，庞大的信息流很容易就能将一个人的神经压垮，使人沉迷于繁杂的信息流之中，注意力被消耗殆尽，反而忽略了那些更有价值的信息，那些能深刻地影响你，以及你确实可以施以影响的事情。</p>
 
-<pre><code class="language-bash">#!/bin/bash
-#SBATCH --account=def-afyshe-ab
-# time (DD-HH:MM:SS)
-#SBATCH --time=00-00:01:00
-echo 'Hello, world!'
-sleep 5
-</code></pre>
+<!--当然，这仅仅是我的个人看法，以及我使用的自我保护机制，你完全可以不同意。-->
 
-<ul>
-<li>Array job</li>
-</ul>
+<p>这样做的代价也很大，我意识到自己渐渐失去了与人交流的欲望，尤其是那些无法给自己带来新认知的交流。而我至今不知道该如何走出这个困境。</p>
 
-<pre><code class="language-bash">#!/bin/bash
-#SBATCH --job-name=test
-#SBATCH --account=def-afyshe-ab
-#SBATCH --time=0-01:00:00
-#SBATCH --mem-per-cpu=500M
-# job name (%x), job ID (%j)
-#SBATCH --output=output/%x-%j.txt
-# run a 10 job array, with a maximum of 5 running at a time
-#SBATCH --array=1-10%5
-# job array with indexes [1,2,3,5,7]
-#SBATCH --array=1,2,3,5,7
+<h2 id="墙内墙外">墙内墙外</h2>
 
-./myapplication $SLURM_ARRAY_TASK_ID
-</code></pre>
+<p>留学在外，自然会考虑是否拿绿卡，是否移民的问题。一个人在出生之前并没有选择自身出生国家的机会，出生之后他天然得就具有了自由选择国籍的权利，尽管他可能并没有这样的机会。相比国籍，一个人所在的阶级更能代表一个人的身份，决定了其价值观，并将其与他人区分开。譬如各国的穷人大多爱国，因为他离开祖国则很难生存；而富人坐拥有更多的资源，国籍的约束对他更小。这是自然就会发生的事情，如果你认同“经济基础决定上层建筑”。</p>
 
-<h2 id="interactive-job">Interactive job</h2>
+<p>但如果让我重新选择，我还是会选择中国。</p>
 
-<pre><code class="language-shell">$ salloc --time=1:0:0 --ntasks=2 --account=def-someuser
-$ salloc --time=0-01:00:00 --cpus-per-task=2 --account=def-afyshe-ab --mem-per-cpu=512M
-salloc: Granted job allocation 1234567
-$ ...        # do some work
-$ exit       # terminate the allocation
-salloc: Relinquishing job allocation 1234567
-</code></pre>
+<p>一个国家的发展过程中，会出现各种各样的问题，这些问题自然会因各国国情不同而有所不同，但也有很多问题会不断地在不同时间不同地点以极其相同的形式浮现出来 —— 它们的出现有其历史必然性。最近断断续续看了纪录片《华尔街》和《激荡·1978-2018》 —— 前一部讲述华尔街的百年历史，后一部讲述中国改革开放的激荡三十年。粗略对比一下两国的金融史，很容易就能发现，两国的股市一开始都充满投机行为，缺乏监管，直至酿成危机，政府被迫介入，继而完善法律，改革制度。我们现在所经历的各种难题，现今的发达经济体或多或少都经历过。1952年，在英国伦敦，四天时间内因严重的雾霾导致的死亡人数达到了5000人；上世纪八九十年代，台湾淡水河两岸垃圾成山，相继发生了“米糠油中毒”、“假酒”和“假奶粉”等一系列食品安全事件。这些事情，无一不是中国已经经历过或正在经历的。也许十分令人悲哀，但国家的发展，体制的完善，有时是需要付出鲜血的代价的。</p>
 
-<h2 id="monitoring-jobs">Monitoring jobs</h2>
+<p>治国不易，治大国难。而我现在也越来越认识到 —— 墙是必要的 —— 尽管它妨碍了我的自由，但现在我们还需要它。每个国家都处在其自身发展的阶段当中，面临着各种各样的问题。现今的中国诚然有许多亟待解决的问题，但只要事情总体在往好的方向发展，就很好。</p>
 
-<ul>
-<li>Show jobs for a specific user</li>
-</ul>
+<h2 id="历史行程">历史行程</h2>
 
-<pre><code class="language-shell">$ squeue -u &lt;user&gt; -r
-</code></pre>
+<div align=center>时代的一粒灰尘，落在个人头上，就是一座山。</div>
+<div align=right>一一方方</div>
 
-<ul>
-<li>Show only running jobs, or only pending jobs</li>
-</ul>
-
-<pre><code class="language-shell">$ squeue -u &lt;user&gt; -t running
-$ squeue -u &lt;user&gt; -t pending
-PENDING, RUNNING, SUSPENDED, COMPLETING, COMPLETED, OUT_OF_MEMORY, FAILED
-</code></pre>
-
-<ul>
-<li>Show (detailed) information for a specific job</li>
-</ul>
-
-<pre><code class="language-shell">$ scontrol show job &lt;jobid&gt;
-$ scontrol show job -dd &lt;jobid&gt;
-</code></pre>
-
-<ul>
-<li>Show status information for a running job</li>
-</ul>
-
-<pre><code class="language-shell">$ sstat -j &lt;jobid&gt;
-# List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID
-$ sstat -j &lt;jobid&gt; --format=AveCPU,MaxRSS,MaxVMSize,JobID 
-</code></pre>
-
-<ul>
-<li>Email notification</li>
-</ul>
-
-<pre><code class="language-bash">#SBATCH --mail-user=&lt;email_address&gt;
-#SBATCH --mail-type=ALL
-#SBATCH --mail-type=TIME_LIMIT
-#SBATCH --mail-type=TIME_LIMIT_80
-</code></pre>
-
-<h2 id="completed-jobs">Completed jobs</h2>
-
-<ul>
-<li>Show a short summary of a completed job</li>
-</ul>
-
-<pre><code class="language-shell">$ seff &lt;jobid&gt;
-</code></pre>
-
-<ul>
-<li>Show a detailed summary of a completed job or all jobs of a user</li>
-</ul>
-
-<pre><code class="language-shell">$ sacct -j &lt;jobid&gt;
-$ sacct -j &lt;jobid&gt; --format=JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
-$ sacct –u &lt;user&gt; --format=JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
-</code></pre>
-
-<h2 id="controlling-jobs">Controlling jobs</h2>
-
-<pre><code class="language-shell"># Cancel a specific job
-$ scancel &lt;jobid&gt;
-# Cancel all jobs for a specific user
-$ scancel -u $USER
-# Cancel all pending jobs for a specific user
-$ scancel -t PENDING -u $USER
-# Cancel all running jobs for a specific user
-$ scancel -t RUNNING -u $USER
-# Cancel one or more jobs by name
-$ scancel --name &lt;jobName&gt;
-# Hold a job, prevent it form starting
-$ scontrol hold &lt;jobid&gt;
-# Release a job hold, allowing the job to try to start
-$ scontrol resume &lt;jobid&gt;
-# Requeue a running, suspended or finished job into pending state
-$ scontrol requeue &lt;jobid&gt;
-# List running jobs by user
-$ squeue -u &lt;user&gt; -ho %A -t RUNNING
-# Set a new Timelimit a running (need admin privilege)/pending job
-$ scontrol update jobid=&lt;jobid&gt; TimeLimit=&lt;TimeLimit&gt;
-</code></pre>
-
-<h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
-
-<table>
-<thead>
-<tr>
-<th align="left">Environment Variable</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left">SLURM_JOB_NAME</td>
-<td align="left">User specified job name</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_JOB_ID</td>
-<td align="left">Slurm job id</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_NNODES</td>
-<td align="left">Number of nodes allocated to the job</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_NTASKS</td>
-<td align="left">Number of tasks allocated to the job</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_ARRAY_TASK_ID</td>
-<td align="left">Array index for the job</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_ARRAY_TASK_MAX</td>
-<td align="left">Total number of array indexes for the job</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_MEM_PER_CPU</td>
-<td align="left">Memory allocated per CPU</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_JOB_NODELIST</td>
-<td align="left">List of nodes on which resources are allocated to job</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_JOB_CPUS_PER_NODE</td>
-<td align="left">Number of CPUs allocated per node</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_JOB_PARTITION</td>
-<td align="left">List of Partition(s) that the job is in</td>
-</tr>
-
-<tr>
-<td align="left">SLURM_JOB_ACCOUNT</td>
-<td align="left">Account under which this job is run</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="account-information">Account information</h2>
-
-<pre><code class="language-shell"># List user and their default account (accounting group)
-$ sacctmgr show user &lt;user&gt; withassoc
-# Show usage info for user
-$ sshare -l -U &lt;user&gt;
-# Show usage info for all users under a specific account
-$ sshare -l -A &lt;account&gt;_cpu --all
-</code></pre>
-
-<h2 id="cluster-information">Cluster information</h2>
-
-<pre><code class="language-shell"># Show idle node on cluster
-$ sinfo --states=idle
-# Show down, drained and draining nodes and their reason
-$ sinfo -R
-# Show detailed node info
-$ sinfo --Node --long
-# Show reservations on the cluster
-$ scontrol show reservation 
-# Show configuration descriptions
-$ man slurm.conf
-# Check configuration values
-$ scontrol show config | grep Max
-# Show job info on cluster
-$ partition-stats
-</code></pre>
-
-<h2 id="software-modules">Software modules</h2>
-
-<pre><code class="language-shell"># Show currently loaded modules
-$ module list
-# Search for a module (if listed)
-$ module avail &lt;name&gt;
-# Will give a little bit more info
-$ module spider &lt;name&gt;
-# Load a module
-$ module load &lt;moduleName&gt;
-# Unload a module
-$ module unload &lt;moduleName&gt;
-# Show commands in the module
-$ module show &lt;moduleName&gt;
-</code></pre>
-
-<h2 id="disk-usage">Disk usage</h2>
-
-<pre><code class="language-shell">$ quota
-</code></pre>
+<p>2020年的每一天都在经历历史。川普高喊美国至上，英国公投脱欧，地球村四分五裂成孤岛，逆全球化的进程正缓慢而又迅速地铺开 —— 这是人类的内卷。香港游行示威不止，台湾局势越来越不稳定，沙特大打石油战，美俄相继扩军，新冠肺炎全球感染人数依然不见拐点 —— 所有的这一切将如泰山压顶，最终将影响我们每一个人的命运。时代的张力可以将一个人迅速捧上神坛，也足够将一个人轻易撕碎。蝴蝶的翅膀正以更快的速度扇动着，而我空洞的双眼盯着远方，茫然无知，手足无措。</p>
         </article>
   </div>
 </section>
