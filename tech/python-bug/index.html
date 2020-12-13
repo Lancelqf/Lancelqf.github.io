@@ -197,20 +197,24 @@ code.has-jax {
   <div>
         <article itemprop="articleBody" id="content">
            <ul>
-<li><p>fatal error: Python.h: No such file or directory：#include &quot;Python.h&quot;</p>
-
+<li>
+<p>fatal error: Python.h: No such file or directory：#include &ldquo;Python.h&rdquo;</p>
 <ul>
 <li>Solution: apt-get install python-dev</li>
-</ul></li>
-
-<li><p>RuntimeError: dictionary changed size during iteration</p>
-
+</ul>
+</li>
+<li>
+<p>RuntimeError: dictionary changed size during iteration</p>
 <ul>
 <li>Example: for k in dictVar:dictVar.pop(k)</li>
-<li>Solution:</li>
+<li>Solution:
+<ul>
 <li>Python2.x: for k in dictVar.keys(): dictVar.pop(k)</li>
 <li>Python3.x: for k in list(dictVar): dictVar.pop(k)</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
         </article>
   </div>

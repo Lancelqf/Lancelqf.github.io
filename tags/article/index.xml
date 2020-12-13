@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Article on Qingfeng&#39;s blog</title>
@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Fri, 10 Apr 2020 11:20:40 -0600</lastBuildDate>
-    
-	<atom:link href="https://lancelqf.github.io/tags/article/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sun, 13 Dec 2020 07:11:01 -0700</lastBuildDate><atom:link href="https://lancelqf.github.io/tags/article/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>什么是什么</title>
+      <link>https://lancelqf.github.io/heart/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Sun, 13 Dec 2020 07:11:01 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/heart/%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;人，一丝不挂，被抛入这个世界。&lt;/p&gt;
+&lt;p&gt;崭新的世界透过全身的感官，一股庞大的信息流像巨蟒一般注入新鲜的身体。那一刻在他的肉浆大脑里暗流涌动，生物电信号霹雳作响。&lt;/p&gt;
+&lt;p&gt;这一切令他无所适从，他哇哇大哭，回应这个陌生的世界。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>振翅</title>
@@ -109,12 +118,8 @@
       
       <guid>https://lancelqf.github.io/heart/%E9%A3%9F%E8%8B%A6%E8%80%85/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;&lt;center&gt;
-世界太苦了&lt;br /&gt;
-请给我一些催吐药&lt;br /&gt;
-让它们都去吧！&lt;br /&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+&lt;/blockquote&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -123,7 +128,7 @@
       <pubDate>Fri, 04 Jan 2019 16:10:26 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E6%B2%BC%E6%B3%BD%E5%9C%B0/</guid>
-      <description>&lt;p&gt;今天突然想起这篇小短文，可能和最近在读《月亮与六便士》有关。最初是初中做阅读理解的时候看到了这篇文章，当时甚是惊艳，字里行间弥漫着悲壮之美。重读之后，正如文中所言，“是杰作。”&lt;br /&gt;
+      <description>&lt;p&gt;今天突然想起这篇小短文，可能和最近在读《月亮与六便士》有关。最初是初中做阅读理解的时候看到了这篇文章，当时甚是惊艳，字里行间弥漫着悲壮之美。重读之后，正如文中所言，“是杰作。”&lt;br&gt;
 下为中文译文，日文原文置于其后。&lt;/p&gt;</description>
     </item>
     
@@ -133,8 +138,7 @@
       <pubDate>Mon, 17 Dec 2018 09:05:54 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E8%88%AA%E6%B5%B7%E6%97%A5%E8%AE%B0/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=330 height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=93465&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;&lt;/center&gt;&lt;/p&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;大一初入学时，制定过一份名为《大航海时代》的大学四年规划。而今度过四年旧时光，渡过太平洋，虽然原本的计划大部分都远未完成，但也该是总结的时候了。&lt;/p&gt;</description>
     </item>
     
@@ -155,14 +159,14 @@
       <guid>https://lancelqf.github.io/tech/markdown%E6%95%99%E7%A8%8B/</guid>
       <description>简书居然没有官方 Markdown 教程，我来 原来官方是有的。。。献给写作者的 Markdown 新手指南 不过我这个更简。而且还有独门秘籍。
  首先，“Markdown 其实很简单。在简书上学习 Markdown 最方便。”
-1. 标题 为了获得上面的 “1. 标题”， 在 Markdown 编辑器里输入：
-# 1. 标题  “#” 后最好加个空格。除此之外，还有 5 级标题，依次有不同的字体大小，即
-## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题  这样就有：
-二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题 2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
-最常用的强调方式，那就是 **加粗** 了，你得这样：  通常我喜欢在 “**加粗的部分**” 旁边各加一个空格，当然你也可以不这样。 斜体则多用在于书名，比如：我从来没看过 Jane Eyre
-斜体则多用在于书名，比如：我从来没看过 *Jane Eyre*  但中文的斜体我觉得真是不美，像：《*简 · 爱*》，一般还是别用了。
-3. 层次 比如写个读书笔记，你得
-第一章  第一节 第二节(你不用敲 &amp;quot;2&amp;quot;，自动就有了）  第一小节（推荐每层次缩进四个空格） * 小小节 1 * 小小节 2 * 第二小节   也不难：</description>
+ 1. 标题 为了获得上面的 “1. 标题”， 在 Markdown 编辑器里输入：
+# 1. 标题“#” 后最好加个空格。除此之外，还有 5 级标题，依次有不同的字体大小，即
+## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题这样就有：
+二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题  2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
+最常用的强调方式，那就是 **加粗** 了，你得这样：通常我喜欢在 “**加粗的部分**” 旁边各加一个空格，当然你也可以不这样。 斜体则多用在于书名，比如：我从来没看过 Jane Eyre
+斜体则多用在于书名，比如：我从来没看过 *Jane Eyre*但中文的斜体我觉得真是不美，像：《简 · 爱》，一般还是别用了。
+ 3. 层次 比如写个读书笔记，你得
+第一章  第一节   第二节(你不用敲 &amp;ldquo;2&amp;rdquo;，自动就有了）  第一小节（推荐每层次缩进四个空格） * 小小节 1 * 小小节 2 * 第二小节    也不难：</description>
     </item>
     
     <item>
@@ -171,10 +175,7 @@
       <pubDate>Wed, 23 May 2018 15:18:43 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E7%A4%BE%E4%BC%9A%E5%AD%A6%E6%98%AF%E4%B8%AA%E5%8A%A8%E8%AF%8D/</guid>
-      <description>&lt;p&gt;&lt;center&gt;
-选自&lt;a href=&#34;https://book.douban.com/subject/25764449/&#34;&gt;《社会学的邀请》&lt;/a&gt;
-&lt;/center&gt;&lt;/p&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;至今我仍记得自己读大一时所听的第一节社会学课。任课教师英斯基普教授是个年轻人，他热情、有趣，尤其具有洞察力。他将社会学的智慧光芒不知不觉地渗透在讲课中，让我有了一种全新的视角来看待周围的事物。我被社会学迷住了，感到它既有趣又重要，于是又选了其他与社会学有关的课程。&lt;/p&gt;</description>
     </item>
     
@@ -184,14 +185,8 @@
       <pubDate>Tue, 15 May 2018 19:32:17 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E8%AE%BA%E6%99%AE%E9%81%8D%E7%9A%84%E4%BA%BA%E7%B1%BB%E7%A4%BE%E4%BC%9A-%E5%8D%A2%E6%A2%AD/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;论普遍的人类社会①&#34;&gt;论普遍的人类社会①&lt;/h2&gt;
-
-&lt;p&gt;&lt;/center&gt;&lt;/p&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;①本章标题最初作：“论人与人之间根本就没有自然而然的普遍社会”。《纽沙代尔手稿》作：“论自然权利与普遍社会”。《自然权利》（Droitnaturel，或译天赋人权）是狄德罗为《百科全书》第十卷所写的一条；关于它和本章的关系，详下。——译注&lt;/p&gt;
-
 &lt;p&gt;让我们先来探讨政治制度的必要性是从何而来的。&lt;/p&gt;</description>
     </item>
     
@@ -202,10 +197,9 @@
       
       <guid>https://lancelqf.github.io/heart/origin/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;All that is solid melts into air, all that is holy is profaned, and man is at last compelled to face with sober senses, his real conditions of life, and his relations with his kind.
-&lt;div align=right&gt;——Karl Marx&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;All that is solid melts into air, all that is holy is profaned, and man is at last compelled to face with sober senses, his real conditions of life, and his relations with his kind.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;世界本质上是虚无的，一切价值均是度量，而人是万物的尺度。技术的浪潮，裹挟着新的价值观，无情地将传统抛弃，所有无法适应转变的事物，在这次伟大的转变之中，都将如同中世纪的腐朽盔甲般被碾得粉碎。斗转星移之间，昔日了无生机的地表再次裸露在人们眼前，而地表之上的一切价值都已被摧毁。面对这价值的荒漠，昔日依存之物尽去，今日之我又该如何生存下去？&lt;/p&gt;</description>
     </item>
     
@@ -218,7 +212,6 @@
       <description>&lt;blockquote&gt;
 &lt;p&gt;自从厌倦于追寻，我已学会一觅即中，自从一股逆风袭来，我已能抗御八面来风，驾舟而行。——尼采&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;写下这篇文章需要些许勇气，这意味着许多的大逆不道。但，是时候对过往的思索与痛苦作一个阶段性的总结了。如题所言，此文是对我自己世界观的梳理，写给可能看见它的人，但更多得是写给自己。&lt;/p&gt;</description>
     </item>
     
@@ -229,7 +222,6 @@
       
       <guid>https://lancelqf.github.io/heart/renke%E7%9A%84%E6%BC%94%E8%AE%B2%E7%A8%BF/</guid>
       <description>&lt;p&gt;我时不时会思考，我想成为一个怎样的读书人。这是个很大需要长久时间思考的问题，在此我想分享两点自己的思考。&lt;/p&gt;
-
 &lt;p&gt;第一，我想成为一个宽容理性的读书人。&lt;/p&gt;</description>
     </item>
     
@@ -240,10 +232,9 @@
       
       <guid>https://lancelqf.github.io/heart/%E6%9D%82%E8%AE%B0%E4%B9%8B%E5%B9%BB%E7%81%AD/</guid>
       <description>&lt;ol&gt;
-&lt;li&gt;“你们因爱而发光。但是，你们在相遇之前也曾爱过别人。你们也都曾结过婚，像我们一样。甚至在这之前，你们可能还爱过其他人……你可以这样说，就是如果我们中谁出了什么事——请原谅我这么说——但假如明天我们俩有谁出了事，我想另一个，另一个人会伤心一会儿，你们知道，但很快，活着的一方就会跑出去，再次恋爱，用不了多久就会另有新欢。所有这些，所有这些我们谈论的爱情，只不过是一种记忆罢了。甚至可能连记忆都不是。”
-&lt;div align=right&gt;——卡佛《当我们谈论爱情的时候我们在谈些什么》&lt;/div&gt;
-是吧？&lt;/li&gt;
-&lt;/ol&gt;</description>
+&lt;li&gt;“你们因爱而发光。但是，你们在相遇之前也曾爱过别人。你们也都曾结过婚，像我们一样。甚至在这之前，你们可能还爱过其他人……你可以这样说，就是如果我们中谁出了什么事——请原谅我这么说——但假如明天我们俩有谁出了事，我想另一个，另一个人会伤心一会儿，你们知道，但很快，活着的一方就会跑出去，再次恋爱，用不了多久就会另有新欢。所有这些，所有这些我们谈论的爱情，只不过是一种记忆罢了。甚至可能连记忆都不是。”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -279,8 +270,7 @@
       <pubDate>Sun, 19 Apr 2015 09:12:00 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E5%85%B3%E4%BA%8E%E6%9D%8E%E7%BA%A6%E7%91%9F%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83/</guid>
-      <description>&lt;h2 id=&#34;一-李约瑟问题-及其现实意义&#34;&gt;一.&amp;quot;李约瑟问题&amp;quot;及其现实意义&lt;/h2&gt;
-
+      <description>&lt;h2 id=&#34;一李约瑟问题及其现实意义&#34;&gt;一.&amp;ldquo;李约瑟问题&amp;quot;及其现实意义&lt;/h2&gt;
 &lt;p&gt;英国著名生物化学家李约瑟（Joseph Needham，1900-1995）在15卷巨著《中国科学技术史》中提出了著名的“李约瑟问题”（Needham Puzzle）：“如果我的中国朋友们在智力上和我完全一样，那为什么像伽利略、托里拆利、斯蒂文、牛顿这样的伟大人物都是欧洲人，而不是中国人或印度人呢？为什么近代科学和科学革命只产生在欧洲呢？”换言之“尽管中国古代对人类科技发展做出了很多重要贡献，但为什么科学和工业革命没有在近代的中国发生？”&lt;/p&gt;</description>
     </item>
     
@@ -290,8 +280,7 @@
       <pubDate>Tue, 24 Mar 2015 10:58:19 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E8%B4%B9%E6%9B%BC%E8%BF%99%E4%B8%AA%E8%80%81%E9%AC%BC/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;img src=&#34;https://lancelqf.github.io/media/费曼1.jpg&#34; alt=&#34;费曼&#34; height=&#34;25%&#34; width=&#34;25%&#34; /&gt;&lt;/center&gt;&lt;/p&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;理查德·费曼（1918年－1988年），被认为是爱因斯坦之后最睿智的理论物理学家，也是第一位提出纳米概念的人。&lt;/p&gt;</description>
     </item>
     
@@ -334,13 +323,7 @@
       <pubDate>Thu, 12 Jun 2014 15:31:19 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E8%87%AA%E6%88%91%E8%BF%9B%E5%8C%96/</guid>
-      <description>&lt;p&gt;&lt;div align=center&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;坍塌&#34;&gt;【坍塌】&lt;/h3&gt;
-
-&lt;p&gt;&lt;/div&gt;
-现今的教育体制已让我喘不过气来。而当我意识到自己对抗的不仅仅是某种特定的制度而是整个社会体制时，无助感瞬间击倒了我。
-怎么办，怎么办？&lt;/p&gt;</description>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
     </item>
     
     <item>
@@ -358,7 +341,7 @@
       <pubDate>Sat, 17 May 2014 16:05:26 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E5%8F%88%E5%A6%82%E4%BD%95/</guid>
-      <description> 关于「黑客帝国」引发的胡思乱想的焦虑状态怎么解决？ yolfilm：
+      <description>关于「黑客帝国」引发的胡思乱想的焦虑状态怎么解决？ yolfilm：
 就是「缸中之脑」又如何？
 就是「虚构的世界」，又如何？
 年青时，真心苦读了好多年的「存在主义。」，也是为了「人存在的意义」，痛苦多年。
@@ -405,18 +388,13 @@
       <pubDate>Sun, 14 Apr 2013 15:16:04 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/heart/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%80%8C%E6%B4%BB%E7%9D%80-%E7%BD%97%E7%B4%A0/</guid>
-      <description>&lt;p&gt;&lt;center&gt;&lt;/p&gt;
-
+      <description>&lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;我为什么而活着&#34;&gt;我为什么而活着&lt;/h2&gt;
-
-&lt;p&gt;&lt;/center&gt;&lt;/p&gt;
-
-&lt;div align=center&gt;罗素&lt;/div&gt;
-
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;blockquote&gt;
 &lt;p&gt;记得高一时读这篇文章时内心还一片平静；而今再读，令我震撼，为之热血沸腾。&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;对爱情的渴望，对知识的追求，对人类苦难不可遏制的同情心，这三种纯洁而无比强烈的激情支配着我的一生。这三种激情，就像飓风一样，在深深的苦海上，肆意地把我吹来吹去，吹到濒临绝望的边缘。&lt;/p&gt;</description>
     </item>
     

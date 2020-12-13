@@ -194,52 +194,37 @@ code.has-jax {
   <div>
         <article itemprop="articleBody" id="content">
            <h2 id="password-authentication">Password authentication</h2>
-
-<pre><code class="language-bash">ssh &lt;User&gt;@&lt;HostName&gt;
-</code></pre>
-
-<h2 id="configuring-key-based-authentication">Configuring key based authentication</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh &lt;User&gt;@&lt;HostName&gt;
+</code></pre></div><h2 id="configuring-key-based-authentication">Configuring key based authentication</h2>
 <ul>
-<li>Generate a separate SSH key in a different file</li>
+<li>
+<p>Generate a separate SSH key in a different file</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -f ~/.ssh/&lt;keyname&gt;
+</code></pre></div></li>
+<li>
+<p>Add the contents of the <strong>local</strong> <code>&lt;keyname&gt;.pub</code> file to the appropriate <code>authorized_keys</code> file(s) on the <strong>SSH host</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Method 1</span>
+ssh-copy-id -i ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;
+<span style="color:#75715e"># Method 2</span>
+scp ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;:~/.ssh/authorized_keys
+</code></pre></div></li>
+<li>
+<p>Open ssh config file and add host information</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Open ssh config</span>
+vim ~/.ssh/config
+<span style="color:#75715e"># Add host information</span>
+Host &lt;name-of-ssh-host-here&gt;
+HostName &lt;host-fqdn-or-ip-goes-here&gt;
+User &lt;your-user-name-on-host&gt;
+Port &lt;port-to-connect-on-host&gt; <span style="color:#75715e"># default 22</span>
+IdentityFile &lt;path-to-rsa-priavte-key&gt; <span style="color:#75715e"># e.g. ~/.ssh/&lt;keyname&gt;</span>
+</code></pre></div></li>
+<li>
+<p>Connect</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh &lt;Host&gt;
+</code></pre></div></li>
 </ul>
-
-<pre><code class="language-shell">  ssh-keygen -t rsa -b 4096 -f ~/.ssh/&lt;keyname&gt;
-</code></pre>
-
-<ul>
-<li>Add the contents of the <strong>local</strong> <code>&lt;keyname&gt;.pub</code> file to the appropriate <code>authorized_keys</code> file(s) on the <strong>SSH host</strong>.</li>
-</ul>
-
-<pre><code class="language-shell">  # Method 1
-  ssh-copy-id -i ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;
-  # Method 2
-  scp ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;:~/.ssh/authorized_keys
-</code></pre>
-
-<ul>
-<li>Open ssh config file and add host information</li>
-</ul>
-
-<pre><code class="language-shell">  # Open ssh config
-  vim ~/.ssh/config
-  # Add host information
-  Host &lt;name-of-ssh-host-here&gt;
-  HostName &lt;host-fqdn-or-ip-goes-here&gt;
-  User &lt;your-user-name-on-host&gt;
-  Port &lt;port-to-connect-on-host&gt; # default 22
-  IdentityFile &lt;path-to-rsa-priavte-key&gt; # e.g. ~/.ssh/&lt;keyname&gt;
-</code></pre>
-
-<ul>
-<li>Connect</li>
-</ul>
-
-<pre><code class="language-shell">  ssh &lt;Host&gt;
-</code></pre>
-
 <h2 id="references">References</h2>
-
 <ul>
 <li><a href="https://blog.csdn.net/sunyao_123/article/details/74783582">SSH连接服务器+让服务器记住密码及IP</a></li>
 <li><a href="https://code.visualstudio.com/docs/remote/troubleshooting">Remote Development Tips and Tricks</a></li>
