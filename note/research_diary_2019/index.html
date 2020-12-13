@@ -35,6 +35,7 @@
     <base href="https://lancelqf.github.io">
     <title> Research Diary 2019 - lancelqf.github.io </title>
     <link rel="canonical" href="https://lancelqf.github.io/note/research_diary_2019/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Research Diary 2019" />
     
 
     
@@ -171,7 +172,7 @@ code.has-jax {
 
 
 <section id="main">
-  <h1 itemprop="name" >Research Diary 2019</h1>
+  <h1 itemprop="name" style="text-align: center;">Research Diary 2019</h1>
   
 
 <aside id="meta">
@@ -190,17 +191,28 @@ code.has-jax {
     </div>
 </aside>
 
-<meta itemprop="wordCount" content="22005">
+<meta itemprop="wordCount" content="22042">
 <meta itemprop="datePublished" content="2019-01-21">
 <meta itemprop="url" content="https://lancelqf.github.io/note/research_diary_2019/">
 
   <div>
         <article itemprop="articleBody" id="content">
            <p>This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<!--
+- In current research, the codomain of reward function on $\mathbb{R}$, how about $\mathbb{R} ^ n$ where $n \in \mathbb{N}$?
+- The state value is estimated by return (rewards sum after time $t$). However, we only have past and current rewards. How can we do this? How can this even be possible?
+- Can we get rid of reward (especially manually designed reward)? —— nexting?!
+- self supervise learning: where do we get the supervised information? from future experience!
+-->
+<!--
+Because there is an infinite number of actions and (or) states to estimate the values for and hence value-based approaches are way too expensive computationally in the continuous space.
+
+Can we and should we get rid of reward/value function? New goal lead to new value function which means we have to recompute almost everything.
+reward function is a mapping from the history sequence to a real number.
+state value function can be seen as a heuristic function used for heuristic search in RL problems.
+
+deterministic or stochastic policy? the difference between deterministic and greedy method?
+-->
 <h1 id="reference">Reference</h1>
 <ul>
 <li><a href="http://incompleteideas.net/book/the-book.html">Reinforcement Learning: An Introduction. Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018.</a></li>
@@ -212,7 +224,7 @@ code.has-jax {
 <li><a href="https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html">Policy Gradient Algorithms. Lilian Weng, 2018.</a></li>
 </ul>
 <h1 id="january">January</h1>
-<p><!-- raw HTML omitted -->01/21: What is intelligence? (1/2)<!-- raw HTML omitted --></p>
+<p><font size=6>01/21: What is intelligence? (1/2)</font></p>
 <p>I&rsquo;m going to talk about intelligence. To be specific, it is not just human intelligence or artificial intelligence but general intelligence that I want to talk about. Although it is really hard to find a proper and satisfying defnition for intelligence, it is still possible to name some traits of intelligence. Let&rsquo;s begin!</p>
 <ul>
 <li>
@@ -227,7 +239,7 @@ But what does this abstract word, adaptive, really mean? Well, it is about makin
 </li>
 </ul>
 <p>Note that the three traits mentioned above are strongly connect with each other.</p>
-<p><!-- raw HTML omitted -->01/22: What is intelligence? (2/2)<!-- raw HTML omitted --></p>
+<p><font size=6>01/22: What is intelligence? (2/2)</font></p>
 <ul>
 <li>
 <p><strong>Efficient</strong>: In real world, we often need to solve optimzation problems, such as finding the shortest way to school, makeing as much as money given fixed time and being sucessful as young as possible. In short, we want to achieve the goal efficiently. Similarly, a good intelligent agent should be efficient enough to realize the final goal. For example, energy saving and less time wasting. However, this may not always be the case because I am talking about efficiency in the sense of archieving goal. The goal can also be related to inefficiency, such as riding a bike as slow as you can. So the efficiency I mean, is based on the goal totally. Planning and optimization play important roles here.</p>
@@ -246,7 +258,7 @@ Is learning knowledge an application of funtion approximation? Can any knowledge
 <p><strong>Others</strong>: creativity, imagination&hellip; The meaning of these words are vague and abstract. I don&rsquo;t know how to translate them into more concrete ones. Maybe they are just manifestations of searching, exploring and combining old things into new things.</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->01/23: What&rsquo;s inside in an intelligent agent?<!-- raw HTML omitted --></p>
+<p><font size=6>01/23: What&rsquo;s inside in an intelligent agent?</font></p>
 <p>The traits of intelligence are like softwares in a computer. So what hardwares do we need in order to support the normal running of softwares? In my opinion, these subsystems are necessary for an intelligent agent:</p>
 <ul>
 <li><strong>Sensor</strong>: Any things that preceives the environment counts as a sensor. An agent may have many sensors. A sensor can be defined as a mapping from environment to signals. For example, an ear transforms sound waves to acoustical signals and an eye transforms photons of lights to images. The sensors create what the agent can &ldquo;see&rdquo;. The signals that sensors output are the only information source of the environment. Anything that cannnot be perceived by sensors does not exist with regard to the agent. Note that what sensors perceive may be wrong, i.e. the signals produced by sensors do not reflect the real world accurately.</li>
@@ -259,7 +271,7 @@ Is learning knowledge an application of funtion approximation? Can any knowledge
 </li>
 </ul>
 <p>Can we separate the knowledge base with the thinker totally? Yes! One good example is McCarthy&rsquo;s Advice Taker in which the rules and the reasoning component are separated. But is it good? I&rsquo;m not sure. It&rsquo;s possible that these subsystems are strongly connected or even merged together without clear boundaries. If the knowledge base and the planner are separated completely, it may take more time to access necessary knowledge before making a proper decision. Thus, a distributed knowledge base may be more efficient. For example, knowledge in neural networks is represented by weight matrice between layers. The decision making process consists of repetitions of acessing to knowledge (weights) and computation (compute activation functions, do matrix multiplication, etc.). The two procedures are followed one after the other in the forward process. Further thoughts and emprical experiments are still needed.</p>
-<p><!-- raw HTML omitted -->01/24: Knowledge base<!-- raw HTML omitted --></p>
+<p><font size=6>01/24: Knowledge base</font></p>
 <p>Before considering the knowledge base, it is better starting from more basic questions.</p>
 <ul>
 <li>
@@ -298,27 +310,27 @@ In fact, whether a knowledge representation is good or bad really depends on the
 <p>How do we (i.e. human being) store and retrieve memory? No idea. <strong>Need future study</strong>.</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->01/25: Reward function (1/3)<!-- raw HTML omitted --></p>
+<p><font size=6>01/25: Reward function (1/3)</font></p>
 <p>How to guide an agent to achieve the final goal. Use reward! (But do we really need it? Is it necessary?)</p>
 <ul>
 <li>Are binary ((0,1),(-1, +1)) or integer reward functions as powerful as any real number reward functions?<br>
 &ldquo;Powerful&rdquo; is not very clear. What I mean is that can any policy generated using real number reward functions be generated by binary reward functions? I think the answer should be &ldquo;Yes&rdquo;. In general value iteration, we first do policy evaluation by computing state values or state-action values based on reward sequence we receive. After that, policy improvement is applied to find better policies. To be more specific, we need the information about how to choose the best action given state values or state-action values. How do we do this? We compare numbers and then choose the action with max state-action value. In fact, it doesn&rsquo;t matter whether these numbers are real numbers or integers. What matters is the order. And integer is an ordered field which should be enough. However, real reward function has a big advantage. Since real number field is dense, we can always find a real number between two different real numbers. For example, asumme that we assign $1$ to $Q(s,a _ 1)$ and $2$ to $Q(s,a _ 2)$. Then here comes $Q(s,a _ 3)$. And we find that $a _ 3$ is better than $a _ 1$ but worse than $a _ 2$, i.e. $1=Q(s,a _ 1) &lt; Q(s,a _ 3) &lt; Q(s,a _ 2)=2$. We can always find a real number between 1 and 2 for $Q(s,a _ 3)$ but not an integer. If we insist to use integers, we must adjust the value of $Q(s,a _ 1)$ and $Q(s,a _ 2)$ as well. So apparently, real number reward functions are easier to use. But binary and integer reward functions have their own merits——they are easier to design. Which one is more sample efficient? Which one helps the agent learn faster? <strong>Need future study</strong>.</li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->01/26: Reward function (2/3)<!-- raw HTML omitted --></p>
+<p><font size=6>01/26: Reward function (2/3)</font></p>
 <p>What are we talking about when we talk about rewards?</p>
 <p>What are rewards? Where do they come from? Look around and then you will find that there are many things that we call reward, such as money paid by your boss, delicious food, compliment from people who respect you. But are they really reward? Definitely not! They are just what they are. We create rewards ourselves. Rewards come from our brain, especially the chemical reward system in the brain. Through the chemical reward system, the brain guides the body, drive it for food and away from danger. In short, rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal. Typically, we use a real number to indicate this. The larger the reward value is, the better the current state is and the closer we are from the final goal. For example, if the goal is finding the shortest path from $cityA$ to $cityB$, the reward can be the inverse of path length from current position to $cityB$.</p>
 <p>Note that the reward I&rsquo;m talking about here is not same as the reward descriped in Reinforcement Learning. The reward in RL defines the goal, indicates what is good or bad in an immediate sense. In this context, however, it indicates what is good or bad in the long run. So for consistency, I call the reward that I mentioned before <strong>cumulation</strong>, denoted as $C_t$ at time $t$. And the new reward $R_t$ is defined as a function of cumulation, i.e. $R _ t \doteq C _ t - C _ {t-1}$. In another view, the cumulation is a cumulative sum of the reward sequence: $C _ t = R _ 1 + R _ 2 + \cdots + R _ t = \sum _ { k = 1 } ^ { t } R _ { k }$. The new reward is same as the reward in RL. But the cumulaiton is not return. As a reminder, the return is defined as $G _ { t } \doteq R _ { t + 1 } + R _ { t + 2 } + R _ { t + 3 } + \cdots + R _ { T }$. The return is a accumulation of future rewards while cumulation is a accumulation of past rewards. They are two aspects.</p>
 <p>Similar to discounted return, we can also add discount factor to cumulation: $C _ t = R _ 1 + \gamma R _ 2 + \cdots + {\gamma} ^ {t-1} R _ t = \sum _ { k = 1 } ^ { t } \gamma ^ { k - 1 } R _ { k }$ and $R _ t = \frac{C _ t - C _ {t-1}}{{\gamma} ^ {t-1}}$.</p>
-<p><!-- raw HTML omitted -->01/28: Reward function (3/3)<!-- raw HTML omitted --></p>
+<p><font size=6>01/28: Reward function (3/3)</font></p>
 <p>As I elaborated in last research diary, &ldquo;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&rdquo; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A \rightarrow  \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
 <p>Instead of designning reward functions manually, can we design some methods to learn reward functions? For example, can we apply neural networks to approximate the true rewards (if they do exist) through bootstrapping? I think there should be some previous works (It&rsquo;s so obvous afterall!), or maybe someone tries this idea before but it didn&rsquo;t work. <strong>Need future study</strong>.</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->01/29: State<!-- raw HTML omitted --></p>
+<center><img src="/media/agent–environment_interaction.jpg" alt="The agent–environment interaction in a MDP." height="70%" width = "70%" /></center>
+<p><font size=6>01/29: State</font></p>
 <p>Define the state space $S$ to be $S \doteq S _ E \times S _ A$ where $S _ E$ is the environment state space and $S _ A$ is the agent state space. For every state $s$, it can written as $s=(s _ e, s _ a)$. If we use a vector to represent a state $s$, then each dimension of this vector is a feature of this state (e.g. $s=(f _ 1, f _ 2, \cdots, f _ n)$).</p>
 <p>One advantage of representing states using vectors is that vectors are simple, comprehensible and easy to handle—they are just a bunch of features. However, since there is no internal structure inside a vector, it is not convenient to represent complex states or encode structural information in it, such as feature interaction (e.g. ${f _ 1 ^ 2} f _ 2$). One way to fix this is adding new features (e.g. $f _ {n+1} = {f _ 1 ^ 2} f _ 2$). But this usually leads to the curse of dimensionality. Thus we need a more compact but still powerful enough representation. And they should be manageable by agents (e.g. computers).</p>
 <p>How about structural representations, such as trees and graphs? Are they good representations for states? Well, I&rsquo;m not sure. Take the graph for example. If nodes are objects or features, edges that connect nodes can be the relations between objects or features. They are more powerful than vectors, since ordered disconnected nodes are equivalent to vectors. Moreover, nodes may have inner structure. In fact, we can even include part of graph inside a node! However, since graphs are more complex than vectors, they are also more difficult to handle with. And what is the edge that connects two nodes in the sense of mathematics? <strong>Need future study</strong>.</p>
-<p><!-- raw HTML omitted -->01/30: Action (1/2)<!-- raw HTML omitted --></p>
+<p><font size=6>01/30: Action (1/2)</font></p>
 <p>Let $A$ be the action space. Then an action can be viewed as a mappings from a distribution of state space to another distribution of state space, i.e. $A: p(S) \rightarrow p(S)$. Note that this includes the mappings from one state to another state if all probability is concentrate on a particular state, i.e. $p(s)=1$ for state $s$ while $p(\cdot)=0$ for other states. For example, $a(p _ 1)=p _ 2$ where $p _ 1(s)=\mathcal{N}(0,1)$ and $p _ 2(s)=\mathcal{N}(1,4)$.</p>
 <p>If an action only influences the variation between two distributions, we have following properties:</p>
 <ul>
@@ -329,7 +341,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 <p>A possible way to fix this: we move the distribution function by a constant $c$, i.e. $p(s) =p(s) + c$ such that $\int_{s \in S} {max(p(s)+c, 0)} ds = 1$. The $p _ 2$ in the above example then becomes $p _ 2(s) = s + \sqrt{2} - 1$ for $s \in  [1 - \sqrt{2}, 1]$ . This is not a good solution since the computation of $c$ is not easy.</p>
 <p>However, if we use sampling, a negative probability won&rsquo;t be a big problem. We can always sample from states that have a positive probability and discard the state we sampled out whose probability is negative.</p>
 <h1 id="february">February</h1>
-<p><!-- raw HTML omitted -->02/01: Action (2/2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/01: Action (2/2)</font></p>
 <p>Recall that $p(s ^ { \prime } | s , a)$ is the probability of transition from state $s$ to $s ^ {\prime}$ under action $a$. We also have:
 $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \textrm{where} \quad a(p _ 1) = p _ 2$$</p>
 <p>However, we can not recover state transition probability $p(s ^ { \prime } | s , a)$ simply from $p _ 1(s)$ and $p _ 2(s)$ since there are more unknown values than equations. This means that we can not have all information from $a(\cdot)$. But is $a(\cdot)$ useful enough? I don&rsquo;t know actually&hellip;</p>
@@ -340,7 +352,7 @@ $$p _ 2(s ^ {\prime})= \sum_{s \in S} p(s ^ { \prime } | s , a) p _ 1(s) \quad \
 <li>Total actions: They are all possible actions that th agent can use, denote as $A ^ \infty$.  For each action $a \in {A ^ \infty}$, it is defined as $a \doteq a _ 1 \circ a _ 2 \circ \dots \circ \dots = \circ _ {i=1} ^ {\infty} a _ i$ where $a _ i \in A$ for all $i \in \mathbb{N}$.</li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->02/02: Hierarchical states and actions<!-- raw HTML omitted --></p>
+<p><font size=6>02/02: Hierarchical states and actions</font></p>
 <p>Hierarchical states and actions are quite useful in planning and solving other problems. One way of constructing hierarchical states is abstraction (any other ways?). Then the natural questions are: what is abstraction and how to do that?</p>
 <p>Well, abstraction is about leaving out unnecessary details, focusing on only general characteristics. Instances that have the same abstraction should share something in common. Based on this idea, we define a <strong>abstract state set</strong>:
 $$AS_f \doteq [x \in \Omega | f(x) \in P ]$$
@@ -351,7 +363,7 @@ where $\Omega$ is a set of instances; $f$ is a transform function that the abstr
 $$AS _ {f} ^ {2} \doteq [x \in \Omega | f(x) \in P ]$$
 where $\Omega$ is a subset of $AS _ {g}$. Similarly, we can define $n$-th level abstract state set $AS _ {f} ^ {n}$.</p>
 <p>Similar to how we define the action on state space, we can define the $n$-th level action on the $n$-th abstract state set.</p>
-<p><!-- raw HTML omitted -->02/04: Model (1/2): What is a model?<!-- raw HTML omitted --></p>
+<p><font size=6>02/04: Model (1/2): What is a model?</font></p>
 <p>What is a model? According to Collins dictionary, &ldquo;A model of an object is a physical representation that shows what it looks like or how it works. The model is often smaller than the object it represents.&rdquo; In this definition, there are two important aspects:</p>
 <ol>
 <li>The model is often smaller than the object it represents.</li>
@@ -371,7 +383,7 @@ where $\Omega$ is a subset of $AS _ {g}$. Similarly, we can define $n$-th level 
 </ol>
 <p>Note that the hierarchical states and actions also fits the definition of MTP simply by replacing $Q$ and $A _ s$ whith $n$-th level abstract state set and $n$-th level action set, respectively.</p>
 <p>Also, sometimes we need to model a world without the interference of the agent. We can include this case by adding null action denoted as $\emptyset$. Thus $P _ {\emptyset}$ the state transition probability for null action.</p>
-<p><!-- raw HTML omitted -->02/05: Model (2/2): Rethink<!-- raw HTML omitted --></p>
+<p><font size=6>02/05: Model (2/2): Rethink</font></p>
 <p>Things I need to consider further:</p>
 <ol>
 <li>The above model is still too simple. Afterall, the world is not Markov.</li>
@@ -388,7 +400,7 @@ where $\Omega$ is a subset of $AS _ {g}$. Similarly, we can define $n$-th level 
 <li>How do I predict the world? Do I have a world model in my brain? Do I store a set of states somewhere in my brain? If so, how does the brain represent a state?</li>
 <li>How much information can we store in our brain in all our lives?</li>
 </ol>
-<p><!-- raw HTML omitted -->02/07: Policy (1/2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/07: Policy (1/2)</font></p>
 <p>According the definition in Sutton&rsquo;s book, a policy defines the learning agent&rsquo;s way of behaving at a given time; a mapping from perceived states of the environment to actions to be taken when in those states.</p>
 <p>In RL setting, typically there are two ways to learn a policy:</p>
 <ol>
@@ -397,7 +409,7 @@ where $\Omega$ is a subset of $AS _ {g}$. Similarly, we can define $n$-th level 
 </ol>
 <p>My question is that are there any other approaches to generate a policy? For example, rule-based methods? Futhermore, do we have to use a reward fucntion? Is it really necessary?</p>
 <p>Instead, can we learn a metric $M$ that measures how &ldquo;close&rdquo; is the current state to the goal states? If so, then what supervised information can we use to correct a wrong measurement? But is this method really different with value-based methods? Maybe not.</p>
-<p><!-- raw HTML omitted -->02/08: Policy (2/2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/08: Policy (2/2)</font></p>
 <p>Anyway, let&rsquo;s try! Define the metric over (abstract) state set: $M: S \times S arrow [0,+\infty)$. Since it is a metric, for $x,y,z \in S$, the following conditions are satisfied:</p>
 <blockquote>
 </blockquote>
@@ -417,7 +429,7 @@ $$
 $$
 notice that if $M(s ^ {\prime}, F) \propto -(R + \gamma V(s ^ {\prime}))$, the two ways of generating policy are exact same. So it seems that we still need use something similar to reward or state value as a measurement of the agent&rsquo;s performance&hellip; Maybe this can be combined with some heuristic search algorithm or used as a better initilization for state values.</p>
 <hr>
-<p><!-- raw HTML omitted -->02/11: Transfer Learning: Introduction (1)<!-- raw HTML omitted --></p>
+<p><font size=6>02/11: Transfer Learning: Introduction (1)</font></p>
 <p>I&rsquo;ve run out of my ideas. Time to learn new things. I start with transfer learning. After that, I&rsquo;d probably continue with online learning, life-long learning and meta learning.</p>
 <p>For transfer learning, there are two important concepts:</p>
 <ul>
@@ -429,7 +441,7 @@ notice that if $M(s ^ {\prime}, F) \propto -(R + \gamma V(s ^ {\prime}))$, the t
 <p>Given the source domain $D _ s = [\mathbf{x} _ {i}, y _ {i}] _ {i=1} ^ {n}$ with labels and target domain $D _ t = [\mathbf{x} _ {j}] _ {j=1} ^ {m}$ without labels. The data distributions are different, i.e. $P(\mathbf{x} _ {s}) \neq P(\mathbf{x} _ {t})$. The goal of transfer learning is using knowledge learned form source domain to predict the labels in target domain.</p>
 </blockquote>
 <p>The core of transfer learning is to find shared knowledge between two domains and apply it properly. Knowledge is learned in source domain and then applied in target domain. In a word, it is about searching for the invariable (or similarity) in changing domains and then apply it.</p>
-<p><!-- raw HTML omitted -->02/12: Transfer Learning: Metrics (2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/12: Transfer Learning: Metrics (2)</font></p>
 <p>The next question is how to measure the similarity? Well, we need a metric. But what is a good metric for it? The bad news is that there is no certain answer for all transfer learning problems. Different metrics are useful in dfferent ways and in different problems. The good news is that we have many metrics in the arsenal:</p>
 <ul>
 <li>
@@ -462,7 +474,7 @@ $$MMD(X , Y) = \sqrt{ || \sum _ { i = 1 } ^ { n _ { 1 } } \phi ( \mathbf { x } _
 where $\phi(\cdot)$ is a mapping from orignal vector space to Reproducing Kernel Hilbert Space (RKHS).</p>
 </li>
 </ul>
-<!-- raw HTML omitted -->
+<!--- Principal Angle: -->
 <ul>
 <li>A-distance: We first train a classifier $h$ to distinguish whether instances are from source domain or target domain. We then define A-distance to be:
 $$\mathcal{A}(\mathcal{D} _ {s},\mathcal{D} _ {t})=2(1 - 2 err(h))$$
@@ -479,7 +491,7 @@ $$W _ { p } ( \mu , \nu ) ^ { p } = \inf \mathbb{E} [ d ( X , Y ) ^ { p }]$$
 where $\mathbb{E}[Z]$ denotes the expected value of a random variable $Z$ and the infimum is taken over all joint distributions of the random variables $X$ and $Y$ with marginals $\mu$ and $\nu$ respectively.<br>
 It seems that Wasserstein distance is quite popular these days, especially in GAN and domain adaptation.</li>
 </ul>
-<p><!-- raw HTML omitted -->02/13: Transfer Learning: Methods (3)<!-- raw HTML omitted --></p>
+<p><font size=6>02/13: Transfer Learning: Methods (3)</font></p>
 <ul>
 <li>
 <p>Instance based Transfer Learning:</p>
@@ -498,7 +510,7 @@ It seems that Wasserstein distance is quite popular these days, especially in GA
 <p>Relation Based Transfer Learning: In this method, logic is applied to learn the relations between objects in source domain. Then these relations are reused in target domain. This may be the most abstract method for transfer learning. Also, it is hard. So there are not too many papers.</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/14: Transfer Learning: Deep transfer learning (4)<!-- raw HTML omitted --></p>
+<p><font size=6>02/14: Transfer Learning: Deep transfer learning (4)</font></p>
 <p>Deep neural networks can learn features from the raw data end-to-end, including general features and specific features. Then the next question is how to decide which features of layers to transfer? There is no theoretical answer for this question. However, the experiments shows that:</p>
 <ul>
 <li>Features represented by weights in the first few layers are more general.</li>
@@ -507,7 +519,7 @@ It seems that Wasserstein distance is quite popular these days, especially in GA
 <li>By transfer weights in layers can accelerate learning.</li>
 </ul>
 <p>Finetune can accelerate learning and save training time. However, it can not overcome the difference between training data and test training. By adding some adaptation layers, it can be overcomed to some extent. Furthermore, an additional loss is added to account for domain adaptation loss.</p>
-<p><!-- raw HTML omitted -->02/15: Transfer Learning: Frontier (5)<!-- raw HTML omitted --></p>
+<p><font size=6>02/15: Transfer Learning: Frontier (5)</font></p>
 <ul>
 <li>Artifical intelligence and human knowledge: Through the long history, we human being accumulate a large amount of knowledge. How to transfer these knowledge to agents? How to encode our knowledge into agent? Yes, we can always find a way to encode some particular knowledge into agent. However, the final goal is to find a general way to encode all human knowledge. And this is really hard. The most difficult part is to find a suitable knowledge representation that is understandale to human being as well as intelligent agents.</li>
 <li>Transitive transfer learning: Although there may only be minor similarity between two domains, everything in this world is connected in some way. And If we can find a similarity chain that connects two different domains, we may find a way to transfer knowledge from one end to another end along this chain. This is the basic idea of transitive transfer learning. Surprisingly, it <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewPaper/14446">works</a>!</li>
@@ -518,8 +530,8 @@ where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer 
 <li>Transfer reinforcement learning: It is a combination of transfer learning and reinforcement learning.</li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->02/18: Deep Reinforcement Learning: Value-based methods for deep RL (1)<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<p><font size=6>02/18: Deep Reinforcement Learning: Value-based methods for deep RL (1)</font></p>
+<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%" /></center>
 <ul>
 <li>
 <p>Q-learning:</p>
@@ -550,11 +562,11 @@ where $\alpha$ is a scalar step size called the learning rate. Notice that when 
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/19: Deep Reinforcement Learning: Value-based methods for deep RL (2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/19: Deep Reinforcement Learning: Value-based methods for deep RL (2)</font></p>
 <ul>
 <li>
 <p>Deep Q-networks:</p>
-<!-- raw HTML omitted -->
+<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%" /></center>
 <ul>
 <li>Similar to fitted Q-learning, the target Q-network is:
 $$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ {k} ^ {-})$$
@@ -574,7 +586,7 @@ which leads to less overestimation of the Q-learning values, as well as improved
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/20: Deep Reinforcement Learning: Value-based methods for deep RL (3)<!-- raw HTML omitted --></p>
+<p><font size=6>02/20: Deep Reinforcement Learning: Value-based methods for deep RL (3)</font></p>
 <ul>
 <li>
 <p>Dueling network architecture:</p>
@@ -587,7 +599,7 @@ For $a ^ { * } = \operatorname { argmax } _ { a ^ { \prime } \in \mathcal { A } 
 </li>
 <li>
 <p>The structure of dueling network:</p>
-<!-- raw HTML omitted -->
+  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%" /></center>
 <p>The stream $V( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) })$ provides an estimate of the value function, while the other stream produces an estimate of the advantage function. The learning update is done as in DQN and it is only the structure of the neural network that is modiﬁed.</p>
 </li>
 <li>
@@ -616,7 +628,7 @@ where we use capital letters to emphasize the random nature of the next state-ac
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/21: Deep Reinforcement Learning: Value-based methods for deep RL (4)<!-- raw HTML omitted --></p>
+<p><font size=6>02/21: Deep Reinforcement Learning: Value-based methods for deep RL (4)</font></p>
 <ul>
 <li>
 <p>Multi-step learning:</p>
@@ -637,11 +649,11 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/22: Possible RL Project: Maxmin learning with approximation<!-- raw HTML omitted --></p>
+<p><font size=6>02/22: Possible RL Project: Maxmin learning with approximation</font></p>
 <p>The basic idea for this project is combining double learning with approximation. As mentioned in Rich&rsquo;s book, many algorithms involve a maximization operation which leads to maximization bias. By using double learning technique, the selection of an estimator and its value is uncoupled. Thus, we can remove the maximization bias to some extent. For example, for double Q-learning, the update is</p>
 <p>$$Q _ { 1 } ( S _ { t } , A _ { t } ) \leftarrow Q _ { 1 } ( S _ { t } , A _ { t } ) + \alpha [ R _ { t + 1 } + \gamma Q _ { 2 } ( S _ { t + 1 } , \underset { a } { \arg \max } Q _ { 1 } ( S _ { t + 1 } , a ) ) - Q _ { 1 } ( S _ { t } , A _ { t } ) ]$$</p>
 <p>A comparison of Q-learning and double Q-learning on a simple episodic MDP:</p>
-<!-- raw HTML omitted -->
+<center><img src="/media/Double_Q-learning.jpg" alt="Double Q-learning" height="80%" width="80%" /></center>
 <p>As shown in the above picture, double Q-learning is less affected by maximization bias. However, there is still a small gap between the optimal and what double Q-learning really archieves. Why is that? I think the main reason is that although the selection of an estimator and its value is uncoupled, the maximization operation still induces bias.</p>
 <p>To address this problem, I come up with a new algorithm called maxmin Q-learning. Compared with double Q-learning, there are two important difference.</p>
 <ul>
@@ -654,11 +666,11 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 </li>
 </ul>
 <p>For tabular case, maxmin Q-learning is better than double Q-learning on a simple episodic MDP. And it archieves the optimal!</p>
-<!-- raw HTML omitted -->
+<center><img src="/media/maxmin_Q-learning.png" alt="Maxmin Q-learning" height="80%" width="80%" /></center>
 <p>I want to further test this algorithm in function approximation case. To be specific, I want to check if it can still mitigate maximization bias and compare the performance of between maxmin Q-learning and double Q-learning.</p>
 <p>Moreover, since we have $n$ Q functions, can we apply ideas in Adaboost to get a better (with less bias) estimation of Q value?</p>
 <hr>
-<p><!-- raw HTML omitted -->02/25: Deep Reinforcement Learning: Policy gradient methods (1)<!-- raw HTML omitted --></p>
+<p><font size=6>02/25: Deep Reinforcement Learning: Policy gradient methods (1)</font></p>
 <p>Stochastic Policy Gradient</p>
 <ul>
 <li>
@@ -694,7 +706,7 @@ This result allows us to adapt the policy parameters from experience. This resul
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/26: Deep Reinforcement Learning: Policy gradient methods (2)<!-- raw HTML omitted --></p>
+<p><font size=6>02/26: Deep Reinforcement Learning: Policy gradient methods (2)</font></p>
 <p>Deterministic Policy Gradient</p>
 <ul>
 <li>Let us denote by $\pi (s)$ the deterministic policy: $\pi ( s ) : \mathcal { S } \rightarrow \mathcal { A }$. In discrete action spaces, a direct approach is to build the policy iteratively with:
@@ -704,7 +716,7 @@ where $\pi _ { k }$ is the policy at the $k$th iteration.</li>
 $$\nabla _ { w } V ^ { \pi _ { w } } \left( s _ { 0 } \right) = \mathbb { E } _ { s \sim \rho ^ { \pi _ { w } } } \left[ \nabla _ { w } \left( \pi _ { w } \right) \nabla _ { a } \left. \left( Q ^ { \pi _ { w } } ( s , a ) \right) \right| _ { a = \pi _ { w } ( s ) } \right]$$
 This equation implies relying on $\nabla _ { a } \left( Q ^ { \pi w } ( s , a ) \right)$ (in addition to $\nabla _ { a } \left( Q ^ { \pi w } ( s , a ) \right)$), which usually requires using actor-critic methods.</li>
 </ul>
-<p><!-- raw HTML omitted -->02/27: Deep Reinforcement Learning: Policy gradient methods (3)<!-- raw HTML omitted --></p>
+<p><font size=6>02/27: Deep Reinforcement Learning: Policy gradient methods (3)</font></p>
 <p>Actor-Critic Methods</p>
 <p>The actor refers to the policy and the critic to the estimate of a value function (e.g., the Q-value function). In deep RL, both the actor and the critic can be represented by non-linear neural network function approximators. The actor uses gradients derived from the policy gradient theorem and adjusts the policy parameters $w$. The critic, parameterized by $\theta$, estimates the approximate value function for the current policy $\pi$.</p>
 <ul>
@@ -723,7 +735,7 @@ where $\beta$ is a behavior policy generally different than $\pi$, which makes t
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->02/28: Deep Reinforcement Learning: Policy gradient methods (4)<!-- raw HTML omitted --></p>
+<p><font size=6>02/28: Deep Reinforcement Learning: Policy gradient methods (4)</font></p>
 <p>Natural Policy Gradients</p>
 <ul>
 <li>Natural policy gradient methods use the steepest direction given by the Fisher information metric, i.e. the update follows the direction that maximizes $( J ( w ) - J ( w + \Delta w ) )$ under a constraint on $| \Delta w | _ { 2 }$.</li>
@@ -745,7 +757,7 @@ $$\underset { s \sim \rho ^ { \pi } w , a \sim \pi _ { w } } { \mathbb { E } } \
 where $\epsilon \in \mathbb{R}$ is a hyperparameter. This objective function clips the probability ratio to constrain the changes of $r _ t$ in the interval $[1− \epsilon, 1+ \epsilon]$.</li>
 </ul>
 <h1 id="march">March</h1>
-<p><!-- raw HTML omitted -->03/01: Deep Reinforcement Learning: Policy gradient methods (5)<!-- raw HTML omitted --></p>
+<p><font size=6>03/01: Deep Reinforcement Learning: Policy gradient methods (5)</font></p>
 <p>Combining policy gradient and Q-learning</p>
 <ul>
 <li>Policy gradient algorithms have the following properties unlike the methods based on DQN:
@@ -761,7 +773,7 @@ $$\tilde { A } ^ { \pi _ { w } } ( s , a ) = \alpha \left( \log \pi _ { w } ( s 
 <li>Both value-based and policy-based methods are model-free and they do not make use of any model of the environment.</li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->03/02: Deep Reinforcement Learning: Model-based methods (1)<!-- raw HTML omitted --></p>
+<p><font size=6>03/02: Deep Reinforcement Learning: Model-based methods (1)</font></p>
 <p>Pure model-based methods: When a model of the environment is available, planning consists in interacting with the model to recommend an action. In the case of discrete actions, lookahead search is usually done by generating potential trajectories. In the case of a continuous action space, trajectory optimization with a variety of controllers can be used.</p>
 <ul>
 <li>Lookahead search: limited to discrete actions
@@ -780,7 +792,7 @@ $$\tilde { A } ^ { \pi _ { w } } ( s , a ) = \alpha \left( \log \pi _ { w } ( s 
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/03: Deep Reinforcement Learning: Model-based methods (2)<!-- raw HTML omitted --></p>
+<p><font size=6>03/03: Deep Reinforcement Learning: Model-based methods (2)</font></p>
 <p>Integrating model-free and model-based methods: the respective strengths of the model-free versus model-based approaches depend on different factors.</p>
 <ul>
 <li>The best suited approach depends on whether the agent has access to a model of the environment. If that&rsquo;s not the case, the learned model usually has some inaccuracies that should be taken into account.</li>
@@ -794,7 +806,7 @@ $$\tilde { A } ^ { \pi _ { w } } ( s , a ) = \alpha \left( \log \pi _ { w } ( s 
 <li>Other approaches build neural network architectures that combine both model-free and model-based elements. The VIN architecture (Tamar et al., 2016) is a fully differentiable neural network with a planning module that learns to plan from model-free objectives (given by a value function). It works well for tasks that involve planning-based reasoning (navigation tasks) from one initial position to one goal position and it demonstrates strong generalization in a few different domains.</li>
 </ul>
 <p>Improving the combination of model-free and model-based ideas is one key area of research for the future development of deep RL algorithms.</p>
-<p><!-- raw HTML omitted -->03/04: Deep Reinforcement Learning: Generalization (1)<!-- raw HTML omitted --></p>
+<p><font size=6>03/04: Deep Reinforcement Learning: Generalization (1)</font></p>
 <p>Generalization refers to either</p>
 <ul>
 <li>the capacity to achieve good performance in an environment where <strong>limited data</strong> has been gathered, or</li>
@@ -815,7 +827,7 @@ $$ = \underbrace { ( V ^ { \pi ^ { * } } ( s ) - {V ^ { \pi _ { D _ { \infty } }
 $$</p>
 <p>This decomposition highlights two different terms: (i) an asymptotic bias which is independent of the quantity of data and (ii) an overfitting term directly related to the fact that the amount of data is limited.</p>
 <p>Improving generalization can be seen as a tradeoff between (i) an error due to the fact that the algorithm trusts completely the frequentist assumption (i.e., discards any uncertainty on the limited data distribution) and (ii) an error due to the bias introduced to reduce the risk of overfitting. When the quality of the dataset is low, the learning algorithm should favor more robust policies (i.e., consider a smaller class of policies with stronger generalization capabilities). When the quality of the dataset increases, the risk of overﬁtting is lower and the learning algorithm can trust the data more, hence reducing the asymptotic bias.</p>
-<p><!-- raw HTML omitted -->03/05: Deep Reinforcement Learning: Generalization (2)<!-- raw HTML omitted --></p>
+<p><font size=6>03/05: Deep Reinforcement Learning: Generalization (2)</font></p>
 <p>We discuss the following key elements that are at stake when one wants to improve generalization in deep RL:</p>
 <ul>
 <li>the state representation;</li>
@@ -840,7 +852,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/06: Deep Reinforcement Learning: Generalization (3)<!-- raw HTML omitted --></p>
+<p><font size=6>03/06: Deep Reinforcement Learning: Generalization (3)</font></p>
 <p>Modifying the objective function</p>
 <p>In order to improve the policy learned by a deep RL algorithm, one can optimize an objective function that diverts from the actual objective. By doing so, a bias is usually introduced but this can in some cases help with generalization.</p>
 <ul>
@@ -853,7 +865,7 @@ $$</p>
 </li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->03/11: Deep Reinforcement Learning: Generalization (4)<!-- raw HTML omitted --></p>
+<p><font size=6>03/11: Deep Reinforcement Learning: Generalization (4)</font></p>
 <p>Hierarchical learning: The possibility of learning temporally extended actions (as opposed to atomic actions that last for one time-step) has been formalized under the name of options. The usage of options is an important challenge in RL because it is essential when the task at hand requires working on long time scales while developing generalization capabilities and easier transfer learning between the strategies.</p>
 <p>Bias-overfitting tradeoff: For a given algorithmic parameter setting and keeping all other things equal, the right level of complexity is the one at which the increase in bias is equivalent to the reduction of overfitting (or the increase in overfitting is equivalent to the reduction of bias).</p>
 <ul>
@@ -866,7 +878,7 @@ $$</p>
 </li>
 <li>Online setting: A performant policy from given data is part of the solution to an efficient exploration/exploitation tradeoff. For that reason, progressively fitting a function approximator as more data becomes available can in fact be understood as a way to obtain a good bias-overfitting tradeoff throughout learning. With the same logic, progressively increasing the discount factor allows optimizing the bias-overfitting tradeoff through learning. Besides, optimizing the bias-overfitting tradeoff also suggests the possibility to dynamically adapt the feature space and/or the function approximator.</li>
 </ul>
-<p><!-- raw HTML omitted -->03/12: Deep Reinforcement Learning: Challenges in the online setting (1)<!-- raw HTML omitted --></p>
+<p><font size=6>03/12: Deep Reinforcement Learning: Challenges in the online setting (1)</font></p>
 <p>In the online setting, two specific elements have not yet been discussed in depth. First, the agent can influence how to gather experience so that it is the most useful for learning. Second, the agent has the possibility to use a replay memory that allows for a good data-efficiency.</p>
 <p>Exploration/Exploitation dilemma: Exploration is about obtaining information about the environment (transition model and reward function) while exploitation is about maximizing the expected return given the current knowledge. As an agent starts accumulating knowledge about its environment, it has to make a tradeoff between learning more about its environment (exploration) or pursuing what seems to be the most promising strategy with the experience gathered so far (exploitation).</p>
 <ul>
@@ -885,7 +897,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/13: Deep Reinforcement Learning: Challenges in the online setting (2)<!-- raw HTML omitted --></p>
+<p><font size=6>03/13: Deep Reinforcement Learning: Challenges in the online setting (2)</font></p>
 <p>Managing experience replay</p>
 <ul>
 <li>
@@ -895,7 +907,7 @@ $$</p>
 <p>While a replay memory allows processing the transitions in a different order than they are experienced, there is also the possibility to use prioritized replay. This allows for consideration of the transitions with a different frequency than they are experienced depending on their significance (that could be which experience to store and which ones to replay). A disadvantage of prioritized replay is that, in general, it also introduces a bias; indeed, by modifying the apparent probabilities of transitions and rewards, the expected return gets biased. Note that this bias can be partly or completely corrected using weighted importance sampling, and this correction is important near convergence at the end of training.</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/14: Deep Reinforcement Learning: Beyond MDPs (1) <!-- raw HTML omitted --></p>
+<p><font size=6>03/14: Deep Reinforcement Learning: Beyond MDPs (1) </font></p>
 <p>Partial observability and the distribution of (related) MDPs: In both two settings, at each step in the sequential decision process, the agent may beneﬁt from taking into account its whole observable history up to the current time step $t$ when deciding what action to perform. In other words, a history of observations can be used as a pseudo-state (pseudo-state because that refers to a diﬀerent and abstract stochastic control process). Any missing information in the history of observations (potentially long before time $t$) can introduce a bias in the RL algorithm.</p>
 <p>The partially observable scenario</p>
 <ul>
@@ -914,11 +926,11 @@ $$</p>
 <li>When the full model ($P$, $R$ and $O$) are known, methods such as <strong>Point-Based Value Iteration (PBVI)</strong> algorithm for POMDP planning can be used to solve the problem.</li>
 <li>We denote by $H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$ the set of histories observed up to time $t$ for $t \in {N _ 0}$, and by $H = \bigcup _ { t = 0 } ^ { \infty } H _ { t }$ the space of all possible observable histories.</li>
 </ul>
-<!-- raw HTML omitted -->
+<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%" /></center>
 <ul>
 <li>Architectures such as convolutional layers or recurrency are particularly well-suited to deal with a large input space because they offer interesting generalization properties. A few empirical successes on large scale POMDPs make use of convolutional layers and/or recurrent layers, such as LSTMs.</li>
 </ul>
-<p><!-- raw HTML omitted -->03/15: Deep Reinforcement Learning: Beyond MDPs (2) <!-- raw HTML omitted --></p>
+<p><font size=6>03/15: Deep Reinforcement Learning: Beyond MDPs (2) </font></p>
 <p>The distribution of (related) environments</p>
 <ul>
 <li>
@@ -930,14 +942,14 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 </li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->03/18: Deep Reinforcement Learning: Beyond MDPs (3) <!-- raw HTML omitted --></p>
+<p><font size=6>03/18: Deep Reinforcement Learning: Beyond MDPs (3) </font></p>
 <p>Transfer learning</p>
 <ul>
 <li>Zero-shot learning: The idea of zero-shot learning is that an agent should be able to act appropriately in a new task directly from experience acquired on other similar tasks. To achieve this, the agent must either (i) develop generalization capacities described or (ii) use speciﬁc transfer strategies that explicitly retrain or replace some of its components to adjust to new tasks. The underlying reason for these successes is the ability of the deep learning architecture to generalize between states that have similar high-level representations and should therefore have the same value function/policy in diﬀerent domains. Another approach to zero-shot transfer is to use algorithms that enforce states that relate to the same underlying task but have diﬀerent renderings to be mapped into an abstract state that is close. To develop generalization capacities, one approach is to use an idea similar to data augmentation in supervised learning so as to make sense of variations that were not encountered in the training data.</li>
 <li>Lifelong learning or continual learning: lifelong machine learning relates to the capability of a system to learn many tasks over a lifetime from one or more domains. In general, deep learning architectures can generalize knowledge across multiple tasks by sharing network parameters. A direct approach is thus to train function approximators (e.g. policy, value function, model, etc.) sequentially in diﬀerent environments. The difficulty of this approach is to ﬁnd methods that enable the agent to retain knowledge in order to more efficiently learn new tasks. The problem of retaining knowledge in deep reinforcement learning is complicated by the phenomenon of <strong>catastrophic forgetting</strong>, where generalization to previously seen data is lost at later stages of learning. The straightforward approach is to either (i) use experience replay from all previous experience, or (ii) retrain occasionally on previous tasks similar to the meta-learning setting. When these two options are not available, or as a complement to the two previous approaches, one can use deep learning techniques that are robust to forgetting, such as progressive networks. The idea is to leverage prior knowledge by adding, for each new task, lateral connections to previously learned features (that are kept fixed). Other approaches to limiting catastrophic forgetting include slowing down learning on the weights important for previous tasks and decomposing learning into skill hierarchies.</li>
 <li>Curriculum learning: the goal of curriculum learning is to explicitly design a sequence of source tasks for an agent to train on such that the ﬁnal performance or learning speed is improved on a target task. The idea is to start by learning small and easy aspects of the target task and then to gradually increase the difficulty level.</li>
 </ul>
-<p><!-- raw HTML omitted -->03/19: Deep Reinforcement Learning: Beyond MDPs (4) <!-- raw HTML omitted --></p>
+<p><font size=6>03/19: Deep Reinforcement Learning: Beyond MDPs (4) </font></p>
 <p>Learning without explicit reward function (1)</p>
 <p>Due to the complexity of environments in practical applications, deﬁning a reward function can turn out to be rather complicated. There are two other possibilities: (i) given demonstrations of the desired task, we can use imitation learning or extract a reward function using inverse reinforcement learning; (ii) a human may provide feedback on the agent&rsquo;s behavior in order to deﬁne the task.</p>
 <ul>
@@ -949,7 +961,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 </ul>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/20: Deep Reinforcement Learning: Beyond MDPs (5) <!-- raw HTML omitted --></p>
+<p><font size=6>03/20: Deep Reinforcement Learning: Beyond MDPs (5) </font></p>
 <p>Learning without explicit reward function (2)</p>
 <ul>
 <li>
@@ -980,7 +992,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <p>In general, multi-agent systems are challenging because agents are independently updating their policies as learning progresses, and therefore the environment appears non-stationary to any particular agent. For training one particular agent, one approach is to select randomly the policies of all other agents from a pool of previously learned policies. This can stabilize training of the agent that is learning and prevent overfitting to the current policy of the other agents.</p>
 </li>
 </ul>
-<p><!-- raw HTML omitted -->03/21: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (1)<!-- raw HTML omitted --></p>
+<p><font size=6>03/21: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (1)</font></p>
 <p>Challenges of applying reinforcement learning to real-world problems: In practice, even in the case where the task is well deﬁned (explicit reward function), there is one fundamental difficulty: it is often not possible to let an agent interact freely and sufficiently in the actual environment (or set of environments), due to either safety, cost or time constraints.</p>
 <ul>
 <li>The agent may not be able to interact with the true environment but only with an inaccurate simulation of it. When ﬁrst learning in a simulation, the diﬀerence with the real-world domain is known as the <em>reality gap</em>.</li>
@@ -991,7 +1003,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <li>One can aim to develop a simulator that is as accurate as possible.</li>
 <li>One can design the learning algorithm so as to improve generalization and/or use transfer learning methods.</li>
 </ul>
-<p><!-- raw HTML omitted -->03/22: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (2)<!-- raw HTML omitted --></p>
+<p><font size=6>03/22: Deep Reinforcement Learning: Perspectives on deep reinforcement learning (2)</font></p>
 <p>Relations between deep RL and neuroscience</p>
 <p>During the development of algorithms able to solve challenging sequential decision-making tasks, biological plausibility was not a requirement from an engineering standpoint. However, biological intelligence has been a key inspiration for many of the most successful algorithms.</p>
 <ul>
@@ -1003,7 +1015,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 </li>
 </ul>
 <hr>
-<p><!-- raw HTML omitted -->03/25: Lifelong Learning [Introduction]: Definition of LL (1)<!-- raw HTML omitted --></p>
+<p><font size=6>03/25: Lifelong Learning [Introduction]: Definition of LL (1)</font></p>
 <p><strong>Lifelong learning</strong> (LL) is a continuous learning process. At any point in time, the learner has performed a sequence of $N$ learning tasks, $T _ { 1 } , T _ { 2 } , \ldots , T _ { N }$. These tasks have their corresponding datasets $D _ { 1 } , D _ { 2 } , \ldots , D _ { N }$. The tasks can be of different types and from different domains. When faced with the ($N+1$)th task $T _ {N+1}$ (the new or current task) with its data $D _ {N+1}$, the learner can leverage the past knowledge in the <strong>knowledge base</strong> (KB) to help learn $T _ {N+1}$. The task may be given or discovered by the system itself. The objective of LL is usually to optimize the performance of the new task $T _ {N+1}$, but it can optimize any task by treating the rest of the tasks as the previous tasks. KB maintains the knowledge learned and accumulated from learning the previous tasks. After the completion of learning $T _ {N+1}$, KB is updated with the knowledge gained from learning $T _ {N+1}$. The updating can involve consistency checking, reasoning, and meta-mining of higher-level knowledge. Ideally, an LL learner should also be able to:</p>
 <ol>
 <li>learn and function in the open environment, where it not only can apply the learned model or knowledge to solve problems but also discover new tasks to be learned.</li>
@@ -1024,7 +1036,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <li>The shift to the new task can happen abruptly or gradually, and the tasks and their data do not have to be provided by some external systems or human users. Ideally, a lifelong learner should also be able to find its own learning tasks and training data in its interaction with humans and the environment or using its previously learned knowledge to perform open-world and self-supervised learning.</li>
 <li>The definition indicates that LL may require a systems approach that combines multiple learning algorithms and diﬀerent knowledge representation schemes. It is unlikely that a single learning algorithm is able to achieve the goal of LL.</li>
 </ol>
-<p><!-- raw HTML omitted -->03/26: Lifelong Learning [Introduction]: Definition of LL (2)<!-- raw HTML omitted --></p>
+<p><font size=6>03/26: Lifelong Learning [Introduction]: Definition of LL (2)</font></p>
 <p><strong>Knowledge Base (KB)</strong>: It is mainly for storing the previously learned knowledge. It has a few sub-components.</p>
 <ul>
 <li>Past Information Store(PIS)：It stores the information resulted from the past learning. PIS may involve sub-stores for information such as (1) the original data used in each previous task, (2) intermediate results from each previous task, and (3) the final model or patterns learned from each previous task.</li>
@@ -1042,9 +1054,9 @@ prior knowledge in learning. We call such a learner a knowledge-based learner, w
 <p><strong>Model</strong>: This is the learned model, which can be a prediction model or classiﬁer in supervised learning, clusters or topics in unsupervised learning, a policy in reinforcement learning, etc.</p>
 <p><strong>Application</strong>: This is the real-world application for the model. It is important to note that during model application, the system can still learn new knowledge, and possibly discover new tasks to be learned. Application can also give feedback to the knowledge-based learner for model improvement.</p>
 <p><strong>Task Manager (TM)</strong>: It receives and manages the tasks that arrive in the system, handles the task shift, and presents the new learning task to the KBL in a lifelong manner.</p>
-<!-- raw HTML omitted -->
+<center><img src="/media/lifelong_learning_system_architecture.jpg" alt="lifelong learning system architecture" height="80%" width="80%" /></center>
 <p><strong>Lifelong Learning Process</strong>: A typical LL process starts with the Task Manager assigning a new task to the KBL (the task can be given or discovered automatically). KBL then works with the help of the past knowledge stored in the KB to produce an output model for the user and also send the information or knowledge that needs to be retained for future use to the KB. In the application process, the system may also discover new tasks and learn while working (learn on the job). Some knowledge gained in applications can also be retained to help future learning.</p>
-<p><!-- raw HTML omitted -->03/27: Lifelong Learning [Introduction]: Types of Knowledge and Key Challenges <!-- raw HTML omitted --></p>
+<p><font size=6>03/27: Lifelong Learning [Introduction]: Types of Knowledge and Key Challenges </font></p>
 <p>There is still no well-accepted definition of knowledge or its general representation scheme. In the current LL research, past knowledge usually serves as some kind of prior information (e.g., prior model parameters or prior probabilities) for the new task. For a particular LL algorithm and a particular form of shared knowledge, one needs to design a KB and its maintenance or updating methods based on the algorithm and its knowledge representation need. There are mainly two types of shared knowledge that are used in learning the new task.</p>
 <ul>
 <li><strong>Global knowledge</strong>: Many existing LL methods assume that there is a global latent structure among tasks that is shared by all tasks. This global structure can be learned and leveraged in the new task learning. The approaches based on global knowledge transfer and sharing mainly grew out of or inspired by MTL, which jointly optimizes the learning of multiple similar tasks. Such knowledge is more suitable for similar tasks in the same domain because such tasks are often highly correlated or have very similar distributions.</li>
@@ -1056,7 +1068,7 @@ prior knowledge in learning. We call such a learner a knowledge-based learner, w
 <li><strong>Correctness of knowledge</strong>: In a nutshell, LL can be regarded as a continuous bootstrapping process. Errors can propagate from previous tasks to subsequent tasks to generate more and more errors. To deal with it, one strategy is to find those pieces of knowledge that have been discovered in many previous tasks/domains. Another strategy is to make sure that the piece of knowledge is discovered from different contexts using different techniques. However, two main issues remain. First, they are not foolproof because they can still produce wrong knowledge. Second, they have low recall because most pieces of correct knowledge cannot pass these strategies and thus cannot be used subsequently, which prevents LL from producing even better results.</li>
 <li><strong>Applicability of knowledge</strong>: Although a piece of knowledge may be correct in the context of some previous tasks, it may not be applicable to the current task.</li>
 </ul>
-<p><!-- raw HTML omitted -->03/27: Lifelong Learning [Introduction]: Evaluation Methodology and Role of Big Data <!-- raw HTML omitted --></p>
+<p><font size=6>03/27: Lifelong Learning [Introduction]: Evaluation Methodology and Role of Big Data </font></p>
 <p><strong>Experimental evaluation of an LL algorithm</strong> in the current research is commonly done using the following steps:</p>
 <ol>
 <li>Run on the data from the previous tasks: We first run the algorithm on the data from a set of previous tasks, one at a time in a given sequence, and retain the knowledge gained in the KB.</li>
@@ -1071,7 +1083,7 @@ prior knowledge in learning. We call such a learner a knowledge-based learner, w
 <li>Progressive experiments: Since more previous tasks generate more knowledge, and more knowledge in turn enables an LL algorithm to produce better results for the new task, it is thus desirable to show how the algorithm performs on the new task as the number of previous tasks increases.</li>
 </ol>
 <p><strong>Role of Big Data in LL Evaluation</strong>: It is important for an LL system to learn from a diverse range and a large number of domains to give the system a wide vocabulary and a wide range of knowledge so that it can help learn in diverse future domains. Furthermore, unlike transfer learning, LL needs to automatically identify the pieces of past knowledge that it can use, and not every past task/domain is useful to the current task. LL experiments and evaluation thus require data from a large number of domains or tasks and consequently large volumes of data.</p>
-<p><!-- raw HTML omitted -->03/28: Lifelong Learning [Lifelong Supervised Learning]: Lifelong Memory-Based Learning<!-- raw HTML omitted --></p>
+<p><font size=6>03/28: Lifelong Learning [Lifelong Supervised Learning]: Lifelong Memory-Based Learning</font></p>
 <p><strong>Lifelong supervised learning</strong> is a continuous learning process where the learner has performed a sequence of $N$ supervised learning tasks, $T _ {1}, T _ {2}, \ldots , T _ {N}$, and retained the learned knowledge in a knowledge base. When a new task $T _ {N+1}$ arrives, the learner leverages the past knowledge in the KB to help learn a new model $f _ {N+1}$ from $T _ {N+1}$&rsquo;s training data $D _ {N+1}$ After learning $T _ {N+1}$, the KB is also updated with the learned knowledge from $T _ {N+1}$.</p>
 <p>Two Memory-Based learning methods:</p>
 <ul>
@@ -1089,9 +1101,9 @@ dog. Let the data from the previous $N$ tasks be $\mathcal { D } ^ { p } = { \ma
 <p>$$E = \sum _ { \mathcal { D } _ { i } \in \mathcal { D } ^ { p } } \sum _ { \langle x , y = 1 \rangle \in \mathcal { D } _ { i } } ( \sum _ { \langle x ^ { \prime } , y ^ { \prime } = 1 \rangle \in \mathcal { D } _ { i } } | g ( x ) - g ( x ^ { \prime } ) | - \sum _ { \langle x ^ { \prime } , y ^ { \prime } = 0 \rangle \in \mathcal { D } _ { i } } | g ( x ) - g ( x ^ { \prime } ) | )$$</p>
 <p>The optimal function $g ^ {*}$ is achieved by minimizing the energy function $E$, which forces the distance between pairs of positive examples of the concept $(\langle x , y = 1 \rangle$ and $\langle x ^ { \prime } , y ^ { \prime } = 1 \rangle)$ to be small, and the distance between a positive example and a negative example of a concept $( \langle x , y = 1 \rangle$ and $\langle x ^ { \prime } , y ^ { \prime } = 0 \rangle)$ to be large.</p>
 <p>Given the mapping function $g ^ { * }$, rather than performing memory-based learning in the original space $\langle x _ { i } , y _ { i } \rangle \in \mathcal { D } _ { N + 1 }$, $x _ {i}$ is first transformed to the new space using $g ^ {*}$ to $\langle g ^ { * } ( x _ { i } ) , y _ { i } \rangle$ before applying  NN or the Shepard&rsquo;s method.</p>
-<p><!-- raw HTML omitted -->03/29: Lifelong Learning [Lifelong Supervised Learning]: Lifelong Neural Networks<!-- raw HTML omitted --></p>
+<p><font size=6>03/29: Lifelong Learning [Lifelong Supervised Learning]: Lifelong Neural Networks</font></p>
 <p><strong>MTL Net</strong>: In MTL net, instead of building a neural network for each individual task, it constructs a universal neural network for all the tasks. This universal neural network uses the same input layer for input from all tasks and uses one output unit for each task (or class in this case). There is also a shared hidden layer in MTL net that is trained in parallel using Back-Propagation on all the tasks to minimize the error on all the tasks. This shared layer allows features developed for one task to be used by other tasks. For a specific task, it will activate some hidden units that are related to it while making the weights of the other irrelevant hidden units small. Essentially, like a normal batch MTL method, the system jointly optimizes the classification of all the past/previous and the current/new tasks.</p>
-<!-- raw HTML omitted -->
+<center><img src="/media/MTL.jpg" alt="MTL Net" height="50%" width="50%" /></center>
 <p><strong>Lifelong EBNN</strong>: EBNN (Explanation-Based Neural Network) is used for concept learning, which learns a function $f : I \rightarrow { 0,1 }$ to predict if an object represented by a feature vector $x \in I$ belongs to a concept ($y=1$) or not($y=0$).</p>
 <p>In this approach, the system ﬁrst learns a <em>general distance function</em>, $d : I \times I \rightarrow [ 0,1 ]$, considering all the past data (or the support set) and uses this distance function to share or transfer the knowledge of the past task data to the new task $T _ {N+1}$. Given two input vectors, say $x$ and $y$, function d computes the probability of $x$ and $y$ being members of the same concept (or class), regardless what the concept is. The training data for learning the distance function is generated as follows: For each past task data $\mathcal { D } _ { i } \in \mathcal { D } ^ { p }$, each pair of examples of the concept generates a training example. For a pair, $\langle x , y = 1 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { i }$, a positive training example is generated, $\left\langle \left( x , x ^ { \prime } \right) , 1 \right\rangle$. For a pair $\langle x , y = 1 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 0 \right\rangle \in \mathcal { D } _ { i }$ or $\langle x , y = 0 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { i }$, a negative training example is generated, $\left\langle \left( x , x ^ { \prime } \right) , 0 \right\rangle$.</p>
 <p>Unlike a traditional neural network, EBNN estimates the slope (tangent) of the target function at each data point $x$ and adds it into the vector representation of the data point. In the new task $T _ {N+1}$, a training example is of the form, $\langle x , f _ { N + 1 } ( x ) , \nabla _ { x } f _ { N + 1 } ( x )\rangle$, where $f _ {N+1}(x)$ is just the original class label of $x \in D _ {N+1}$ (the new task data). The system is trained using <strong>Tangent-Prop algorithm</strong>. $\nabla _ {x} f _ {N+1}(x)$ is estimated using the gradient of the distance $d$ obtained from the neural network, i.e., $\nabla _ { x } f _ { N + 1 } ( x ) \approx \frac { \partial d _ { x ^ { \prime } } ( x ) } { \partial x }$, where $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { N + 1 }$ and $d _ { x ^ { \prime } } ( x ) = d \left( x , x ^ { \prime } \right)$. The rationale is that the distance between $x$ and a positive training example $x ^ {\prime}$ is an estimate of the probability of $x$ being a positive example, which approximates $f _ {N+1} (x)$. As a result, the built EBNN fits both the current task data $\mathcal { D } _ { N + 1 }$ and the support set through $\nabla _ { x } f _ { N + 1 } ( x )$ and $d$.</p>
