@@ -17,7 +17,7 @@ hugo.linux
 
 ### macOS ###
 # General
-.DS_Store*
+*DS_Store*
 .AppleDouble
 .LSOverride
 
