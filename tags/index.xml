@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2018, Qingfeng Lan; all rights reserved.</copyright>
-    <lastBuildDate>Wed, 10 Mar 2021 23:20:20 -0700</lastBuildDate><atom:link href="https://lancelqf.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Apr 2021 17:39:17 -0600</lastBuildDate><atom:link href="https://lancelqf.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Article</title>
+      <link>https://lancelqf.github.io/tags/article/</link>
+      <pubDate>Fri, 09 Apr 2021 17:39:17 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/article/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Self</title>
+      <link>https://lancelqf.github.io/tags/self/</link>
+      <pubDate>Fri, 09 Apr 2021 17:39:17 -0600</pubDate>
+      
+      <guid>https://lancelqf.github.io/tags/self/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Book</title>
       <link>https://lancelqf.github.io/tags/book/</link>
@@ -18,29 +36,11 @@
     </item>
     
     <item>
-      <title>Self</title>
-      <link>https://lancelqf.github.io/tags/self/</link>
-      <pubDate>Wed, 10 Mar 2021 23:20:20 -0700</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/self/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Poetry</title>
       <link>https://lancelqf.github.io/tags/poetry/</link>
       <pubDate>Sun, 21 Feb 2021 01:25:57 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/tags/poetry/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Article</title>
-      <link>https://lancelqf.github.io/tags/article/</link>
-      <pubDate>Sun, 13 Dec 2020 07:11:01 -0700</pubDate>
-      
-      <guid>https://lancelqf.github.io/tags/article/</guid>
       <description></description>
     </item>
     
