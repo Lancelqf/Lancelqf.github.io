@@ -197,7 +197,7 @@ code.has-jax {
            <ul>
 <li>Download pre-built images</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
 $ singularity pull <span style="color:#f92672">[</span>pull options...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>output file<span style="color:#f92672">]</span> &lt;container&gt;
 <span style="color:#75715e"># From Sylabs cloud library</span>
 $ singluarity pull library://&lt;user&gt;/&lt;collection&gt;/&lt;container<span style="color:#f92672">[</span>:tag<span style="color:#f92672">]</span>&gt;
@@ -214,7 +214,7 @@ $ singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
 </code></pre></div><ul>
 <li>Build a container</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Build from URI</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Build from URI</span>
 $ sudo singularity build &lt;container&gt; &lt;URL&gt;
 $ sudo singularity build lolcow.simg library://sylabs-jms/testing/lolcow
 <span style="color:#75715e"># Build From a Singularity definition file</span>
@@ -229,7 +229,7 @@ $ sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
 </code></pre></div><ul>
 <li>Shell in a container</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
 $ singularity shell <span style="color:#f92672">[</span>shell options...<span style="color:#f92672">]</span> &lt;container&gt;
 <span style="color:#75715e"># Make the file system accessible as read/write</span>
 $ singularity shell --writable &lt;container&gt;
@@ -237,7 +237,7 @@ $ singularity shell explorer.img
 </code></pre></div><ul>
 <li>Run a command within a container</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
 $ singularity exec <span style="color:#f92672">[</span>exec options...<span style="color:#f92672">]</span> &lt;container&gt; &lt;command&gt;
 <span style="color:#75715e"># Example</span>
 $ singularity exec /tmp/debian.sif cat /etc/debian_version
@@ -249,7 +249,7 @@ $ singularity exec library://centos cat /etc/os-release
 </code></pre></div><ul>
 <li>Bind Paths and Mounts</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Synopsis</span>
 $ singularity run/exec/shell --bind src<span style="color:#f92672">[</span>:dest<span style="color:#f92672">[</span>:opts<span style="color:#f92672">]]</span> &lt;container&gt; <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
 <span style="color:#75715e"># Example</span>
 $ singularity exec --bind /data:/mnt my_container.sif ls /mnt
@@ -257,7 +257,7 @@ $ singularity shell -bind /home/vagrant/Explorer explorer-env.img
 </code></pre></div><ul>
 <li>Build images from scratch</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Create a sandbox image from base ubuntu image</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Create a sandbox image from base ubuntu image</span>
 $ sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
 $ sudo singularity build --sandbox ubuntu/ library://ubuntu
 <span style="color:#75715e"># Shell into the sandbox image</span>

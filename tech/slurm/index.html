@@ -195,12 +195,12 @@ code.has-jax {
   <div>
         <article itemprop="articleBody" id="content">
            <h2 id="submit-jobs">Submit jobs</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sbatch &lt;run_script&gt;.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sbatch &lt;run_script&gt;.sh
 </code></pre></div><h2 id="examples-of-job-scripts">Examples of job scripts</h2>
 <ul>
 <li>Serial job</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span><span style="color:#75715e">#SBATCH --account=def-afyshe-ab</span>
 <span style="color:#75715e"># time (DD-HH:MM:SS)</span>
 <span style="color:#75715e">#SBATCH --time=00-00:01:00</span>
@@ -209,7 +209,7 @@ sleep <span style="color:#ae81ff">5</span>
 </code></pre></div><ul>
 <li>Array job</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span><span style="color:#75715e">#SBATCH --job-name=test</span>
 <span style="color:#75715e">#SBATCH --account=def-afyshe-ab</span>
 <span style="color:#75715e">#SBATCH --time=0-01:00:00</span>
@@ -223,7 +223,7 @@ sleep <span style="color:#ae81ff">5</span>
 
 ./myapplication $SLURM_ARRAY_TASK_ID
 </code></pre></div><h2 id="interactive-job">Interactive job</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ salloc --time<span style="color:#f92672">=</span>1:0:0 --ntasks<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --account<span style="color:#f92672">=</span>def-someuser
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ salloc --time<span style="color:#f92672">=</span>1:0:0 --ntasks<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --account<span style="color:#f92672">=</span>def-someuser
 $ salloc --time<span style="color:#f92672">=</span>0-01:00:00 --cpus-per-task<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --account<span style="color:#f92672">=</span>def-afyshe-ab --mem-per-cpu<span style="color:#f92672">=</span>512M
 salloc: Granted job allocation <span style="color:#ae81ff">1234567</span>
 $ ...        <span style="color:#75715e"># do some work</span>
@@ -233,28 +233,28 @@ salloc: Relinquishing job allocation <span style="color:#ae81ff">1234567</span>
 <ul>
 <li>Show jobs for a specific user</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -r
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -r
 </code></pre></div><ul>
 <li>Show only running jobs, or only pending jobs</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -t running
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -t running
 $ squeue -u &lt;user&gt; -t pending
 PENDING, RUNNING, SUSPENDED, COMPLETING, COMPLETED, OUT_OF_MEMORY, FAILED
 </code></pre></div><ul>
 <li>Show (detailed) information for a specific job</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ scontrol show job &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ scontrol show job &lt;jobid&gt;
 $ scontrol show job -dd &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show status information for a running job</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sstat -j &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sstat -j &lt;jobid&gt;
 <span style="color:#75715e"># List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID</span>
 $ sstat -j &lt;jobid&gt; --format<span style="color:#f92672">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
 </code></pre></div><ul>
 <li>Email notification</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#SBATCH --mail-user=&lt;email_address&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#SBATCH --mail-user=&lt;email_address&gt;</span>
 <span style="color:#75715e">#SBATCH --mail-type=ALL</span>
 <span style="color:#75715e">#SBATCH --mail-type=TIME_LIMIT</span>
 <span style="color:#75715e">#SBATCH --mail-type=TIME_LIMIT_80</span>
@@ -262,15 +262,15 @@ $ sstat -j &lt;jobid&gt; --format<span style="color:#f92672">=</span>AveCPU,MaxR
 <ul>
 <li>Show a short summary of a completed job</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ seff &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ seff &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show a detailed summary of a completed job or all jobs of a user</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sacct -j &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sacct -j &lt;jobid&gt;
 $ sacct -j &lt;jobid&gt; --format<span style="color:#f92672">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
 $ sacct –u &lt;user&gt; --format<span style="color:#f92672">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
 </code></pre></div><h2 id="controlling-jobs">Controlling jobs</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Cancel a specific job</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Cancel a specific job</span>
 $ scancel &lt;jobid&gt;
 <span style="color:#75715e"># Cancel all jobs for a specific user</span>
 $ scancel -u $USER
@@ -346,14 +346,14 @@ $ scontrol update jobid<span style="color:#f92672">=</span>&lt;jobid&gt; TimeLim
 </tbody>
 </table>
 <h2 id="account-information">Account information</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># List user and their default account (accounting group)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># List user and their default account (accounting group)</span>
 $ sacctmgr show user &lt;user&gt; withassoc
 <span style="color:#75715e"># Show usage info for user</span>
 $ sshare -l -U &lt;user&gt;
 <span style="color:#75715e"># Show usage info for all users under a specific account</span>
 $ sshare -l -A &lt;account&gt;_cpu --all
 </code></pre></div><h2 id="cluster-information">Cluster information</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show idle node on cluster</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show idle node on cluster</span>
 $ sinfo --states<span style="color:#f92672">=</span>idle
 <span style="color:#75715e"># Show down, drained and draining nodes and their reason</span>
 $ sinfo -R
@@ -368,7 +368,7 @@ $ scontrol show config | grep Max
 <span style="color:#75715e"># Show job info on cluster</span>
 $ partition-stats
 </code></pre></div><h2 id="software-modules">Software modules</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show currently loaded modules</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show currently loaded modules</span>
 $ module list
 <span style="color:#75715e"># Search for a module (if listed)</span>
 $ module avail &lt;name&gt;
@@ -381,7 +381,7 @@ $ module unload &lt;moduleName&gt;
 <span style="color:#75715e"># Show commands in the module</span>
 $ module show &lt;moduleName&gt;
 </code></pre></div><h2 id="disk-usage">Disk usage</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
 </code></pre></div>
         </article>
   </div>
