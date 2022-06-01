@@ -1,83 +1,53 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-<head>
+<html lang="en"><head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="description" content="">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="description" content="Slurm cheat sheet">
-<meta name="keywords" content="Article, ">
-
- 
-<meta property="og:type" content="article"/>
-<meta property="og:description" content="Slurm cheat sheet"/>
-<meta property="og:title" content="Slurm : lancelqf.github.io"/>
-<meta property="og:site_name" content="Qingfeng Lan's blog"/>
-<meta property="og:image" content="" />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="" />
-<meta property="og:image:height" content="" />
-<meta property="og:url" content="https://lancelqf.github.io/tech/slurm/">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-07-13"/>
-<meta property="article:modified_time" content="2019-07-13"/>
-
-
-<meta property="article:tag" content="Article">
-
-
-
-    <base href="https://lancelqf.github.io">
-    <title> Slurm - lancelqf.github.io </title>
-    <link rel="canonical" href="https://lancelqf.github.io/tech/slurm/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Slurm" />
-    
+    <style>
+        :root {
+            --accent-color: #2482ed;
+        }
+    </style>
 
     
-<link rel="stylesheet" href="/static/css/style.css">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    
-    <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$']],
-    displayMath: [['$$','$$']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-  });
-
-  MathJax.Hub.Queue(function() {
     
     
     
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
+    
+    
 
-<style>
-code.has-jax {
-  font: inherit;
-  font-size: 100%;
-  background: inherit;
-  border: inherit;
-  color: #515151;
-}
-</style>
+    
+    <title>Slurm</title>
+    <meta name="description" content="Slurm cheat sheet">
+    <meta name="keywords" content='Article'>
 
+    <meta property="og:url" content="https://lancelqf.github.io/tech/slurm/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Slurm">
+    <meta property="og:description" content="Slurm cheat sheet">
+    <meta property="og:image" content="favicon.ico">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Slurm">
+    <meta name="twitter:description" content="Slurm cheat sheet">
+    <meta property="twitter:domain" content="https://lancelqf.github.io/tech/slurm/">
+    <meta property="twitter:url" content="https://lancelqf.github.io/tech/slurm/">
+    <meta name="twitter:image" content="favicon.ico">
+
+    
+    <link rel="canonical" href="https://lancelqf.github.io/tech/slurm/" />
+
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+
+    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io/js/main.js"></script>
+
+    
+    
+        <!-- Baidu Analytics -->
     <script>
       var _hmt = _hmt || [];
       (function() {
@@ -86,210 +56,235 @@ code.has-jax {
         var s = document.getElementsByTagName("script")[0]; 
         s.parentNode.insertBefore(hm, s);
       })();
-    </script>      
-
+    </script>
     
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121043808-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'UA-121043808-1');
     </script>
-    
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" integrity="sha384-ZPe7yZ91iWxYumsBEOn7ieg8q/o+qh/hQpSaPow8T6BwALcXSCS6C6fSRPIAnTQs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js" integrity="sha384-ljao5I1l+8KYFXG7LNEA7DyaFvuvSCmedUf6Y6JI7LJqiu8q5dEivP2nDdFH31V4" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+  
     
 </head>
-<body lang="en" itemscope itemtype="http://schema.org/Article">
-<header id="header">
-  <nav id="nav">
-    <div id="title"><a href="/" class="blue"><font color="blue">Qingfeng Lan</font></a></div>
-    <div><a href=mailto:lancelqf@gmail.com target="_blank" class="blue"><span class="icon-mail"></span></a></div>
-  </nav>
-  <nav id="nav">
-    <ul id="mainnav">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
 
+        
+        <div class="avatar">
+            <a href="https://lancelqf.github.io">
+                <img src="https://lancelqf.github.iofavicon.ico" alt="avatar" />
+            </a>
+        </div>
+        
 
-  <li>
-    <a href="/heart/">
-    <span class="icon"> <i aria-hidden="true" class="icon-heart"></i></span>
-    <span> Heart </span>
-  </a>
-  </li>
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+        </div>
 
-  <li>
-    <a href="/note/">
-        <span class="icon"> <i aria-hidden="true" class="icon-pencil"></i></span>
-        <span> Note </span>
-    </a>
-  </li>
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+            </div>
+            
 
-  <li>
-  <a href="/tech/">
-      <span class="icon"> <i aria-hidden="true" class="icon-gears"></i></span>
-      <span> Tech </span>
-  </a>
-  </li>
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
-  <li>
-  <a href="/about">
-      <span class="icon"> <i aria-hidden="true" class="icon-atom"></i></span>
-      <span> About </span>
-  </a>
-  </li>
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
-</ul>
-    <ul id="social">
-  <li id="share">
-      <span class="title"> share </span>
-      <div class="dropdown share">
-          <ul class="social">
-              <li> <a href="http://spf13.com/" target="_blank" title="spf13 is Steve Francis" class="facebook">spf13</a> </li>
-              <li> <a href="http://nanshu.wang/" target="_blank" title="Dear Sister Nanshu" class="nanshu">Nanshu</a> </li>
-              <li> <a href="http://rlai.ualberta.ca/" target="_blank" title="RLAI researh group at the University of Alberta" class="twitter">RLAI</a> </li>
-              <li> <a href="https://deepmind.com/" target="_blank" title="An AI research company, part of the Alphabet group" class="googleplus">DeepMind</a> </li>
-              <li> <a href="https://openai.com/" target="_blank" title="A non-profit AI research company" class="stumbleupon">OpenAI</a> </li>
-              <li> <a href="http://whirl.cs.ox.ac.uk/" target="_blank" title="A ML research group at the University of Oxford" class="delicious">WhiRL</a> </li>             
-          </ul>
-          <span class="icon icon-bubbles"> </span> <span class="subcount"> </span>
-      </div>
-  </li>
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-  <li id="follow">
-      <span class="title"> follow </span>
-      <div class="dropdown follow">
-          <ul class="social">
-              <li> <a href="https://scholar.google.com/citations?hl=en&user=jKD9jpoAAAAJ" target="_blank" title="Scholar" class="googleplus">Scholar</a> </li>
-              <li> <a href="https://github.com/qlan3" target="_blank" title="GitHub" class="github">GitHub</a> </li>
-              <li> <a href="https://www.linkedin.com/in/qingfenglan" target="_blank" title="LinkedIn" class="linkedin">LinkedIn</a> </li>
-              <li> <a href="https://twitter.com/lancelan3" target="_blank" title="Twitter" class="twitter">Twitter</a> </li>
-          </ul>
-          <span class="icon icon-rocket"> </span> <span class="subcount"></span>
-      </div>
-  </li>
-</ul>
-  </nav>
+        </div>
+    </nav>
 </header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Slurm</h1>
+        <small role="doc-subtitle">Slurm cheat sheet</small>
+        <p class="post-date">
+            July 13, 2019
+        </p>
 
-
-<section id="main">
-  <h1 itemprop="name" style="text-align: center;">Slurm</h1>
-  
-
-<aside id="meta">
-
-    <div>
-        <section id="datecount">
-          <h4 id="date"> Sat Jul 13, 2019 </h4>
-        </section>
-        <ul id="tags">
-          
-            <li> <a href="https://lancelqf.github.io/tags/article">Article</a> </li>
-          
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lancelqf.github.io/tags/article">Article</a></li>
+        
         </ul>
     </div>
-</aside>
 
-<meta itemprop="wordCount" content="649">
-<meta itemprop="datePublished" content="2019-07-13">
-<meta itemprop="url" content="https://lancelqf.github.io/tech/slurm/">
-  <div>
-        <article itemprop="articleBody" id="content">
-           <h2 id="submit-jobs">Submit jobs</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sbatch &lt;run_script&gt;.sh
+    <div class="post-content">
+        <p>
+            <h2 id="submit-jobs">Submit jobs</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sbatch &lt;run_script&gt;.sh
 </code></pre></div><h2 id="examples-of-job-scripts">Examples of job scripts</h2>
 <ul>
 <li>Serial job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span><span style="color:#75715e">#SBATCH --account=def-afyshe-ab</span>
-<span style="color:#75715e"># time (DD-HH:MM:SS)</span>
-<span style="color:#75715e">#SBATCH --time=00-00:01:00</span>
-echo <span style="color:#e6db74">&#39;Hello, world!&#39;</span>
-sleep <span style="color:#ae81ff">5</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/bin/bash
+</span><span style="color:#ff79c6"></span><span style="color:#6272a4">#SBATCH --account=def-afyshe-ab</span>
+<span style="color:#6272a4"># time (DD-HH:MM:SS)</span>
+<span style="color:#6272a4">#SBATCH --time=00-00:01:00</span>
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;Hello, world!&#39;</span>
+sleep <span style="color:#bd93f9">5</span>
 </code></pre></div><ul>
 <li>Array job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span><span style="color:#75715e">#SBATCH --job-name=test</span>
-<span style="color:#75715e">#SBATCH --account=def-afyshe-ab</span>
-<span style="color:#75715e">#SBATCH --time=0-01:00:00</span>
-<span style="color:#75715e">#SBATCH --mem-per-cpu=500M</span>
-<span style="color:#75715e"># job name (%x), job ID (%j)</span>
-<span style="color:#75715e">#SBATCH --output=output/%x-%j.txt</span>
-<span style="color:#75715e"># run a 10 job array, with a maximum of 5 running at a time</span>
-<span style="color:#75715e">#SBATCH --array=1-10%5</span>
-<span style="color:#75715e"># job array with indexes [1,2,3,5,7]</span>
-<span style="color:#75715e">#SBATCH --array=1,2,3,5,7</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ff79c6">#!/bin/bash
+</span><span style="color:#ff79c6"></span><span style="color:#6272a4">#SBATCH --job-name=test</span>
+<span style="color:#6272a4">#SBATCH --account=def-afyshe-ab</span>
+<span style="color:#6272a4">#SBATCH --time=0-01:00:00</span>
+<span style="color:#6272a4">#SBATCH --mem-per-cpu=500M</span>
+<span style="color:#6272a4"># job name (%x), job ID (%j)</span>
+<span style="color:#6272a4">#SBATCH --output=output/%x-%j.txt</span>
+<span style="color:#6272a4"># run a 10 job array, with a maximum of 5 running at a time</span>
+<span style="color:#6272a4">#SBATCH --array=1-10%5</span>
+<span style="color:#6272a4"># job array with indexes [1,2,3,5,7]</span>
+<span style="color:#6272a4">#SBATCH --array=1,2,3,5,7</span>
 
-./myapplication $SLURM_ARRAY_TASK_ID
+./myapplication <span style="color:#8be9fd;font-style:italic">$SLURM_ARRAY_TASK_ID</span>
 </code></pre></div><h2 id="interactive-job">Interactive job</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ salloc --time<span style="color:#f92672">=</span>1:0:0 --ntasks<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --account<span style="color:#f92672">=</span>def-someuser
-$ salloc --time<span style="color:#f92672">=</span>0-01:00:00 --cpus-per-task<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --account<span style="color:#f92672">=</span>def-afyshe-ab --mem-per-cpu<span style="color:#f92672">=</span>512M
-salloc: Granted job allocation <span style="color:#ae81ff">1234567</span>
-$ ...        <span style="color:#75715e"># do some work</span>
-$ exit       <span style="color:#75715e"># terminate the allocation</span>
-salloc: Relinquishing job allocation <span style="color:#ae81ff">1234567</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ salloc --time<span style="color:#ff79c6">=</span>1:0:0 --ntasks<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-someuser
+$ salloc --time<span style="color:#ff79c6">=</span>0-01:00:00 --cpus-per-task<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-afyshe-ab --mem-per-cpu<span style="color:#ff79c6">=</span>512M
+salloc: Granted job allocation <span style="color:#bd93f9">1234567</span>
+$ ...        <span style="color:#6272a4"># do some work</span>
+$ <span style="color:#8be9fd;font-style:italic">exit</span>       <span style="color:#6272a4"># terminate the allocation</span>
+salloc: Relinquishing job allocation <span style="color:#bd93f9">1234567</span>
 </code></pre></div><h2 id="monitoring-jobs">Monitoring jobs</h2>
 <ul>
 <li>Show jobs for a specific user</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -r
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -r
 </code></pre></div><ul>
 <li>Show only running jobs, or only pending jobs</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -t running
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -t running
 $ squeue -u &lt;user&gt; -t pending
 PENDING, RUNNING, SUSPENDED, COMPLETING, COMPLETED, OUT_OF_MEMORY, FAILED
 </code></pre></div><ul>
 <li>Show (detailed) information for a specific job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ scontrol show job &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ scontrol show job &lt;jobid&gt;
 $ scontrol show job -dd &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show status information for a running job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sstat -j &lt;jobid&gt;
-<span style="color:#75715e"># List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID</span>
-$ sstat -j &lt;jobid&gt; --format<span style="color:#f92672">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sstat -j &lt;jobid&gt;
+<span style="color:#6272a4"># List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID</span>
+$ sstat -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
 </code></pre></div><ul>
 <li>Email notification</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#SBATCH --mail-user=&lt;email_address&gt;</span>
-<span style="color:#75715e">#SBATCH --mail-type=ALL</span>
-<span style="color:#75715e">#SBATCH --mail-type=TIME_LIMIT</span>
-<span style="color:#75715e">#SBATCH --mail-type=TIME_LIMIT_80</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4">#SBATCH --mail-user=&lt;email_address&gt;</span>
+<span style="color:#6272a4">#SBATCH --mail-type=ALL</span>
+<span style="color:#6272a4">#SBATCH --mail-type=TIME_LIMIT</span>
+<span style="color:#6272a4">#SBATCH --mail-type=TIME_LIMIT_80</span>
 </code></pre></div><h2 id="completed-jobs">Completed jobs</h2>
 <ul>
 <li>Show a short summary of a completed job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ seff &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ seff &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show a detailed summary of a completed job or all jobs of a user</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sacct -j &lt;jobid&gt;
-$ sacct -j &lt;jobid&gt; --format<span style="color:#f92672">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
-$ sacct –u &lt;user&gt; --format<span style="color:#f92672">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sacct -j &lt;jobid&gt;
+$ sacct -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
+$ sacct –u &lt;user&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
 </code></pre></div><h2 id="controlling-jobs">Controlling jobs</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Cancel a specific job</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Cancel a specific job</span>
 $ scancel &lt;jobid&gt;
-<span style="color:#75715e"># Cancel all jobs for a specific user</span>
-$ scancel -u $USER
-<span style="color:#75715e"># Cancel all pending jobs for a specific user</span>
-$ scancel -t PENDING -u $USER
-<span style="color:#75715e"># Cancel all running jobs for a specific user</span>
-$ scancel -t RUNNING -u $USER
-<span style="color:#75715e"># Cancel one or more jobs by name</span>
+<span style="color:#6272a4"># Cancel all jobs for a specific user</span>
+$ scancel -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+<span style="color:#6272a4"># Cancel all pending jobs for a specific user</span>
+$ scancel -t PENDING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+<span style="color:#6272a4"># Cancel all running jobs for a specific user</span>
+$ scancel -t RUNNING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+<span style="color:#6272a4"># Cancel one or more jobs by name</span>
 $ scancel --name &lt;jobName&gt;
-<span style="color:#75715e"># Hold a job, prevent it form starting</span>
+<span style="color:#6272a4"># Hold a job, prevent it form starting</span>
 $ scontrol hold &lt;jobid&gt;
-<span style="color:#75715e"># Release a job hold, allowing the job to try to start</span>
+<span style="color:#6272a4"># Release a job hold, allowing the job to try to start</span>
 $ scontrol resume &lt;jobid&gt;
-<span style="color:#75715e"># Requeue a running, suspended or finished job into pending state</span>
+<span style="color:#6272a4"># Requeue a running, suspended or finished job into pending state</span>
 $ scontrol requeue &lt;jobid&gt;
-<span style="color:#75715e"># List running jobs by user</span>
+<span style="color:#6272a4"># List running jobs by user</span>
 $ squeue -u &lt;user&gt; -ho %A -t RUNNING
-<span style="color:#75715e"># Set a new Timelimit a running (need admin privilege)/pending job</span>
-$ scontrol update jobid<span style="color:#f92672">=</span>&lt;jobid&gt; TimeLimit<span style="color:#f92672">=</span>&lt;TimeLimit&gt;
+<span style="color:#6272a4"># Set a new Timelimit a running (need admin privilege)/pending job</span>
+$ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;TimeLimit&gt;
 </code></pre></div><h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
 <table>
 <thead>
@@ -346,48 +341,51 @@ $ scontrol update jobid<span style="color:#f92672">=</span>&lt;jobid&gt; TimeLim
 </tbody>
 </table>
 <h2 id="account-information">Account information</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># List user and their default account (accounting group)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># List user and their default account (accounting group)</span>
 $ sacctmgr show user &lt;user&gt; withassoc
-<span style="color:#75715e"># Show usage info for user</span>
+<span style="color:#6272a4"># Show usage info for user</span>
 $ sshare -l -U &lt;user&gt;
-<span style="color:#75715e"># Show usage info for all users under a specific account</span>
+<span style="color:#6272a4"># Show usage info for all users under a specific account</span>
 $ sshare -l -A &lt;account&gt;_cpu --all
 </code></pre></div><h2 id="cluster-information">Cluster information</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show idle node on cluster</span>
-$ sinfo --states<span style="color:#f92672">=</span>idle
-<span style="color:#75715e"># Show down, drained and draining nodes and their reason</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Show idle node on cluster</span>
+$ sinfo --states<span style="color:#ff79c6">=</span>idle
+<span style="color:#6272a4"># Show down, drained and draining nodes and their reason</span>
 $ sinfo -R
-<span style="color:#75715e"># Show detailed node info</span>
+<span style="color:#6272a4"># Show detailed node info</span>
 $ sinfo --Node --long
-<span style="color:#75715e"># Show reservations on the cluster</span>
+<span style="color:#6272a4"># Show reservations on the cluster</span>
 $ scontrol show reservation 
-<span style="color:#75715e"># Show configuration descriptions</span>
+<span style="color:#6272a4"># Show configuration descriptions</span>
 $ man slurm.conf
-<span style="color:#75715e"># Check configuration values</span>
+<span style="color:#6272a4"># Check configuration values</span>
 $ scontrol show config | grep Max
-<span style="color:#75715e"># Show job info on cluster</span>
+<span style="color:#6272a4"># Show job info on cluster</span>
 $ partition-stats
 </code></pre></div><h2 id="software-modules">Software modules</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Show currently loaded modules</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Show currently loaded modules</span>
 $ module list
-<span style="color:#75715e"># Search for a module (if listed)</span>
+<span style="color:#6272a4"># Search for a module (if listed)</span>
 $ module avail &lt;name&gt;
-<span style="color:#75715e"># Will give a little bit more info</span>
+<span style="color:#6272a4"># Will give a little bit more info</span>
 $ module spider &lt;name&gt;
-<span style="color:#75715e"># Load a module</span>
+<span style="color:#6272a4"># Load a module</span>
 $ module load &lt;moduleName&gt;
-<span style="color:#75715e"># Unload a module</span>
+<span style="color:#6272a4"># Unload a module</span>
 $ module unload &lt;moduleName&gt;
-<span style="color:#75715e"># Show commands in the module</span>
+<span style="color:#6272a4"># Show commands in the module</span>
 $ module show &lt;moduleName&gt;
 </code></pre></div><h2 id="disk-usage">Disk usage</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
 </code></pre></div>
-        </article>
-  </div>
-</section>
+        </p>
+    </div>
+</div>
 
-<aside id=comments>
+
+    
+
+    <aside id=comments>
     <div><h2> Comments </h2></div>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -411,26 +409,10 @@ $ module show &lt;moduleName&gt;
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </aside>
 
-<footer>
-  <div>
-    <p>
-    &copy; 2018 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Qingfeng Lan.</span></span>
-        Powered by <a href="http://hugo.spf13.com">Hugo</a>.
-        Theme by <a href="http://spf13.com">Steve Francia</a>.
-    </p>
-  </div>
-</footer>
-<script type="text/javascript">
-(function(){var j=function(a,b){return window.getComputedStyle?getComputedStyle(a).getPropertyValue(b):a.currentStyle[b]};var k=function(a,b,c){if(a.addEventListener)a.addEventListener(b,c,false);else a.attachEvent('on'+b,c)};var l=function(a,b){for(key in b)if(b.hasOwnProperty(key))a[key]=b[key];return a};window.fitText=function(d,e,f){var g=l({'minFontSize':-1/0,'maxFontSize':1/0},f);var h=function(a){var b=e||1;var c=function(){a.style.fontSize=Math.max(Math.min(a.clientWidth/(b*10),parseFloat(g.maxFontSize)),parseFloat(g.minFontSize))+'px'};c();k(window,'resize',c)};if(d.length)for(var i=0;i<d.length;i++)h(d[i]);else h(d);return d}})();
-fitText(document.getElementById('title'), 1)
-</script>
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-</body>
+        </main><footer class="footer">
+    <span>&copy; 2022 Qingfeng Lan; all rights reserved.</span>
+    <span>
+        Powered by <a target="_blank" href="https://gohugo.io/">Hugo</a>
+    </span>
+</footer></body>
 </html>
-
-</body>
