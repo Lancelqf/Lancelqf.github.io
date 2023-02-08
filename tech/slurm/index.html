@@ -247,6 +247,10 @@ $ scontrol show job -dd &lt;jobid&gt;
 <span style="color:#6272a4"># List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID</span>
 $ sstat -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
 </code></pre></div><ul>
+<li>Attach a running job</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ srun --jobid<span style="color:#ff79c6">=</span>&lt;jobid&gt; --pty bash -i
+</code></pre></div><ul>
 <li>Email notification</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#6272a4">#SBATCH --mail-user=&lt;email_address&gt;</span>
@@ -278,6 +282,8 @@ $ scancel --name &lt;jobName&gt;
 <span style="color:#6272a4"># Hold a job, prevent it form starting</span>
 $ scontrol hold &lt;jobid&gt;
 <span style="color:#6272a4"># Release a job hold, allowing the job to try to start</span>
+$ scontrol release &lt;jobid&gt;
+<span style="color:#6272a4"># Release a previously held job to begin execution</span>
 $ scontrol resume &lt;jobid&gt;
 <span style="color:#6272a4"># Requeue a running, suspended or finished job into pending state</span>
 $ scontrol requeue &lt;jobid&gt;
@@ -285,6 +291,8 @@ $ scontrol requeue &lt;jobid&gt;
 $ squeue -u &lt;user&gt; -ho %A -t RUNNING
 <span style="color:#6272a4"># Set a new Timelimit a running (need admin privilege)/pending job</span>
 $ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;TimeLimit&gt;
+<span style="color:#6272a4"># Set other parameters for a job</span>
+$ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Account</span><span style="color:#ff79c6">=</span>&lt;account&gt; <span style="color:#8be9fd;font-style:italic">CPUsPerTask</span><span style="color:#ff79c6">=</span>&lt;count&gt; <span style="color:#8be9fd;font-style:italic">MinMemoryCPU</span><span style="color:#ff79c6">=</span>&lt;MB&gt; <span style="color:#8be9fd;font-style:italic">Gres</span><span style="color:#ff79c6">=</span>&lt;list&gt;
 </code></pre></div><h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
 <table>
 <thead>
@@ -377,7 +385,16 @@ $ module unload &lt;moduleName&gt;
 $ module show &lt;moduleName&gt;
 </code></pre></div><h2 id="disk-usage">Disk usage</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
-</code></pre></div>
+$ quota --per_user
+$ diskusage_report --per_user --all_users
+</code></pre></div><h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.alliancecan.ca/wiki/Using_GPUs_with_Slurm">Using GPUs with Slurm</a></li>
+<li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
+<li><a href="https://curc.readthedocs.io/en/latest/running-jobs/running-apps-with-jobs.html">Research Computing User Guide - University of Colorado Boulder</a></li>
+<li><a href="https://training.westdri.ca/materials/schedulingKamil/slurmCheatsheet.pdf">Slurm Cheatsheet</a></li>
+<li><a href="https://docs.mila.quebec/index.html">Mila Cluster Documentation</a></li>
+</ul>
         </p>
     </div>
 </div>
@@ -410,7 +427,7 @@ $ module show &lt;moduleName&gt;
 </aside>
 
         </main><footer class="footer">
-    <span>&copy; 2022 Qingfeng Lan; all rights reserved.</span>
+    <span>&copy; 2023 Qingfeng Lan; all rights reserved.</span>
     <span>
         Powered by <a target="_blank" href="https://gohugo.io/">Hugo</a>
     </span>
