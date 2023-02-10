@@ -13,7 +13,7 @@
       <pubDate>Fri, 26 Apr 2019 16:01:41 -0600</pubDate>
       
       <guid>https://lancelqf.github.io/note/lifelong_learning/</guid>
-      <description>Introduction: Definition of LL Lifelong learning (LL) is a continuous learning process. At any point in time, the learner has performed a sequence of $N$ learning tasks, $T _ { 1 } , T _ { 2 } , \ldots , T _ { N }$. These tasks have their corresponding datasets $D _ { 1 } , D _ { 2 } , \ldots , D _ { N }$.</description>
+      <description></description>
     </item>
     
     <item>
@@ -22,8 +22,7 @@
       <pubDate>Fri, 26 Apr 2019 15:50:46 -0600</pubDate>
       
       <guid>https://lancelqf.github.io/note/deep_rl/</guid>
-      <description>Value-based methods for deep RL   Q-learning:
- The Q-learning algorithm uses Bellman equation to get the unique solution $Q^{*}(s,a)$: $$Q ^ { * } ( s , a ) = ( \mathcal { B } Q ^ { * } ) ( s , a )$$ where $\mathcal{B}$ is the Bellman operator mapping any function $K : \mathcal { S } \times \mathcal { A } arrow \mathbb { R }$ into another function $\mathcal { S } \times \mathcal { A } arrow \mathbb { R }$, defined as follows: $$( \mathcal { B } K ) ( s , a ) = \sum _ { s ^ { \prime } \in S } P ( s , a , s ^ { \prime } ) ( R ( s , a , s ^ { \prime } ) + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } K ( s ^ { \prime } , a ^ { \prime } ) )$$ By Banach&amp;rsquo;s theorem, the fixed point of the Bellman operator $\mathcal{B}$ exists since it is a contraction mapping.</description>
+      <description></description>
     </item>
     
     <item>
@@ -32,9 +31,7 @@
       <pubDate>Fri, 26 Apr 2019 15:42:36 -0600</pubDate>
       
       <guid>https://lancelqf.github.io/note/transfer_learning/</guid>
-      <description>Introduction I&amp;rsquo;ve run out of my ideas. Time to learn new things. I start with transfer learning. After that, I&amp;rsquo;d probably continue with online learning, life-long learning and meta learning.
-For transfer learning, there are two important concepts:
- Domain: A domain is consists of data and data distribution. To be specific, there are two domains that we care in transfer learning: Source Domain ($D _ s$) and Target Domain ($D _ t$).</description>
+      <description></description>
     </item>
     
     <item>
@@ -43,8 +40,7 @@ For transfer learning, there are two important concepts:
       <pubDate>Mon, 21 Jan 2019 18:40:42 -0700</pubDate>
       
       <guid>https://lancelqf.github.io/note/research_diary_2019/</guid>
-      <description>This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.
-Reference  Reinforcement Learning: An Introduction. Richard S. Sutton and Andrew G. Barto, Second Edition, MIT Press, Cambridge, MA, 2018. Artificial Intelligence: A Modern Approach. Stuart Russell and Peter Norvig, Third Edition, Prentice Hall, 2009.</description>
+      <description>&lt;p&gt;This is my research diary about intelligence in 2019. I find writing research diary really interesting and it helps me to organize my thougths and discover new ideas! I just hope I have enough thougths to continue writing.&lt;/p&gt;</description>
     </item>
     
     <item>
