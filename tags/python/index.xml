@@ -13,7 +13,10 @@
       <pubDate>Sun, 22 Jul 2018 19:12:41 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/tech/python%E5%85%A5%E9%97%A8/</guid>
-      <description>&lt;p&gt;很多非计算机的同学问过我如何学习Python，干脆写份入门指南好了。说来惭愧，其实自己都没有系统学过Python，只是入了个门。基本上都是要用到什么才会去学，很多都是现查现学。高阶的东西完全不会，所以这真的是一份很基础的&lt;strong&gt;入门&lt;/strong&gt;指南。更丰富的内容请自行知乎。&lt;/p&gt;</description>
+      <description>很多非计算机的同学问过我如何学习Python，干脆写份入门指南好了。说来惭愧，其实自己都没有系统学过Python，只是入了个门。基本上都是要用到什么才会去学，很多都是现查现学。高阶的东西完全不会，所以这真的是一份很基础的入门指南。更丰富的内容请自行知乎。
+博客式教程  菜鸟：Python基础教程 廖雪峰：Python3教程  网络课程  Coursera：Coursera上有很多Python网课，大部分免费，不过我都没有上过，挑个评分高的学学问题应该都不大。此外，慕课、中国大学MOOC上都有类似的教程。 Codecademy：以“知识点+练习”为主导的学习形式，可以边学边写代码。  书籍  《Python编程入门》by Toby Donaldson：真的是一本超级入门的书，一两天就能看完。如果觉得这本太简单，找本卖得好的Python书学学也可以，都差不太多（其它Python书籍没看过，就不推荐了）。  以上内容其实有很多重复，选一个自己比较能接受的学习形式认认真真学完就好。多写代码有利于巩固，如果是现学现用就更好了。
+另外推荐一个很棒的学习网站Learn Anything，虽然目前还在建设中，但是已经有很多有用的东西了。
+以上。</description>
     </item>
     
     <item>
@@ -22,7 +25,9 @@
       <pubDate>Wed, 04 Apr 2018 19:32:58 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/tech/python-bug/</guid>
-      <description></description>
+      <description>  fatal error: Python.h: No such file or directory：#include &amp;ldquo;Python.h&amp;rdquo;
+ Solution: apt-get install python-dev    RuntimeError: dictionary changed size during iteration
+ Example: for k in dictVar:dictVar.pop(k) Solution:  Python2.x: for k in dictVar.keys(): dictVar.pop(k) Python3.x: for k in list(dictVar): dictVar.pop(k)      </description>
     </item>
     
   </channel>
