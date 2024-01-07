@@ -191,7 +191,7 @@
     <div class="post-content">
         <p>
             <h2 id="submit-jobs">Submit jobs</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sbatch &lt;run_script&gt;.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sbatch &lt;run_script&gt;.sh
 </code></pre></div><h2 id="examples-of-job-scripts">Examples of job scripts</h2>
 <ul>
 <li>Serial job</li>
@@ -219,38 +219,38 @@ sleep <span style="color:#bd93f9">5</span>
 
 ./myapplication <span style="color:#8be9fd;font-style:italic">$SLURM_ARRAY_TASK_ID</span>
 </code></pre></div><h2 id="interactive-job">Interactive job</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ salloc --time<span style="color:#ff79c6">=</span>1:0:0 --ntasks<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-someuser
-$ salloc --time<span style="color:#ff79c6">=</span>0-01:00:00 --cpus-per-task<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-afyshe-ab --mem-per-cpu<span style="color:#ff79c6">=</span>512M
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">salloc --time<span style="color:#ff79c6">=</span>1:0:0 --ntasks<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-someuser
+salloc --time<span style="color:#ff79c6">=</span>0-01:00:00 --cpus-per-task<span style="color:#ff79c6">=</span><span style="color:#bd93f9">2</span> --account<span style="color:#ff79c6">=</span>def-afyshe-ab --mem-per-cpu<span style="color:#ff79c6">=</span>512M
 salloc: Granted job allocation <span style="color:#bd93f9">1234567</span>
-$ ...        <span style="color:#6272a4"># do some work</span>
-$ <span style="color:#8be9fd;font-style:italic">exit</span>       <span style="color:#6272a4"># terminate the allocation</span>
+...        <span style="color:#6272a4"># do some work</span>
+<span style="color:#8be9fd;font-style:italic">exit</span>       <span style="color:#6272a4"># terminate the allocation</span>
 salloc: Relinquishing job allocation <span style="color:#bd93f9">1234567</span>
 </code></pre></div><h2 id="monitoring-jobs">Monitoring jobs</h2>
 <ul>
 <li>Show jobs for a specific user</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -r
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">squeue -u &lt;user&gt; -r
 </code></pre></div><ul>
 <li>Show only running jobs, or only pending jobs</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ squeue -u &lt;user&gt; -t running
-$ squeue -u &lt;user&gt; -t pending
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">squeue -u &lt;user&gt; -t running
+squeue -u &lt;user&gt; -t pending
 PENDING, RUNNING, SUSPENDED, COMPLETING, COMPLETED, OUT_OF_MEMORY, FAILED
 </code></pre></div><ul>
 <li>Show (detailed) information for a specific job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ scontrol show job &lt;jobid&gt;
-$ scontrol show job -dd &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scontrol show job &lt;jobid&gt;
+scontrol show job -dd &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show status information for a running job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sstat -j &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sstat -j &lt;jobid&gt;
 <span style="color:#6272a4"># List info resource used by a job: Average cpu time, Max memory, Max virtual memory, Job ID</span>
-$ sstat -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
+sstat -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>AveCPU,MaxRSS,MaxVMSize,JobID 
 </code></pre></div><ul>
 <li>Attach a running job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ srun --jobid<span style="color:#ff79c6">=</span>&lt;jobid&gt; --pty bash -i
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">srun --jobid<span style="color:#ff79c6">=</span>&lt;jobid&gt; --pty bash -i
 </code></pre></div><ul>
 <li>Email notification</li>
 </ul>
@@ -262,38 +262,38 @@ $ sstat -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>AveCPU,MaxR
 <ul>
 <li>Show a short summary of a completed job</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ seff &lt;jobid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">seff &lt;jobid&gt;
 </code></pre></div><ul>
 <li>Show a detailed summary of a completed job or all jobs of a user</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sacct -j &lt;jobid&gt;
-$ sacct -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
-$ sacct –u &lt;user&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sacct -j &lt;jobid&gt;
+sacct -j &lt;jobid&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
+sacct –u &lt;user&gt; --format<span style="color:#ff79c6">=</span>JobID,JobName,AveCPU,MaxRSS,MaxVMSize,Elapsed
 </code></pre></div><h2 id="controlling-jobs">Controlling jobs</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Cancel a specific job</span>
-$ scancel &lt;jobid&gt;
+scancel &lt;jobid&gt;
 <span style="color:#6272a4"># Cancel all jobs for a specific user</span>
-$ scancel -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+scancel -u <span style="color:#8be9fd;font-style:italic">$USER</span>
 <span style="color:#6272a4"># Cancel all pending jobs for a specific user</span>
-$ scancel -t PENDING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+scancel -t PENDING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
 <span style="color:#6272a4"># Cancel all running jobs for a specific user</span>
-$ scancel -t RUNNING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
+scancel -t RUNNING -u <span style="color:#8be9fd;font-style:italic">$USER</span>
 <span style="color:#6272a4"># Cancel one or more jobs by name</span>
-$ scancel --name &lt;jobName&gt;
+scancel --name &lt;jobName&gt;
 <span style="color:#6272a4"># Hold a job, prevent it form starting</span>
-$ scontrol hold &lt;jobid&gt;
+scontrol hold &lt;jobid&gt;
 <span style="color:#6272a4"># Release a job hold, allowing the job to try to start</span>
-$ scontrol release &lt;jobid&gt;
+scontrol release &lt;jobid&gt;
 <span style="color:#6272a4"># Release a previously held job to begin execution</span>
-$ scontrol resume &lt;jobid&gt;
+scontrol resume &lt;jobid&gt;
 <span style="color:#6272a4"># Requeue a running, suspended or finished job into pending state</span>
-$ scontrol requeue &lt;jobid&gt;
+scontrol requeue &lt;jobid&gt;
 <span style="color:#6272a4"># List running jobs by user</span>
-$ squeue -u &lt;user&gt; -ho %A -t RUNNING
+squeue -u &lt;user&gt; -ho %A -t RUNNING
 <span style="color:#6272a4"># Set a new Timelimit a running (need admin privilege)/pending job</span>
-$ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;TimeLimit&gt;
+scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;TimeLimit&gt;
 <span style="color:#6272a4"># Set other parameters for a job</span>
-$ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Account</span><span style="color:#ff79c6">=</span>&lt;account&gt; <span style="color:#8be9fd;font-style:italic">CPUsPerTask</span><span style="color:#ff79c6">=</span>&lt;count&gt; <span style="color:#8be9fd;font-style:italic">MinMemoryCPU</span><span style="color:#ff79c6">=</span>&lt;MB&gt; <span style="color:#8be9fd;font-style:italic">Gres</span><span style="color:#ff79c6">=</span>&lt;list&gt;
+scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Account</span><span style="color:#ff79c6">=</span>&lt;account&gt; <span style="color:#8be9fd;font-style:italic">CPUsPerTask</span><span style="color:#ff79c6">=</span>&lt;count&gt; <span style="color:#8be9fd;font-style:italic">MinMemoryCPU</span><span style="color:#ff79c6">=</span>&lt;MB&gt; <span style="color:#8be9fd;font-style:italic">Gres</span><span style="color:#ff79c6">=</span>&lt;list&gt;
 </code></pre></div><h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
 <table>
 <thead>
@@ -351,43 +351,43 @@ $ scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><spa
 </table>
 <h2 id="account-information">Account information</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># List user and their default account (accounting group)</span>
-$ sacctmgr show user &lt;user&gt; withassoc
+sacctmgr show user &lt;user&gt; withassoc
 <span style="color:#6272a4"># Show usage info for user</span>
-$ sshare -l -U &lt;user&gt;
+sshare -l -U &lt;user&gt;
 <span style="color:#6272a4"># Show usage info for all users under a specific account</span>
-$ sshare -l -A &lt;account&gt;_cpu --all
+sshare -l -A &lt;account&gt;_cpu --all
 </code></pre></div><h2 id="cluster-information">Cluster information</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Show idle node on cluster</span>
-$ sinfo --states<span style="color:#ff79c6">=</span>idle
+sinfo --states<span style="color:#ff79c6">=</span>idle
 <span style="color:#6272a4"># Show down, drained and draining nodes and their reason</span>
-$ sinfo -R
+sinfo -R
 <span style="color:#6272a4"># Show detailed node info</span>
-$ sinfo --Node --long
+sinfo --Node --long
 <span style="color:#6272a4"># Show reservations on the cluster</span>
-$ scontrol show reservation 
+scontrol show reservation 
 <span style="color:#6272a4"># Show configuration descriptions</span>
-$ man slurm.conf
+man slurm.conf
 <span style="color:#6272a4"># Check configuration values</span>
-$ scontrol show config | grep Max
+scontrol show config | grep Max
 <span style="color:#6272a4"># Show job info on cluster</span>
-$ partition-stats
+partition-stats
 </code></pre></div><h2 id="software-modules">Software modules</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Show currently loaded modules</span>
-$ module list
+module list
 <span style="color:#6272a4"># Search for a module (if listed)</span>
-$ module avail &lt;name&gt;
+module avail &lt;name&gt;
 <span style="color:#6272a4"># Will give a little bit more info</span>
-$ module spider &lt;name&gt;
+module spider &lt;name&gt;
 <span style="color:#6272a4"># Load a module</span>
-$ module load &lt;moduleName&gt;
+module load &lt;moduleName&gt;
 <span style="color:#6272a4"># Unload a module</span>
-$ module unload &lt;moduleName&gt;
+module unload &lt;moduleName&gt;
 <span style="color:#6272a4"># Show commands in the module</span>
-$ module show &lt;moduleName&gt;
+module show &lt;moduleName&gt;
 </code></pre></div><h2 id="disk-usage">Disk usage</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ quota
-$ quota --per_user
-$ diskusage_report --per_user --all_users
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">quota
+quota --per_user
+diskusage_report --per_user --all_users
 </code></pre></div><h2 id="references">References</h2>
 <ul>
 <li><a href="https://docs.alliancecan.ca/wiki/Using_GPUs_with_Slurm">Using GPUs with Slurm</a></li>
@@ -396,9 +396,35 @@ $ diskusage_report --per_user --all_users
 <li><a href="https://training.westdri.ca/materials/schedulingKamil/slurmCheatsheet.pdf">Slurm Cheatsheet</a></li>
 <li><a href="https://docs.mila.quebec/index.html">Mila Cluster Documentation</a></li>
 </ul>
+
         </p>
     </div>
 </div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#submit-jobs">Submit jobs</a></li>
+        <li><a href="#examples-of-job-scripts">Examples of job scripts</a></li>
+        <li><a href="#interactive-job">Interactive job</a></li>
+        <li><a href="#monitoring-jobs">Monitoring jobs</a></li>
+        <li><a href="#completed-jobs">Completed jobs</a></li>
+        <li><a href="#controlling-jobs">Controlling jobs</a></li>
+        <li><a href="#slurm-environment-variables">SLURM Environment Variables</a></li>
+        <li><a href="#account-information">Account information</a></li>
+        <li><a href="#cluster-information">Cluster information</a></li>
+        <li><a href="#software-modules">Software modules</a></li>
+        <li><a href="#disk-usage">Disk usage</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

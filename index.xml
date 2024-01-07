@@ -6,7 +6,17 @@
     <description>Recent content on Qingfeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2023 00:27:23 -0700</lastBuildDate><atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Jan 2024 16:05:55 -0700</lastBuildDate><atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mamba</title>
+      <link>https://lancelqf.github.io/tech/mamba/</link>
+      <pubDate>Sat, 06 Jan 2024 16:05:55 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/mamba/</guid>
+      <description>Installation For Linux, macOS, or Git Bash on Windows install with:
+&amp;#34;${SHELL}&amp;#34; &amp;lt;(curl -L micro.mamba.pm/install.sh) Self-update micromamba config append channels conda-forge micromamba config set channel_priority strict # echo -e &amp;#34;channels: [conda-forge]&amp;#34; &amp;gt;&amp;gt; ~/.mambarc micromamba self-update Shell initialization eval &amp;#34;$(micromamba shell hook --shell bash)&amp;#34; micromamba activate Environment micromamba create -n &amp;lt;env&amp;gt; # Create env without any packages micromamba create -n &amp;lt;env&amp;gt; &amp;lt;list of packages&amp;gt; # Create env with packages micromamba create -n &amp;lt;env&amp;gt; -f &amp;lt;file&amp;gt;.</description>
+    </item>
+    
     <item>
       <title>2023：你看清楚了吗</title>
       <link>https://lancelqf.github.io/heart/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/</link>
@@ -257,7 +267,7 @@ The Crazy Year 虽然这一年自己的生活没有什么特别大的变化，�
       <pubDate>Sat, 13 Jul 2019 22:21:11 -0600</pubDate>
       
       <guid>https://lancelqf.github.io/tech/slurm/</guid>
-      <description></description>
+      <description>Submit jobs sbatch &amp;lt;run_script&amp;gt;.sh Examples of job scripts  Serial job  #!/bin/bash #SBATCH --account=def-afyshe-ab # time (DD-HH:MM:SS) #SBATCH --time=00-00:01:00 echo &amp;#39;Hello, world!&amp;#39; sleep 5  Array job  #!/bin/bash #SBATCH --job-name=test #SBATCH --account=def-afyshe-ab #SBATCH --time=0-01:00:00 #SBATCH --mem-per-cpu=500M # job name (%x), job ID (%j) #SBATCH --output=output/%x-%j.txt # run a 10 job array, with a maximum of 5 running at a time #SBATCH --array=1-10%5 # job array with indexes [1,2,3,5,7] #SBATCH --array=1,2,3,5,7 .</description>
     </item>
     
     <item>
@@ -483,12 +493,12 @@ Just a speck of dust within the galaxy.
  首先，“Markdown 其实很简单。在简书上学习 Markdown 最方便。”
  1. 标题 为了获得上面的 “1. 标题”， 在 Markdown 编辑器里输入：
 # 1. 标题“#” 后最好加个空格。除此之外，还有 5 级标题，依次有不同的字体大小，即
-## 二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题这样就有：
-二级标题### 三级标题#### 四级标题##### 五级标题###### 六级标题  2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
+## 二级标题### 三级标题#### 四级标题这样就有：
+二级标题 三级标题 四级标题  2. 加粗，斜体 最常用的强调方式，那就是 加粗 了，你得这样：
 最常用的强调方式，那就是 **加粗** 了，你得这样：通常我喜欢在 “**加粗的部分**” 旁边各加一个空格，当然你也可以不这样。 斜体则多用在于书名，比如：我从来没看过 Jane Eyre
 斜体则多用在于书名，比如：我从来没看过 *Jane Eyre*但中文的斜体我觉得真是不美，像：《简 · 爱》，一般还是别用了。
  3. 层次 比如写个读书笔记，你得
-第一章  第一节   第二节(你不用敲 &amp;ldquo;2&amp;rdquo;，自动就有了）  第一小节（推荐每层次缩进四个空格） * 小小节 1 * 小小节 2 * 第二小节    也不难：</description>
+第一章  第一节   第二节(你不用敲 &amp;ldquo;2&amp;rdquo;，自动就有了）  第一小节（推荐每层次缩进四个空格）  小小节 1 小小节 2   第二小节    也不难：</description>
     </item>
     
     <item>
@@ -592,7 +602,9 @@ Just a speck of dust within the galaxy.
       <pubDate>Wed, 04 Apr 2018 19:45:55 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/tech/c-bug/</guid>
-      <description></description>
+      <description>  Error: free(): invalid next size (fast/normal) 内存泄漏问题
+ 可能的原因有：  free了没有分配的内存； 分配了内存忘记释放； 数组循环的时候越界了，写到了其他的内存里面， 然后一free那个区域就出现了这样的问题； strcpy复制出错（应使用strncpy或memcpy）   一个debug的方法：把你怀疑的矩阵（比如释放了就会报内存错误）定义成静态的，这样如果出现越界，会报段错误。然后依次检查是否你的数组真的越界了。 内存调试工具：valgrind    处理与网络相关的数据时，应注意网络字节序和主机字节序的区别。
+  </description>
     </item>
     
     <item>

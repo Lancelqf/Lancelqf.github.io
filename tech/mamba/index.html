@@ -17,25 +17,25 @@
     
 
     
-    <title>Hugo</title>
-    <meta name="description" content="Hugo cheet sheet">
+    <title>Mamba</title>
+    <meta name="description" content="真实勇敢 坦诚开放">
     <meta name="keywords" content='Article'>
 
-    <meta property="og:url" content="https://lancelqf.github.io/tech/hugo/">
+    <meta property="og:url" content="https://lancelqf.github.io/tech/mamba/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hugo">
-    <meta property="og:description" content="Hugo cheet sheet">
+    <meta property="og:title" content="Mamba">
+    <meta property="og:description" content="真实勇敢 坦诚开放">
     <meta property="og:image" content="/TheWindRises.jpeg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hugo">
-    <meta name="twitter:description" content="Hugo cheet sheet">
-    <meta property="twitter:domain" content="https://lancelqf.github.io/tech/hugo/">
-    <meta property="twitter:url" content="https://lancelqf.github.io/tech/hugo/">
+    <meta name="twitter:title" content="Mamba">
+    <meta name="twitter:description" content="真实勇敢 坦诚开放">
+    <meta property="twitter:domain" content="https://lancelqf.github.io/tech/mamba/">
+    <meta property="twitter:url" content="https://lancelqf.github.io/tech/mamba/">
     <meta name="twitter:image" content="/TheWindRises.jpeg">
 
     
-    <link rel="canonical" href="https://lancelqf.github.io/tech/hugo/" />
+    <link rel="canonical" href="https://lancelqf.github.io/tech/mamba/" />
 
     <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
@@ -174,10 +174,10 @@
 <main id="content">
     <div class="post container">
     <div class="post-header-section">
-        <h1>Hugo</h1>
-        <small role="doc-subtitle">Hugo cheet sheet</small>
+        <h1>Mamba</h1>
+        <small role="doc-subtitle"></small>
         <p class="post-date">
-            February 12, 2020
+            January 6, 2024
             
             
         </p>
@@ -190,26 +190,42 @@
 
     <div class="post-content">
         <p>
-            <h2 id="add-new-page">Add new page</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo new new_page.md
-</code></pre></div><h2 id="build-and-preview">Build and Preview</h2>
-<ul>
-<li>Build with drafts</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server --buildDrafts
-</code></pre></div><ul>
-<li>Build with selected theme</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server -t &lt;theme&gt;
-</code></pre></div><ul>
-<li>Build and watch changes</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">hugo server -w 
+            <h2 id="installation">Installation</h2>
+<p>For Linux, macOS, or Git Bash on Windows install with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">SHELL</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> &lt;<span style="color:#ff79c6">(</span>curl -L micro.mamba.pm/install.sh<span style="color:#ff79c6">)</span>
+</code></pre></div><h2 id="self-update">Self-update</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba config append channels conda-forge
+micromamba config <span style="color:#8be9fd;font-style:italic">set</span> channel_priority strict
+<span style="color:#6272a4"># echo -e &#34;channels: [conda-forge]&#34; &gt;&gt; ~/.mambarc</span>
+micromamba self-update
+</code></pre></div><h2 id="shell-initialization">Shell initialization</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">eval</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>micromamba shell hook --shell bash<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+micromamba activate
+</code></pre></div><h2 id="environment">Environment</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba create -n &lt;env&gt; <span style="color:#6272a4"># Create env without any packages</span>
+micromamba create -n &lt;env&gt; &lt;list of packages&gt;  <span style="color:#6272a4"># Create env with packages</span>
+micromamba create -n &lt;env&gt; -f &lt;file&gt;.txt  <span style="color:#6272a4"># Create env from .txt file</span>
+micromamba create -n &lt;env&gt; -f &lt;file&gt;.yml  <span style="color:#6272a4"># Create env from .yml file</span>
+micromamba env                            <span style="color:#6272a4"># List all environments (except base)</span>
+micromamba activate        <span style="color:#6272a4"># Activate base</span>
+micromamba activate base   <span style="color:#6272a4"># Activate base</span>
+micromamba activate &lt;env&gt;  <span style="color:#6272a4"># Activate env</span>
+micromamba deactivate      <span style="color:#6272a4"># Deactivate active env</span>
+micromamba delete? &lt;env&gt;   <span style="color:#6272a4"># Delete env</span>
+</code></pre></div><h2 id="package">Package</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba install &lt;list of packages&gt;  <span style="color:#6272a4"># Install packages</span>
+micromamba remove &lt;list of packages&gt;   <span style="color:#6272a4"># Remove packages</span>
+micromamba remove -a                   <span style="color:#6272a4"># Remove all packages in active env</span>
+micromamba update &lt;list of packages&gt;   <span style="color:#6272a4"># Update packages</span>
+micromamba clean                       <span style="color:#6272a4"># Clean package cache</span>
+micromamba list                        <span style="color:#6272a4"># List all packages in active env</span>
+micromamba list &lt;package&gt;              <span style="color:#6272a4"># List specific package in active env</span>
+micromamba search &lt;package&gt;            <span style="color:#6272a4"># Find specific package in active env or channels</span>
 </code></pre></div><h2 id="references">References</h2>
 <ul>
-<li><a href="http://nanshu.wang/post/2015-01-31/">Hugo静态网站生成器中文教程</a></li>
-<li><a href="https://gohugo.io/getting-started/">Hugo Doc</a></li>
+<li><a href="https://mamba.readthedocs.io/en/latest/index.html">Mamba’s documentation</a></li>
 </ul>
+
         </p>
     </div>
 </div>
@@ -220,8 +236,11 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#add-new-page">Add new page</a></li>
-        <li><a href="#build-and-preview">Build and Preview</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#self-update">Self-update</a></li>
+        <li><a href="#shell-initialization">Shell initialization</a></li>
+        <li><a href="#environment">Environment</a></li>
+        <li><a href="#package">Package</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>

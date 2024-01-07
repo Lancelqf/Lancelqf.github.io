@@ -192,11 +192,14 @@
         <p>
             <h2 id="commands">Commands</h2>
 <ul>
-<li>Start new named session: <strong>tmux new -s [session name]</strong></li>
+<li>Start new named session: <strong>tmux new -s [session]</strong></li>
 <li>Detach from session: <strong>ctrl+b d</strong></li>
 <li>List sessions: <strong>tmux ls</strong></li>
-<li>Attach to named session: <strong>tmux a -t [name of session]</strong></li>
-<li>Kill named session: <strong>tmux kill-session -t [name of session]</strong></li>
+<li>Attach to last opened session: <strong>tmux a</strong></li>
+<li>Attach to named session: <strong>tmux a -t [session]</strong></li>
+<li>Select and attach session: <strong>ctrl+b s</strong></li>
+<li>Kill named session: <strong>tmux kill-session -t [session]</strong></li>
+<li>Kill current session: <strong>exit</strong></li>
 <li>Split panes horizontally: <strong>ctrl+b &ldquo;</strong></li>
 <li>Split panes vertically: <strong>ctrl+b %</strong></li>
 <li>Kill current pane: <strong>ctrl+b x</strong></li>
@@ -210,6 +213,21 @@
         </p>
     </div>
 </div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

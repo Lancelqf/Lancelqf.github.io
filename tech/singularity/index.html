@@ -190,84 +190,91 @@
 
     <div class="post-content">
         <p>
-            <ul>
-<li>Download pre-built images</li>
-</ul>
+            <h2 id="download-pre-built-images">Download pre-built images</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Synopsis</span>
-$ singularity pull <span style="color:#ff79c6">[</span>pull options...<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>output file<span style="color:#ff79c6">]</span> &lt;container&gt;
+singularity pull <span style="color:#ff79c6">[</span>pull options...<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>output file<span style="color:#ff79c6">]</span> &lt;container&gt;
 <span style="color:#6272a4"># From Sylabs cloud library</span>
-$ singluarity pull library://&lt;user&gt;/&lt;collection&gt;/&lt;container<span style="color:#ff79c6">[</span>:tag<span style="color:#ff79c6">]</span>&gt;
-$ singularity pull library://library/default/ubuntu:16.04
+singluarity pull library://&lt;user&gt;/&lt;collection&gt;/&lt;container<span style="color:#ff79c6">[</span>:tag<span style="color:#ff79c6">]</span>&gt;
+singularity pull library://library/default/ubuntu:16.04
 <span style="color:#6272a4"># From Docker</span>
-$ singluarity pull docker://&lt;user&gt;/&lt;image:tag&gt;
-$ singularity pull docker://ubuntu:16.04
+singluarity pull docker://&lt;user&gt;/&lt;image:tag&gt;
+singularity pull docker://ubuntu:16.04
 <span style="color:#6272a4"># From Shub</span>
-$ singluarity pull shub://&lt;user&gt;/&lt;image:tag&gt;
-$ singularity pull shub://singularityhub/ubuntu:latest
+singluarity pull shub://&lt;user&gt;/&lt;image:tag&gt;
+singularity pull shub://singularityhub/ubuntu:latest
 <span style="color:#6272a4"># Rename image</span>
-$ singluarity pull &lt;output file&gt; &lt;container&gt;
-$ singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
-</code></pre></div><ul>
-<li>Build a container</li>
-</ul>
+singluarity pull &lt;output file&gt; &lt;container&gt;
+singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
+</code></pre></div><h2 id="build-a-container">Build a container</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Build from URI</span>
-$ sudo singularity build &lt;container&gt; &lt;URL&gt;
-$ sudo singularity build lolcow.simg library://sylabs-jms/testing/lolcow
+sudo singularity build &lt;container&gt; &lt;URL&gt;
+sudo singularity build lolcow.simg library://sylabs-jms/testing/lolcow
 <span style="color:#6272a4"># Build From a Singularity definition file</span>
-$ sudo singularity build &lt;container&gt; &lt;deffile&gt;
-$ sudo singularity build lolcow.sif lolcow.def
+sudo singularity build &lt;container&gt; &lt;deffile&gt;
+sudo singularity build lolcow.sif lolcow.def
 <span style="color:#6272a4"># Build from a existing container on your local machine, convert images from one format to another</span>
-$ sudo singluarity build &lt;new container&gt; &lt;old container&gt;
-$ sudo singularity build production.sif development/
+sudo singluarity build &lt;new container&gt; &lt;old container&gt;
+sudo singularity build production.sif development/
 <span style="color:#6272a4"># Creating writable --sandbox (container in a directory) directories</span>
-$ sudo singularity build --sandbox &lt;sandbox&gt; &lt;old container&gt;
-$ sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
-</code></pre></div><ul>
-<li>Shell in a container</li>
-</ul>
+sudo singularity build --sandbox &lt;sandbox&gt; &lt;old container&gt;
+sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
+</code></pre></div><h2 id="shell-in-a-container">Shell in a container</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Synopsis</span>
-$ singularity shell <span style="color:#ff79c6">[</span>shell options...<span style="color:#ff79c6">]</span> &lt;container&gt;
+singularity shell <span style="color:#ff79c6">[</span>shell options...<span style="color:#ff79c6">]</span> &lt;container&gt;
 <span style="color:#6272a4"># Make the file system accessible as read/write</span>
-$ singularity shell --writable &lt;container&gt;
-$ singularity shell explorer.img
-</code></pre></div><ul>
-<li>Run a command within a container</li>
-</ul>
+singularity shell --writable &lt;container&gt;
+singularity shell explorer.img
+</code></pre></div><h2 id="run-a-command-within-a-container">Run a command within a container</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Synopsis</span>
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">exec</span> options...<span style="color:#ff79c6">]</span> &lt;container&gt; &lt;command&gt;
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">exec</span> options...<span style="color:#ff79c6">]</span> &lt;container&gt; &lt;command&gt;
 <span style="color:#6272a4"># Example</span>
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif cat /etc/debian_version
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif python ./hello_world.py
-$ cat hello_world.py | singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif python
-$ sudo singularity <span style="color:#8be9fd;font-style:italic">exec</span> --writable /tmp/debian.sif apt-get update
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> instance://my_instance ps -ef
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> library://centos cat /etc/os-release
-</code></pre></div><ul>
-<li>Bind Paths and Mounts</li>
-</ul>
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif cat /etc/debian_version
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif python ./hello_world.py
+cat hello_world.py | singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif python
+sudo singularity <span style="color:#8be9fd;font-style:italic">exec</span> --writable /tmp/debian.sif apt-get update
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> instance://my_instance ps -ef
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> library://centos cat /etc/os-release
+</code></pre></div><h2 id="bind-paths-and-mounts">Bind Paths and Mounts</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Synopsis</span>
-$ singularity run/exec/shell --bind src<span style="color:#ff79c6">[</span>:dest<span style="color:#ff79c6">[</span>:opts<span style="color:#ff79c6">]]</span> &lt;container&gt; <span style="color:#ff79c6">[</span>command<span style="color:#ff79c6">]</span>
+singularity run/exec/shell --bind src<span style="color:#ff79c6">[</span>:dest<span style="color:#ff79c6">[</span>:opts<span style="color:#ff79c6">]]</span> &lt;container&gt; <span style="color:#ff79c6">[</span>command<span style="color:#ff79c6">]</span>
 <span style="color:#6272a4"># Example</span>
-$ singularity <span style="color:#8be9fd;font-style:italic">exec</span> --bind /data:/mnt my_container.sif ls /mnt
-$ singularity shell -bind /home/vagrant/Explorer explorer-env.img
-</code></pre></div><ul>
-<li>Build images from scratch</li>
-</ul>
+singularity <span style="color:#8be9fd;font-style:italic">exec</span> --bind /data:/mnt my_container.sif ls /mnt
+singularity shell --bind /home/vagrant/Explorer explorer-env.img
+</code></pre></div><h2 id="build-images-from-scratch">Build images from scratch</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Create a sandbox image from base ubuntu image</span>
-$ sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
-$ sudo singularity build --sandbox ubuntu/ library://ubuntu
+sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
+sudo singularity build --sandbox ubuntu/ library://ubuntu
 <span style="color:#6272a4"># Shell into the sandbox image</span>
-$ sudo singularity shell --writable &lt;container&gt;
+sudo singularity shell --writable &lt;container&gt;
 <span style="color:#6272a4"># Install software and dependencies, keep track of the relevant commands</span>
 ...
 <span style="color:#6272a4"># Example</span>
-$ singularity pull explorer-env.img shub://qlan3/singularity-deffile:explorer
-$ singularity shell -bind /home/vagrant/Explorer explorer-env.img
-$ apt-get install git
+singularity pull explorer-env.img shub://qlan3/singularity-deffile:explorer
+singularity shell -bind /home/vagrant/Explorer explorer-env.img
+apt-get install git
 </code></pre></div>
         </p>
     </div>
 </div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#download-pre-built-images">Download pre-built images</a></li>
+        <li><a href="#build-a-container">Build a container</a></li>
+        <li><a href="#shell-in-a-container">Shell in a container</a></li>
+        <li><a href="#run-a-command-within-a-container">Run a command within a container</a></li>
+        <li><a href="#bind-paths-and-mounts">Bind Paths and Mounts</a></li>
+        <li><a href="#build-images-from-scratch">Build images from scratch</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     
