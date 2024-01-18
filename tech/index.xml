@@ -14,7 +14,7 @@
       
       <guid>https://lancelqf.github.io/tech/mamba/</guid>
       <description>Installation For Linux, macOS, or Git Bash on Windows install with:
-&amp;#34;${SHELL}&amp;#34; &amp;lt;(curl -L micro.mamba.pm/install.sh) Self-update micromamba config append channels conda-forge micromamba config set channel_priority strict # echo -e &amp;#34;channels: [conda-forge]&amp;#34; &amp;gt;&amp;gt; ~/.mambarc micromamba self-update Shell initialization eval &amp;#34;$(micromamba shell hook --shell bash)&amp;#34; micromamba activate Environment micromamba create -n &amp;lt;env&amp;gt; # Create env without any packages micromamba create -n &amp;lt;env&amp;gt; &amp;lt;list of packages&amp;gt; # Create env with packages micromamba create -n &amp;lt;env&amp;gt; -f &amp;lt;file&amp;gt;.</description>
+&amp;#34;${SHELL}&amp;#34; &amp;lt;(curl -L micro.mamba.pm/install.sh) Self-update micromamba config append channels conda-forge micromamba config set channel_priority strict micromamba self-update Shell initialization eval &amp;#34;$(micromamba shell hook --shell bash)&amp;#34; micromamba activate Environment micromamba create -n &amp;lt;env&amp;gt; # Create env without any packages micromamba create -n &amp;lt;env&amp;gt; &amp;lt;list of packages&amp;gt; # Create env with packages micromamba create -n &amp;lt;env&amp;gt; -f &amp;lt;file&amp;gt;.txt # Create env from .</description>
     </item>
     
     <item>

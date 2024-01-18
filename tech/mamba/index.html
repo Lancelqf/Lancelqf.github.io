@@ -196,24 +196,25 @@
 </code></pre></div><h2 id="self-update">Self-update</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba config append channels conda-forge
 micromamba config <span style="color:#8be9fd;font-style:italic">set</span> channel_priority strict
-<span style="color:#6272a4"># echo -e &#34;channels: [conda-forge]&#34; &gt;&gt; ~/.mambarc</span>
 micromamba self-update
 </code></pre></div><h2 id="shell-initialization">Shell initialization</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">eval</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>micromamba shell hook --shell bash<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
 micromamba activate
 </code></pre></div><h2 id="environment">Environment</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba create -n &lt;env&gt; <span style="color:#6272a4"># Create env without any packages</span>
-micromamba create -n &lt;env&gt; &lt;list of packages&gt;  <span style="color:#6272a4"># Create env with packages</span>
-micromamba create -n &lt;env&gt; -f &lt;file&gt;.txt  <span style="color:#6272a4"># Create env from .txt file</span>
-micromamba create -n &lt;env&gt; -f &lt;file&gt;.yml  <span style="color:#6272a4"># Create env from .yml file</span>
-micromamba env                            <span style="color:#6272a4"># List all environments (except base)</span>
-micromamba activate        <span style="color:#6272a4"># Activate base</span>
-micromamba activate base   <span style="color:#6272a4"># Activate base</span>
-micromamba activate &lt;env&gt;  <span style="color:#6272a4"># Activate env</span>
-micromamba deactivate      <span style="color:#6272a4"># Deactivate active env</span>
-micromamba delete? &lt;env&gt;   <span style="color:#6272a4"># Delete env</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba create -n &lt;env&gt;                    <span style="color:#6272a4"># Create env without any packages</span>
+micromamba create -n &lt;env&gt; &lt;list of packages&gt; <span style="color:#6272a4"># Create env with packages</span>
+micromamba create -n &lt;env&gt; -f &lt;file&gt;.txt      <span style="color:#6272a4"># Create env from .txt file</span>
+micromamba create -n &lt;env&gt; -f &lt;file&gt;.yml      <span style="color:#6272a4"># Create env from .yml file</span>
+micromamba activate                           <span style="color:#6272a4"># Activate base</span>
+micromamba activate base                      <span style="color:#6272a4"># Activate base</span>
+micromamba activate &lt;env&gt;                     <span style="color:#6272a4"># Activate env</span>
+micromamba deactivate                         <span style="color:#6272a4"># Deactivate current env</span>
+micromamba remove &lt;env&gt;                       <span style="color:#6272a4"># Delete env</span>
+micromamba env list                           <span style="color:#6272a4"># List all env</span>
+micromamba env remove                         <span style="color:#6272a4"># Remove current env</span>
 </code></pre></div><h2 id="package">Package</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba install &lt;list of packages&gt;  <span style="color:#6272a4"># Install packages</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba install <span style="color:#8be9fd;font-style:italic">python</span><span style="color:#ff79c6">=</span>3.10         <span style="color:#6272a4"># Install Python</span>
+micromamba install &lt;list of packages&gt;  <span style="color:#6272a4"># Install packages</span>
 micromamba remove &lt;list of packages&gt;   <span style="color:#6272a4"># Remove packages</span>
 micromamba remove -a                   <span style="color:#6272a4"># Remove all packages in active env</span>
 micromamba update &lt;list of packages&gt;   <span style="color:#6272a4"># Update packages</span>
