@@ -63,7 +63,7 @@
 读了8本书，大部分是科幻小说。其中最喜欢《万历十五年》，本写了一段自认为还算精彩的读后感，被自己误删了，现在飘飘然的沉浸感已经过去，再也写不出来了。大意是在惋惜帝国命运与个人沉浮，感叹变革之艰难。历史的惯性何其巨大，现实的引力太过沉重，连皇帝也无法幸免。在历史相变之时，由具备足够勇气，坚定毅力，和超凡执行力的一群人，对历史施以恰到好处的推力，才能带来洗心革面的改变。只可惜，这样的事，太少，太难。
 依旧喜欢马督工的《睡前消息》。弱小的人们习惯了神明和希望的抚慰，直到现实不留情面得撕破那美丽的幕布。人贵在认清现实，难也难在认清现实。
 网易云音乐的2022年听歌报告已经加载不出来了，印象里去年很喜欢罗大佑，对《鹿港小镇》上头。
-3rd Year in My PhD 2022下半年，正式步入PhD的第三年。经历好几次难产，第一篇一作论文总算发出来了。不是特别令人骄傲的工作，但也还凑合。这个项目让我有机会系统了解policy gradiennt methods；提出了一个新算法，证明了几个policy gradient theorem的变种theorem，跑了Mujoco，算是一篇有实验有理论的工作吧。不出所料，没什么引用量，就当练手了。
+3rd Year in My PhD 2022下半年，正式步入PhD的第三年。经历好几次难产，第一篇一作论文总算发出来了。不是特别令人骄傲的工作，但也还凑合。这个项目让我有机会系统了解policy gradient methods；提出了一个新算法，证明了几个policy gradient theorem的变种theorem，跑了Mujoco，算是一篇有实验有理论的工作吧。不出所料，没什么引用量，就当练手了。
 其他论文依旧难产。。。值得高兴的是，论文引用量突破100了！
 基本确定thesis topic了，开始准备candidacy exam，争取今年夏天结束之前搞定。
 去年大部分时间都在实习，1月份开始在华为Edmonton实习了约半年，6月份去布朗大学参加RLDM会议。人生中第一次开线下会议！邀请了几个大佬来看自己的poster，面对面交流的感觉真好。Providence是一个美丽的小城市，布朗大学的校园静谧而优雅，留下了许多美好的回忆。
@@ -289,10 +289,10 @@ Just a speck of dust within the galaxy.
       <pubDate>Tue, 03 Apr 2018 19:12:33 +0800</pubDate>
       
       <guid>https://lancelqf.github.io/about/</guid>
-      <description>Qingfeng Lan 〖 CV / Google Scholar / Github / LinkedIn / Twitter 〗
- I&amp;rsquo;m a final year PhD Student at the University of Alberta, advised by Prof. A. Rupam Mahmood.
-TL;DR: My current research focuses on reinforcement learning, continual learning, embodied AI, large language model, meta-learning, and understanding neural networks.
-Generally, I&amp;rsquo;m interested in developing simple and efficient learning algorithms supported by sound theories and verified by rigorous experiments.</description>
+      <description>Qingfeng Lan I&amp;rsquo;m on the job market and actively looking for a Research Scientist position starting in Summer 2025! Feel free to reach out!
+〖 CV / Google Scholar / Github / LinkedIn / Twitter 〗
+ Research Interest: Reinforcement Learning, Large Language Model with Reasoning and Planning, Continual Learning, Meta-Learning, Embodied Agent.
+I&amp;rsquo;m a final year PhD Student at the University of Alberta, advised by Prof. A. Rupam Mahmood.</description>
     </item>
     
     <item>
