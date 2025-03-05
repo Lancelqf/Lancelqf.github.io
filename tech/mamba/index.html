@@ -193,6 +193,11 @@
             <h2 id="installation">Installation</h2>
 <p>For Linux, macOS, or Git Bash on Windows install with:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f1fa8c">&#34;</span><span style="color:#f1fa8c">${</span><span style="color:#8be9fd;font-style:italic">SHELL</span><span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">&#34;</span> &lt;<span style="color:#ff79c6">(</span>curl -L micro.mamba.pm/install.sh<span style="color:#ff79c6">)</span>
+</code></pre></div><h2 id="uninstallation">Uninstallation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Remove the micromamba init lines</span>
+micromamba shell deinit
+<span style="color:#6272a4"># Remove related files</span>
+rm -rf ~/micromamba ~/.mamba ~/.mambarc ~/.condarc ~/.local/bin/micromamba 
 </code></pre></div><h2 id="self-update">Self-update</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">micromamba config append channels conda-forge
 micromamba config <span style="color:#8be9fd;font-style:italic">set</span> channel_priority strict
@@ -238,6 +243,7 @@ micromamba search &lt;package&gt;            <span style="color:#6272a4"># Find 
     <li>
       <ul>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#uninstallation">Uninstallation</a></li>
         <li><a href="#self-update">Self-update</a></li>
         <li><a href="#shell-initialization">Shell initialization</a></li>
         <li><a href="#environment">Environment</a></li>

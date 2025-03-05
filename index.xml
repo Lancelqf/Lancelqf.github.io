@@ -6,7 +6,16 @@
     <description>Recent content on Qingfeng&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Mar 2024 21:19:50 -0600</lastBuildDate><atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Feb 2025 11:48:13 -0700</lastBuildDate><atom:link href="https://lancelqf.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>uv</title>
+      <link>https://lancelqf.github.io/tech/uv/</link>
+      <pubDate>Sat, 08 Feb 2025 11:48:13 -0700</pubDate>
+      
+      <guid>https://lancelqf.github.io/tech/uv/</guid>
+      <description>Getting Started Installation  For Linux and macOS, install with:  curl -LsSf https://astral.sh/uv/install.sh | sh  Install with Homebrew:  brew install uv Shell Autocompletion  Enable shell autocompletion for uv and uvx for Bash:  echo &amp;#39;eval &amp;#34;$(uv generate-shell-completion bash)&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bashrc echo &amp;#39;eval &amp;#34;$(uvx --generate-shell-completion bash)&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bashrc  Enable shell autocompletion for uv and uvx for Zsh:  echo &amp;#39;eval &amp;#34;$(uv generate-shell-completion zsh)&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.zshrc echo &amp;#39;eval &amp;#34;$(uvx --generate-shell-completion zsh)&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.</description>
+    </item>
+    
     <item>
       <title>What can I hold you with?</title>
       <link>https://lancelqf.github.io/heart/%E6%88%91%E7%94%A8%E4%BB%80%E4%B9%88%E6%89%8D%E8%83%BD%E7%95%99%E4%BD%8F%E4%BD%A0/</link>
@@ -53,7 +62,7 @@ I offer you the bitterness of a man who has looked long and long at the lonely m
       
       <guid>https://lancelqf.github.io/tech/mamba/</guid>
       <description>Installation For Linux, macOS, or Git Bash on Windows install with:
-&amp;#34;${SHELL}&amp;#34; &amp;lt;(curl -L micro.mamba.pm/install.sh) Self-update micromamba config append channels conda-forge micromamba config set channel_priority strict micromamba self-update Shell initialization eval &amp;#34;$(micromamba shell hook --shell bash)&amp;#34; micromamba activate Environment micromamba create -n &amp;lt;env&amp;gt; # Create env without any packages micromamba create -n &amp;lt;env&amp;gt; &amp;lt;list of packages&amp;gt; # Create env with packages micromamba create -n &amp;lt;env&amp;gt; -f &amp;lt;file&amp;gt;.txt # Create env from .</description>
+&amp;#34;${SHELL}&amp;#34; &amp;lt;(curl -L micro.mamba.pm/install.sh) Uninstallation # Remove the micromamba init lines micromamba shell deinit # Remove related files rm -rf ~/micromamba ~/.mamba ~/.mambarc ~/.condarc ~/.local/bin/micromamba Self-update micromamba config append channels conda-forge micromamba config set channel_priority strict micromamba self-update Shell initialization eval &amp;#34;$(micromamba shell hook --shell bash)&amp;#34; micromamba activate Environment micromamba create -n &amp;lt;env&amp;gt; # Create env without any packages micromamba create -n &amp;lt;env&amp;gt; &amp;lt;list of packages&amp;gt; # Create env with packages micromamba create -n &amp;lt;env&amp;gt; -f &amp;lt;file&amp;gt;.</description>
     </item>
     
     <item>

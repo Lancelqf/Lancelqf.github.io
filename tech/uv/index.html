@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #2482ed;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>uv</title>
+    <meta name="description" content="uv cheat sheet">
+    <meta name="keywords" content='Article'>
+
+    <meta property="og:url" content="https://lancelqf.github.io/tech/uv/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="uv">
+    <meta property="og:description" content="uv cheat sheet">
+    <meta property="og:image" content="/TheWindRises.jpeg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="uv">
+    <meta name="twitter:description" content="uv cheat sheet">
+    <meta property="twitter:domain" content="https://lancelqf.github.io/tech/uv/">
+    <meta property="twitter:url" content="https://lancelqf.github.io/tech/uv/">
+    <meta name="twitter:image" content="/TheWindRises.jpeg">
+
+    
+    <link rel="canonical" href="https://lancelqf.github.io/tech/uv/" />
+
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+
+    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io/js/main.js"></script>
+
+    
+    
+        <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2445edbea2f2541f3150c49cc08c381a";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121043808-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121043808-1');
+    </script>
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" integrity="sha384-ZPe7yZ91iWxYumsBEOn7ieg8q/o+qh/hQpSaPow8T6BwALcXSCS6C6fSRPIAnTQs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js" integrity="sha384-ljao5I1l+8KYFXG7LNEA7DyaFvuvSCmedUf6Y6JI7LJqiu8q5dEivP2nDdFH31V4" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lancelqf.github.io">
+                <img src="https://lancelqf.github.io/TheWindRises.jpeg" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>uv</h1>
+        <small role="doc-subtitle">uv cheat sheet</small>
+        <p class="post-date">
+            February 8, 2025
+            
+            
+        </p>
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lancelqf.github.io/tags/article">Article</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="getting-started">Getting Started</h1>
+<h2 id="installation">Installation</h2>
+<ul>
+<li>For Linux and macOS, install with:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -LsSf https://astral.sh/uv/install.sh | sh
+</code></pre></div><ul>
+<li>Install with Homebrew:</li>
+</ul>
+<pre tabindex="0"><code>brew install uv
+</code></pre><h2 id="shell-autocompletion">Shell Autocompletion</h2>
+<ul>
+<li>Enable shell autocompletion for <code>uv</code> and <code>uvx</code> for <code>Bash</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</code></pre></div><ul>
+<li>Enable shell autocompletion for <code>uv</code> and <code>uvx</code> for <code>Zsh</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</code></pre></div><h2 id="utility">Utility</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Update uv to the latest version</span>
+uv self update
+<span style="color:#6272a4"># Remove all cache entries</span>
+uv cache clean
+<span style="color:#6272a4"># Remove outdated cache entries; safe to run periodically</span>
+uv cache prune
+<span style="color:#6272a4"># Show the uv cache directory</span>
+uv cache dir
+<span style="color:#6272a4"># Show the uv tool directory</span>
+uv tool dir
+<span style="color:#6272a4"># Show the uv installed Python versions</span>
+uv python dir
+</code></pre></div><h2 id="uninstallation">Uninstallation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Clean up stored data (optional)</span>
+uv cache clean
+rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv python dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv tool dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+<span style="color:#6272a4"># Remove uv and uvx</span>
+rm ~/.local/bin/uv ~/.local/bin/uvx
+</code></pre></div><h1 id="project">Project</h1>
+<h2 id="create-a-project">Create a Project</h2>
+<ol>
+<li>Create a new Python project</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">uv init &lt;project&gt;
+<span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+</code></pre></div><ol start="2">
+<li>Initialize a project in the working directory</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir &lt;project&gt;
+<span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+uv init &lt;project&gt;
+</code></pre></div><ol start="3">
+<li>Pin the project to a specific Python version</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+uv python pin &lt;version&gt;
+</code></pre></div><h2 id="project-structure">Project Structure</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">.
+├── .venv             <span style="color:#6272a4"># Virtual environment</span>
+│   ├── bin
+│   ├── lib
+│   └── pyvenv.cfg
+├── .python-version   <span style="color:#6272a4"># Default Python version</span>
+├── README.md
+├── main.py
+├── pyproject.toml    <span style="color:#6272a4"># Metadata (dependencies, license, etc.)</span>
+└── uv.lock           <span style="color:#6272a4"># Exact information of project dependencies</span>
+</code></pre></div><h2 id="manage-package">Manage Package</h2>
+<blockquote>
+<p>[!WARNING]
+It is not recommended to modify the project environment manually, e.g., with <code>uv pip install</code>.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Add a package with a specific version</span>
+uv add <span style="color:#f1fa8c">&#39;&lt;package&gt;==&lt;version&gt;&#39;</span>
+<span style="color:#6272a4"># Add a package with `uv pip`</span>
+uv pip install &lt;package&gt;
+<span style="color:#6272a4"># Add a git package</span>
+uv add git+&lt;git_url&gt;
+<span style="color:#6272a4"># Add packages from `requirements.txt`</span>
+uv add -r requirements.txt
+<span style="color:#6272a4"># Upgrade all packages</span>
+uv lock --upgrade
+<span style="color:#6272a4"># Upgrade a specific package to the latest version</span>
+uv lock --upgrade-package &lt;package&gt;
+<span style="color:#6272a4"># Upgrade a specific package to a specific version</span>
+uv lock --upgrade-package &lt;package&gt;<span style="color:#ff79c6">==</span>&lt;version&gt;
+<span style="color:#6272a4"># Remove a package</span>
+uv remove &lt;package&gt;
+</code></pre></div><h2 id="run-commands-in-a-project">Run Commands in a Project</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Run a Python file</span>
+uv run python &lt;python_file&gt;
+<span style="color:#6272a4"># Run a `bash` script</span>
+uv run bash &lt;script&gt;
+</code></pre></div><h2 id="lock-and-sync">Lock and Sync</h2>
+<ol>
+<li>Locking is the process of resolving the project&rsquo;s dependencies into a lockfile.</li>
+<li>Syncing is the process of installing a subset of packages from the lockfile into the project environment. Syncing will remove any packages that are not present in the lockfile.</li>
+<li>Locking and syncing are automatic in uv. For example, when <code>uv run</code> is used, the project is locked and synced before invoking the requested command. This ensures the project environment is always up-to-date. Similarly, commands which read the lockfile, such as <code>uv tree</code>, will automatically update it before running.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Create/Update the lockfile</span>
+uv lock
+<span style="color:#6272a4"># Sync the environment</span>
+uv sync
+<span style="color:#6272a4"># Export the lockfile to `requirements.txt`</span>
+uv <span style="color:#8be9fd;font-style:italic">export</span> --format requirements-txt
+</code></pre></div><h1 id="python">Python</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># List installed and available Python versions</span>
+uv python list
+<span style="color:#6272a4"># Find an installed Python version</span>
+uv python find &lt;version&gt;
+<span style="color:#6272a4"># Install Python with a specific version</span>
+uv python install &lt;version&gt;
+<span style="color:#6272a4"># Pin the project to a specific Python version</span>
+uv python pin &lt;version&gt;
+<span style="color:#6272a4"># Uninstall a Python version</span>
+uv python uninstall &lt;version&gt;
+</code></pre></div><h1 id="virtual-environment">Virtual Environment</h1>
+<p><code>uv venv</code> basically can replace <code>venv</code> and <code>virtualenv</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Create a virtual environment with a apecific Python version</span>
+mkdir ~/envs/
+uv venv ~/envs/&lt;env&gt; --python &lt;version&gt;
+<span style="color:#6272a4"># Activate a virtual environment</span>
+<span style="color:#8be9fd;font-style:italic">source</span> &lt;env_dir&gt;/bin/activate
+<span style="color:#6272a4"># Deactivate a virtual environment</span>
+deactivate
+</code></pre></div><h1 id="the-pip-interface">The Pip Interface</h1>
+<p><code>uv pip</code> basically can replace <code>pip</code>, <code>pip-tools</code>, and <code>pipdeptree</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Install a package</span>
+uv pip install &lt;package&gt;
+<span style="color:#6272a4"># Install packages from `requirements.txt`</span>
+uv pip install -r requirements.txt
+<span style="color:#6272a4"># Uninstall a package</span>
+uv pip uninstall &lt;package&gt;
+<span style="color:#6272a4"># List installed packages</span>
+uv pip list
+<span style="color:#6272a4"># View the dependency tree</span>
+uv pip tree
+<span style="color:#6272a4"># Compile requirements into a lockfile</span>
+uv pip compile &lt;source&gt; -o requirements.txt
+<span style="color:#6272a4"># Sync an environment with a lockfile</span>
+uv pip sync requirements.txt
+</code></pre></div><h1 id="references">References</h1>
+<ul>
+<li><a href="https://docs.astral.sh/uv/">uv Official Document</a></li>
+<li><a href="https://github.com/astral-sh/uv">uv Github Repo</a></li>
+<li><a href="https://codemaker2016.medium.com/introducing-uv-next-gen-python-package-manager-b78ad39c95d7">Introducing uv: Next-Gen Python Package Manager</a></li>
+<li><a href="https://docs.astral.sh/uv/guides/integration/pytorch/">Using uv with PyTorch</a></li>
+</ul>
+
+        </p>
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#shell-autocompletion">Shell Autocompletion</a></li>
+        <li><a href="#utility">Utility</a></li>
+        <li><a href="#uninstallation">Uninstallation</a></li>
+      </ul>
+    </li>
+    <li><a href="#project">Project</a>
+      <ul>
+        <li><a href="#create-a-project">Create a Project</a></li>
+        <li><a href="#project-structure">Project Structure</a></li>
+        <li><a href="#manage-package">Manage Package</a></li>
+        <li><a href="#run-commands-in-a-project">Run Commands in a Project</a></li>
+        <li><a href="#lock-and-sync">Lock and Sync</a></li>
+      </ul>
+    </li>
+    <li><a href="#python">Python</a></li>
+    <li><a href="#virtual-environment">Virtual Environment</a></li>
+    <li><a href="#the-pip-interface">The Pip Interface</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+    <aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-lvohfvy22n" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Qingfeng Lan; all rights reserved.</span>
+    <span>
+        Powered by <a target="_blank" href="https://gohugo.io/">Hugo</a>
+    </span>
+</footer></body>
+</html>
