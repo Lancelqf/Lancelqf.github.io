@@ -37,13 +37,13 @@
     
     <link rel="canonical" href="https://lancelqf.github.io/note/transfer_learning/" />
 
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
-    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io//css/dark.css">
 
-    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
-    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
-    <script src="https://lancelqf.github.io/js/main.js"></script>
+    <script src="https://lancelqf.github.io//js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io//js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io//js/main.js"></script>
 
     
     
@@ -100,14 +100,14 @@
 
         
         <div class="avatar">
-            <a href="https://lancelqf.github.io">
-                <img src="https://lancelqf.github.io/TheWindRises.jpeg" alt="avatar" />
+            <a href="https://lancelqf.github.io/">
+                <img src="https://lancelqf.github.io//TheWindRises.jpeg" alt="avatar" />
             </a>
         </div>
         
 
         <div class="nav-title">
-            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+            <a class="nav-brand" href="https://lancelqf.github.io/">Qingfeng&#39;s blog</a>
         </div>
 
         <div class="nav-links">
@@ -201,8 +201,7 @@
 </ul>
 <p>Now, we give a formal definition of transfer learning:</p>
 <blockquote>
-<p>Given the source domain $D _ s = [\mathbf{x} _ {i}, y _ {i}] _ {i=1} ^ {n}$ with labels and target domain $D _ t = [\mathbf{x} _ {j}] _ {j=1} ^ {m}$ without labels. The data distributions are different, i.e. $P(\mathbf{x} _ {s}) \neq P(\mathbf{x} _ {t})$. The goal of transfer learning is using knowledge learned form source domain to predict the labels in target domain.</p>
-</blockquote>
+<p>Given the source domain $D _ s = [\mathbf{x} _ {i}, y _ {i}] _ {i=1} ^ {n}$ with labels and target domain $D _ t = [\mathbf{x} _ {j}] _ {j=1} ^ {m}$ without labels. The data distributions are different, i.e. $P(\mathbf{x} _ {s}) \neq P(\mathbf{x} _ {t})$. The goal of transfer learning is using knowledge learned form source domain to predict the labels in target domain.</p></blockquote>
 <p>The core of transfer learning is to find shared knowledge between two domains and apply it properly. Knowledge is learned in source domain and then applied in target domain. In a word, it is about searching for the invariable (or similarity) in changing domains and then apply it.</p>
 <h2 id="metrics">Metrics</h2>
 <p>The next question is how to measure the similarity? Well, we need a metric. But what is a good metric for it? The bad news is that there is no certain answer for all transfer learning problems. Different metrics are useful in dfferent ways and in different problems. The good news is that we have many metrics in the arsenal:</p>
@@ -250,7 +249,7 @@ $$HSIC (X, Y) = \operatorname{trace}(HXHY)$$
 where $X$ and $Y$ are kernel form of two datasets.</p>
 </li>
 <li>
-<p>Wasserstein Distance: Let ($M, d$) be a metric space for which every probability measure on $M$ is a Radon measure (a so-called Radon space). For $p\geq 1$, let $P _ {p}(M)$ denote the collection of all probability measures $\mu$ on $M$ with finite $p ^ {\text{th}}$ moment for some $x _ {0}$ in $M$, 
+<p>Wasserstein Distance: Let ($M, d$) be a metric space for which every probability measure on $M$ is a Radon measure (a so-called Radon space). For $p\geq 1$, let $P _ {p}(M)$ denote the collection of all probability measures $\mu$ on $M$ with finite $p ^ {\text{th}}$ moment for some $x _ {0}$ in $M$,
 $$\int _ { M } d(x, x _ {0}) ^ { p } \mathrm { d } \mu ( x ) &lt; + \infty$$
 Then the $p ^ {\text{th}}$ Wasserstein distance between two probability measures $\mu$ and $\nu$ in $P _ {p}(M)$ is defined as:
 $$W _ { p } ( \mu , \nu ) : = ( \inf _ { \gamma \in \Gamma ( \mu , \nu ) } \int _ { M \times M } d ( x , y ) ^ { p } \mathrm { d } \gamma ( x , y ) ) ^ { 1 / p }$$
@@ -292,7 +291,7 @@ It seems that Wasserstein distance is quite popular these days, especially in GA
 <ul>
 <li>Artifical intelligence and human knowledge: Through the long history, we human being accumulate a large amount of knowledge. How to transfer these knowledge to agents? How to encode our knowledge into agent? Yes, we can always find a way to encode some particular knowledge into agent. However, the final goal is to find a general way to encode all human knowledge. And this is really hard. The most difficult part is to find a suitable knowledge representation that is understandale to human being as well as intelligent agents.</li>
 <li>Transitive transfer learning: Although there may only be minor similarity between two domains, everything in this world is connected in some way. And If we can find a similarity chain that connects two different domains, we may find a way to transfer knowledge from one end to another end along this chain. This is the basic idea of transitive transfer learning. Surprisingly, it <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI17/paper/viewPaper/14446">works</a>!</li>
-<li>Learning to Transfer: The goal of learning to transfer is to learn when to transfer, what to transfer and how to transfer. The general method includes two parts: learn experiences from previous cases and then apply them on new problems. Its main goal is to learn transfer learning experience. Formally,we define transfer learning experience: 
+<li>Learning to Transfer: The goal of learning to transfer is to learn when to transfer, what to transfer and how to transfer. The general method includes two parts: learn experiences from previous cases and then apply them on new problems. Its main goal is to learn transfer learning experience. Formally,we define transfer learning experience:
 $$E = (S,T,a,l)$$
 where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer learning algorithm. $l$ shows the performance improvement compared to learning performance without transfer learning. What is a useful transfer learning experience then? Everything that helps improve performance!</li>
 <li>Online transfer learning: There are not many works.</li>
@@ -331,8 +330,8 @@ where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer 
     <aside id=comments>
     <div><h2> Comments </h2></div>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     

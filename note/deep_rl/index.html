@@ -37,13 +37,13 @@
     
     <link rel="canonical" href="https://lancelqf.github.io/note/deep_rl/" />
 
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
-    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io//css/dark.css">
 
-    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
-    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
-    <script src="https://lancelqf.github.io/js/main.js"></script>
+    <script src="https://lancelqf.github.io//js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io//js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io//js/main.js"></script>
 
     
     
@@ -100,14 +100,14 @@
 
         
         <div class="avatar">
-            <a href="https://lancelqf.github.io">
-                <img src="https://lancelqf.github.io/TheWindRises.jpeg" alt="avatar" />
+            <a href="https://lancelqf.github.io/">
+                <img src="https://lancelqf.github.io//TheWindRises.jpeg" alt="avatar" />
             </a>
         </div>
         
 
         <div class="nav-title">
-            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+            <a class="nav-brand" href="https://lancelqf.github.io/">Qingfeng&#39;s blog</a>
         </div>
 
         <div class="nav-links">
@@ -308,7 +308,7 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 <li>
 <p>The expected return of a stochastic policy $\pi$ starting from a given state $s _ 0$:
 $$V ^ { \pi } \left( s _ { 0 } \right) = \int _ { \mathcal { S } } \rho ^ { \pi } ( s ) \int _ { \mathcal { A } } \pi ( s , a ) R ^ { \prime } ( s , a ) da ds$$
-where $R^{\prime}(s, a)=\int_{s^{\prime} \in \mathcal{S}} \operatorname{Pr}\left(s, a, s^{\prime}\right) R\left(s, a, s^{\prime}\right)$ and $\rho \pi (s)$ is the discounted state distribution defined as: 
+where $R^{\prime}(s, a)=\int_{s^{\prime} \in \mathcal{S}} \operatorname{Pr}\left(s, a, s^{\prime}\right) R\left(s, a, s^{\prime}\right)$ and $\rho \pi (s)$ is the discounted state distribution defined as:
 $$\rho ^ { \pi } ( s ) = \sum _ { t = 0 } ^ { \infty } \gamma ^ { t } \operatorname {Pr} ( s _ { t } = s | s _ { 0 } , \pi )$$</p>
 </li>
 <li>
@@ -594,8 +594,7 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <li>$\Omega$ is a finite set of observations {$1, \ldots, N _ {\Omega}$};</li>
 <li>$\forall i , O _ { i } : S \times \Omega \rightarrow [0, 1]$ is a set of conditional observation probabilities</li>
 <li>$\gamma \in [0, 1)$ is the discount factor.</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <ul>
 <li>Collaborative versus non-collaborative setting: In a pure collaborative setting, agents have a shared reward measurement ($R _ {i} = R _ {j}, \forall i, j \in [1, \ldots, N]$). In a mixed or non-collaborative (possibly adversarial) setting each agent obtains different rewards. In both cases, each agent $i$ aims to maximize a discounted sum of its rewards $\sum _ { t = 0 } ^ { H } \gamma ^ { t } r _ { t } ^ { ( i ) }$.</li>
 <li>Decentralized versus centralized setting: In a decentralized setting, each agent selects its own action conditioned only on its local information. When collaboration is beneficial, this decentralized setting can lead to the emergence of communication between agents in order to share information. In a centralized setting, the RL algorithm has access to all observations $w ^ {(i)}$ and all rewards $r ^ {(i)}$. The problem can be reduced to a single-agent RL problem on the condition that a single objective can be defined (in a purely collaborative setting, the unique objective is straightforward). Note that even when a centralized approach can be considered (depending on the problem), an architecture that does not make use of the multi-agent structure usually leads to sub-optimal learning.</li>
@@ -689,8 +688,8 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
     <aside id=comments>
     <div><h2> Comments </h2></div>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     

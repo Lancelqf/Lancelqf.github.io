@@ -37,13 +37,13 @@
     
     <link rel="canonical" href="https://lancelqf.github.io/tech/ssh/" />
 
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
-    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io//css/dark.css">
 
-    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
-    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
-    <script src="https://lancelqf.github.io/js/main.js"></script>
+    <script src="https://lancelqf.github.io//js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io//js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io//js/main.js"></script>
 
     
     
@@ -100,14 +100,14 @@
 
         
         <div class="avatar">
-            <a href="https://lancelqf.github.io">
-                <img src="https://lancelqf.github.io/TheWindRises.jpeg" alt="avatar" />
+            <a href="https://lancelqf.github.io/">
+                <img src="https://lancelqf.github.io//TheWindRises.jpeg" alt="avatar" />
             </a>
         </div>
         
 
         <div class="nav-title">
-            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+            <a class="nav-brand" href="https://lancelqf.github.io/">Qingfeng&#39;s blog</a>
         </div>
 
         <div class="nav-links">
@@ -191,35 +191,35 @@
     <div class="post-content">
         <p>
             <h2 id="password-authentication">Password authentication</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh &lt;User&gt;@&lt;HostName&gt;
-</code></pre></div><h2 id="configuring-key-based-authentication">Configuring key based authentication</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh &lt;User&gt;@&lt;HostName&gt;
+</span></span></code></pre></div><h2 id="configuring-key-based-authentication">Configuring key based authentication</h2>
 <ul>
 <li>
 <p>Generate a separate SSH key in a different file</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span style="color:#bd93f9">4096</span> -f ~/.ssh/&lt;keyname&gt;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t rsa -b <span style="color:#bd93f9">4096</span> -f ~/.ssh/&lt;keyname&gt;
+</span></span></code></pre></div></li>
 <li>
 <p>Add the contents of the <strong>local</strong> <code>&lt;keyname&gt;.pub</code> file to the appropriate <code>authorized_keys</code> file(s) on the <strong>SSH host</strong>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Method 1</span>
-ssh-copy-id -i ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;
-<span style="color:#6272a4"># Method 2</span>
-scp ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;:~/.ssh/authorized_keys
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Method 1</span>
+</span></span><span style="display:flex;"><span>ssh-copy-id -i ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Method 2</span>
+</span></span><span style="display:flex;"><span>scp ~/.ssh/&lt;keyname&gt;.pub &lt;User&gt;@&lt;HostName&gt;:~/.ssh/authorized_keys
+</span></span></code></pre></div></li>
 <li>
 <p>Open ssh config file and add host information</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Open ssh config</span>
-vim ~/.ssh/config
-<span style="color:#6272a4"># Add host information</span>
-Host &lt;name-of-ssh-host-here&gt;
-HostName &lt;host-fqdn-or-ip-goes-here&gt;
-User &lt;your-user-name-on-host&gt;
-Port &lt;port-to-connect-on-host&gt; <span style="color:#6272a4"># default 22</span>
-IdentityFile &lt;path-to-rsa-priavte-key&gt; <span style="color:#6272a4"># e.g. ~/.ssh/&lt;keyname&gt;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Open ssh config</span>
+</span></span><span style="display:flex;"><span>vim ~/.ssh/config
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Add host information</span>
+</span></span><span style="display:flex;"><span>Host &lt;name-of-ssh-host-here&gt;
+</span></span><span style="display:flex;"><span>HostName &lt;host-fqdn-or-ip-goes-here&gt;
+</span></span><span style="display:flex;"><span>User &lt;your-user-name-on-host&gt;
+</span></span><span style="display:flex;"><span>Port &lt;port-to-connect-on-host&gt; <span style="color:#6272a4"># default 22</span>
+</span></span><span style="display:flex;"><span>IdentityFile &lt;path-to-rsa-priavte-key&gt; <span style="color:#6272a4"># e.g. ~/.ssh/&lt;keyname&gt;</span>
+</span></span></code></pre></div></li>
 <li>
 <p>Connect</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh &lt;Host&gt;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh &lt;Host&gt;
+</span></span></code></pre></div></li>
 </ul>
 <h2 id="references">References</h2>
 <ul>
@@ -252,8 +252,8 @@ IdentityFile &lt;path-to-rsa-priavte-key&gt; <span style="color:#6272a4"># e.g. 
     <aside id=comments>
     <div><h2> Comments </h2></div>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     

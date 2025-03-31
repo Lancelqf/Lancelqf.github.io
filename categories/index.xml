@@ -4,7 +4,8 @@
     <title>Categories on Qingfeng&#39;s blog</title>
     <link>https://lancelqf.github.io/categories/</link>
     <description>Recent content in Categories on Qingfeng&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://lancelqf.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://lancelqf.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #2482ed;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>From REINFORCE to Dr. GRPO</title>
+    <meta name="description" content="Understanding LLM Post-training with A Unified View">
+    <meta name="keywords" content='Article, Self, Research'>
+
+    <meta property="og:url" content="http://localhost:1313/tech/llm_rl_algorithm/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="From REINFORCE to Dr. GRPO">
+    <meta property="og:description" content="Understanding LLM Post-training with A Unified View">
+    <meta property="og:image" content="/TheWindRises.jpeg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="From REINFORCE to Dr. GRPO">
+    <meta name="twitter:description" content="Understanding LLM Post-training with A Unified View">
+    <meta property="twitter:domain" content="http://localhost:1313/tech/llm_rl_algorithm/">
+    <meta property="twitter:url" content="http://localhost:1313/tech/llm_rl_algorithm/">
+    <meta name="twitter:image" content="/TheWindRises.jpeg">
+
+    
+    <link rel="canonical" href="http://localhost:1313/tech/llm_rl_algorithm/" />
+
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="http://localhost:1313//css/dark.css">
+
+    <script src="http://localhost:1313//js/svg-injector.min.js"></script>
+    <script src="http://localhost:1313//js/feather-icons.min.js"></script>
+    <script src="http://localhost:1313//js/main.js"></script>
+
+    
+    
+        <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2445edbea2f2541f3150c49cc08c381a";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121043808-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121043808-1');
+    </script>
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" integrity="sha384-ZPe7yZ91iWxYumsBEOn7ieg8q/o+qh/hQpSaPow8T6BwALcXSCS6C6fSRPIAnTQs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js" integrity="sha384-ljao5I1l+8KYFXG7LNEA7DyaFvuvSCmedUf6Y6JI7LJqiu8q5dEivP2nDdFH31V4" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src="http://localhost:1313//TheWindRises.jpeg" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">Qingfeng&#39;s blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/heart/"><span data-feather='heart'></span> Heart </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/note/"><span data-feather='book'></span> Note </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/tech/"><span data-feather='tool'></span> Tech </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/about"><span data-feather='user'></span> About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/heart/"><span data-feather='heart'></span> Heart </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/note/"><span data-feather='book'></span> Note </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/tech/"><span data-feather='tool'></span> Tech </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/about"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>From REINFORCE to Dr. GRPO</h1>
+        <small role="doc-subtitle">Understanding LLM Post-training with A Unified View</small>
+        <p class="post-date">
+            March 27, 2025
+            
+            
+        </p>
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="http://localhost:1313/tags/article">Article</a></li>
+        
+            <li class="post-tag"><a href="http://localhost:1313/tags/self">Self</a></li>
+        
+            <li class="post-tag"><a href="http://localhost:1313/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <div align=center> [Qingfeng Lan](http://localhost:1313/about/) </div>
+<center>[Qingfeng Lan](http://localhost:1313/about/)</center>
+<p>Recently, many new RL agorithms are proposed to improve the post-training of foundation models.
+In this article, we aim to provide a unifed view to understand these algorithms and see how they relate to each other from the Policy Gradient Theorem &ndash; the first princeple of RL.</p>
+<p>defition of MDPs in classical RL.</p>
+<p>response-level MDPs. (contextual bandit problems.)
+step-level MDPs.
+token-level MDPs.</p>
+<h2 id="background">Background</h2>
+<p>Let $\mathcal{M}_1(X)$ denote the space of probability distributions supported on the set $X$.
+Consider a Markov decision process (MDP), $M=(\mathcal{S}, \mathcal{A}, \mathbb{P}, p_0, r, \gamma)$, where $\mathcal{S}$ is the discrete state space, $\mathcal{A}$ is the discrete action space, $\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \mathcal{M}_1(\mathcal{S})$ is the transition probability, $p_0 = \mathcal{M}_1(\mathcal{S})$ is the initial state distribution, $r: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1]$ is the discount factor.</p>
+<p>Given an MDP $M$, an agent interacts with the MDP environment based on a policy $ \pi:\mathcal{S} \rightarrow \mathcal{M}_1(\mathcal{A})$. Specifically, the agent starts at some state $S_0 \sim p_0(\cdot)$.
+At each time-step $t$, the agent observes a state $S_t \in \mathcal{S}$, takes an action $A_t \sim \pi(\cdot|S_t)$, transits to the next state $S_{t+1} \sim \mathbb{P}(\cdot | S_t, A_t)$, and receives a reward $R_{t+1} = r(S_t, A_t)$.
+A whole trajectory (up to time-step $T$) is defined as $\tau = (S_0, A_0, R_1, S_1, \cdots, S_T)$.
+Define return $G_t$ over $\tau$ as the total discounted reward from time-step $t$, i.e.,
+$$
+\begin{equation}
+G_t = \sum_{k=t}^{T-1} \gamma^{k-t} r(S_k, A_k).
+\end{equation}
+$$
+State-value functions are defined as the expected return under policy $\pi$,
+$$
+\begin{equation}
+V_{\pi}(s) = \mathbb{E}_{\pi}[G_t | S_t=s].
+\end{equation}
+$$
+Similarly, action-value functions are defined as
+$$
+\begin{equation}
+Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t | S_t=s, A_t=a].
+\end{equation}
+$$</p>
+<p>Furthermore, $V_{\pi}$ and $Q_{\pi}$ are connected with the following equations:
+$$
+\begin{align}
+Q_{\pi}(s,a) &amp;= r(s,a) + \gamma \sum_{s&rsquo; \in \mathcal{S}} \mathbb{P}(s&rsquo;|s,a) V_{\pi}(s&rsquo;), \\
+V_{\pi}(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a | s) Q_{\pi}(s,a).
+\end{align}
+$$</p>
+<p>The policy is usually parameterized by a weight vector $\theta$, i.e., $\pi_{\theta}$.
+The goal of the agent is to find a policy that maximizes the expected return.
+Formally, we aim to find $\theta$ that maximizes the objective
+$$
+\begin{align}
+J(\theta) = \sum_{s \in \mathcal{S}} p_0(s) V_{\pi_{\theta}}(s).
+\end{align}
+$$</p>
+<p>Now, let&rsquo;s formalize LLM post-training under the RL framework.
+In short, LLM post-training is just a type of RL tasks with some unique properties.</p>
+<p>Specifically, the initial state distribution is a distribution over the prompt dataset $\mathcal{Q}$, i.e., $p_0 = \mathcal{M}_1(\mathcal{Q})$; the initial state $s_0$ is a prompt $\mathbf{q}=[\mathbf{q}_1, \dots, \mathbf{q}_m]$ sampled from $\mathcal{Q}$, where $\mathbf{q}_i$ is the $i$-th token in the prompt.
+The state at time-step $t$ includes the prompt tokens $\mathbf{q}$ and the response tokens generated so far, i.e., $S_t = [\mathbf{q}_1, \dots, \mathbf{q}_m, \mathbf{o}_1, \dots, \mathbf{o}_{t-1}]$, where $m$ is prompt length.
+The transition function is deterministic and the next state is simply a concatenation of the current state and action, i.e. $S_{t+1} = S_t | A_t$, where $|$ denotes the concatenation operation.
+An episode ends when the token budget exhausts or the End-of-Sentence (EOS) token is generated.</p>
+<p>Considering different action granularities, we define the following types of MDPs for LLM post-training:</p>
+<ol>
+<li>
+<p><strong>Token-level MDPs</strong>: For this type, we have the most fine-grained actions: each action $a$ is just one token and the action space $\mathcal{A}$ is the token set. Note that the reward function $r(s,a)$ is also token-level.</p>
+</li>
+<li>
+<p><strong>Response-level MDPs</strong>: For this type, each action $a$ is the whole response generated by an LLM, i.e., $a = \mathbf{o} = [\mathbf{o}_1, \dots, \mathbf{o}_n]$, where $n$ is the response length. Essentially, response-level MDPs are <a href="https://en.wikipedia.org/wiki/Multi-armed_bandit#Contextual_bandit">contextual bandits</a>: The prompt dataset is the context class; a response is an arm. Moreover, the reward $r(s,a)$ is the return in this case.</p>
+</li>
+<li>
+<p><strong>Step-level MDPs</strong>: The granularity of actions in these MDPs falls between the token-level and the response-level, with each action representing an intermediate step in the response generation process (e.g., chain-of-thought [paper citation]).</p>
+</li>
+</ol>
+<p>In this blog, we mainly focus on token-level and response-level MDPs.</p>
+<h2 id="policy-gradient-theorem">Policy Gradient Theorem</h2>
+<p>To this end, we can apply gradient ascent techniques.
+Since the true gradient $\nabla_{\theta} J(\theta)$ is not typically available, we resort to Monte Carlo methods [mohamed2020monte].</p>
+<p>This gradient estimation problem can be formalized as computing the unbiased gradient of an expectation of a function with respect to some parameters of a distribution.
+Consider a general case. Let $p_{\theta}(x)$ be the probability distribution of $x$ with parameters $\theta$.
+Define the objective to be $F(\theta) = \sum_{x \sim X} p_{\theta}(x) \phi(x)$.
+To estimate $\nabla_{\theta} F(\theta)$, we apply the likelihood-ratio gradient estimator~\citep{glynn1990likelihood} which uses the log-derivative technique ($\nabla \log{x} = \frac{\nabla x}{x}$) to obtain the unbiased gradient estimation:
+$$
+\begin{align*}
+\nabla_{\theta} F(\theta)
+&amp;= \sum_x \phi(x) \nabla_{\theta} p_{\theta}(x) \\
+&amp;= \sum_x \phi(x) p_{\theta}(x) \nabla_{\theta} \log{p_{\theta}(x)} \\
+&amp;= \mathbb{E}<em>{X \sim p</em>{\theta}}[\phi(X) \nabla_{\theta} \log{p_{\theta}(X)}].
+\end{align*}
+$$</p>
+<p>For our specific case, we have
+$$
+\begin{align}
+\nabla_{\theta} J(\theta)
+&amp; = \sum_{s \in \mathcal{S}, a \in \mathcal{A}} d^{\pi_{\theta}}(s) \pi_{\theta}(a|s) Q_{\pi_{\theta}}(s,a) \nabla_{\theta} \log{\pi_{\theta}(a|s)} \
+&amp; = \mathbb{E}<em>{\tau \sim \pi</em>{\theta}}[Q_{\pi_{\theta}}(S,A) \nabla_{\theta} \log{\pi_{\theta}(A|S)}]
+\end{align}
+$$
+where $d^{\pi_{\theta}}(s&rsquo;) = \sum_{s \in \mathcal{S}} \sum_{t=0}^{\infty} \gamma^t p_0(s) p(s \to s&rsquo;, t, \pi_{\theta})$ is the (discounted) stationary state distribution for policy $\pi_{\theta}$ and $p(s \to s&rsquo;, t, \pi_{\theta})$ is the transition probability from $s$ to $s&rsquo;$ with $t$ steps under policy $\pi_{\theta}$.
+For a detailed proof, please check the section 13.2 of RL introduction book~\cite{rlbook}.</p>
+<h2 id="reinforce-monte-carlo-policy-gradient">REINFORCE: Monte Carlo Policy Gradient</h2>
+<p>REINFORCE (Willams, 1992) is a Monte Carlo policy gradient method that approximates $Q_{\pi_{\theta}}$.</p>
+<h2 id="reinforce-with-baseline">REINFORCE with Baseline</h2>
+<p>In practice, variance reduction~\citep{greensmith2004variance} is usually necessary to fully exert the power of this estimator. Subtracting a baseline~\citep{williams1992simple} from $\phi(x)$, applying eligibility traces~\citep{singh1996reinforcement}, and utilizing the Generalized Advantage Estimator (GAE)~\citep{schulman2016high} are three effective approaches to mitigate the variance issue of policy gradient based on the LR estimator.</p>
+<p>control variate</p>
+<h2 id="remax">ReMax</h2>
+<h2 id="rloo">RLOO</h2>
+<h2 id="ppo">PPO</h2>
+<h2 id="grpo">GRPO</h2>
+<h2 id="dr-grpo">Dr. GRPO</h2>
+<h2 id="reinforce">REINFORCE++</h2>
+<p>$$
+\begin{align*}
+\nabla_\theta J_\text{REINFORCE}(\theta) =\mathrm{E}<em>{q \sim P(Q), o \sim \pi</em>{\theta}(O \mid q)}
+\left[\left(R(q, o) - V(q) \right) \nabla_{\theta} \log\pi_{\theta}(o_i | q)
+\right]
+\mathbb{E}nd{align*}
+$$</p>
+<p>$$
+\begin{align*}
+\nabla_{\theta} J_\text{RLOO}(\theta)
+&amp;= \mathrm{E}<em>{q \sim P(Q),{o_i}</em>{i=1}^G \sim \pi_{\theta}(O \mid q)}
+\left[
+\frac{1}{G} \sum_{i=1}^G \left(R(q, o_i) - \frac{1}{G-1} \sum_{j \neq i} R(q, o_j) \right) \nabla_{\theta} \log\pi_{\theta}(o_i | q)
+\right] \\
+&amp;= \mathrm{E}<em>{q \sim P(Q),{o_i}</em>{i=1}^G \sim \pi_{\theta}(O \mid q)}
+\left[
+\frac{1}{G-1} \sum_{i=1}^G \left(R(q, o_i) - V(q) \right) \nabla_{\theta} \log\pi_{\theta}(o_i | q)
+\right],\\
+&amp; \text{ where } V(q) = \frac{1}{G} \sum_{i=1}^{G} R(q, o_j).
+\end{align*}
+$$</p>
+<p>$$
+\begin{align*}
+\nabla_{\theta} \log \pi_{\theta}(o_i | q)
+= \nabla_{\theta} \log \left[\prod_{t=1}^{|o_i|} \pi_\theta(o_{i, t} \mid q, o_{i,&lt;t}) \right]
+= \sum_{t=1}^{|o_i|} \nabla_{\theta} \log \pi_\theta(o_{i, t} \mid q, o_{i,&lt;t})
+\end{align*}
+$$</p>
+<p>$$
+\begin{align*}
+\nabla_{\theta} J_\text{RLOO}(\theta)
+&amp;= \mathrm{E}<em>{q \sim P(Q),{o_i}</em>{i=1}^G \sim \pi_{\theta}(O \mid q)}
+\left[
+\frac{1}{G-1} \sum_{i=1}^G \left(R(q, o_i) - V(q) \right) \nabla_{\theta} \log\pi_{\theta}(o_i | q)
+\right],\\
+&amp;= \mathrm{E}<em>{q \sim P(Q),{o_i}</em>{i=1}^G \sim \pi_{\theta}(O \mid q)}
+\left[
+\frac{1}{G-1} \sum_{i=1}^G \sum_{t=1}^{|o_i|} \left(R(q, o_i) - V(q) \right) \nabla_{\theta} \log \pi_\theta(o_{i, t} \mid q, o_{i,&lt;t})
+\right],\\
+\end{align*}
+$$</p>
+<p>Now applying PPO tricks (IS + ratio clipping),
+$$
+\begin{align*}
+J(\theta)
+= \mathrm{E}<em>{q \sim P(Q),{o_i}</em>{i=1}^G \sim \pi_{\theta_{old}}(O \mid q)}
+\left[
+\frac{1}{G-1} \sum_{i=1}^G \sum_{t=1}^{|o_i|}
+\min \left(\frac{\pi_\theta\left(o_{i,t} | q, o_{i,&lt;t}\right)}{\pi_{\theta_{old}}\left(o_{i,t} | q, o_{i,&lt;t}\right)} A_{i,t},
+\operatorname{clip}\left(\frac{\pi_\theta(o_{i,t} | q, o_{i,&lt;t})}{\pi_{\theta_{old}}(o_{i,t} | q, o_{i,&lt;t})}, 1-\mathbb{E}psilon, 1+\mathbb{E}psilon\right) A_{i,t}\right)
+\right]
+\end{align*}
+$$
+where $A_{i,t} = R(q, o_i) - V(q)$.</p>
+<hr>
+<p>Cited as:</p>
+<pre tabindex="0"><code>@article{lan2025llm_rl_algorithm,
+  title   = &#34;Policy Gradient Algorithms&#34;,
+  author  = &#34;Lan, Qingfeng&#34;,
+  journal = &#34;lancelqf.github.io&#34;,
+  year    = &#34;2015&#34;,
+  url     = &#34;https://lancelqf.github.io/posts/2018-04-08-policy-gradient/&#34;
+}
+</code></pre><h2 id="references">References</h2>
+
+        </p>
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#policy-gradient-theorem">Policy Gradient Theorem</a></li>
+        <li><a href="#reinforce-monte-carlo-policy-gradient">REINFORCE: Monte Carlo Policy Gradient</a></li>
+        <li><a href="#reinforce-with-baseline">REINFORCE with Baseline</a></li>
+        <li><a href="#remax">ReMax</a></li>
+        <li><a href="#rloo">RLOO</a></li>
+        <li><a href="#ppo">PPO</a></li>
+        <li><a href="#grpo">GRPO</a></li>
+        <li><a href="#dr-grpo">Dr. GRPO</a></li>
+        <li><a href="#reinforce">REINFORCE++</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+    <aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-lvohfvy22n" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Qingfeng Lan; all rights reserved.</span>
+    <span>
+        Powered by <a target="_blank" href="https://gohugo.io/">Hugo</a>
+    </span>
+</footer></body>
+</html>

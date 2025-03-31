@@ -4,26 +4,23 @@
     <title>Python on Qingfeng&#39;s blog</title>
     <link>https://lancelqf.github.io/tags/python/</link>
     <description>Recent content in Python on Qingfeng&#39;s blog</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Jul 2018 19:12:41 +0800</lastBuildDate><atom:link href="https://lancelqf.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Jul 2018 19:12:41 +0800</lastBuildDate>
+    <atom:link href="https://lancelqf.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python入门</title>
       <link>https://lancelqf.github.io/tech/python%E5%85%A5%E9%97%A8/</link>
       <pubDate>Sun, 22 Jul 2018 19:12:41 +0800</pubDate>
-      
       <guid>https://lancelqf.github.io/tech/python%E5%85%A5%E9%97%A8/</guid>
       <description>&lt;p&gt;很多非计算机的同学问过我如何学习Python，干脆写份入门指南好了。说来惭愧，其实自己都没有系统学过Python，只是入了个门。基本上都是要用到什么才会去学，很多都是现查现学。高阶的东西完全不会，所以这真的是一份很基础的&lt;strong&gt;入门&lt;/strong&gt;指南。更丰富的内容请自行知乎。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Python Bug</title>
       <link>https://lancelqf.github.io/tech/python-bug/</link>
       <pubDate>Wed, 04 Apr 2018 19:32:58 +0800</pubDate>
-      
       <guid>https://lancelqf.github.io/tech/python-bug/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

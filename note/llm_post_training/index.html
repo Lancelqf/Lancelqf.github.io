@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #2482ed;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>From REINFORCE to Dr. GRPO</title>
+    <meta name="description" content="A Unified Perspective on LLM Post-training">
+    <meta name="keywords" content='Article, Self, Research'>
+
+    <meta property="og:url" content="https://lancelqf.github.io/note/llm_post_training/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="From REINFORCE to Dr. GRPO">
+    <meta property="og:description" content="A Unified Perspective on LLM Post-training">
+    <meta property="og:image" content="/TheWindRises.jpeg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="From REINFORCE to Dr. GRPO">
+    <meta name="twitter:description" content="A Unified Perspective on LLM Post-training">
+    <meta property="twitter:domain" content="https://lancelqf.github.io/note/llm_post_training/">
+    <meta property="twitter:url" content="https://lancelqf.github.io/note/llm_post_training/">
+    <meta name="twitter:image" content="/TheWindRises.jpeg">
+
+    
+    <link rel="canonical" href="https://lancelqf.github.io/note/llm_post_training/" />
+
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io//css/dark.css">
+
+    <script src="https://lancelqf.github.io//js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io//js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io//js/main.js"></script>
+
+    
+    
+        <!-- Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?2445edbea2f2541f3150c49cc08c381a";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121043808-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121043808-1');
+    </script>
+
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css" integrity="sha384-ZPe7yZ91iWxYumsBEOn7ieg8q/o+qh/hQpSaPow8T6BwALcXSCS6C6fSRPIAnTQs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js" integrity="sha384-ljao5I1l+8KYFXG7LNEA7DyaFvuvSCmedUf6Y6JI7LJqiu8q5dEivP2nDdFH31V4" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://lancelqf.github.io/">
+                <img src="https://lancelqf.github.io//TheWindRises.jpeg" alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://lancelqf.github.io/">Qingfeng&#39;s blog</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/heart/"><span data-feather='heart'></span> Heart </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/note/"><span data-feather='book'></span> Note </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/tech/"><span data-feather='tool'></span> Tech </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://lancelqf.github.io/about"><span data-feather='user'></span> About </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>From REINFORCE to Dr. GRPO</h1>
+        <small role="doc-subtitle">A Unified Perspective on LLM Post-training</small>
+        <p class="post-date">
+            March 27, 2025
+            
+            
+        </p>
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://lancelqf.github.io/tags/article">Article</a></li>
+        
+            <li class="post-tag"><a href="https://lancelqf.github.io/tags/self">Self</a></li>
+        
+            <li class="post-tag"><a href="https://lancelqf.github.io/tags/research">Research</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Recently, many reinforcement learning (RL) algorithms have been applied to improve the post-training of large language models (LLMs). In this article, we aim to provide a unified perspective on the objectives of these RL algorithms, exploring how they relate to each other through the Policy Gradient Theorem — the fundamental theorem of policy gradient methods.</p>
+<h2 id="background">Background</h2>
+<p>Let $\mathcal{M}_1(X)$ denote the space of probability distributions supported on the set $X$.
+Consider a Markov decision process (MDP), $M=(\mathcal{S}, \mathcal{A}, \mathbb{P}, p_0, R, \gamma)$, where $\mathcal{S}$ is the discrete state space, $\mathcal{A}$ is the discrete action space, $\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \mathcal{M}_1(\mathcal{S})$ is the transition probability, $p_0 = \mathcal{M}_1(\mathcal{S})$ is the initial state distribution, $R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1]$ is the discount factor.</p>
+<p>An agent interacts with an MDP environment based on a policy $\pi: \mathcal{S} \rightarrow \mathcal{M}_1(\mathcal{A})$. Specifically, the agent starts from state $s_0 \sim p_0(\cdot)$.
+At each time-step $t$, it observes the state $s_t \in \mathcal{S}$, takes an action $a_t \sim \pi(\cdot|s_t)$, transits to the next state $s_{t+1} \sim \mathbb{P}(\cdot | s_t, a_t)$, and receives a scalar reward $r_{t+1} = R(s_t, a_t)$.
+A trajectory (up to time-step $T$) is defined as $\tau = (s_0, a_0, r_1, s_1, \cdots, s_T)$.
+Define return $G_t$ over $\tau$ as the total (discounted) reward from time-step $t$:
+$$
+\begin{equation}
+G_t = \sum_{i=t}^{T-1} \gamma^{i-t} R(s_i, a_i).
+\end{equation}
+$$
+State-value functions are defined as the expected return under policy $\pi$,
+$$
+\begin{align}
+V_{\pi}(s) = \mathbb{E}_{\pi}[G_t | s_t=s].
+\end{align}
+$$
+Similarly, action-value functions are defined as
+$$
+\begin{align}
+Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t | s_t=s, a_t=a].
+\end{align}
+$$
+Furthermore, $V_{\pi}$ and $Q_{\pi}$ are connected with the following equations:
+$$
+\begin{align}
+V_{\pi}(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a | s) Q_{\pi}(s,a), \\
+Q_{\pi}(s,a) &amp;= R(s,a) + \gamma \sum_{s&rsquo; \in \mathcal{S}} \mathbb{P}(s&rsquo;|s,a) V_{\pi}(s&rsquo;).
+\end{align}
+$$</p>
+<p>The policy is usually parameterized by a weight vector $\theta$, i.e., $\pi_{\theta}$.
+The goal of the agent is to find a policy that maximizes the expected return.
+Formally, we aim to find $\theta$ that maximizes the objective:
+$$
+\begin{align}
+J(\theta) = \sum_{s \in \mathcal{S}} p_0(s) V_{\pi_{\theta}}(s).
+\end{align}
+$$</p>
+<p>Now, let&rsquo;s formalize LLM post-training within the RL framework. In essence, LLM post-training is a specific type of RL task, distinguished by some unique properties.
+Specifically, the initial state distribution is defined over the prompt dataset $\mathcal{Q}$, i.e., $p_0 = \mathcal{M}_1(\mathcal{Q})$. The initial state $s_0$ corresponds to a prompt $\mathbf{q} = [\mathbf{q}_1, \dots, \mathbf{q}_m]$ sampled from $\mathcal{Q}$, where $\mathbf{q}_i$ is the $i$-th token in the prompt.
+At time-step $t$, the state includes the prompt tokens $\mathbf{q}$ and the response tokens generated so far, i.e., $s_t = [\mathbf{q}_1, \dots, \mathbf{q}_m, \mathbf{o}_1, \dots, \mathbf{o}_{t-1}]$, where $m$ denotes the prompt length.
+The transition function is deterministic, and the next state is simply the concatenation of the current state and the action, i.e., $s_{t+1} = s_t | a_t$, where $|$ denotes the concatenation operation.
+An episode ends when the token budget is exhausted or when the End-of-Sentence (EOS) token is generated.</p>
+<p>Considering different action granularities, we define three types of MDPs for LLM post-training:</p>
+<ol>
+<li>
+<p><strong>Token-level MDPs</strong>: In this case, we have the most fine-grained actions: each action $a$ corresponds to a single token, and the action space $\mathcal{A}$ is the set of tokens. The reward function $R(s, a)$ is also defined at the token level.</p>
+</li>
+<li>
+<p><strong>Response-level MDPs</strong>: Here, an action $a_0$ represents the entire response generated by the LLM, i.e., $a_0 = \mathbf{o} = [\mathbf{o}_1, \dots, \mathbf{o}_T]$, where $T$ is the response length. Response-level MDPs are essentially <a href="https://en.wikipedia.org/wiki/Multi-armed_bandit#Contextual_bandit">contextual bandits</a>, where each prompt $\mathbf{q}$ serves as the context or initial state $s_0$, and a response is considered an arm. The reward $R(s_0, a_0)$ corresponds to the return.</p>
+</li>
+<li>
+<p><strong>Step-level MDPs</strong>: The granularity of actions in these MDPs lies between the token-level and the response-level, where each action represents an intermediate step in the response generation process, such as <a href="http://arxiv.org/abs/2201.11903">chain-of-thought reasoning</a>.</p>
+</li>
+</ol>
+<p>In this article, we mainly focus on token-level MDPs.</p>
+<h2 id="policy-gradient-theorem">Policy Gradient Theorem</h2>
+<p>We mow apply gradient ascent techniques to get the gradient of the objective.
+Since the true gradient $\nabla_{\theta} J(\theta)$ is not typically available, we resort to <a href="https://arxiv.org/abs/1906.10652">Monte Carlo methods</a>.</p>
+<p>This gradient estimation problem can be formalized as computing the unbiased gradient of an expectation of a function with respect to some parameters of a distribution.
+Consider a general case. Let $p_{\theta}(x)$ be the probability distribution of $x$ with parameters $\theta$.
+Define the objective to be $F(\theta) = \sum_{x \sim X} p_{\theta}(x) \phi(x)$.
+To estimate $\nabla_{\theta} F(\theta)$, we apply <a href="https://web.stanford.edu/~glynn/papers/1990/G90a.html">the likelihood-ratio gradient estimator</a> which uses the log-derivative technique ($\nabla \log{x} = \frac{\nabla x}{x}$) to obtain the unbiased gradient estimation:
+$$
+\begin{align*}
+\nabla_{\theta} F(\theta)
+&amp;= \sum_x \phi(x) \nabla_{\theta} p_{\theta}(x) \\
+&amp;= \sum_x \phi(x) p_{\theta}(x) \nabla_{\theta} \log{p_{\theta}(x)} \\
+&amp;= \mathbb{E}_{X \sim p_{\theta}}[\phi(X) \nabla_{\theta} \log{p_{\theta}(X)}].
+\end{align*}
+$$</p>
+<p>For our specific case, we have
+$$
+\begin{align}
+\nabla_{\theta} J(\theta)
+&amp; = \sum_{s \in \mathcal{S}, a \in \mathcal{A}} d^{\pi_{\theta}}(s) \pi_{\theta}(a|s) Q_{\pi_{\theta}}(s,a) \nabla_{\theta} \log{\pi_{\theta}(a|s)} \\
+&amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t \gamma^t Q_{\pi_{\theta}}(s_t,a_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
+\end{align}
+$$
+where $d^{\pi_{\theta}}(s&rsquo;) = \sum_{s \in \mathcal{S}} \sum_{t=0}^{\infty} p_0(s) p(s \to s&rsquo;, t, \pi_{\theta})$ is the (undiscounted) stationary state distribution of policy $\pi_{\theta}$ and $p(s \to s&rsquo;, t, \pi_{\theta})$ is the transition probability from $s$ to $s&rsquo;$ with $t$ steps under policy $\pi_{\theta}$.
+For a detailed proof, please check section 13.2 of <a href="http://incompleteideas.net/book/the-book-2nd.html">the RL introduction book</a> and <a href="https://spinningup.openai.com/en/latest/spinningup/rl_intro3.html">OpenAI Spinning Up</a>.</p>
+<p>Finally, in terms of implementation, the term $\gamma^t$ in Equation (8) is usually ignored:
+$$
+\begin{align}
+\nabla_{\theta} J(\theta)
+&amp; \approx \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t Q_{\pi_{\theta}}(s_t,a_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
+\end{align}
+$$
+For a more detailed discussion, please check this <a href="https://arxiv.org/abs/2010.01069">paper</a>.</p>
+<h2 id="reinforce">REINFORCE</h2>
+<p><a href="https://link.springer.com/content/pdf/10.1007/BF00992696.pdf">REINFORCE</a> is a classic Monte Carlo policy gradient algorithm. Specifically, it approximates $Q_{\pi_{\theta}}$ in Equation (8) with the expected return (see Equation (3)).
+Formally, the gradient estimation is
+$$
+\begin{equation}
+\nabla_{\theta} J_\text{REINFORCE}(\theta)
+= \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t G_t \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
+\end{equation}
+$$</p>
+<p>In practice, REINFORCE usually suffers from high gradient variance, making training unstable.
+To reduce the variance, we apply the <a href="https://en.wikipedia.org/wiki/Control_variates">control variates</a> method by subtracting a baseline $b_t$ from $G_t$:
+$$
+\begin{align}
+\nabla_{\theta} J(\theta)
+&amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - b_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}] \\
+&amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t A_t \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}], \nonumber
+\end{align}
+$$
+where $A_t = G_t - b_t$ is referred to as the advantage.</p>
+<p>In generaly, the baseline can be any function as long as it is not affected by the action $a_t$; otherwise we will have biased gradient estimation.
+For example, when $b_t = b(s_t)$, a function of the state $s_t$ only, $\nabla_{\theta} J_\text{REINFORCE}(\theta) = \nabla_{\theta} J(\theta)$ because the subtracted quantity is zero:
+$$
+\begin{align*}
+\mathbb{E}_{\pi_{\theta}}[b(s_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
+&amp;= \sum_{a_t \sim \mathcal{A}} \pi_{\theta}(a_t|s_t) b(s_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)} \\
+&amp;= \sum_{a_t \sim \mathcal{A}} b(s_t) \nabla_{\theta} \pi_{\theta}(a_t|s_t) \\
+&amp;= b(s_t) \nabla_{\theta} \left(\sum_{a_t \sim \mathcal{A}} \pi_{\theta}(a_t|s_t) \right) \\
+&amp;= b(s_t) \nabla_{\theta} 1 \\
+&amp;= 0.
+\end{align*}
+$$</p>
+<p>In practice, we usually choose the state-value $V(s_t)$ as the baseline:
+$$
+\begin{align}
+\nabla_{\theta} J_\text{REINFORCE with baseline}(\theta)
+&amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - V(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
+\end{align}
+$$</p>
+<h2 id="rloo">RLOO</h2>
+<p>In REINFORCE with baseline, estimating the gradient requires the state-value function, which is challenging to obtain accurately in LLM post-training and is both memory-intensive to store and computationally expensive to train.
+<a href="https://openreview.net/forum?id=r1lgTGL5DE">REINFORCE Leave-One-Out (RLOO)</a> eliminates the need for $V(s_t)$ at each time-step $t$ by replacing it with the expected return over multiple trajectories sampled on the fly.
+However, not all RL tasks permit multiple trajectory sampling from the same state $s_t$.
+In LLM post-training, the transition function is deterministic, with the next state formed simply by concatenating the current state and action.
+This determinism provides a foundation for multiple trajectory sampling.</p>
+<p>Specifically, at each time-step $t$, we sample $K$ trajectories $\{ \tau_{1,t}, \dots, \tau_{K,t} \}$ <strong>starting from $s_t$</strong>; and the corresponding returns are $G_{1,t}, \dots, G_{K,t}$.
+One may think we can simply replace $V(s_t)$ with a baseline $\frac{1}{K} \sum_{i=1}^{K} G_{i,t}$:
+$$
+\begin{align*}
+\nabla_{\theta} J(\theta)
+\overset{?}{=} \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta}} \left[\sum_t \frac{1}{K} \sum_{k=1}^{K} \left(G_{k,t} - \frac{1}{K} \sum_{i=1}^{K} G_{i,t}\right) \nabla_{\theta} \log{\pi_{\theta}(a_{k,t}|s_t)}\right].
+\end{align*}
+$$
+However, this baseline leads to a biased gradient estimation since the baseline contains $G_{k,t}$ which is affected by $a_{k,t}$.
+Thus, to get an unbiased gradient estimation, we choose $\frac{1}{K-1} \sum_{i \neq k} G_{i,t}$ as the baseline:
+$$
+\begin{align*}
+\nabla_{\theta} J(\theta)
+= \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta}} \left[\sum_t \frac{1}{K} \sum_{k=1}^{K} \left(G_{k,t} - \frac{1}{K-1} \sum_{i \neq k} G_{i,t}\right) \nabla_{\theta} \log{\pi_{\theta}(a_{k,t}|s_t)}\right].
+\end{align*}
+$$
+Furthermore, we have
+$$
+\begin{align*}
+G_{k,t} - \frac{1}{K-1} \sum_{i \neq k} G_{i,t}
+&amp;= G_{k,t} + \frac{1}{K-1} G_{k,t} - \frac{1}{K-1} \sum_{i=1}^K G_{i,t} \\
+&amp;= \frac{K}{K-1} G_{k,t} - \frac{1}{K-1} \sum_{i=1}^K G_{i,t} \\
+&amp;= \frac{K}{K-1} \left(G_{k,t} - \frac{1}{K} \sum_{i=1}^K G_{i,t}\right).
+\end{align*}
+$$</p>
+<p>Applying the above trick, we have
+$$
+\begin{align}
+\nabla_{\theta} J_\text{RLOO}(\theta)
+= \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta}} \left[\textcolor{red}{\frac{1}{K-1}} \sum_t \sum_{k=1}^{K} (G_{k,t} - \bar{V}(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_{k,t}|s_t)}\right].
+\end{align}
+$$
+where $\bar{V}(s_t) = \mathbb{E}[G_t] = \frac{1}{K} \sum_{i=1}^K G_{i,t}$ which is an unbiased estimation of $V(s_t)$.</p>
+<h2 id="remax">ReMax</h2>
+<p>Unlike RLOO which samples multiple trajectories to compute the baseline, <a href="https://arxiv.org/abs/2310.10505">ReMax</a> samples a greedy trajectory and sets the baseline as the return over this greedy trajectory.
+Formally, given the policy $\pi_{\theta}$ and the current state $s_t$, we sample the greedy trajectory starting from $s_t$, i.e., $\hat{\tau}_t = (\hat{s}_t, \hat{a}_t, \hat{r}_{t+1}, \hat{s}_{t+1}, \hat{a}_{t+1}, \dots, \hat{s}_T)$, where $\hat{s}_t = s_t$, $\hat{a}_i = \argmax_{a \in \mathcal{A}} \pi_{\theta}(a | \hat{s}_i)$ and $r_{i+1} = R(\hat{s}_i, \hat{a}_i)$.
+Denote $\hat{G}_t$ as the return over trajectory $\hat{\tau}_t$ and set $b_t = \hat{G}_t$ in Equation (11).
+We then have:
+$$
+\begin{align}
+\nabla_{\theta} J_\text{ReMax}(\theta)
+= \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - \hat{G}_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
+\end{align}
+$$
+Note that in this case, the baseline is no longer an unbiased estimation of $V(s_t)$.</p>
+<!-- The gradient estimation could be biased if a_t is the first action in the greedy trajectory. Is this true? Check with Ziniu. -->
+<h2 id="ppo">PPO</h2>
+<p>The above algorithms are all on-policy algorithms where the behavior policy and the target policy are the same.
+For off-policy learning, where the behavior policy and the target policy are different, we need to correct the gradient estimation by utilizing <a href="https://en.wikipedia.org/wiki/Importance_sampling">importance sampling</a>.
+Let $\pi_{\theta}$ be the target policy and the old policy $\pi_{\theta_{old}}$ be the behavior policy.
+Formally, we aim to maximize a surrogate objective:
+$$
+J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}[\sum_t \rho_t(\theta) Q_{\pi_{\theta_{old}}}(s_t,a_t)],
+$$
+where $\rho_t(\theta) = \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)}$ is called the importance-sampling ratio.</p>
+<p>The gradient estimation is:
+$$
+\begin{align*}
+\nabla_{\theta} J(\theta)
+&amp;= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} Q_{\pi_{\theta_{old}}}(s_t,a_t)\right] \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \frac{\nabla_{\theta} \pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} Q_{\pi_{\theta_{old}}}(s_t,a_t)\right] \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \frac{\pi_{\theta}(a_t|s_t)}{\pi_{\theta_{old}}(a_t|s_t)} Q_{\pi_{\theta_{old}}}(s_t,a_t) \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \rho_t(\theta) Q_{\pi_{\theta_{old}}}(s_t,a_t) \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \rho_t(\theta) G_t \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right].
+\end{align*}
+$$</p>
+<p>Similarly, we can subtract a baseline $b_t$ from the return $G_t$ to reduce gradient variance without adding bias:
+$$
+\begin{align*}
+\nabla_{\theta} J(\theta)
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \rho_t(\theta) (G_t - b_t) \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
+&amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \rho_t(\theta) A_t \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
+&amp;= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}[\sum_t \rho_t(\theta) A_t].
+\end{align*}
+$$</p>
+<p>To enhance training stability, it&rsquo;s crucial to prevent excessive changes to the policy in a single update step. <a href="https://arxiv.org/abs/1502.05477">Trust Region Policy Optimization (TRPO)</a> achieves this by imposing a <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">KL divergence</a> constraint, ensuring controlled and gradual policy updates at each update.
+<a href="https://arxiv.org/abs/1707.06347">Proximal Policy Optimization (PPO)</a> is inspired by the same goal as TRPO while being significantly simpler to implement.
+Specifically, PPO uses a clipped surrogate objective to constrain the policy update:
+$$
+\begin{equation}
+J_{\text{PPO}}(\theta)
+= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}\left[\sum_t \min(\rho_t(\theta) A_t, \operatorname{clip}(\rho_t(\theta), 1-\epsilon, 1+\epsilon) A_t)\right].
+\end{equation}
+$$</p>
+<p>Define a modified ratio $\hat{\rho}_t(\theta)$:
+$$
+\begin{align*}
+\hat{\rho}_t(\theta) =
+\begin{cases}
+0, &amp; \text{if } A_t &gt; 0 \text{ and } \rho_t(\theta) &gt; 1+\epsilon, \\
+0, &amp; \text{if } A_t &lt; 0 \text{ and } \rho_t(\theta) &lt; 1-\epsilon, \\
+\rho_t(\theta), &amp; \text{otherwise.}
+\end{cases}
+\end{align*}
+$$</p>
+<p>Then Equation (15) can be rewritten as:
+$$
+\begin{equation}
+J_{\text{PPO}}(\theta)
+= \mathbb{E}_{\tau \sim \pi_{\theta_{old}}}[\sum_t \hat{\rho}_t(\theta) A_t].
+\end{equation}
+$$</p>
+<p>For advantage $A_t$, we usually use <a href="http://incompleteideas.net/book/the-book-2nd.html">$\lambda$-return</a> $G_t^{\lambda}$ instead of $G_t$ and set $b_t = V(s_t)$:
+$$
+\begin{equation}
+A_t = G_t^{\lambda} - V(s_t).
+\end{equation}
+$$
+The above term is also known as the <a href="https://arxiv.org/abs/1506.02438">Generalized Advantage Estimate (GAE)</a>.</p>
+<p>In practice, we may also normalize advantages to further improve training stability:
+$$
+\hat{A}_t = \frac{A_t - \mathbb{E}[A_t]}{\operatorname{std}[A_t]},
+$$
+where $\mathbb{E}[A_t] = \frac{1}{T} \sum_{t=0}^{T-1} A_t$ and $\operatorname{std}[A_t] = \sqrt{\frac{1}{T-1} \sum_{t=0}^{T-1} (A_t - \mathbb{E}[A_t])^2}$.</p>
+<h2 id="grpo">GRPO</h2>
+<p><a href="http://arxiv.org/abs/2402.03300">Group Relative Policy Optimization (GRPO)</a> basically combines PPO with the mutiple sampling trick from RLOO.
+$$
+\begin{align*}
+J_{\text{PPO with mutiple sampling}}(\theta)
+= \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta_{old}}}\left[\frac{1}{K-1} \sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) A_{k,t} \right],
+\end{align*}
+$$
+where $A_{k,t} = G_{k,t}^{\lambda} - b_t$.</p>
+<p>Note that the above objective differs from the one introduced in the original <a href="http://arxiv.org/abs/2402.03300">paper</a>.
+To reduce the gap, we consider the outcome reward setting with $\lambda=\gamma=1$.
+In this case, we have $G_t^{\lambda} = G_t = \sum_{i=t}^{T-1} R(s_i, a_i) = R(s_{T-1}, a_{T-1})$, where $R(s_{T-1}, a_{T-1})$ is the outcome reward.
+Moreover, we do not sample multiple trajectories $\{ \tau_{k,t} \}_{k=1}^K$ on the fly starting from $s_t$ at each time-step $t$.
+Instead, we sample multiple trajectories $\{ \tau_k \}_{k=1}^K$ <strong>starting from the initial state $s_0=\mathbb{q}$</strong> and the sampling process is only conducted once at $t=0$ for each prompt.</p>
+<p>Let $r_k$ be the outcome reward of the $k$-th trajectory and set $b_t = \mathbb{E}[r_k] = \frac{1}{K} \sum_{k=1}^K r_k$.
+We then have
+$$
+\begin{align}
+J_{\text{GRPO}}(\theta)
+= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{old}}}[\frac{1}{K-1} \sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) A_{k}],
+\end{align}
+$$
+where $A_{k} = r_k - \mathbb{E}[r_k]$.
+Note that here the baseline $\mathbb{E}[r_k]$ is no longer an unbiased estimation of $V(s_t)$, but a function of $s_0$.
+In practice, we may also normalize advantages to further improve training stability:
+$$
+\begin{align}
+\hat{A}_{k}
+= \frac{A_k - \mathbb{E}[A_k]}{\operatorname{std}[A_k]}
+= \frac{A_k}{\operatorname{std}[A_k]}
+= \frac{A_k}{\operatorname{std}[r_k]}
+= \frac{r_k - \mathbb{E}[r_k]}{\operatorname{std}[r_k]}.
+\end{align}
+$$</p>
+<p>Notice that compared with the original GRPO objective introduced in the <a href="http://arxiv.org/abs/2402.03300">original paper</a>, the KL divergence term is dropped in Equation (18). There are several reasons for doing this:</p>
+<ol>
+<li>As shown in <a href="https://arxiv.org/abs/1707.06347">PPO paper</a>, the clipped objective is designed as a replacement of constraint policy optimization in form of the KL divergence term. Thus, adding a KL divergence term is not necessary theoretically.</li>
+<li>Removing the KL divergence term simplifies the implementation, saving memory and computation.</li>
+<li>Some recent works (e.g., <a href="https://arxiv.org/abs/2503.14476">DAPO</a> and <a href="https://arxiv.org/abs/2503.20783">Dr. GRPO</a>) have shown that the KL divergence term is not necessary in practice.</li>
+</ol>
+<h2 id="dr-grpo">Dr. GRPO</h2>
+<p>Even after removing the KL divergence term, the GRPO objective in Equation (18) still differs from the original GRPO objective.
+In fact, the original GRPO objective is biased, as pointed out in <a href="https://arxiv.org/abs/2503.20783">Dr. GRPO paper</a>.</p>
+<center><img src="/media/grpo.png" alt="GRPO v.s. Dr. GRPO" height="40%" width="80%" /></center>
+<p>Specifically, there are three biases in the original GRPO objective:</p>
+<ol>
+<li>
+<p><em>Baseline bias</em>: This is caused by using a biased baseline without correcting the scaling factor (see Equation (13)). When using $\mathbb{E}[r_k]$ as the baseline, we should use a scaling factor of $\frac{1}{K-1}$, instead of $\frac{1}{K}$.</p>
+</li>
+<li>
+<p><em>Response-level length bias</em>: This bias arises from dividing by response length $|\mathbb{o}|$. For correct answers (with postive adavantages), this bias incentivizes shorter responses; for incorrect answers (with negative advantages), this bias results in longer responses.</p>
+</li>
+<li>
+<p><em>Question-level difficulty bias</em>: This bias arises from an incorrect implementation of advantage normalization. In classical (single-task) RL, advantage normalization is typically computed over an entire batch — a practice also adopted by many open-sourced RL implementations of LLM post-training. However, in the context of LLM post-training, questions can vary significantly in terms of type, domain, and difficulty. Each question effectively represents a different task with its own reward function. <strong>In essence, LLM post-training is a form of multi-task learning.</strong> As a result, applying batch-level normalization across diverse questions leads to inconsistent weighting in the objective, disproportionately influencing optimization across tasks. For example, questions with lower standard deviations are given higher weights during policy updates.</p>
+</li>
+</ol>
+<p>For the baseline bias, the scaling factor can be absorbed into the learning rate. Since the learning rate is usually tuned in practice, this bias does not significantly affect the training performance.
+For the other two biases, <a href="https://arxiv.org/abs/2503.20783">Group Relative Policy Optimization Done Right (Dr. GRPO)</a> addresses them by simply removing $\frac{1}{|\mathbb{o}|}$ and $\operatorname{std}[r_k]$:</p>
+<p>$$
+\begin{align}
+J_{\text{Dr. GRPO}}(\theta)
+= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{old}}}\left[\sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) (r_k - \mathbb{E}[r_k])\right],
+\end{align}
+$$
+which is essentially equivalent to Equation (18), differing only by a factor of $\frac{1}{K-1}$.</p>
+<p>Finally, question-level difficulty bias might also be removed by applying per-question advantage normalization, i.e., normalizing advantages of each question separately.</p>
+<hr>
+<p>Cited as:</p>
+<pre tabindex="0"><code>@article{lan2025llm_post_training,
+  title = {From REINFORCE to Dr. GRPO: A Unified Perspective on LLM Post-training},
+  author = {Lan, Qingfeng},
+  journal = {lancelqf.github.io},
+  year = {2025},
+  url = {https://lancelqf.github.io/note/llm_post_training/}
+}
+</code></pre>
+        </p>
+    </div>
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#policy-gradient-theorem">Policy Gradient Theorem</a></li>
+        <li><a href="#reinforce">REINFORCE</a></li>
+        <li><a href="#rloo">RLOO</a></li>
+        <li><a href="#remax">ReMax</a></li>
+        <li><a href="#ppo">PPO</a></li>
+        <li><a href="#grpo">GRPO</a></li>
+        <li><a href="#dr-grpo">Dr. GRPO</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+    <aside id=comments>
+    <div><h2> Comments </h2></div>
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "blog-lvohfvy22n" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</aside>
+
+        </main><footer class="footer">
+    <span>&copy; 2025 Qingfeng Lan; all rights reserved.</span>
+    <span>
+        Powered by <a target="_blank" href="https://gohugo.io/">Hugo</a>
+    </span>
+</footer></body>
+</html>

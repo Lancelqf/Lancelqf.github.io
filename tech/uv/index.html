@@ -37,13 +37,13 @@
     
     <link rel="canonical" href="https://lancelqf.github.io/tech/uv/" />
 
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/normalize.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io/css/main.css">
-    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/normalize.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" type="text/css" href="https://lancelqf.github.io//css/main.css">
+    <link disabled id="dark-theme" rel="stylesheet" href="https://lancelqf.github.io//css/dark.css">
 
-    <script src="https://lancelqf.github.io/js/svg-injector.min.js"></script>
-    <script src="https://lancelqf.github.io/js/feather-icons.min.js"></script>
-    <script src="https://lancelqf.github.io/js/main.js"></script>
+    <script src="https://lancelqf.github.io//js/svg-injector.min.js"></script>
+    <script src="https://lancelqf.github.io//js/feather-icons.min.js"></script>
+    <script src="https://lancelqf.github.io//js/main.js"></script>
 
     
     
@@ -100,14 +100,14 @@
 
         
         <div class="avatar">
-            <a href="https://lancelqf.github.io">
-                <img src="https://lancelqf.github.io/TheWindRises.jpeg" alt="avatar" />
+            <a href="https://lancelqf.github.io/">
+                <img src="https://lancelqf.github.io//TheWindRises.jpeg" alt="avatar" />
             </a>
         </div>
         
 
         <div class="nav-title">
-            <a class="nav-brand" href="https://lancelqf.github.io">Qingfeng&#39;s blog</a>
+            <a class="nav-brand" href="https://lancelqf.github.io/">Qingfeng&#39;s blog</a>
         </div>
 
         <div class="nav-links">
@@ -195,8 +195,8 @@
 <ul>
 <li>For Linux and macOS, install with:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">curl -LsSf https://astral.sh/uv/install.sh | sh
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -LsSf https://astral.sh/uv/install.sh | sh
+</span></span></code></pre></div><ul>
 <li>Install with Homebrew:</li>
 </ul>
 <pre tabindex="0"><code>brew install uv
@@ -204,135 +204,134 @@
 <ul>
 <li>Enable shell autocompletion for <code>uv</code> and <code>uvx</code> for <code>Bash</code>:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion bash)&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span></code></pre></div><ul>
 <li>Enable shell autocompletion for <code>uv</code> and <code>uvx</code> for <code>Zsh</code>:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
-<span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
-</code></pre></div><h2 id="utility">Utility</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Update uv to the latest version</span>
-uv self update
-<span style="color:#6272a4"># Remove all cache entries</span>
-uv cache clean
-<span style="color:#6272a4"># Remove outdated cache entries; safe to run periodically</span>
-uv cache prune
-<span style="color:#6272a4"># Show the uv cache directory</span>
-uv cache dir
-<span style="color:#6272a4"># Show the uv tool directory</span>
-uv tool dir
-<span style="color:#6272a4"># Show the uv installed Python versions</span>
-uv python dir
-</code></pre></div><h2 id="uninstallation">Uninstallation</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Clean up stored data (optional)</span>
-uv cache clean
-rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv python dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
-rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv tool dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
-<span style="color:#6272a4"># Remove uv and uvx</span>
-rm ~/.local/bin/uv ~/.local/bin/uvx
-</code></pre></div><h1 id="project">Project</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uv generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;eval &#34;$(uvx --generate-shell-completion zsh)&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span></code></pre></div><h2 id="utility">Utility</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Update uv to the latest version</span>
+</span></span><span style="display:flex;"><span>uv self update
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Remove all cache entries</span>
+</span></span><span style="display:flex;"><span>uv cache clean
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Remove outdated cache entries; safe to run periodically</span>
+</span></span><span style="display:flex;"><span>uv cache prune
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Show the uv cache directory</span>
+</span></span><span style="display:flex;"><span>uv cache dir
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Show the uv tool directory</span>
+</span></span><span style="display:flex;"><span>uv tool dir
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Show the uv installed Python versions</span>
+</span></span><span style="display:flex;"><span>uv python dir
+</span></span></code></pre></div><h2 id="uninstallation">Uninstallation</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Clean up stored data (optional)</span>
+</span></span><span style="display:flex;"><span>uv cache clean
+</span></span><span style="display:flex;"><span>rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv python dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span>rm -r <span style="color:#f1fa8c">&#34;</span><span style="color:#ff79c6">$(</span>uv tool dir<span style="color:#ff79c6">)</span><span style="color:#f1fa8c">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Remove uv and uvx</span>
+</span></span><span style="display:flex;"><span>rm ~/.local/bin/uv ~/.local/bin/uvx
+</span></span></code></pre></div><h1 id="project">Project</h1>
 <h2 id="create-a-project">Create a Project</h2>
 <ol>
 <li>Create a new Python project</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">uv init &lt;project&gt;
-<span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>uv init &lt;project&gt;
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+</span></span></code></pre></div><ol start="2">
 <li>Initialize a project in the working directory</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir &lt;project&gt;
-<span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
-uv init
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir &lt;project&gt;
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+</span></span><span style="display:flex;"><span>uv init
+</span></span></code></pre></div><ol start="3">
 <li>Pin the project to a specific Python version</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
-uv python pin &lt;version&gt;
-</code></pre></div><h2 id="project-structure">Project Structure</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">.
-├── .venv             <span style="color:#6272a4"># Virtual environment</span>
-│   ├── bin
-│   ├── lib
-│   └── pyvenv.cfg
-├── .python-version   <span style="color:#6272a4"># Default Python version</span>
-├── README.md
-├── main.py
-├── pyproject.toml    <span style="color:#6272a4"># Metadata (dependencies, license, etc.)</span>
-└── uv.lock           <span style="color:#6272a4"># Exact information of project dependencies</span>
-</code></pre></div><h2 id="manage-package">Manage Package</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> &lt;project&gt;
+</span></span><span style="display:flex;"><span>uv python pin &lt;version&gt;
+</span></span></code></pre></div><h2 id="project-structure">Project Structure</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── .venv             <span style="color:#6272a4"># Virtual environment</span>
+</span></span><span style="display:flex;"><span>│   ├── bin
+</span></span><span style="display:flex;"><span>│   ├── lib
+</span></span><span style="display:flex;"><span>│   └── pyvenv.cfg
+</span></span><span style="display:flex;"><span>├── .python-version   <span style="color:#6272a4"># Default Python version</span>
+</span></span><span style="display:flex;"><span>├── README.md
+</span></span><span style="display:flex;"><span>├── main.py
+</span></span><span style="display:flex;"><span>├── pyproject.toml    <span style="color:#6272a4"># Metadata (dependencies, license, etc.)</span>
+</span></span><span style="display:flex;"><span>└── uv.lock           <span style="color:#6272a4"># Exact information of project dependencies</span>
+</span></span></code></pre></div><h2 id="manage-package">Manage Package</h2>
 <blockquote>
 <p>[!WARNING]
-It is not recommended to modify the project environment manually, e.g., with <code>uv pip install</code>.</p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Add a package with a specific version</span>
-uv add <span style="color:#f1fa8c">&#39;&lt;package&gt;==&lt;version&gt;&#39;</span>
-<span style="color:#6272a4"># Add a git package</span>
-uv add git+&lt;git_url&gt;
-<span style="color:#6272a4"># Add packages from `requirements.txt`</span>
-uv add -r requirements.txt
-<span style="color:#6272a4"># Upgrade all packages</span>
-uv lock --upgrade
-<span style="color:#6272a4"># Upgrade a specific package to the latest version</span>
-uv lock --upgrade-package &lt;package&gt;
-<span style="color:#6272a4"># Upgrade a specific package to a specific version</span>
-uv lock --upgrade-package &lt;package&gt;<span style="color:#ff79c6">==</span>&lt;version&gt;
-<span style="color:#6272a4"># Remove a package</span>
-uv remove &lt;package&gt;
-</code></pre></div><h2 id="run-commands-in-a-project">Run Commands in a Project</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Run a Python file</span>
-uv run python &lt;python_file&gt;
-<span style="color:#6272a4"># Run a `bash` script</span>
-uv run bash &lt;script&gt;
-</code></pre></div><h2 id="lock-and-sync">Lock and Sync</h2>
+It is not recommended to modify the project environment manually, e.g., with <code>uv pip install</code>.</p></blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Add a package with a specific version</span>
+</span></span><span style="display:flex;"><span>uv add <span style="color:#f1fa8c">&#39;&lt;package&gt;==&lt;version&gt;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Add a git package</span>
+</span></span><span style="display:flex;"><span>uv add git+&lt;git_url&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Add packages from `requirements.txt`</span>
+</span></span><span style="display:flex;"><span>uv add -r requirements.txt
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Upgrade all packages</span>
+</span></span><span style="display:flex;"><span>uv lock --upgrade
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Upgrade a specific package to the latest version</span>
+</span></span><span style="display:flex;"><span>uv lock --upgrade-package &lt;package&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Upgrade a specific package to a specific version</span>
+</span></span><span style="display:flex;"><span>uv lock --upgrade-package &lt;package&gt;<span style="color:#ff79c6">==</span>&lt;version&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Remove a package</span>
+</span></span><span style="display:flex;"><span>uv remove &lt;package&gt;
+</span></span></code></pre></div><h2 id="run-commands-in-a-project">Run Commands in a Project</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Run a Python file</span>
+</span></span><span style="display:flex;"><span>uv run python &lt;python_file&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Run a `bash` script</span>
+</span></span><span style="display:flex;"><span>uv run bash &lt;script&gt;
+</span></span></code></pre></div><h2 id="lock-and-sync">Lock and Sync</h2>
 <ol>
 <li>Locking is the process of resolving the project&rsquo;s dependencies into a lockfile.</li>
 <li>Syncing is the process of installing a subset of packages from the lockfile into the project environment. Syncing will remove any packages that are not present in the lockfile.</li>
 <li>Locking and syncing are automatic in uv. For example, when <code>uv run</code> is used, the project is locked and synced before invoking the requested command. This ensures the project environment is always up-to-date. Similarly, commands which read the lockfile, such as <code>uv tree</code>, will automatically update it before running.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Create/Update the lockfile</span>
-uv lock
-<span style="color:#6272a4"># Sync the environment</span>
-uv sync
-<span style="color:#6272a4"># Export the lockfile to `requirements.txt`</span>
-uv <span style="color:#8be9fd;font-style:italic">export</span> --format requirements-txt
-</code></pre></div><h1 id="python">Python</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># List installed and available Python versions</span>
-uv python list
-<span style="color:#6272a4"># Find an installed Python version</span>
-uv python find &lt;version&gt;
-<span style="color:#6272a4"># Install Python with a specific version</span>
-uv python install &lt;version&gt;
-<span style="color:#6272a4"># Pin the project to a specific Python version</span>
-uv python pin &lt;version&gt;
-<span style="color:#6272a4"># Uninstall a Python version</span>
-uv python uninstall &lt;version&gt;
-</code></pre></div><h1 id="virtual-environment">Virtual Environment</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Create/Update the lockfile</span>
+</span></span><span style="display:flex;"><span>uv lock
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Sync the environment</span>
+</span></span><span style="display:flex;"><span>uv sync
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Export the lockfile to `requirements.txt`</span>
+</span></span><span style="display:flex;"><span>uv <span style="color:#8be9fd;font-style:italic">export</span> --format requirements-txt &gt; requirements.txt
+</span></span></code></pre></div><h1 id="python">Python</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># List installed and available Python versions</span>
+</span></span><span style="display:flex;"><span>uv python list
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Find an installed Python version</span>
+</span></span><span style="display:flex;"><span>uv python find &lt;version&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Install Python with a specific version</span>
+</span></span><span style="display:flex;"><span>uv python install &lt;version&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Pin the project to a specific Python version</span>
+</span></span><span style="display:flex;"><span>uv python pin &lt;version&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Uninstall a Python version</span>
+</span></span><span style="display:flex;"><span>uv python uninstall &lt;version&gt;
+</span></span></code></pre></div><h1 id="virtual-environment">Virtual Environment</h1>
 <p><code>uv venv</code> basically can replace <code>venv</code> and <code>virtualenv</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Create a virtual environment with a apecific Python version</span>
-mkdir ~/envs/
-uv venv ~/envs/&lt;env&gt; --python &lt;version&gt;
-<span style="color:#6272a4"># Activate a virtual environment</span>
-<span style="color:#8be9fd;font-style:italic">source</span> &lt;env_dir&gt;/bin/activate
-<span style="color:#6272a4"># Deactivate a virtual environment</span>
-deactivate
-</code></pre></div><h1 id="the-pip-interface">The Pip Interface</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Create a virtual environment with a apecific Python version</span>
+</span></span><span style="display:flex;"><span>mkdir ~/envs/
+</span></span><span style="display:flex;"><span>uv venv ~/envs/&lt;env&gt; --python &lt;version&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Activate a virtual environment</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">source</span> &lt;env_dir&gt;/bin/activate
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Deactivate a virtual environment</span>
+</span></span><span style="display:flex;"><span>deactivate
+</span></span></code></pre></div><h1 id="the-pip-interface">The Pip Interface</h1>
 <p><code>uv pip</code> basically can replace <code>pip</code>, <code>pip-tools</code>, and <code>pipdeptree</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4"># Install a package</span>
-uv pip install &lt;package&gt;
-<span style="color:#6272a4"># Install packages from `requirements.txt`</span>
-uv pip install -r requirements.txt
-<span style="color:#6272a4"># Uninstall a package</span>
-uv pip uninstall &lt;package&gt;
-<span style="color:#6272a4"># List installed packages</span>
-uv pip list
-<span style="color:#6272a4"># View the dependency tree</span>
-uv pip tree
-<span style="color:#6272a4"># Compile requirements into a lockfile</span>
-uv pip compile &lt;source&gt; -o requirements.txt
-<span style="color:#6272a4"># Sync an environment with a lockfile</span>
-uv pip sync requirements.txt
-</code></pre></div><h1 id="references">References</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Install a package</span>
+</span></span><span style="display:flex;"><span>uv pip install <span style="color:#f1fa8c">&#39;&lt;package&gt;==&lt;version&gt;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Install packages from `requirements.txt`</span>
+</span></span><span style="display:flex;"><span>uv pip install -r requirements.txt
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Uninstall a package</span>
+</span></span><span style="display:flex;"><span>uv pip uninstall &lt;package&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># List installed packages</span>
+</span></span><span style="display:flex;"><span>uv pip list
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># View the dependency tree</span>
+</span></span><span style="display:flex;"><span>uv pip tree
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Compile requirements into a lockfile</span>
+</span></span><span style="display:flex;"><span>uv pip compile &lt;source&gt; -o requirements.txt
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Sync an environment with a lockfile</span>
+</span></span><span style="display:flex;"><span>uv pip sync requirements.txt
+</span></span></code></pre></div><h1 id="references">References</h1>
 <ul>
 <li><a href="https://docs.astral.sh/uv/">uv Official Document</a></li>
 <li><a href="https://github.com/astral-sh/uv">uv Github Repo</a></li>
@@ -380,8 +379,8 @@ uv pip sync requirements.txt
     <aside id=comments>
     <div><h2> Comments </h2></div>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
