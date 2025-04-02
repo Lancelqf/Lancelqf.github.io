@@ -238,6 +238,8 @@ $$</p>
 Specifically, the initial state distribution is defined over the prompt dataset $\mathcal{Q}$, i.e., $p_0 = \mathcal{M}_1(\mathcal{Q})$. The initial state $s_0$ corresponds to a prompt $\mathbf{q} = [\mathbf{q}_1, \dots, \mathbf{q}_m]$ sampled from $\mathcal{Q}$, where $\mathbf{q}_i$ is the $i$-th token in the prompt and $m = |\mathbf{q}|$ is the prompt length.
 At time-step $t$, the state includes the prompt tokens $\mathbf{q}$ and the response tokens generated so far, i.e., $s_t = [\mathbf{q}_1, \dots, \mathbf{q}_m, \mathbf{o}_1, \dots, \mathbf{o}_{t-1}]$.
 The transition function is deterministic — the next state is simply the concatenation of the current state and the action, i.e., $s_{t+1} = s_t | a_t$, where $|$ denotes the concatenation operation.
+The reward function $R$ is prompt-dependent, which can either be an outcome reward function or a process reward function.
+For example, for most math tasks which use outcome reward functions, the reward signals are all zeros except the final reward, which could be 1 for a correct answer and -1 for an incorrect answer.
 An episode ends when the token budget is exhausted or when the End-of-Sentence (EOS) token is generated.</p>
 <p>Considering different action granularities, we define three types of MDPs for LLM post-training:</p>
 <ol>
@@ -253,7 +255,7 @@ An episode ends when the token budget is exhausted or when the End-of-Sentence (
 </ol>
 <p>In this article, we mainly focus on token-level MDPs.</p>
 <h2 id="policy-gradient-theorem">Policy Gradient Theorem</h2>
-<p>We mow apply gradient ascent techniques to get the gradient of the objective.
+<p>We now apply gradient ascent techniques to get the gradient of the objective.
 Since the true gradient $\nabla_{\theta} J(\theta)$ is not typically available, we resort to Monte Carlo methods [3].</p>
 <p>This gradient estimation problem can be formalized as computing the unbiased gradient of an expectation of a function with respect to some parameters of a distribution.
 Consider a general case. Let $p_{\theta}(x)$ be the probability distribution of $x$ with parameters $\theta$.
@@ -267,7 +269,7 @@ $$
 &amp;= \mathbb{E}_{X \sim p_{\theta}}[\phi(X) \nabla_{\theta} \log{p_{\theta}(X)}].
 \end{align*}
 $$</p>
-<p>For our specific case, we have
+<p>For our specific case (Equation (6)), we have
 $$
 \begin{align}
 \nabla_{\theta} J(\theta)
@@ -286,7 +288,7 @@ $$
 $$
 For a more detailed discussion, please check Zhang et al. 2022 [6].</p>
 <h2 id="reinforce">REINFORCE</h2>
-<p>REINFORCE [7] is a classic Monte Carlo policy gradient algorithm. Specifically, it approximates $Q_{\pi_{\theta}}$ in Equation (8) with the expected return (see Equation (3)).
+<p>REINFORCE [7] is a classic Monte Carlo policy gradient algorithm. Specifically, it approximates $Q_{\pi_{\theta}}(s_t, a_t)$ in Equation (8) with a sampled return $G_t$ (see Equation (3)).
 Formally, the gradient estimation is
 $$
 \begin{equation}
@@ -298,14 +300,14 @@ $$</p>
 To reduce variance, we apply the <a href="https://en.wikipedia.org/wiki/Control_variates">control variates</a> method by subtracting a baseline $b_t$ from $G_t$:
 $$
 \begin{align}
-\nabla_{\theta} J(\theta)
+\nabla_{\theta} J_\text{REINFORCE with baseline}(\theta)
 &amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - b_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}] \\
 &amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t A_t \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}], \nonumber
 \end{align}
 $$
-where $A_t = G_t - b_t$ is referred to as the advantage.</p>
+where $A_t = G_t - b_t$ is referred to as the (general) advantage.</p>
 <p><strong>In general, the baseline can be any function as long as it is not affected by the action $a_t$; otherwise we will have biased gradient estimation.</strong>
-For example, when $b_t = b(s_t)$, a function of the state $s_t$ only, $\nabla_{\theta} J_\text{REINFORCE}(\theta) = \nabla_{\theta} J(\theta)$ because the subtracted quantity is zero:
+For example, when $b_t = b(s_t)$, a function of the state $s_t$ only, $\nabla_{\theta} J_\text{REINFORCE}(\theta) = \nabla_{\theta} J_\text{REINFORCE with baseline}(\theta)$ because the subtracted quantity is zero:
 $$
 \begin{align*}
 \mathbb{E}_{\pi_{\theta}}[b(s_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
@@ -338,9 +340,7 @@ $$
 Note that in this case, the baseline is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$.</p>
 <h2 id="rloo">RLOO</h2>
 <p>Unlike ReMax which samples a greedy trajectory to compute the baseline, REINFORCE Leave-One-Out (RLOO) [11,12] eliminates the need for $V_{\pi_{\theta}}(s_t)$ at each time-step $t$ by replacing it with the expected return over multiple trajectories sampled on the fly.
-<strong>However, not all RL tasks permit multiple trajectory sampling from the same state $s_t$.
-In LLM post-training, the transition function is deterministic, with the next state formed simply by concatenating the current state and action.
-This determinism provides a foundation for multiple trajectory sampling.</strong></p>
+<strong>However, not all RL tasks allow multiple trajectory sampling from the same state $s_t$. If an environment does not permit action resampling, RLOO cannot be applied. Luckily, in LLM post-training, the agent has significant control over transitions (i.e., $s_{t+1} = s_t | a_t$), enabling multiple trajectory sampling and making RLOO a viable approach.</strong></p>
 <p>Specifically, at each time-step $t$, we sample $K$ trajectories $\{ \tau_{1,t}, \dots, \tau_{K,t} \}$ <strong>starting from $s_t$</strong>; and the corresponding returns are $G_{1,t}, \dots, G_{K,t}$, respectively.
 One may think we can simply replace $V_{\pi_{\theta}}(s_t)$ with a baseline $\frac{1}{K} \sum_{i=1}^{K} G_{i,t}$:
 $$
@@ -375,8 +375,8 @@ $$
 $$
 where $\bar{V}(s_t) = \mathbb{E}[G_t] = \frac{1}{K} \sum_{i=1}^K G_{i,t}$ which is an unbiased estimation of $V_{\pi_{\theta}}(s_t)$.</p>
 <h2 id="ppo">PPO</h2>
-<p>The above algorithms are all on-policy algorithms where the behavior policy and the target policy are the same.
-For off-policy learning, where the behavior policy and the target policy are different, we need to correct the gradient estimation by utilizing <a href="https://en.wikipedia.org/wiki/Importance_sampling">importance sampling</a>.
+<p>The above algorithms assume that the behavior policy (the policy that is used to generate experience) and the target policy (the policy being learned) are the same.
+When the behavior policy and the target policy are different, we need to correct the gradient estimation by utilizing <a href="https://en.wikipedia.org/wiki/Importance_sampling">importance sampling</a>.
 Let $\pi_{\theta}$ be the target policy and the old policy $\pi_{\theta_{\text{old}}}$ be the behavior policy.
 Formally, we aim to maximize a surrogate objective:
 $$
@@ -400,9 +400,10 @@ $$
 \nabla_{\theta} J(\theta)
 &amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}}\left[\sum_t \rho_t(\theta) (G_t - b_t) \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
 &amp;= \mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}}\left[\sum_t \rho_t(\theta) A_t \nabla_{\theta} \log \pi_{\theta}(a_t|s_t)\right] \\
-&amp;= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}}[\sum_t \rho_t(\theta) A_t].
+&amp;= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta_{\text{old}}}}[\sum_t \rho_t(\theta) A_t],
 \end{align*}
-$$</p>
+$$
+where $A_t = G_t - b_t$.</p>
 <p>To enhance training stability, it&rsquo;s crucial to prevent excessive changes to the policy in a single update step. Trust Region Policy Optimization (TRPO) [13] achieves this by imposing a <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">KL divergence</a> constraint, ensuring controlled and gradual policy updates at each update.
 Proximal Policy Optimization (PPO) [14] is inspired by the same goal as TRPO while being significantly simpler to implement.
 Specifically, PPO uses a <em>clipped surrogate objective</em> to constrain the policy update:
@@ -465,7 +466,7 @@ J_{\text{GRPO}}(\theta)
 \end{align}
 $$
 where $A_{k} = r_k - \mathbb{E}[r_k]$.
-Note that here the baseline $\mathbb{E}[r_k]$ is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$, but a function of $s_0$.
+Note that here the baseline $\mathbb{E}[r_k]$ is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$, but an unbiased estimation of $V(s_0)$.
 In practice, we may also normalize advantages to further improve training stability:
 $$
 \begin{align}
