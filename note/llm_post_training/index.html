@@ -278,7 +278,7 @@ $$
 \end{align}
 $$
 where $d^{\pi_{\theta}}(s&rsquo;) = \sum_{s \in \mathcal{S}} \sum_{t=0}^{\infty} \gamma^t p_0(s) p(s \to s&rsquo;, t, \pi_{\theta})$ is the (discounted) stationary state distribution of policy $\pi_{\theta}$ and $p(s \to s&rsquo;, t, \pi_{\theta})$ is the transition probability from $s$ to $s&rsquo;$ with $t$ steps under policy $\pi_{\theta}$.
-For a detailed proof, please check section 13.2 of the RL introduction book [1] and OpenAI Spinning Up [5].</p>
+For a detailed proof, please check Section 13.2 of the RL introduction book [1] and OpenAI Spinning Up [5].</p>
 <p>Finally, in terms of implementation, the term $\gamma^t$ in Equation (8) is usually ignored:
 $$
 \begin{align}
@@ -337,7 +337,7 @@ $$
 = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - \hat{G}_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
 \end{align}
 $$
-Note that in this case, the baseline is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$.</p>
+Note that in this case, the baseline does not bias the gradient estimation (see Proposition 1 of Section 4.3 in [9]), but it is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$.</p>
 <h2 id="rloo">RLOO</h2>
 <p>Unlike ReMax which samples a greedy trajectory to compute the baseline, REINFORCE Leave-One-Out (RLOO) [11,12] eliminates the need for $V_{\pi_{\theta}}(s_t)$ at each time-step $t$ by replacing it with the expected return over multiple trajectories sampled on the fly.
 <strong>However, not all RL tasks allow multiple trajectory sampling from the same state $s_t$. If an environment does not permit action resampling, RLOO cannot be applied. Luckily, in LLM post-training, the agent has significant control over transitions (i.e., $s_{t+1} = s_t | a_t$), enabling multiple trajectory sampling and making RLOO a viable approach.</strong></p>
@@ -447,22 +447,32 @@ where $\mathbb{E}[A_t] = \frac{1}{T} \sum_{t=0}^{T-1} A_t$ and $\operatorname{st
 <p>Group Relative Policy Optimization (GRPO) [16] basically combines PPO with the mutiple sampling trick from RLOO.
 $$
 \begin{align*}
-J_{\text{PPO with mutiple sampling}}(\theta)
+J_{\text{PPO with mutiple sampling (version 1)}}(\theta)
 = \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}\left[\frac{1}{K-1} \sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) A_{k,t} \right],
 \end{align*}
 $$
 where $A_{k,t} = G_{k,t}^{\lambda} - b_t$.</p>
-<p>Note that the above objective differs from the one proposed in the DeepSeekMath paper [16].
-To reduce the gap, we consider the outcome reward setting with $\lambda=\gamma=1$.
-In this case, we have $G_t^{\lambda} = G_t = \sum_{i=t}^{T-1} R(s_i, a_i) = R(s_{T-1}, a_{T-1})$, where $R(s_{T-1}, a_{T-1})$ is the outcome reward.
-Moreover, we do not sample multiple trajectories $\{ \tau_{k,t} \}_{k=1}^K$ on the fly starting from $s_t$ at each time-step $t$.
-Instead, we sample multiple trajectories $\{ \tau_k \}_{k=1}^K$ <strong>starting from the initial state $s_0=\mathbb{q}$</strong> and the sampling process is only conducted once at $t=0$ for each prompt.</p>
-<p>Let $r_k$ be the outcome reward of the $k$-th trajectory and set $b_t = \mathbb{E}[r_k] = \frac{1}{K} \sum_{k=1}^K r_k$.
-We then have
+<p>Note that the above objective differs from the one proposed in the DeepSeekMath paper [16]:
 $$
 \begin{align}
 J_{\text{GRPO}}(\theta)
-= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}[\frac{1}{K-1} \sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) A_{k}],
+= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}
+\left[
+\frac{1}{K} \sum_{k=1}^K \frac{1}{|o_k|} \sum_{t=1}^{|o_k|} \left(\hat{\rho}_{k,t}(\theta) \hat{A}_{k} - \beta D_{\text{KL}}(\pi_{\theta} || \pi_{\text{ref}})\right)
+\right],
+\end{align}
+$$
+where $o_k$ is the $k$-the response, $|o|$ is the response length, $\hat{A}_{k} = \frac{r_k - \mathbb{E}[r_k]}{\operatorname{std}[r_k]}$, and $\pi_{\text{ref}}$ is the reference policy.</p>
+<p>To reduce the gap, we consider the outcome reward setting with $\lambda=\gamma=1$.
+In this case, we have $G_t^{\lambda} = G_t = \sum_{i=t}^{T-1} R(s_i, a_i) = R(s_{T-1}, a_{T-1})$, where $R(s_{T-1}, a_{T-1})$ is the outcome reward.
+Moreover, we do not sample multiple trajectories $\{\tau_{k,t}\}_{k=1}^{K}$ on the fly starting from $s_t$ at each time-step $t$.
+Instead, we sample multiple trajectories $\{\tau_{k}\}_{k=1}^{K}$ <strong>starting from the initial state $s_0=\mathbb{q}$</strong>; and the sampling process is only conducted once at $t=0$ for each prompt.
+Let $r_k$ be the outcome reward of the $k$-th trajectory and set $b_t = \mathbb{E}[r_k] = \frac{1}{K} \sum_{k=1}^K r_k$.
+We then have</p>
+<p>$$
+\begin{align}
+J_{\text{PPO with mutiple sampling (version 2)}}(\theta)
+= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}} \left[\frac{1}{K-1} \sum_{k=1}^{K} \sum_{t=1}^{|o_k|} \hat{\rho}_{k,t}(\theta) A_{k} \right],
 \end{align}
 $$
 where $A_{k} = r_k - \mathbb{E}[r_k]$.
@@ -477,18 +487,18 @@ $$
 = \frac{r_k - \mathbb{E}[r_k]}{\operatorname{std}[r_k]}.
 \end{align}
 $$</p>
-<p>Notice that compared with the original GRPO objective proposed in the DeepSeekMath paper [16], the KL divergence term is dropped in Equation (18). There are several reasons for doing this:</p>
+<p>Notice that compared with GRPO objective (Equation (18)), the KL divergence term is dropped in Equation (19). There are several reasons for doing this:</p>
 <ol>
 <li>As proposed in the PPO paper [14], the clipped objective is designed as a replacement of constraint policy optimization in form of the KL divergence term. Thus, adding a KL divergence term is not necessary theoretically.</li>
 <li>Removing the KL divergence term simplifies the implementation, saving memory and computation.</li>
 <li>In practice, some recent works (e.g., DAPO [17] and Dr. GRPO [18]) have shown that the KL divergence term is not necessary for LLM reasoning tasks.</li>
 </ol>
 <!-- (but still important for alignment tasks). -->
+<p>However, even after removing the KL divergence term, Equation (19) still differs from GRPO objective.
+In fact, GRPO objective is biased, as pointed out in the Dr. GRPO paper [18].</p>
 <h2 id="dr-grpo">Dr. GRPO</h2>
-<p>Even after removing the KL divergence term, the GRPO objective in Equation (18) still differs from the original GRPO objective.
-In fact, the original GRPO objective is biased, as pointed out in the Dr. GRPO paper [18].</p>
+<p>Specifically, there are three biases in GRPO objective:</p>
 <center><img src="/media/grpo.png" alt="GRPO v.s. Dr. GRPO" height="40%" width="80%" /></center>
-<p>Specifically, there are three biases in the original GRPO objective:</p>
 <ol>
 <li>
 <p><em>Baseline bias</em>: This is caused by using a biased baseline without correcting the scaling factor (see Equation (14)). When using $\mathbb{E}[r_k]$ as the baseline, we should use a scaling factor of $\frac{1}{K-1}$, instead of $\frac{1}{K}$.</p>
@@ -497,7 +507,7 @@ In fact, the original GRPO objective is biased, as pointed out in the Dr. GRPO p
 <p><em>Response-level length bias</em>: This bias arises from dividing by response length $|\mathbb{o}|$. For correct answers (with postive adavantages), this bias incentivizes shorter responses; for incorrect answers (with negative advantages), this bias results in longer responses.</p>
 </li>
 <li>
-<p><em>Question-level difficulty bias</em>: This bias arises from an incorrect implementation of advantage normalization. In classical (single-task) RL, advantage normalization is typically computed over an entire batch — a practice also adopted by many open-sourced RL implementations of LLM post-training. However, in the context of LLM post-training, questions in one batch can vary significantly in terms of type, domain, and difficulty. Each question effectively represents a different task with its own reward function. <strong>In essence, LLM post-training is a form of multi-task learning.</strong> As a result, applying batch-level normalization across diverse questions leads to inconsistent weighting in the objective, disproportionately influencing optimization across tasks. For example, questions with lower standard deviations are given higher weights during policy updates.</p>
+<p><em>Question-level difficulty bias</em>: Although advantage normalization is a common technique for stabilizing RL training, it introduces bias into the estimated gradient when the advantages are divided by the standard deviation term. In the context of LLM post-training, questions within one batch can vary significantly in type, domain, and difficulty. As a result, normalizing advantages at the question level leads to question-specific gradient estimation bias. That is, the estimated gradients for different questions are skewed in different ways, disproportionately influencing optimization across questions. Furthermore, each question effectively represents a different task with its own reward function. <strong>In essence, LLM post-training is a form of multi-task learning.</strong> From this perspective, applying advantage normalization across diverse questions can result in unintended weighting distortions in the objective. For example, ideally, optimization should prioritize learning from medium-difficulty questions: easy questions are already solved, while hard questions may be too difficult to learn from effectively. Thus, we should reduce the weighting of both easy and hard questions during policy updates. However, when advantages are divided by their standard deviations, the weighting of easy and hard questions is unintentionally increased, as these questions typically exhibit lower advantage standard deviations. This undermines the desired optimization dynamics, making the learning process less effective.</p>
 </li>
 </ol>
 <p>For the baseline bias, the scaling factor can be absorbed into the learning rate. Since the learning rate is usually tuned in practice, this bias does not significantly affect the training performance.
@@ -505,11 +515,10 @@ For the other two biases, Group Relative Policy Optimization Done Right (Dr. GRP
 $$
 \begin{align}
 J_{\text{Dr. GRPO}}(\theta)
-= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}\left[\sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) (r_k - \mathbb{E}[r_k])\right],
+= \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}\left[\sum_{k=1}^{K} \sum_{t=1}^{|o_k|} \hat{\rho}_{k,t}(\theta) (r_k - \mathbb{E}[r_k])\right],
 \end{align}
 $$
-which is essentially equivalent to Equation (18), differing only by a factor of $\frac{1}{K-1}$.</p>
-<p>Finally, question-level difficulty bias might also be removed by applying per-question advantage normalization, i.e., normalizing advantages of each question separately.</p>
+which is essentially equivalent to Equation (19), differing only by a factor of $\frac{1}{K-1}$.</p>
 <hr>
 <h2 id="acknowledgement">Acknowledgement</h2>
 <p>Thank <a href="http://www.liziniu.org/">Ziniu Li</a> and <a href="https://lkevinzc.github.io/">Zichen Liu</a> for their valuable feedback and suggestions on this post.</p>
