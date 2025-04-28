@@ -193,7 +193,7 @@
     <div class="post-content">
         <p>
             <h2 id="value-based-methods-for-deep-rl">Value-based methods for deep RL</h2>
-<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%" /></center>
+<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%"></center>
 <ul>
 <li>
 <p>Q-learning:</p>
@@ -225,7 +225,7 @@ where $\alpha$ is a scalar step size called the learning rate. Notice that when 
 </li>
 <li>
 <p>Deep Q-networks:</p>
-<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%" /></center>
+<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%"></center>
 <ul>
 <li>Similar to fitted Q-learning, the target Q-network is:
 $$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ {k} ^ {-})$$
@@ -255,7 +255,7 @@ For $a ^ { * } = \operatorname { argmax } _ { a ^ { \prime } \in \mathcal { A } 
 </li>
 <li>
 <p>The structure of dueling network:</p>
-  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%" /></center>
+  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%"></center>
 <p>The stream $V( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) })$ provides an estimate of the value function, while the other stream produces an estimate of the advantage function. The learning update is done as in DQN and it is only the structure of the neural network that is modiﬁed.</p>
 </li>
 <li>
@@ -546,7 +546,7 @@ $$</p>
 <li>When the full model ($P$, $R$ and $O$) are known, methods such as <strong>Point-Based Value Iteration (PBVI)</strong> algorithm for POMDP planning can be used to solve the problem.</li>
 <li>We denote by $H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$ the set of histories observed up to time $t$ for $t \in {N _ 0}$, and by $H = \bigcup _ { t = 0 } ^ { \infty } H _ { t }$ the space of all possible observable histories.</li>
 </ul>
-<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%" /></center>
+<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%"></center>
 <ul>
 <li>Architectures such as convolutional layers or recurrency are particularly well-suited to deal with a large input space because they offer interesting generalization properties. A few empirical successes on large scale POMDPs make use of convolutional layers and/or recurrent layers, such as LSTMs.</li>
 </ul>
@@ -625,9 +625,9 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <p>Deep learning: Deep learning also finds its origin in models of neural processing in the brain of biological entities. However, subsequent developments are such that deep learning has become partly incompatible with current knowledge of neurobiology. The convolutional structure used in deep learning that is inspired by the organization of the animal visual cortex.</p>
 </li>
 </ul>
-<h1 id="reference">Reference</h1>
+<h2 id="reference">Reference</h2>
 <ul>
-<li><a href="https://arxiv.org/abs/1811.12560v2">An Introduction to Deep Reinforcement Learning. Vincent François-Lavet, Peter Henderson, Riashat Islam, Marc G. Bellemare and Joelle Pineau, 2018.)</a></li>
+<li><a href="https://arxiv.org/abs/1811.12560">An Introduction to Deep Reinforcement Learning</a></li>
 </ul>
         </p>
     </div>
@@ -674,9 +674,9 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
             <li><a href="#relations-between-deep-rl-and-neuroscience">Relations between deep RL and neuroscience</a></li>
           </ul>
         </li>
+        <li><a href="#reference">Reference</a></li>
       </ul>
     </li>
-    <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
     </nav>

@@ -320,7 +320,7 @@ In fact, whether a knowledge representation is good or bad really depends on the
 <p><font size=6>01/28: Reward function (3/3)</font></p>
 <p>As I elaborated in last research diary, &ldquo;Rewards are interpretations of current state (both the environment and agent itself). They are a measure how good or better the current state is. And how close are we from the final goal.&rdquo; So $R _ t$ should be a function of environment state $s _ {env}$ and agent state $s _ {agent}$, i.e. $R _ t: S _ E \times S _ A \rightarrow  \mathbb{R}$ where $S _ E$ is the environment state space and $S _ A$ is agent state space. In current typical RL setting, $R _ t$ is only determined by the environment. The agent state is not considered. This is because first, the reward design remains to be a difficult problem. Second, most RL agents are too simple. There are no such thing as agent states!</p>
 <p>Instead of designning reward functions manually, can we design some methods to learn reward functions? For example, can we apply neural networks to approximate the true rewards (if they do exist) through bootstrapping? I think there should be some previous works (It&rsquo;s so obvous afterall!), or maybe someone tries this idea before but it didn&rsquo;t work. <strong>Need future study</strong>.</p>
-<center><img src="/media/agent–environment_interaction.jpg" alt="The agent–environment interaction in a MDP." height="70%" width = "70%" /></center>
+<center><img src="/media/agent–environment_interaction.jpg" alt="The agent–environment interaction in a MDP." height="70%" width = "70%"></center>
 <p><font size=6>01/29: State</font></p>
 <p>Define the state space $S$ to be $S \doteq S _ E \times S _ A$ where $S _ E$ is the environment state space and $S _ A$ is the agent state space. For every state $s$, it can written as $s=(s _ e, s _ a)$. If we use a vector to represent a state $s$, then each dimension of this vector is a feature of this state (e.g. $s=(f _ 1, f _ 2, \cdots, f _ n)$).</p>
 <p>One advantage of representing states using vectors is that vectors are simple, comprehensible and easy to handle—they are just a bunch of features. However, since there is no internal structure inside a vector, it is not convenient to represent complex states or encode structural information in it, such as feature interaction (e.g. ${f _ 1 ^ 2} f _ 2$). One way to fix this is adding new features (e.g. $f _ {n+1} = {f _ 1 ^ 2} f _ 2$). But this usually leads to the curse of dimensionality. Thus we need a more compact but still powerful enough representation. And they should be manageable by agents (e.g. computers).</p>
@@ -525,7 +525,7 @@ where $S$ and $T$ are source and target domain, respectively. $a$ is a transfer 
 </ul>
 <hr>
 <p><font size=6>02/18: Deep Reinforcement Learning: Value-based methods for deep RL (1)</font></p>
-<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%" /></center>
+<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%"></center>
 <ul>
 <li>
 <p>Q-learning:</p>
@@ -560,7 +560,7 @@ where $\alpha$ is a scalar step size called the learning rate. Notice that when 
 <ul>
 <li>
 <p>Deep Q-networks:</p>
-<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%" /></center>
+<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%"></center>
 <ul>
 <li>Similar to fitted Q-learning, the target Q-network is:
 $$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ {k} ^ {-})$$
@@ -593,7 +593,7 @@ For $a ^ { * } = \operatorname { argmax } _ { a ^ { \prime } \in \mathcal { A } 
 </li>
 <li>
 <p>The structure of dueling network:</p>
-  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%" /></center>
+  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%"></center>
 <p>The stream $V( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) })$ provides an estimate of the value function, while the other stream produces an estimate of the advantage function. The learning update is done as in DQN and it is only the structure of the neural network that is modiﬁed.</p>
 </li>
 <li>
@@ -647,7 +647,7 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 <p>The basic idea for this project is combining double learning with approximation. As mentioned in Rich&rsquo;s book, many algorithms involve a maximization operation which leads to maximization bias. By using double learning technique, the selection of an estimator and its value is uncoupled. Thus, we can remove the maximization bias to some extent. For example, for double Q-learning, the update is</p>
 <p>$$Q _ { 1 } ( S _ { t } , A _ { t } ) \leftarrow Q _ { 1 } ( S _ { t } , A _ { t } ) + \alpha [ R _ { t + 1 } + \gamma Q _ { 2 } ( S _ { t + 1 } , \underset { a } { \arg \max } Q _ { 1 } ( S _ { t + 1 } , a ) ) - Q _ { 1 } ( S _ { t } , A _ { t } ) ]$$</p>
 <p>A comparison of Q-learning and double Q-learning on a simple episodic MDP:</p>
-<center><img src="/media/Double_Q-learning.jpg" alt="Double Q-learning" height="80%" width="80%" /></center>
+<center><img src="/media/Double_Q-learning.jpg" alt="Double Q-learning" height="80%" width="80%"></center>
 <p>As shown in the above picture, double Q-learning is less affected by maximization bias. However, there is still a small gap between the optimal and what double Q-learning really archieves. Why is that? I think the main reason is that although the selection of an estimator and its value is uncoupled, the maximization operation still induces bias.</p>
 <p>To address this problem, I come up with a new algorithm called maxmin Q-learning. Compared with double Q-learning, there are two important difference.</p>
 <ul>
@@ -660,7 +660,7 @@ with $\sum _ { i = 0 } ^ { n - 1 } \lambda _ { i } = 1$. In the method called TD
 </li>
 </ul>
 <p>For tabular case, maxmin Q-learning is better than double Q-learning on a simple episodic MDP. And it archieves the optimal!</p>
-<center><img src="/media/maxmin_Q-learning.png" alt="Maxmin Q-learning" height="80%" width="80%" /></center>
+<center><img src="/media/maxmin_Q-learning.png" alt="Maxmin Q-learning" height="80%" width="80%"></center>
 <p>I want to further test this algorithm in function approximation case. To be specific, I want to check if it can still mitigate maximization bias and compare the performance of between maxmin Q-learning and double Q-learning.</p>
 <p>Moreover, since we have $n$ Q functions, can we apply ideas in Adaboost to get a better (with less bias) estimation of Q value?</p>
 <hr>
@@ -920,7 +920,7 @@ $$</p>
 <li>When the full model ($P$, $R$ and $O$) are known, methods such as <strong>Point-Based Value Iteration (PBVI)</strong> algorithm for POMDP planning can be used to solve the problem.</li>
 <li>We denote by $H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$ the set of histories observed up to time $t$ for $t \in {N _ 0}$, and by $H = \bigcup _ { t = 0 } ^ { \infty } H _ { t }$ the space of all possible observable histories.</li>
 </ul>
-<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%" /></center>
+<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%"></center>
 <ul>
 <li>Architectures such as convolutional layers or recurrency are particularly well-suited to deal with a large input space because they offer interesting generalization properties. A few empirical successes on large scale POMDPs make use of convolutional layers and/or recurrent layers, such as LSTMs.</li>
 </ul>
@@ -1047,7 +1047,7 @@ prior knowledge in learning. We call such a learner a knowledge-based learner, w
 <p><strong>Model</strong>: This is the learned model, which can be a prediction model or classiﬁer in supervised learning, clusters or topics in unsupervised learning, a policy in reinforcement learning, etc.</p>
 <p><strong>Application</strong>: This is the real-world application for the model. It is important to note that during model application, the system can still learn new knowledge, and possibly discover new tasks to be learned. Application can also give feedback to the knowledge-based learner for model improvement.</p>
 <p><strong>Task Manager (TM)</strong>: It receives and manages the tasks that arrive in the system, handles the task shift, and presents the new learning task to the KBL in a lifelong manner.</p>
-<center><img src="/media/lifelong_learning_system_architecture.jpg" alt="lifelong learning system architecture" height="80%" width="80%" /></center>
+<center><img src="/media/lifelong_learning_system_architecture.jpg" alt="lifelong learning system architecture" height="80%" width="80%"></center>
 <p><strong>Lifelong Learning Process</strong>: A typical LL process starts with the Task Manager assigning a new task to the KBL (the task can be given or discovered automatically). KBL then works with the help of the past knowledge stored in the KB to produce an output model for the user and also send the information or knowledge that needs to be retained for future use to the KB. In the application process, the system may also discover new tasks and learn while working (learn on the job). Some knowledge gained in applications can also be retained to help future learning.</p>
 <p><font size=6>03/27: Lifelong Learning [Introduction]: Types of Knowledge and Key Challenges </font></p>
 <p>There is still no well-accepted definition of knowledge or its general representation scheme. In the current LL research, past knowledge usually serves as some kind of prior information (e.g., prior model parameters or prior probabilities) for the new task. For a particular LL algorithm and a particular form of shared knowledge, one needs to design a KB and its maintenance or updating methods based on the algorithm and its knowledge representation need. There are mainly two types of shared knowledge that are used in learning the new task.</p>
@@ -1096,7 +1096,7 @@ dog. Let the data from the previous $N$ tasks be $\mathcal { D } ^ { p } = { \ma
 <p>Given the mapping function $g ^ { * }$, rather than performing memory-based learning in the original space $\langle x _ { i } , y _ { i } \rangle \in \mathcal { D } _ { N + 1 }$, $x _ {i}$ is first transformed to the new space using $g ^ {*}$ to $\langle g ^ { * } ( x _ { i } ) , y _ { i } \rangle$ before applying  NN or the Shepard&rsquo;s method.</p>
 <p><font size=6>03/29: Lifelong Learning [Lifelong Supervised Learning]: Lifelong Neural Networks</font></p>
 <p><strong>MTL Net</strong>: In MTL net, instead of building a neural network for each individual task, it constructs a universal neural network for all the tasks. This universal neural network uses the same input layer for input from all tasks and uses one output unit for each task (or class in this case). There is also a shared hidden layer in MTL net that is trained in parallel using Back-Propagation on all the tasks to minimize the error on all the tasks. This shared layer allows features developed for one task to be used by other tasks. For a specific task, it will activate some hidden units that are related to it while making the weights of the other irrelevant hidden units small. Essentially, like a normal batch MTL method, the system jointly optimizes the classification of all the past/previous and the current/new tasks.</p>
-<center><img src="/media/MTL.jpg" alt="MTL Net" height="50%" width="50%" /></center>
+<center><img src="/media/MTL.jpg" alt="MTL Net" height="50%" width="50%"></center>
 <p><strong>Lifelong EBNN</strong>: EBNN (Explanation-Based Neural Network) is used for concept learning, which learns a function $f : I \rightarrow { 0,1 }$ to predict if an object represented by a feature vector $x \in I$ belongs to a concept ($y=1$) or not($y=0$).</p>
 <p>In this approach, the system ﬁrst learns a <em>general distance function</em>, $d : I \times I \rightarrow [ 0,1 ]$, considering all the past data (or the support set) and uses this distance function to share or transfer the knowledge of the past task data to the new task $T _ {N+1}$. Given two input vectors, say $x$ and $y$, function d computes the probability of $x$ and $y$ being members of the same concept (or class), regardless what the concept is. The training data for learning the distance function is generated as follows: For each past task data $\mathcal { D } _ { i } \in \mathcal { D } ^ { p }$, each pair of examples of the concept generates a training example. For a pair, $\langle x , y = 1 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { i }$, a positive training example is generated, $\left\langle \left( x , x ^ { \prime } \right) , 1 \right\rangle$. For a pair $\langle x , y = 1 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 0 \right\rangle \in \mathcal { D } _ { i }$ or $\langle x , y = 0 \rangle \in \mathcal { D } _ { i }$ and $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { i }$, a negative training example is generated, $\left\langle \left( x , x ^ { \prime } \right) , 0 \right\rangle$.</p>
 <p>Unlike a traditional neural network, EBNN estimates the slope (tangent) of the target function at each data point $x$ and adds it into the vector representation of the data point. In the new task $T _ {N+1}$, a training example is of the form, $\langle x , f _ { N + 1 } ( x ) , \nabla _ { x } f _ { N + 1 } ( x )\rangle$, where $f _ {N+1}(x)$ is just the original class label of $x \in D _ {N+1}$ (the new task data). The system is trained using <strong>Tangent-Prop algorithm</strong>. $\nabla _ {x} f _ {N+1}(x)$ is estimated using the gradient of the distance $d$ obtained from the neural network, i.e., $\nabla _ { x } f _ { N + 1 } ( x ) \approx \frac { \partial d _ { x ^ { \prime } } ( x ) } { \partial x }$, where $\left\langle x ^ { \prime } , y ^ { \prime } = 1 \right\rangle \in \mathcal { D } _ { N + 1 }$ and $d _ { x ^ { \prime } } ( x ) = d \left( x , x ^ { \prime } \right)$. The rationale is that the distance between $x$ and a positive training example $x ^ {\prime}$ is an estimate of the probability of $x$ being a positive example, which approximates $f _ {N+1} (x)$. As a result, the built EBNN fits both the current task data $\mathcal { D } _ { N + 1 }$ and the support set through $\nabla _ { x } f _ { N + 1 } ( x )$ and $d$.</p>

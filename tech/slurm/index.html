@@ -291,7 +291,11 @@
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># List running jobs by user</span>
 </span></span><span style="display:flex;"><span>squeue -u &lt;user&gt; -ho %A -t RUNNING
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Set a new Timelimit a running (need admin privilege)/pending job</span>
-</span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;TimeLimit&gt;
+</span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">TimeLimit</span><span style="color:#ff79c6">=</span>&lt;timelimit&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Update dependency for a job</span>
+</span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Dependency</span><span style="color:#ff79c6">=</span>&lt;dependency&gt;
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># Remove dependency for a job</span>
+</span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Dependency</span><span style="color:#ff79c6">=</span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Set other parameters for a job</span>
 </span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Account</span><span style="color:#ff79c6">=</span>&lt;account&gt; <span style="color:#8be9fd;font-style:italic">CPUsPerTask</span><span style="color:#ff79c6">=</span>&lt;count&gt; <span style="color:#8be9fd;font-style:italic">MinMemoryCPU</span><span style="color:#ff79c6">=</span>&lt;MB&gt; <span style="color:#8be9fd;font-style:italic">Gres</span><span style="color:#ff79c6">=</span>&lt;list&gt;
 </span></span></code></pre></div><h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
