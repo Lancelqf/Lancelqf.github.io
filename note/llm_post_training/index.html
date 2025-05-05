@@ -196,9 +196,9 @@
         <p>
             <p>Recently, many reinforcement learning (RL) algorithms have been applied to improve the post-training of large language models (LLMs). In this article, we aim to provide a unified perspective on the objectives of these RL algorithms, exploring how they relate to each other through the Policy Gradient Theorem [1] — the fundamental theorem of policy gradient methods.</p>
 <h2 id="background">Background</h2>
-<p>Let $\mathcal{M}_1(X)$ be the space of probability distributions supported on the set $X$.
-Consider a Markov decision process (MDP), $M=(\mathcal{S}, \mathcal{A}, \mathbb{P}, p_0, R, \gamma)$, where $\mathcal{S}$ is the discrete state space, $\mathcal{A}$ is the discrete action space, $\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \mathcal{M}_1(\mathcal{S})$ is the transition probability, $p_0 = \mathcal{M}_1(\mathcal{S})$ is the initial state distribution, $R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1]$ is the discount factor.</p>
-<p>An agent interacts with the MDP environment based on a policy $\pi: \mathcal{S} \rightarrow \mathcal{M}_1(\mathcal{A})$. Specifically, the agent starts from state $s_0 \sim p_0(\cdot)$.
+<p>Let $\Delta(X)$ be the space of all probability distributions supported over the set $X$.
+Consider a Markov decision process (MDP), $M=(\mathcal{S}, \mathcal{A}, \mathbb{P}, p_0, R, \gamma)$, where $\mathcal{S}$ is the discrete state space, $\mathcal{A}$ is the discrete action space, $\mathbb{P}: \mathcal{S} \times \mathcal{A} \rightarrow \Delta(\mathcal{S})$ is the transition probability, $p_0 \in \Delta(\mathcal{S})$ is the initial state distribution, $R: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$ is the reward function, and $\gamma \in [0,1]$ is the discount factor.</p>
+<p>An agent interacts with the MDP environment based on a policy $\pi: \mathcal{S} \rightarrow \Delta(\mathcal{A})$. Specifically, the agent starts from state $s_0 \sim p_0(\cdot)$.
 At each time-step $t$, it observes the state $s_t \in \mathcal{S}$, takes an action $a_t \sim \pi(\cdot|s_t)$, transits to the next state $s_{t+1} \sim \mathbb{P}(\cdot | s_t, a_t)$, and receives a scalar reward $r_{t+1} = R(s_t, a_t)$.
 A trajectory (up to time-step $T$) is defined as $\tau = (s_0, a_0, r_1, s_1, \cdots, s_T)$.
 Define return $G_t$ over $\tau$ as the total (discounted) reward from time-step $t$:
