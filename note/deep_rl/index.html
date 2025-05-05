@@ -193,7 +193,17 @@
     <div class="post-content">
         <p>
             <h2 id="value-based-methods-for-deep-rl">Value-based methods for deep RL</h2>
-<center><img src="/media/general_schema_of_DRL.jpg" alt="General schema of deep RL methods" height="80%" width="80%"></center>
+
+<figure >
+    
+        <img 
+            src="/media/general_schema_of_DRL.jpg"style="width:80%; height:80%;"
+            alt="General schema of deep RL methods" 
+        />
+    
+    
+</figure>
+
 <ul>
 <li>
 <p>Q-learning:</p>
@@ -224,8 +234,18 @@ where $\alpha$ is a scalar step size called the learning rate. Notice that when 
 </ul>
 </li>
 <li>
-<p>Deep Q-networks:</p>
-<center><img src="/media/DQN.jpg" alt="Sketch of the DQN algorithm" height="80%" width="80%"></center>
+<p>Deep Q-networks:
+
+  <figure >
+      
+          <img 
+              src="/media/DQN.jpg"style="width:80%; height:80%;"
+              alt="Sketch of the DQN algorithm" 
+          />
+      
+      
+  </figure>
+</p>
 <ul>
 <li>Similar to fitted Q-learning, the target Q-network is:
 $$Y _ { k } ^ { Q } = r + \gamma \max _ { a ^ { \prime } \in \mathcal { A } } Q ( s ^ { \prime } , a ^ { \prime } ; \theta _ {k} ^ {-})$$
@@ -254,8 +274,18 @@ $$Q ( s , a ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } ) = V
 For $a ^ { * } = \operatorname { argmax } _ { a ^ { \prime } \in \mathcal { A } } Q ( s , a ^ { \prime } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } )$, we have $Q ( s , a ^ { * } ; \theta ^ { ( 1 ) } , \theta ^ { ( 2 ) } , \theta ^ { ( 3 ) } ) = V ( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) } )$.</p>
 </li>
 <li>
-<p>The structure of dueling network:</p>
-  <center><img src="/media/dueling_network.jpg" alt="Illustration of the dueling network architecture" height="80%" width="80%"></center>
+<p>The structure of dueling network:
+
+      <figure >
+          
+              <img 
+                  src="/media/dueling_network.jpg"style="width:80%; height:80%;"
+                  alt="Illustration of the dueling network architecture" 
+              />
+          
+          
+      </figure>
+</p>
 <p>The stream $V( s ; \theta ^ { ( 1 ) } , \theta ^ { ( 3 ) })$ provides an estimate of the value function, while the other stream produces an estimate of the advantage function. The learning update is done as in DQN and it is only the structure of the neural network that is modiﬁed.</p>
 </li>
 <li>
@@ -546,7 +576,17 @@ $$</p>
 <li>When the full model ($P$, $R$ and $O$) are known, methods such as <strong>Point-Based Value Iteration (PBVI)</strong> algorithm for POMDP planning can be used to solve the problem.</li>
 <li>We denote by $H _ { t } = \Omega \times ( A \times R \times \Omega ) ^ { t }$ the set of histories observed up to time $t$ for $t \in {N _ 0}$, and by $H = \bigcup _ { t = 0 } ^ { \infty } H _ { t }$ the space of all possible observable histories.</li>
 </ul>
-<center><img src="/media/POMDP.jpg" alt="Illustration of a POMDP" height="80%" width="80%"></center>
+
+<figure >
+    
+        <img 
+            src="/media/POMDP.jpg"style="width:80%; height:80%;"
+            alt="Illustration of a POMDP" 
+        />
+    
+    
+</figure>
+
 <ul>
 <li>Architectures such as convolutional layers or recurrency are particularly well-suited to deal with a large input space because they offer interesting generalization properties. A few empirical successes on large scale POMDPs make use of convolutional layers and/or recurrent layers, such as LSTMs.</li>
 </ul>

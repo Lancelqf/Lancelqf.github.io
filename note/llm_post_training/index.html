@@ -498,7 +498,17 @@ $$</p>
 In fact, GRPO objective is biased, as pointed out in the Dr. GRPO paper [18].</p>
 <h2 id="dr-grpo">Dr. GRPO</h2>
 <p>Specifically, there are three biases in GRPO objective:</p>
-<center><img src="/media/grpo.png" alt="GRPO v.s. Dr. GRPO" height="40%" width="80%"></center>
+
+<figure >
+    
+        <img 
+            src="/media/grpo.png"style="width:80%; height:40%;"
+            alt="GRPO v.s. Dr. GRPO" 
+        />
+    
+    
+</figure>
+
 <ol>
 <li>
 <p><em>Baseline bias</em>: This is caused by using a biased baseline without correcting the scaling factor (see Equation (14)). When using $\mathbb{E}[r_k]$ as the baseline, we should use a scaling factor of $\frac{1}{K-1}$, instead of $\frac{1}{K}$.</p>
