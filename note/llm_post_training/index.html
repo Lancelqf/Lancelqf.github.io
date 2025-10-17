@@ -235,7 +235,7 @@ J(\theta) = \sum_{s \in \mathcal{S}} p_0(s) V_{\pi_{\theta}}(s).
 \end{align}
 $$</p>
 <p>Now, let&rsquo;s formalize LLM post-training within the RL framework. <strong>In essence, LLM post-training is a specific type of RL task, distinguished by some unique properties.</strong>
-Specifically, the initial state distribution is defined over the prompt dataset $\mathcal{Q}$, i.e., $p_0 = \mathcal{M}_1(\mathcal{Q})$. The initial state $s_0$ corresponds to a prompt $\mathbf{q} = [\mathbf{q}_1, \dots, \mathbf{q}_m]$ sampled from $\mathcal{Q}$, where $\mathbf{q}_i$ is the $i$-th token in the prompt and $m = |\mathbf{q}|$ is the prompt length.
+Specifically, the initial state distribution is defined over the prompt dataset $\mathcal{Q}$, i.e., $p_0 \in \Delta(\mathcal{Q})$. The initial state $s_0$ corresponds to a prompt $\mathbf{q} = [\mathbf{q}_1, \dots, \mathbf{q}_m]$ sampled from $\mathcal{Q}$, where $\mathbf{q}_i$ is the $i$-th token in the prompt and $m = |\mathbf{q}|$ is the prompt length.
 At time-step $t$, the state includes the prompt tokens $\mathbf{q}$ and the response tokens generated so far, i.e., $s_t = [\mathbf{q}_1, \dots, \mathbf{q}_m, \mathbf{o}_1, \dots, \mathbf{o}_{t-1}]$.
 The transition function is deterministic — the next state is simply the concatenation of the current state and the action, i.e., $s_{t+1} = s_t | a_t$, where $|$ denotes the concatenation operation.
 The reward function $R$ is prompt-dependent, which can either be an outcome reward function or a process reward function.
@@ -283,7 +283,7 @@ For a detailed proof, please check Section 13.2 of the RL introduction book [1] 
 $$
 \begin{align}
 \nabla_{\theta} J(\theta)
-&amp; \approx \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t Q_{\pi_{\theta}}(s_t,a_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
+\approx \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t Q_{\pi_{\theta}}(s_t,a_t) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}]
 \end{align}
 $$
 For a more detailed discussion, please check Zhang et al. 2022 [6].</p>
@@ -305,7 +305,7 @@ $$
 &amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t A_t \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}], \nonumber
 \end{align}
 $$
-where $A_t = G_t - b_t$ is referred to as the (general) advantage.</p>
+where $A_t = G_t - b_t$ is referred as the (general) advantage.</p>
 <p><strong>In general, the baseline can be any function as long as it is not affected by the action $a_t$; otherwise we will have biased gradient estimation.</strong>
 For example, when $b_t = b(s_t)$, a function of the state $s_t$ only, $\nabla_{\theta} J_\text{REINFORCE}(\theta) = \nabla_{\theta} J_\text{REINFORCE with baseline}(\theta)$ because the subtracted quantity is zero:
 $$
@@ -322,7 +322,7 @@ $$</p>
 $$
 \begin{align}
 \nabla_{\theta} J_\text{REINFORCE with baseline}(\theta)
-&amp; = \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - V_{\pi_{\theta}}(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
+= \mathbb{E}_{\tau \sim \pi_{\theta}}[\sum_t (G_t - V_{\pi_{\theta}}(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_t|s_t)}].
 \end{align}
 $$</p>
 <h2 id="remax">ReMax</h2>
@@ -370,7 +370,7 @@ $$</p>
 $$
 \begin{align}
 \nabla_{\theta} J_\text{RLOO}(\theta)
-= \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta}} \left[\textcolor{red}{\frac{1}{K-1}} \sum_t \sum_{k=1}^{K} (G_{k,t} - \bar{V}(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_{k,t}|s_t)}\right].
+= \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta}} \left[\textcolor{red}{\frac{1}{K-1}} \sum_t \sum_{k=1}^{K} (G_{k,t} - \bar{V}(s_t)) \nabla_{\theta} \log{\pi_{\theta}(a_{k,t}|s_t)}\right],
 \end{align}
 $$
 where $\bar{V}(s_t) = \mathbb{E}[G_t] = \frac{1}{K} \sum_{i=1}^K G_{i,t}$ which is an unbiased estimation of $V_{\pi_{\theta}}(s_t)$.</p>
@@ -444,10 +444,10 @@ $$
 $$
 where $\mathbb{E}[A_t] = \frac{1}{T} \sum_{t=0}^{T-1} A_t$ and $\operatorname{std}[A_t] = \sqrt{\frac{1}{T-1} \sum_{t=0}^{T-1} (A_t - \mathbb{E}[A_t])^2}$.</p>
 <h2 id="grpo">GRPO</h2>
-<p>Group Relative Policy Optimization (GRPO) [16] basically combines PPO with the mutiple sampling trick from RLOO.
+<p>Group Relative Policy Optimization (GRPO) [16] basically combines PPO with the multiple sampling trick from RLOO.
 $$
 \begin{align*}
-J_{\text{PPO with mutiple sampling (version 1)}}(\theta)
+J_{\text{PPO with multiple sampling (version 1)}}(\theta)
 = \mathbb{E}_{\{ \tau_{k,t} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}}\left[\frac{1}{K-1} \sum_t \sum_{k=1}^{K} \hat{\rho}_{k,t}(\theta) A_{k,t} \right],
 \end{align*}
 $$
@@ -466,17 +466,17 @@ where $o_k$ is the $k$-the response, $|o|$ is the response length, $\hat{A}_{k} 
 <p>To reduce the gap, we consider the outcome reward setting with $\lambda=\gamma=1$.
 In this case, we have $G_t^{\lambda} = G_t = \sum_{i=t}^{T-1} R(s_i, a_i) = R(s_{T-1}, a_{T-1})$, where $R(s_{T-1}, a_{T-1})$ is the outcome reward.
 Moreover, we do not sample multiple trajectories $\{\tau_{k,t}\}_{k=1}^{K}$ on the fly starting from $s_t$ at each time-step $t$.
-Instead, we sample multiple trajectories $\{\tau_{k}\}_{k=1}^{K}$ <strong>starting from the initial state $s_0=\mathbb{q}$</strong>; and the sampling process is only conducted once at $t=0$ for each prompt.
+Instead, we sample multiple trajectories $\{\tau_{k}\}_{k=1}^{K}$ <strong>starting from the initial state $s_0=\mathbf{q}$</strong>; and the sampling process is only conducted once at $t=0$ for each prompt.
 Let $r_k$ be the outcome reward of the $k$-th trajectory and set $b_t = \mathbb{E}[r_k] = \frac{1}{K} \sum_{k=1}^K r_k$.
 We then have</p>
 <p>$$
 \begin{align}
-J_{\text{PPO with mutiple sampling (version 2)}}(\theta)
+J_{\text{PPO with multiple sampling (version 2)}}(\theta)
 = \mathbb{E}_{\{ \tau_{k} \}_{k=1}^K \sim \pi_{\theta_{\text{old}}}} \left[\frac{1}{K-1} \sum_{k=1}^{K} \sum_{t=1}^{|o_k|} \hat{\rho}_{k,t}(\theta) A_{k} \right],
 \end{align}
 $$
 where $A_{k} = r_k - \mathbb{E}[r_k]$.
-Note that here the baseline $\mathbb{E}[r_k]$ is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$, but an unbiased estimation of $V(s_0)$.
+Note that here the baseline $\mathbb{E}[r_k]$ is no longer an unbiased estimation of $V_{\pi_{\theta}}(s_t)$, but an unbiased estimation of $V_{\pi_{\theta}}(s_0)$.
 In practice, we may also normalize advantages to further improve training stability:
 $$
 \begin{align}
@@ -514,14 +514,14 @@ In fact, GRPO objective is biased, as pointed out in the Dr. GRPO paper [18].</p
 <p><em>Baseline bias</em>: This is caused by using a biased baseline without correcting the scaling factor (see Equation (14)). When using $\mathbb{E}[r_k]$ as the baseline, we should use a scaling factor of $\frac{1}{K-1}$, instead of $\frac{1}{K}$.</p>
 </li>
 <li>
-<p><em>Response-level length bias</em>: This bias arises from dividing by response length $|\mathbb{o}|$. For correct answers (with postive adavantages), this bias incentivizes shorter responses; for incorrect answers (with negative advantages), this bias results in longer responses.</p>
+<p><em>Response-level length bias</em>: This bias arises from dividing by response length $|\mathbf{o}|$. For correct answers (with positive advantages), this bias incentivizes shorter responses; for incorrect answers (with negative advantages), this bias results in longer responses.</p>
 </li>
 <li>
 <p><em>Question-level difficulty bias</em>: Although advantage normalization is a common technique for stabilizing RL training, it introduces bias into the estimated gradient when the advantages are divided by the standard deviation term. In the context of LLM post-training, questions within one batch can vary significantly in type, domain, and difficulty. As a result, normalizing advantages at the question level leads to question-specific gradient estimation bias. That is, the estimated gradients for different questions are skewed in different ways, disproportionately influencing optimization across questions. Furthermore, each question effectively represents a different task with its own reward function. <strong>In essence, LLM post-training is a form of multi-task learning.</strong> From this perspective, applying advantage normalization across diverse questions can result in unintended weighting distortions in the objective. For example, ideally, optimization should prioritize learning from medium-difficulty questions: easy questions are already solved, while hard questions may be too difficult to learn from effectively. Thus, we should reduce the weighting of both easy and hard questions during policy updates. However, when advantages are divided by their standard deviations, the weighting of easy and hard questions is unintentionally increased, as these questions typically exhibit lower advantage standard deviations. This undermines the desired optimization dynamics, making the learning process less effective.</p>
 </li>
 </ol>
 <p>For the baseline bias, the scaling factor can be absorbed into the learning rate. Since the learning rate is usually tuned in practice, this bias does not significantly affect the training performance.
-For the other two biases, Group Relative Policy Optimization Done Right (Dr. GRPO) [18] addresses them by simply removing $\frac{1}{|\mathbb{o}|}$ and $\operatorname{std}[r_k]$:
+For the other two biases, Group Relative Policy Optimization Done Right (Dr. GRPO) [18] addresses them by simply removing $\frac{1}{|\mathbf{o}|}$ and $\operatorname{std}[r_k]$:
 $$
 \begin{align}
 J_{\text{Dr. GRPO}}(\theta)
