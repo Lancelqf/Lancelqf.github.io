@@ -341,7 +341,7 @@ Note that in this case, the baseline does not bias the gradient estimation (see 
 <h2 id="rloo">RLOO</h2>
 <p>Unlike ReMax which samples a greedy trajectory to compute the baseline, REINFORCE Leave-One-Out (RLOO) [11,12] eliminates the need for $V_{\pi_{\theta}}(s_t)$ at each time-step $t$ by replacing it with the expected return over multiple trajectories sampled on the fly.
 <strong>However, not all RL tasks allow multiple trajectory sampling from the same state $s_t$. If an environment does not permit action resampling, RLOO cannot be applied. Luckily, in LLM post-training, the agent has significant control over transitions (i.e., $s_{t+1} = s_t | a_t$), enabling multiple trajectory sampling and making RLOO a viable approach.</strong></p>
-<p>Specifically, at each time-step $t$, we sample $K$ trajectories $\{ \tau_{1,t}, \dots, \tau_{K,t} \}$ <strong>starting from $s_t$</strong>; and the corresponding returns are $G_{1,t}, \dots, G_{K,t}$, respectively.
+<p>Specifically, at each time-step $t$, we sample $K$ trajectories $\{ \tau_{1,t}, \dots, \tau_{K,t} \}$ <strong>starting from $s_t$</strong>; and the corresponding returns are $\{ G_{1,t}, \dots, G_{K,t} \}$, respectively.
 One may think we can simply replace $V_{\pi_{\theta}}(s_t)$ with a baseline $\frac{1}{K} \sum_{i=1}^{K} G_{i,t}$:
 $$
 \begin{align*}
@@ -444,7 +444,7 @@ $$
 $$
 where $\mathbb{E}[A_t] = \frac{1}{T} \sum_{t=0}^{T-1} A_t$ and $\operatorname{std}[A_t] = \sqrt{\frac{1}{T-1} \sum_{t=0}^{T-1} (A_t - \mathbb{E}[A_t])^2}$.</p>
 <h2 id="grpo">GRPO</h2>
-<p>Group Relative Policy Optimization (GRPO) [16] basically combines PPO with the multiple sampling trick from RLOO.
+<p>Group Relative Policy Optimization (GRPO) [16] basically combines PPO with the multiple sampling trick from RLOO:
 $$
 \begin{align*}
 J_{\text{PPO with multiple sampling (version 1)}}(\theta)
@@ -529,13 +529,16 @@ J_{\text{Dr. GRPO}}(\theta)
 \end{align}
 $$
 which is essentially equivalent to Equation (19), differing only by a factor of $\frac{1}{K-1}$.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this article, we have presented a unified theoretical framework for understanding recent RL algorithms applied to LLM post-training, grounded in the Policy Gradient Theorem. By formalizing LLM post-training as a token-level MDP — a setting uniquely characterized by deterministic transitions, prompt-dependent rewards, and the ability to sample multiple trajectories from the same state — we have shown how seemingly disparate algorithms such as REINFORCE, ReMax, RLOO, PPO, GRPO, and Dr. GRPO are in fact variations of the same core principle: estimating unbiased gradients of the expected return while mitigating variance through carefully designed baselines.</p>
+<p>As RL continues to play a central role in LLM post-training, this unified view offers a roadmap for developing more robust, interpretable, and scalable post-training methods — grounded not in empirical tricks, but in the enduring mathematics of RL.</p>
 <hr>
 <h2 id="acknowledgement">Acknowledgement</h2>
 <p>Thank <a href="http://www.liziniu.org/">Ziniu Li</a> and <a href="https://lkevinzc.github.io/">Zichen Liu</a> for their valuable feedback and suggestions on this post.</p>
 <hr>
 <p>Citation:</p>
 <pre tabindex="0"><code>@article{lan2025llm_post_training,
-  title = {From REINFORCE to Dr. GRPO: A Unified Perspective on LLM Post-training},
+  title = {From REINFORCE to Dr. GRPO},
   author = {Lan, Qingfeng},
   journal = {lancelqf.github.io},
   year = {2025},
@@ -562,7 +565,7 @@ which is essentially equivalent to Equation (19), differing only by a factor of 
 <li><a href="https://arxiv.org/abs/1506.02438">High-Dimensional Continuous Control Using Generalized Advantage Estimation</a> (Schulman et al., ICLR 2016)</li>
 <li><a href="https://arxiv.org/abs/2402.03300">DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models</a> (Shao et al., arXiv 2024)</li>
 <li><a href="https://arxiv.org/abs/2503.14476">DAPO: An Open-Source LLM Reinforcement Learning System at Scale</a> (Yu et al., arXiv 2025)</li>
-<li><a href="https://arxiv.org/abs/2503.20783">Understanding R1-Zero-Like Training: A Critical Perspective</a> (Liu et al., arXiv 2025)</li>
+<li><a href="https://arxiv.org/abs/2503.20783">Understanding R1-Zero-Like Training: A Critical Perspective</a> (Liu et al., COLM 2025)</li>
 </ol>
 </small>
         </p>
@@ -583,6 +586,7 @@ which is essentially equivalent to Equation (19), differing only by a factor of 
         <li><a href="#ppo">PPO</a></li>
         <li><a href="#grpo">GRPO</a></li>
         <li><a href="#dr-grpo">Dr. GRPO</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
         <li><a href="#acknowledgement">Acknowledgement</a></li>
         <li><a href="#references">References</a></li>
       </ul>
