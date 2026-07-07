@@ -634,7 +634,8 @@ $$\underset { T _ { i } \sim \mathcal { T } } { \mathbb { E } } [ \sum _ { k = 0
 <li>$\Omega$ is a finite set of observations {$1, \ldots, N _ {\Omega}$};</li>
 <li>$\forall i , O _ { i } : S \times \Omega \rightarrow [0, 1]$ is a set of conditional observation probabilities</li>
 <li>$\gamma \in [0, 1)$ is the discount factor.</li>
-</ul></blockquote>
+</ul>
+</blockquote>
 <ul>
 <li>Collaborative versus non-collaborative setting: In a pure collaborative setting, agents have a shared reward measurement ($R _ {i} = R _ {j}, \forall i, j \in [1, \ldots, N]$). In a mixed or non-collaborative (possibly adversarial) setting each agent obtains different rewards. In both cases, each agent $i$ aims to maximize a discounted sum of its rewards $\sum _ { t = 0 } ^ { H } \gamma ^ { t } r _ { t } ^ { ( i ) }$.</li>
 <li>Decentralized versus centralized setting: In a decentralized setting, each agent selects its own action conditioned only on its local information. When collaboration is beneficial, this decentralized setting can lead to the emergence of communication between agents in order to share information. In a centralized setting, the RL algorithm has access to all observations $w ^ {(i)}$ and all rewards $r ^ {(i)}$. The problem can be reduced to a single-agent RL problem on the condition that a single objective can be defined (in a purely collaborative setting, the unique objective is straightforward). Note that even when a centralized approach can be considered (depending on the problem), an architecture that does not make use of the multi-agent structure usually leads to sub-optimal learning.</li>

@@ -191,7 +191,7 @@
     <div class="post-content">
         <p>
             <h2 id="download-pre-built-images">Download pre-built images</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
 </span></span><span style="display:flex;"><span>singularity pull <span style="color:#ff79c6">[</span>pull options...<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">[</span>output file<span style="color:#ff79c6">]</span> &lt;container&gt;
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># From Sylabs cloud library</span>
 </span></span><span style="display:flex;"><span>singluarity pull library://&lt;user&gt;/&lt;collection&gt;/&lt;container<span style="color:#ff79c6">[</span>:tag<span style="color:#ff79c6">]</span>&gt;
@@ -206,7 +206,7 @@
 </span></span><span style="display:flex;"><span>singluarity pull &lt;output file&gt; &lt;container&gt;
 </span></span><span style="display:flex;"><span>singularity pull explorer.img shub://qlan3/singularity-deffile:explorer
 </span></span></code></pre></div><h2 id="build-a-container">Build a container</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Build from URI</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Build from URI</span>
 </span></span><span style="display:flex;"><span>sudo singularity build &lt;container&gt; &lt;URL&gt;
 </span></span><span style="display:flex;"><span>sudo singularity build lolcow.simg library://sylabs-jms/testing/lolcow
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Build From a Singularity definition file</span>
@@ -219,13 +219,13 @@
 </span></span><span style="display:flex;"><span>sudo singularity build --sandbox &lt;sandbox&gt; &lt;old container&gt;
 </span></span><span style="display:flex;"><span>sudo singularity build --sandbox lolcow/ library://sylabs-jms/testing/lolcow
 </span></span></code></pre></div><h2 id="shell-in-a-container">Shell in a container</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
 </span></span><span style="display:flex;"><span>singularity shell <span style="color:#ff79c6">[</span>shell options...<span style="color:#ff79c6">]</span> &lt;container&gt;
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Make the file system accessible as read/write</span>
 </span></span><span style="display:flex;"><span>singularity shell --writable &lt;container&gt;
 </span></span><span style="display:flex;"><span>singularity shell explorer.img
 </span></span></code></pre></div><h2 id="run-a-command-within-a-container">Run a command within a container</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
 </span></span><span style="display:flex;"><span>singularity <span style="color:#8be9fd;font-style:italic">exec</span> <span style="color:#ff79c6">[</span><span style="color:#8be9fd;font-style:italic">exec</span> options...<span style="color:#ff79c6">]</span> &lt;container&gt; &lt;command&gt;
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Example</span>
 </span></span><span style="display:flex;"><span>singularity <span style="color:#8be9fd;font-style:italic">exec</span> /tmp/debian.sif cat /etc/debian_version
@@ -235,13 +235,13 @@
 </span></span><span style="display:flex;"><span>singularity <span style="color:#8be9fd;font-style:italic">exec</span> instance://my_instance ps -ef
 </span></span><span style="display:flex;"><span>singularity <span style="color:#8be9fd;font-style:italic">exec</span> library://centos cat /etc/os-release
 </span></span></code></pre></div><h2 id="bind-paths-and-mounts">Bind Paths and Mounts</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Synopsis</span>
 </span></span><span style="display:flex;"><span>singularity run/exec/shell --bind src<span style="color:#ff79c6">[</span>:dest<span style="color:#ff79c6">[</span>:opts<span style="color:#ff79c6">]]</span> &lt;container&gt; <span style="color:#ff79c6">[</span>command<span style="color:#ff79c6">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Example</span>
 </span></span><span style="display:flex;"><span>singularity <span style="color:#8be9fd;font-style:italic">exec</span> --bind /data:/mnt my_container.sif ls /mnt
 </span></span><span style="display:flex;"><span>singularity shell --bind /home/vagrant/Explorer explorer-env.img
 </span></span></code></pre></div><h2 id="build-images-from-scratch">Build images from scratch</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Create a sandbox image from base ubuntu image</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># Create a sandbox image from base ubuntu image</span>
 </span></span><span style="display:flex;"><span>sudo singularity build --sandbox &lt;container&gt; &lt;file/URL/container&gt;
 </span></span><span style="display:flex;"><span>sudo singularity build --sandbox ubuntu/ library://ubuntu
 </span></span><span style="display:flex;"><span><span style="color:#6272a4"># Shell into the sandbox image</span>
