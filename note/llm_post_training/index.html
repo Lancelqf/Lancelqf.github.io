@@ -462,7 +462,7 @@ J_{\text{GRPO}}(\theta)
 \right],
 \end{align}
 $$
-where $o_k$ is the $k$-the response, $|o|$ is the response length, $\hat{A}_{k} = \frac{r_k - \mathbb{E}[r_k]}{\operatorname{std}[r_k]}$, and $\pi_{\text{ref}}$ is the reference policy.</p>
+where $o_k$ is the $k$-th response, $|o|$ is the response length, $\hat{A}_{k} = \frac{r_k - \mathbb{E}[r_k]}{\operatorname{std}[r_k]}$, and $\pi_{\text{ref}}$ is the reference policy.</p>
 <p>To reduce the gap, we consider the outcome reward setting with $\lambda=\gamma=1$.
 In this case, we have $G_t^{\lambda} = G_t = \sum_{i=t}^{T-1} R(s_i, a_i) = R(s_{T-1}, a_{T-1})$, where $R(s_{T-1}, a_{T-1})$ is the outcome reward.
 Moreover, we do not sample multiple trajectories $\{\tau_{k,t}\}_{k=1}^{K}$ on the fly starting from $s_t$ at each time-step $t$.
@@ -619,8 +619,9 @@ which is essentially equivalent to Equation (19), differing only by a factor of 
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </aside>
 
         </main><footer class="footer">

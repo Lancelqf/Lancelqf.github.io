@@ -300,58 +300,58 @@
 </span></span><span style="display:flex;"><span>scontrol update <span style="color:#8be9fd;font-style:italic">jobid</span><span style="color:#ff79c6">=</span>&lt;jobid&gt; <span style="color:#8be9fd;font-style:italic">Account</span><span style="color:#ff79c6">=</span>&lt;account&gt; <span style="color:#8be9fd;font-style:italic">NumCPUs</span><span style="color:#ff79c6">=</span>&lt;count&gt; <span style="color:#8be9fd;font-style:italic">MinMemoryCPU</span><span style="color:#ff79c6">=</span>&lt;MB&gt; <span style="color:#8be9fd;font-style:italic">Gres</span><span style="color:#ff79c6">=</span>&lt;list&gt;
 </span></span></code></pre></div><h2 id="slurm-environment-variables">SLURM Environment Variables</h2>
 <table>
-  <thead>
-      <tr>
-          <th style="text-align: left">Environment Variable</th>
-          <th style="text-align: left">Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_NAME</td>
-          <td style="text-align: left">User specified job name</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_ID</td>
-          <td style="text-align: left">Slurm job id</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_NNODES</td>
-          <td style="text-align: left">Number of nodes allocated to the job</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_NTASKS</td>
-          <td style="text-align: left">Number of tasks allocated to the job</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_ARRAY_TASK_ID</td>
-          <td style="text-align: left">Array index for the job</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_ARRAY_TASK_MAX</td>
-          <td style="text-align: left">Total number of array indexes for the job</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_MEM_PER_CPU</td>
-          <td style="text-align: left">Memory allocated per CPU</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_NODELIST</td>
-          <td style="text-align: left">List of nodes on which resources are allocated to job</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_CPUS_PER_NODE</td>
-          <td style="text-align: left">Number of CPUs allocated per node</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_PARTITION</td>
-          <td style="text-align: left">List of Partition(s) that the job is in</td>
-      </tr>
-      <tr>
-          <td style="text-align: left">SLURM_JOB_ACCOUNT</td>
-          <td style="text-align: left">Account under which this job is run</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th style="text-align: left">Environment Variable</th>
+					<th style="text-align: left">Description</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_NAME</td>
+					<td style="text-align: left">User specified job name</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_ID</td>
+					<td style="text-align: left">Slurm job id</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_NNODES</td>
+					<td style="text-align: left">Number of nodes allocated to the job</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_NTASKS</td>
+					<td style="text-align: left">Number of tasks allocated to the job</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_ARRAY_TASK_ID</td>
+					<td style="text-align: left">Array index for the job</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_ARRAY_TASK_MAX</td>
+					<td style="text-align: left">Total number of array indexes for the job</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_MEM_PER_CPU</td>
+					<td style="text-align: left">Memory allocated per CPU</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_NODELIST</td>
+					<td style="text-align: left">List of nodes on which resources are allocated to job</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_CPUS_PER_NODE</td>
+					<td style="text-align: left">Number of CPUs allocated per node</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_PARTITION</td>
+					<td style="text-align: left">List of Partition(s) that the job is in</td>
+			</tr>
+			<tr>
+					<td style="text-align: left">SLURM_JOB_ACCOUNT</td>
+					<td style="text-align: left">Account under which this job is run</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="account-information">Account information</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#6272a4"># List user and their default account (accounting group)</span>
@@ -453,8 +453,9 @@
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+	
 </aside>
 
         </main><footer class="footer">
